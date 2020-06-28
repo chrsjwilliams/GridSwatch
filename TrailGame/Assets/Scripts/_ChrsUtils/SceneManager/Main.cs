@@ -83,7 +83,11 @@ public class Main : MonoBehaviour
         Services.InputManager = new InputManager();
         Services.GameManager = GetComponent<GameManager>();
         Services.GameManager.Init();
+        Services.CameraController = Camera.main.GetComponent<CameraController>();
+        Services.CameraController.Init();
         Services.AudioManager = GetComponent<AudioManager>();
+        Services.LevelManager = GetComponent<LevelManager>();
+        Services.LevelManager.Init();
         Services.Scenes = new GameSceneManager<TransitionData>(gameObject, Services.Prefabs.Scenes);
         
     }

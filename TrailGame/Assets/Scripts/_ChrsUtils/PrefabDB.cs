@@ -16,4 +16,10 @@ public class PrefabDB : ScriptableObject
     {
         get { return _scenes; }
     }
+
+    [SerializeField] private Tile _tile;
+    public Tile Tile
+    {
+        get { return _tile;  }
+    }
 }

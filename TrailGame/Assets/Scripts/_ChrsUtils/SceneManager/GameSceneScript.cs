@@ -13,11 +13,19 @@ public class GameSceneScript : Scene<TransitionData>
     public const int LEFT_CLICK = 0;
     public const int RIGHT_CLICK = 1;
 
+    public GameBoard board;
+
     TaskManager _tm = new TaskManager();
 
+    // Height Range: 3 - 15
+    // Width Range: 3 - 9
     private void Start()
     {
-        
+        Services.GameScene = this;
+        Services.Board = board;
+
+        Services.Board.CreateBaord(9, 15);
+        Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
     }
 
     internal override void OnEnter(TransitionData data)
