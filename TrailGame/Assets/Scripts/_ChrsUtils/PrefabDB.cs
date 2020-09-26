@@ -5,8 +5,8 @@
 public class PrefabDB : ScriptableObject
 {
 
-    [SerializeField] private GameObject _player;
-    public GameObject Player
+    [SerializeField] private Player _player;
+    public Player Player
     {
         get { return _player; }
     }

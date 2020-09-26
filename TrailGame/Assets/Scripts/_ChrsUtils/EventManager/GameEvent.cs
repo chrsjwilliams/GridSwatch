@@ -165,4 +165,13 @@ public class KeyPressedEvent : GameEvent
     }
 }
 
+public class SwipeEvent : GameEvent
+{
+    public readonly Swipe gesture;
+    public SwipeEvent(Swipe g)
+    {
+        gesture = g;
+    }
+}
+
 public class Reset : GameEvent { }

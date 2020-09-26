@@ -35,13 +35,20 @@ public class GameBoard : MonoBehaviour
             {
                 Tile newTile = Instantiate(Services.Prefabs.Tile, new Vector2(x, y), Quaternion.identity);
                 newTile.name = "Tile: [ X: " + x + ", Y: " + y + "]";
-
                 newTile.transform.parent = transform;
-                newTile.Init();
+                bool b = true;
+                if (x == 0 && y == 2) b = false;
+                newTile.Init(new MapCoord(x, y), b);
+                _map[x, y] = newTile;
             }
         }
 
-        
+    }
+
+    public bool ContainsCoord(MapCoord candidateCoord)
+    {
+        return  0 <= candidateCoord.x && candidateCoord.x < Width &&
+                0 <= candidateCoord.y && candidateCoord.y < Height;
     }
 
     // Update is called once per frame

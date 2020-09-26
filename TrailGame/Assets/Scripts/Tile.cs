@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class Tile : MonoBehaviour
 {
-
+    public MapCoord coord { get; protected set; }
     private TaskManager _tm = new TaskManager();
 
-    public void Init()
+    public bool canTraverse { get; protected set; }
+
+    public void Init(MapCoord c, bool _canTraverse = true)
     {
-        
+        coord = c;
+        canTraverse = _canTraverse;
     }
+
+    public void SetTraversal(bool b){ canTraverse = b; }
+
 
     // Update is called once per frame
     void Update()

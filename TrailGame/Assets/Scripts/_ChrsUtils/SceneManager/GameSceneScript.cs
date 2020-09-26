@@ -15,6 +15,8 @@ public class GameSceneScript : Scene<TransitionData>
 
     public GameBoard board;
 
+    public Player player;
+
     TaskManager _tm = new TaskManager();
 
     // Height Range: 3 - 15
@@ -24,8 +26,12 @@ public class GameSceneScript : Scene<TransitionData>
         Services.GameScene = this;
         Services.Board = board;
 
-        Services.Board.CreateBaord(9, 15);
+        Services.Board.CreateBaord(3, 3);
         Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
+
+        player = Instantiate<Player>(Services.Prefabs.Player);
+        MapCoord startCoord = MapCoord.ZERO;
+        player.Init(startCoord);
     }
 
     internal override void OnEnter(TransitionData data)
