@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Player : Entity
 {
-
+    /*
+     *  TODO:
+     *          Have color be determined by ColorMode
+     *          Level design pipline? csv sheets?
+     * 
+     */ 
     public override void Init(MapCoord c)
     {
+        CurrentColorMode = ColorMode.NONE;
         canMove = true;
         coord = c;
         SetPosition(coord);
@@ -66,6 +72,9 @@ public class Player : Entity
             int xPos = (int)Mathf.Floor(transform.position.x);
             int yPos = (int)Mathf.Floor(transform.position.y);
             coord = new MapCoord(xPos, yPos);
+
+            Tile currentTile = Services.GameScene.board.Map[coord.x, coord.y];
+            currentTile.SetColor(Color.magenta);
         }
         else
         {

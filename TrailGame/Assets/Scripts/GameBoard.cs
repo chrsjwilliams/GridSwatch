@@ -38,7 +38,7 @@ public class GameBoard : MonoBehaviour
                 newTile.transform.parent = transform;
                 bool b = true;
                 if (x == 0 && y == 2) b = false;
-                newTile.Init(new MapCoord(x, y), b);
+                newTile.Init(new MapCoord(x, y), Color.white, b);
                 _map[x, y] = newTile;
             }
         }
