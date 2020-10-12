@@ -9,10 +9,16 @@ public class Player : Entity
      *          Have color be determined by ColorMode
      *          Level design pipline? csv sheets?
      * 
-     */ 
+     */
+
+    public const int FULL_INTENSITY_SWIPES = 2;
+    public const int DIM_INTENSITY_SWIPES = 1;
+
+    public int fullIntensitySwipeCount;
+    public int dimIntensitySwipeCount;
     public override void Init(MapCoord c)
     {
-        CurrentColorMode = ColorMode.NONE;
+        CurrentColorMode = ColorMode.MAGENTA;
         canMove = true;
         coord = c;
         SetPosition(coord);
@@ -20,6 +26,28 @@ public class Player : Entity
         Services.EventManager.Register<SwipeEvent>(OnSwipe);
         moveSpeed = 2;
         arriveSpeed = 10;
+        ResetIntensitySwipes();
+    }
+
+    public void ResetIntensitySwipes()
+    {
+        fullIntensitySwipeCount = FULL_INTENSITY_SWIPES;
+        dimIntensitySwipeCount = DIM_INTENSITY_SWIPES;
+    }
+
+
+    public Color GetColor()
+    {
+        if (CurrentColorMode == ColorMode.NONE) return Color.clear;
+
+        int intensityIndex = -1;
+
+        if (fullIntensitySwipeCount > -1) intensityIndex = (int)ColorManager.Intensity.FULL;
+        else if (dimIntensitySwipeCount > -1) intensityIndex = (int)ColorManager.Intensity.DIM;
+        else return Color.clear;
+
+
+        return Services.ColorManager.Colors[(int)CurrentColorMode - 1][intensityIndex];
     }
 
     public void SetPosition(MapCoord c)
@@ -34,6 +62,18 @@ public class Player : Entity
             float xPos = Mathf.Round(transform.position.x);
             float yPos = Mathf.Round(transform.position.y);
             transform.position = new Vector3(xPos, yPos, transform.position.z);
+            fullIntensitySwipeCount--;
+            if(fullIntensitySwipeCount < -1)
+            {
+                fullIntensitySwipeCount = 0;
+                dimIntensitySwipeCount--;
+                if (dimIntensitySwipeCount < -1)
+                {
+                    dimIntensitySwipeCount = 0;
+                    CurrentColorMode = ColorMode.NONE;
+                }
+            }
+
         }
         direction = e.gesture.CurrentDirection;
 
@@ -73,8 +113,18 @@ public class Player : Entity
             int yPos = (int)Mathf.Floor(transform.position.y);
             coord = new MapCoord(xPos, yPos);
 
-            Tile currentTile = Services.GameScene.board.Map[coord.x, coord.y];
-            currentTile.SetColor(Color.magenta);
+            Tile currentTile = Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y];
+            if (currentTile is PumpTile)
+            {
+                CurrentColorMode = ((PumpTile)currentTile).PumpColor;
+                ResetIntensitySwipes();
+            }
+            else if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
+            {
+                Color newTileColor = GetColor();
+                
+                currentTile.SetColor(newTileColor);
+            }
         }
         else
         {
@@ -92,7 +142,6 @@ public class Player : Entity
     private bool CanTraverse(MapCoord candidateCoord)
     {
         bool canTraverse = false;
-
         if( Services.GameScene.board.ContainsCoord(candidateCoord) &&
             Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y].canTraverse)
             canTraverse = true;
@@ -117,7 +166,9 @@ public class Player : Entity
                ((direction == Swipe.Direction.UP ||
                  direction == Swipe.Direction.DOWN) &&
                 (e.gesture.CurrentDirection == Swipe.Direction.LEFT ||
-                 e.gesture.CurrentDirection == Swipe.Direction.RIGHT));
+                 e.gesture.CurrentDirection == Swipe.Direction.RIGHT)) ||
+                (direction == Swipe.Direction.NONE &&
+                e.gesture.CurrentDirection != Swipe.Direction.NONE);
     }
 
 }

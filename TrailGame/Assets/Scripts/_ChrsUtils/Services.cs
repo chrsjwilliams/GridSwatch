@@ -8,6 +8,7 @@ public class Services
     public static GameEventsManager EventManager { get; set; }
     public static TaskManager GeneralTaskManager { get; set; }
     public static PrefabDB Prefabs { get; set; }
+    public static ColorManager ColorManager { get; set; }
     
     public static InputManager InputManager { get; set; }
     public static LevelManager LevelManager { get; set; }

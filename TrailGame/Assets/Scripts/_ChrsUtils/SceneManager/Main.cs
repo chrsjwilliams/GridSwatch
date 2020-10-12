@@ -76,13 +76,15 @@ public class Main : MonoBehaviour
     private void InitalizeServices()
     {
         Services.Main = this;
-        
+
         Services.EventManager = new GameEventsManager();
         Services.GeneralTaskManager = new TaskManager();
         Services.Prefabs = Resources.Load<PrefabDB>("Prefabs/PrefabDB");
         Services.InputManager = new InputManager();
         Services.GameManager = GetComponent<GameManager>();
         Services.GameManager.Init();
+        Services.ColorManager = GetComponent<ColorManager>();
+        Services.ColorManager.Init();
         Services.CameraController = Camera.main.GetComponent<CameraController>();
         Services.CameraController.Init();
         Services.AudioManager = GetComponent<AudioManager>();

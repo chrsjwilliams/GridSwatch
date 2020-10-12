@@ -10,12 +10,13 @@ public class Tile : MonoBehaviour
     public bool canTraverse { get; protected set; }
 
     public Color CurrentColor { get; protected set; }
-    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] protected SpriteRenderer sr;
 
-    public void Init(MapCoord c, Color initColor,bool _canTraverse = true)
+    public virtual void Init(MapCoord c, Color initColor,bool _canTraverse = true)
     {
         coord = c;
         canTraverse = _canTraverse;
+        sr = GetComponent<SpriteRenderer>();
         SetColor(initColor);
     }
 

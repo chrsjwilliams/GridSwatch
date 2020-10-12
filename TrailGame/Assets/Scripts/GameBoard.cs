@@ -34,12 +34,24 @@ public class GameBoard : MonoBehaviour
             for (int y = 0; y < Height; y++)
             {
                 Tile newTile = Instantiate(Services.Prefabs.Tile, new Vector2(x, y), Quaternion.identity);
+                if (x == 0 && y == 2)
+                {
+                    Destroy(newTile.gameObject.GetComponent<Tile>());
+                    newTile.gameObject.AddComponent<PumpTile>();
+                }
                 newTile.name = "Tile: [ X: " + x + ", Y: " + y + "]";
                 newTile.transform.parent = transform;
-                bool b = true;
-                if (x == 0 && y == 2) b = false;
-                newTile.Init(new MapCoord(x, y), Color.white, b);
-                _map[x, y] = newTile;
+                if (x == 0 && y == 2)
+                {
+                    PumpTile pumpTile = newTile.GetComponent<PumpTile>();
+                    pumpTile.Init(new MapCoord(x, y), Services.ColorManager.Colors[0][0], ColorMode.CYAN, true);
+                    _map[x, y] = pumpTile;
+                }
+                else
+                {
+                    newTile.Init(new MapCoord(x, y), Color.white);
+                    _map[x, y] = newTile;
+                }
             }
         }
 
