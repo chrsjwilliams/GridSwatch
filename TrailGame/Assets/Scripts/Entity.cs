@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ColorMode { NONE = 0, CYAN, MAGENTA, YELLOW, BLACK }
+public enum ColorMode { NONE = 0, CYAN, MAGENTA, YELLOW, BLACK, GREEN, PURPLE, ORANGE }
 
 public abstract class Entity : MonoBehaviour
 {
@@ -14,6 +14,7 @@ public abstract class Entity : MonoBehaviour
     public float moveSpeed { get; protected set; }
     public float arriveSpeed { get; protected set; }
 
+    public Ink Ink { get; protected set; }
     public ColorMode CurrentColorMode { get; protected set; }
 
     public bool canMove { get; protected set; }

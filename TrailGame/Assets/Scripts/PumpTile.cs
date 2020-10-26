@@ -8,13 +8,13 @@ public class PumpTile : Tile
 
     private TaskManager _tm = new TaskManager();
 
-    public void Init(MapCoord c, Color initColor, ColorMode color, bool _canTraverse = true)
+    public void Init(MapCoord c, Ink initInk, bool _canTraverse = true)
     {
         coord = c;
         canTraverse = _canTraverse;
-        PumpColor = color;
+        PumpColor = initInk.colorMode;
         sr = GetComponent<SpriteRenderer>();
-        SetColor(initColor);
+        SetColor(initInk);
     }
 
     // Update is called once per frame

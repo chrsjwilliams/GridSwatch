@@ -14,11 +14,13 @@ public class Player : Entity
     public const int FULL_INTENSITY_SWIPES = 2;
     public const int DIM_INTENSITY_SWIPES = 1;
 
+    public const int MAX_INTENSITY_LEVEL = 3;
+
     public int fullIntensitySwipeCount;
     public int dimIntensitySwipeCount;
     public override void Init(MapCoord c)
     {
-        CurrentColorMode = ColorMode.MAGENTA;
+        Ink.colorMode = ColorMode.MAGENTA;
         canMove = true;
         coord = c;
         SetPosition(coord);
@@ -31,6 +33,7 @@ public class Player : Entity
 
     public void ResetIntensitySwipes()
     {
+        Ink.Intensity = MAX_INTENSITY_LEVEL;
         fullIntensitySwipeCount = FULL_INTENSITY_SWIPES;
         dimIntensitySwipeCount = DIM_INTENSITY_SWIPES;
     }
@@ -42,8 +45,8 @@ public class Player : Entity
 
         int intensityIndex = -1;
 
-        if (fullIntensitySwipeCount > -1) intensityIndex = (int)ColorManager.Intensity.FULL;
-        else if (dimIntensitySwipeCount > -1) intensityIndex = (int)ColorManager.Intensity.DIM;
+        if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
+        else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
         else return Color.clear;
 
 
@@ -62,16 +65,11 @@ public class Player : Entity
             float xPos = Mathf.Round(transform.position.x);
             float yPos = Mathf.Round(transform.position.y);
             transform.position = new Vector3(xPos, yPos, transform.position.z);
-            fullIntensitySwipeCount--;
-            if(fullIntensitySwipeCount < -1)
+            Ink.Intensity--;
+            if (Ink.Intensity == 0)
             {
-                fullIntensitySwipeCount = 0;
-                dimIntensitySwipeCount--;
-                if (dimIntensitySwipeCount < -1)
-                {
-                    dimIntensitySwipeCount = 0;
-                    CurrentColorMode = ColorMode.NONE;
-                }
+                Ink.Intensity = 0;
+                CurrentColorMode = ColorMode.NONE;
             }
 
         }
@@ -121,9 +119,9 @@ public class Player : Entity
             }
             else if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
             {
-                Color newTileColor = GetColor();
+                Ink.color = GetColor();
                 
-                currentTile.SetColor(newTileColor);
+                currentTile.SetColor(Ink);
             }
         }
         else

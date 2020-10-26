@@ -28,7 +28,8 @@ public class GameBoard : MonoBehaviour
         _width = w;
         _height = h;
         _map = new Tile[Width, Height];
-
+        Ink initInk;
+        
         for (int x = 0; x < Width; x++)
         {
             for (int y = 0; y < Height; y++)
@@ -44,12 +45,17 @@ public class GameBoard : MonoBehaviour
                 if (x == 0 && y == 2)
                 {
                     PumpTile pumpTile = newTile.GetComponent<PumpTile>();
-                    pumpTile.Init(new MapCoord(x, y), Services.ColorManager.Colors[0][0], ColorMode.CYAN, true);
+                    Ink pumpInk = new Ink(Services.ColorManager.Colors[0][0], ColorMode.CYAN, int.MaxValue);
+
+                    pumpTile.Init(new MapCoord(x, y), pumpInk, true);
                     _map[x, y] = pumpTile;
                 }
                 else
                 {
-                    newTile.Init(new MapCoord(x, y), Color.white);
+
+                    initInk = new Ink();
+
+                    newTile.Init(new MapCoord(x, y), initInk);
                     _map[x, y] = newTile;
                 }
             }
