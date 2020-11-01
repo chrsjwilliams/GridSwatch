@@ -14,6 +14,7 @@ public class PumpTile : Tile
         canTraverse = _canTraverse;
         PumpColor = initInk.colorMode;
         sr = GetComponent<SpriteRenderer>();
+        tileInk = new Ink();
         SetColor(initInk);
     }
 

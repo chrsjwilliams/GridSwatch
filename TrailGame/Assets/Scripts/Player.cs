@@ -20,7 +20,8 @@ public class Player : Entity
     public int dimIntensitySwipeCount;
     public override void Init(MapCoord c)
     {
-        Ink.colorMode = ColorMode.MAGENTA;
+        Ink = new Ink(ColorMode.MAGENTA);
+        //Ink.colorMode = ColorMode.MAGENTA;
         canMove = true;
         coord = c;
         SetPosition(coord);
@@ -29,6 +30,7 @@ public class Player : Entity
         moveSpeed = 2;
         arriveSpeed = 10;
         ResetIntensitySwipes();
+        CurrentColorMode = Ink.colorMode;
     }
 
     public void ResetIntensitySwipes()
@@ -114,14 +116,17 @@ public class Player : Entity
             Tile currentTile = Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y];
             if (currentTile is PumpTile)
             {
-                CurrentColorMode = ((PumpTile)currentTile).PumpColor;
+                Ink = ((PumpTile)currentTile).tileInk;
+                Ink.Intensity = MAX_INTENSITY_LEVEL;
+                CurrentColorMode = Ink.colorMode;
                 ResetIntensitySwipes();
             }
             else if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
             {
                 Ink.color = GetColor();
-                
-                currentTile.SetColor(Ink);
+
+                // This should nly happen when I enter a tile
+                //currentTile.SetColor(Ink);
             }
         }
         else
@@ -167,6 +172,21 @@ public class Player : Entity
                  e.gesture.CurrentDirection == Swipe.Direction.RIGHT)) ||
                 (direction == Swipe.Direction.NONE &&
                 e.gesture.CurrentDirection != Swipe.Direction.NONE);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        Tile tile = collision.GetComponent<Tile>();
+        if(tile != null)
+        {
+            if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
+            {
+                Ink.color = GetColor();
+
+                // This should nly happen when I enter a tile
+                tile.SetColor(Ink);
+            }
+        }
     }
 
 }

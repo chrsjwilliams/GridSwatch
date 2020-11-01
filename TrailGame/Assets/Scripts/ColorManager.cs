@@ -32,7 +32,41 @@ public class ColorManager : MonoBehaviour
         return inkA.currentLevel > inkB.currentLevel ? inkA.colorMode : inkB.colorMode;
     }
 
+
+    //  TODO: REFACTOR MIXING COLOR FUNCTION
     public Ink MixColors(Ink inkA, Ink inkB)
+    {
+        Debug.Log("INK A: " + inkA.colorMode + " | INK B: " + inkB.colorMode);
+        float r = (inkA.color.r + inkB.color.r) / 2f;
+        float g = (inkA.color.g + inkB.color.g) / 2f;
+        float b = (inkA.color.b + inkB.color.b) / 2f;
+
+        ColorMode cMode = ColorMode.NONE;
+        if(inkA.colorMode == ColorMode.MAGENTA && inkB.colorMode == ColorMode.CYAN ||
+            inkA.colorMode == ColorMode.CYAN && inkB.colorMode == ColorMode.MAGENTA)
+        {
+            cMode = ColorMode.PURPLE;
+        }
+        else if (inkA.colorMode == ColorMode.MAGENTA && inkB.colorMode == ColorMode.YELLOW ||
+            inkA.colorMode == ColorMode.YELLOW && inkB.colorMode == ColorMode.MAGENTA)
+        {
+            cMode = ColorMode.ORANGE;
+        }
+        else if (inkA.colorMode == ColorMode.CYAN && inkB.colorMode == ColorMode.YELLOW ||
+            inkA.colorMode == ColorMode.YELLOW && inkB.colorMode == ColorMode.CYAN)
+        {
+            cMode = ColorMode.GREEN;
+        }
+        else
+        {
+            cMode = ColorMode.BLACK;
+        }
+
+        return new Ink(new Color(r, g, b), cMode, 2);
+    }
+
+
+    public Ink MixColors(Ink inkA, Ink inkB, bool b = false)
     {
         Intensity intensityIndexA = inkA.Intensity > 1 ? Intensity.FULL : Intensity.DIM;
         Intensity intensityIndexB = inkB.Intensity > 1 ? Intensity.FULL : Intensity.DIM;

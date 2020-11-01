@@ -37,5 +37,42 @@ public class Ink
         color = c;
         colorMode = mode;
         Intensity = i;
+        if(colorMode == ColorMode.BLACK)
+        {
+            if (currentLevel == Level.FULL)
+                color = Services.ColorManager.Black[0];
+            else
+                color = Services.ColorManager.Black[1];
+        }
+    }
+
+    public Ink(ColorMode mode)
+    {
+        colorMode = mode;
+        switch(colorMode)
+        {
+            case ColorMode.MAGENTA:
+                color = Services.ColorManager.Magenta[0];
+                break;
+            case ColorMode.CYAN:
+                color = Services.ColorManager.Cyan[0];
+                break;
+            case ColorMode.YELLOW:
+                color = Services.ColorManager.Yellow[0];
+                break;
+            case ColorMode.GREEN:
+                color = Services.ColorManager.Green[0];
+                break;
+            case ColorMode.ORANGE:
+                color = Services.ColorManager.Orange[0];
+                break;
+            case ColorMode.PURPLE:
+                color = Services.ColorManager.Purple[0];
+                break;
+            case ColorMode.BLACK:
+                color = Services.ColorManager.Black[0];
+                break;
+        }
+        Intensity = Player.MAX_INTENSITY_LEVEL;
     }
 }

@@ -19,31 +19,38 @@ public class Tile : MonoBehaviour
         coord = c;
         canTraverse = _canTraverse;
         sr = GetComponent<SpriteRenderer>();
-        SetColor(initInk);
+        tileInk = new Ink();
+        SetColor(initInk, true);
     }
 
     public void SetTraversal(bool b){ canTraverse = b; }
 
 
-    public void SetColor(Ink ink)
+    public void SetColor(Ink ink, bool isInit = false)
     {
-
-
+        if (isInit)
+            tileInk = ink;
         // TODO: Fade in color effect!
-        if (CanOverwriteColor(ink))
+
+        if (ShouldMixColors(ink))
+        {
+            tileInk = Services.ColorManager.MixColors(tileInk, ink);
+        }
+        else if (CanOverwriteColor(ink))
         {
             tileInk = ink;
-            sr.color = tileInk.color;
         }
+
+        CurrentColorMode = tileInk.colorMode;
+        sr.color = tileInk.color;
     }
 
-    // QUESTION: Should CYAN overwrite GREEN?
+    // QUESTION: Should CYAN overwrite GREEN? Leaning NO
 
 
     public bool CanOverwriteColor(Ink newInk)
     {
-        return
-                //  Tile has no color
+        return  //  Tile has no color
                 (tileInk.colorMode == ColorMode.NONE) ||
                 //  Tile is not Black Color
                 (tileInk.colorMode != ColorMode.BLACK) ||
