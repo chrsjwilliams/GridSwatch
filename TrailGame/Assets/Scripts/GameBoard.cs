@@ -23,7 +23,69 @@ public class GameBoard : MonoBehaviour
     }
     private TaskManager _tm = new TaskManager();
 
-    public void CreateBaord(int w, int h)
+    public void CreateBoard(MapData data)
+    {
+        _width = (int)data.BoardSize.x;
+        _height = (int)data.BoardSize.y;
+        _map = new Tile[Width, Height];
+
+        bool canTraverse;
+        for (int x = 0; x < Width; x++)
+        {
+            for(int y = 0; y < Height; y++)
+            {
+                Vector2 candidateCoord = new Vector2(x, y);
+                canTraverse = data.ImpassableMapCoords.Contains(candidateCoord) ? false : true;
+
+
+                Tile newTile = Instantiate(Services.Prefabs.Tile, candidateCoord, Quaternion.identity);
+
+                newTile.name = "Tile: [X: " + x + ", Y: " + y + "]";
+                newTile.transform.parent = transform;
+
+                List<Vector2> allPumpLocations = new List<Vector2>();
+                allPumpLocations.AddRange(data.PumpLocationsCyan);
+                allPumpLocations.AddRange(data.PumpLocationsMagenta);
+                allPumpLocations.AddRange(data.PumpLocationsYellow);
+
+                if (allPumpLocations.Contains(candidateCoord))
+                {
+                    Destroy(newTile.gameObject.GetComponent<Tile>());
+                    newTile.gameObject.AddComponent<PumpTile>();
+                    PumpTile pumpTile = newTile.GetComponent<PumpTile>();
+                    Ink pumpInk;
+                    if (data.PumpLocationsCyan.Contains(candidateCoord))
+                    {
+                        pumpInk = new Ink(Services.ColorManager.Cyan[0], ColorMode.CYAN, int.MaxValue);
+                    }
+                    else if (data.PumpLocationsMagenta.Contains(candidateCoord))
+                    {
+                        pumpInk = new Ink(Services.ColorManager.Magenta[0], ColorMode.MAGENTA, int.MaxValue);
+                    }
+                    else if (data.PumpLocationsYellow.Contains(candidateCoord))
+                    {
+                        pumpInk = new Ink(Services.ColorManager.Yellow[0], ColorMode.YELLOW, int.MaxValue);
+                    }
+                    else
+                    {
+                        pumpInk = new Ink(Services.ColorManager.ErrorColor, ColorMode.BLACK, int.MaxValue);
+                    }
+
+                    pumpTile.Init(new MapCoord(x, y), pumpInk, canTraverse);
+                    newTile.name = newTile.name + " PUMP: " + pumpInk.colorMode;
+                    _map[x, y] = pumpTile;
+                }
+                else
+                {
+                    newTile.Init(new MapCoord(x, y), new Ink(), canTraverse);
+                    _map[x, y] = newTile;
+                }
+
+            }
+        }
+    }
+
+    public void CreateBoard(int w, int h)
     {
         _width = w;
         _height = h;
@@ -62,6 +124,8 @@ public class GameBoard : MonoBehaviour
         }
 
     }
+
+
 
     public bool ContainsCoord(MapCoord candidateCoord)
     {

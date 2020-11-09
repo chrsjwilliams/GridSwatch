@@ -116,10 +116,7 @@ public class Player : Entity
             Tile currentTile = Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y];
             if (currentTile is PumpTile)
             {
-                Ink = ((PumpTile)currentTile).tileInk;
-                Ink.Intensity = MAX_INTENSITY_LEVEL;
-                CurrentColorMode = Ink.colorMode;
-                ResetIntensitySwipes();
+                
             }
             else if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
             {
@@ -179,11 +176,19 @@ public class Player : Entity
         Tile tile = collision.GetComponent<Tile>();
         if(tile != null)
         {
+            if(tile is PumpTile)
+            {
+                Debug.Log("HERE");
+                Ink = ((PumpTile)tile).tileInk;
+                Ink.Intensity = MAX_INTENSITY_LEVEL;
+                CurrentColorMode = Ink.colorMode;
+                ResetIntensitySwipes();
+            }
             if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
             {
                 Ink.color = GetColor();
 
-                // This should nly happen when I enter a tile
+                // This should only happen when I enter a tile
                 tile.SetColor(Ink);
             }
         }

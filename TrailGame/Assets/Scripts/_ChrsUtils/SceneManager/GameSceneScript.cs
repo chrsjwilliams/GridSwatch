@@ -13,6 +13,8 @@ public class GameSceneScript : Scene<TransitionData>
     public const int LEFT_CLICK = 0;
     public const int RIGHT_CLICK = 1;
 
+    public MapData MapData;
+
     public GameBoard board;
 
     public Player player;
@@ -26,11 +28,12 @@ public class GameSceneScript : Scene<TransitionData>
         Services.GameScene = this;
         Services.Board = board;
 
-        Services.Board.CreateBaord(3, 3);
+        Services.Board.CreateBoard(MapData);
+        //Services.Board.CreateBaord(3, 3);
         Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
 
         player = Instantiate<Player>(Services.Prefabs.Player);
-        MapCoord startCoord = MapCoord.ZERO;
+        MapCoord startCoord = new MapCoord(MapData.PlayerStartPos.x, MapData.PlayerStartPos.y);
         player.Init(startCoord);
     }
 

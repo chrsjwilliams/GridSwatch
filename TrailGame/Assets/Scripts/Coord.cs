@@ -12,6 +12,12 @@ public struct MapCoord
     public int x;
     public int y;
 
+    public MapCoord(float x_, float y_)
+    {
+        x = (int)x_;
+        y = (int)y_;
+    }
+
     public MapCoord(int x_, int y_)
     {
         x = x_;
