@@ -8,7 +8,9 @@ public class Player : Entity
      *  TODO:
      *          Have color be determined by ColorMode
      *          Level design pipline? csv sheets?
-     * 
+     *          BUG: Lower intensity colors overwrite higher intensity ones
+     *          Program in win condition
+     *          Add game UI
      */
 
     public const int FULL_INTENSITY_SWIPES = 2;
@@ -20,8 +22,10 @@ public class Player : Entity
     public int dimIntensitySwipeCount;
     public override void Init(MapCoord c)
     {
+        
         Ink = new Ink(ColorMode.MAGENTA);
         //Ink.colorMode = ColorMode.MAGENTA;
+        
         canMove = true;
         coord = c;
         SetPosition(coord);
@@ -108,7 +112,7 @@ public class Player : Entity
         if (CanTraverse(candidateCoord))
         {
             Vector3 movePos = new Vector3(deltaPos.x, deltaPos.y);
-            transform.position += movePos * Time.deltaTime * moveSpeed;
+            transform.position += movePos * Time.deltaTime * moveSpeed * Services.GameManager.MainCamera.orthographicSize;
             int xPos = (int)Mathf.Floor(transform.position.x);
             int yPos = (int)Mathf.Floor(transform.position.y);
             coord = new MapCoord(xPos, yPos);
@@ -184,7 +188,7 @@ public class Player : Entity
                 CurrentColorMode = Ink.colorMode;
                 ResetIntensitySwipes();
             }
-            if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
+            if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0 && tile.canTraverse)
             {
                 Ink.color = GetColor();
 

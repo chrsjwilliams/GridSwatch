@@ -20,8 +20,7 @@ public class CameraController : MonoBehaviour
         transform.position = defaultPos;
     }
 
-    // TODO:    Make Player
-    //          Touch Input respond to swipes
+
     public void AdjustCameraToGameBoard(int width, int height)
     {
         // x maps from 1 to 7 in a range from 3 to 15
@@ -34,7 +33,7 @@ public class CameraController : MonoBehaviour
         if(width != height)
             offset = width > height ? height : width;
 
-        float size = Remap(tempSize, 3, 15, 5, 12);
+        float size = Remap(tempSize, 3, 15, 5, 13);
 
         transform.position = new Vector3(x, y, -10);
         _camera.orthographicSize = size;

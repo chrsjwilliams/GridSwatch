@@ -77,7 +77,7 @@ public class GameBoard : MonoBehaviour
                 }
                 else
                 {
-                    newTile.Init(new MapCoord(x, y), new Ink(), canTraverse);
+                    newTile.Init(new MapCoord(x, y), new Ink(canTraverse), canTraverse);
                     _map[x, y] = newTile;
                 }
 

@@ -25,12 +25,20 @@ public class Ink
         }
     }
 
+    public Ink(bool canTraverse = false){
+        if(canTraverse) color = Color.white;
+        else color = Color.clear;
+        colorMode = ColorMode.NONE;
+        Intensity = 0;
+    }
+    /*
     public Ink()
     {
         color = Color.white;
         colorMode = ColorMode.NONE;
         Intensity = 0;
     }
+    */
 
     public Ink(Color c, ColorMode mode, int i)
     {
