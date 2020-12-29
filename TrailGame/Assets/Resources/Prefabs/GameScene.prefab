@@ -1533,6 +1533,7 @@ GameObject:
   - component: {fileID: 4394820559921226145}
   - component: {fileID: 5883005729850446164}
   - component: {fileID: 7147204565633753154}
+  - component: {fileID: 2124594657429386447}
   m_Layer: 5
   m_Name: Options_Icon_Front
   m_TagString: Untagged
@@ -1597,6 +1598,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2124594657429386447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4421168658680399127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f25b696ce1054239b0916c45d1033ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filledImage: {fileID: 7147204565633753154}
 --- !u!1 &5474423482758799510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1774,6 +1788,7 @@ GameObject:
   - component: {fileID: 5836352725579113510}
   - component: {fileID: 3890503399223736210}
   - component: {fileID: 3740291293042608850}
+  - component: {fileID: 3662427458657186987}
   m_Layer: 5
   m_Name: Home_Icon_Front
   m_TagString: Untagged
@@ -1838,3 +1853,16 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &3662427458657186987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8637433532281453452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f25b696ce1054239b0916c45d1033ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  filledImage: {fileID: 3740291293042608850}

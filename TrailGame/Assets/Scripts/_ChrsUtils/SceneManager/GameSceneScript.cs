@@ -33,6 +33,7 @@ public class GameSceneScript : Scene<TransitionData>
         Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
 
         player = Instantiate<Player>(Services.Prefabs.Player);
+        player.transform.parent = transform;
         MapCoord startCoord = new MapCoord(MapData.PlayerStartPos.x, MapData.PlayerStartPos.y);
         player.Init(startCoord);
     }
