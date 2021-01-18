@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MapData", menuName = "ScriptableObjects/MapData", order = 1)]
+
 public class MapData : ScriptableObject
 {
     public Vector2 BoardSize;
@@ -27,4 +28,7 @@ public class MapData : ScriptableObject
     public float percentPurple;
     public float percentOrange;
     public float percentGreen;
+
+    public ColorMode[] colorGoals;
+    public int[] colorTileCountGoal;
 }

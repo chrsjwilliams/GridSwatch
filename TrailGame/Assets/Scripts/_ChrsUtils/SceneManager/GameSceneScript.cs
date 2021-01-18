@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using TMPro;
+using UnityEngine.UI;
 
 public class GameSceneScript : Scene<TransitionData>
 {
@@ -21,10 +23,17 @@ public class GameSceneScript : Scene<TransitionData>
 
     TaskManager _tm = new TaskManager();
 
+
+    // TODO: Find a way to evenly space out color goals
+
+    public TextMeshProUGUI[] colorGoalTextUI;
+    public Image[] colorGoalIconUI;
+
     // Height Range: 3 - 15
     // Width Range: 3 - 9
     private void Start()
     {
+        /*
         Services.GameScene = this;
         Services.Board = board;
 
@@ -36,16 +45,39 @@ public class GameSceneScript : Scene<TransitionData>
         player.transform.parent = transform;
         MapCoord startCoord = new MapCoord(MapData.PlayerStartPos.x, MapData.PlayerStartPos.y);
         player.Init(startCoord);
+        */
     }
 
     internal override void OnEnter(TransitionData data)
     {
+        Services.GameScene = this;
+        Services.Board = board;
+
+        Services.Board.CreateBoard(MapData);
+        PrepGameUI();
+        //Services.Board.CreateBaord(3, 3);
+        Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
+
+        player = Instantiate<Player>(Services.Prefabs.Player);
+        player.transform.parent = transform;
+        MapCoord startCoord = new MapCoord(MapData.PlayerStartPos.x, MapData.PlayerStartPos.y);
+        player.Init(startCoord);
     }
 
     public void EnterScene()
     {
         
 
+    }
+
+    public void PrepGameUI()
+    {
+        for(int i = 0; i < MapData.colorGoals.Length; i++)
+        {
+            colorGoalIconUI[i].color = Services.ColorManager.GetColor(MapData.colorGoals[i]);
+            colorGoalTextUI[i].text =  board.CurrentFillAmount[(int)MapData.colorGoals[i]] + " / " + MapData.colorTileCountGoal[i];
+
+        }
     }
 
     public void SwapScene()
@@ -77,5 +109,10 @@ public class GameSceneScript : Scene<TransitionData>
 	void Update ()
     {
         _tm.Update();
-	}
+        for (int i = 0; i < MapData.colorGoals.Length; i++)
+        {
+            colorGoalTextUI[i].text = board.CurrentFillAmount[(int)MapData.colorGoals[i]] + " / " + MapData.colorTileCountGoal[i];
+
+        }
+    }
 }

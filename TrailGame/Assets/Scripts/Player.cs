@@ -20,6 +20,7 @@ public class Player : Entity
 
     public int fullIntensitySwipeCount;
     public int dimIntensitySwipeCount;
+
     public override void Init(MapCoord c)
     {
         
@@ -180,7 +181,8 @@ public class Player : Entity
         Tile tile = collision.GetComponent<Tile>();
         if(tile != null)
         {
-            if(tile is PumpTile)
+
+            if (tile is PumpTile)
             {
                 Debug.Log("HERE");
                 Ink = ((PumpTile)tile).tileInk;
@@ -190,11 +192,13 @@ public class Player : Entity
             }
             if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0 && tile.canTraverse)
             {
+                Debug.Log("Change Color: " + collision.name);
                 Ink.color = GetColor();
 
                 // This should only happen when I enter a tile
                 tile.SetColor(Ink);
-            }
+           }
+
         }
     }
 

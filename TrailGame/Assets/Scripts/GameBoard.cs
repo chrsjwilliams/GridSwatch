@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class GameBoard : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class GameBoard : MonoBehaviour
     {
         get { return _map; }
     }
+
+    private int _emptyTileCount;
+    public int EmptyTileCount { get { return _emptyTileCount; } }
+
+    public int[] CurrentFillAmount = new int[Enum.GetNames(typeof(ColorMode)).Length];
+
     private TaskManager _tm = new TaskManager();
 
     public void CreateBoard(MapData data)
@@ -28,6 +35,15 @@ public class GameBoard : MonoBehaviour
         _width = (int)data.BoardSize.x;
         _height = (int)data.BoardSize.y;
         _map = new Tile[Width, Height];
+
+        List<Vector2> allPumpLocations = new List<Vector2>();
+        allPumpLocations.AddRange(data.PumpLocationsCyan);
+        allPumpLocations.AddRange(data.PumpLocationsMagenta);
+        allPumpLocations.AddRange(data.PumpLocationsYellow);
+
+
+
+        _emptyTileCount = (Width * Height) - (allPumpLocations.Count + data.ImpassableMapCoords.Count);
 
         bool canTraverse;
         for (int x = 0; x < Width; x++)
@@ -43,10 +59,7 @@ public class GameBoard : MonoBehaviour
                 newTile.name = "Tile: [X: " + x + ", Y: " + y + "]";
                 newTile.transform.parent = transform;
 
-                List<Vector2> allPumpLocations = new List<Vector2>();
-                allPumpLocations.AddRange(data.PumpLocationsCyan);
-                allPumpLocations.AddRange(data.PumpLocationsMagenta);
-                allPumpLocations.AddRange(data.PumpLocationsYellow);
+                
 
                 if (allPumpLocations.Contains(candidateCoord))
                 {

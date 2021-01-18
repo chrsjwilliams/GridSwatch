@@ -80,7 +80,7 @@ public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     private void ToggleOptionMenu()
     {
-
+        GameObject.Find("Options_Menu").SetActive(true);
     }
 
     private void PlayGame()

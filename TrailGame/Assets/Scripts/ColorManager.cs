@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ColorMode { NONE = 0, CYAN, MAGENTA, YELLOW, BLACK, GREEN, PURPLE, ORANGE }
+
 public class ColorManager : MonoBehaviour
 {
     public enum Intensity { FULL = 0, DIM }
@@ -26,6 +28,29 @@ public class ColorManager : MonoBehaviour
         Colors.Add(Magenta);
         Colors.Add(Yellow);
         Colors.Add(Black);
+    }
+
+    public Color GetColor(ColorMode mode, Intensity intensity = Intensity.FULL)
+    {
+        switch (mode)
+        {
+            case ColorMode.MAGENTA:
+                return Magenta[(int)intensity];
+            case ColorMode.YELLOW:
+                return Yellow[(int)intensity];
+            case ColorMode.CYAN:
+                return Cyan[(int)intensity];
+            case ColorMode.GREEN:
+                return Green[(int)intensity];
+            case ColorMode.ORANGE:
+                return Orange[(int)intensity];
+            case ColorMode.PURPLE:
+                return Purple[(int)intensity];
+            case ColorMode.BLACK:
+                return Black[(int)intensity];
+            default:
+                return Black[(int)Intensity.FULL];
+        }
     }
 
     public ColorMode GetDominantColor(Ink inkA, Ink inkB)

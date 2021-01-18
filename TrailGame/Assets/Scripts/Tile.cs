@@ -34,15 +34,27 @@ public class Tile : MonoBehaviour
 
         if (ShouldMixColors(ink))
         {
+            Services.Board.CurrentFillAmount[(int)tileInk.colorMode]--;
             tileInk = Services.ColorManager.MixColors(tileInk, ink);
         }
         else if (CanOverwriteColor(ink))
         {
+            if (!(this is PumpTile))
+            {
+                if (ink.colorMode != tileInk.colorMode)
+                    Services.Board.CurrentFillAmount[(int)tileInk.colorMode]--;
+            }
             tileInk = ink;
+            
         }
+        if(tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
+            Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
         CurrentColorMode = tileInk.colorMode;
+
         sr.color = tileInk.color;
+        
+
     }
 
     // QUESTION: Should CYAN overwrite GREEN? Leaning NO

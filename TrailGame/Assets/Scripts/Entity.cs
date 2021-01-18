@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ColorMode { NONE = 0, CYAN, MAGENTA, YELLOW, BLACK, GREEN, PURPLE, ORANGE }
-
 public abstract class Entity : MonoBehaviour
 {
 
