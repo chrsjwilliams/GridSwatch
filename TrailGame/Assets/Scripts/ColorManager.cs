@@ -61,7 +61,6 @@ public class ColorManager : MonoBehaviour
 
     public Ink MixColors(Ink inkA, Ink inkB)
     {
-        Debug.Log("INK A: " + inkA.colorMode + " | INK B: " + inkB.colorMode);
         float r = (inkA.color.r + inkB.color.r) / 2f;
         float g = (inkA.color.g + inkB.color.g) / 2f;
         float b = (inkA.color.b + inkB.color.b) / 2f;

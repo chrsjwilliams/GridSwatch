@@ -24,16 +24,14 @@ public class Player : Entity
     public override void Init(MapCoord c)
     {
         
-        Ink = new Ink(ColorMode.MAGENTA);
-        //Ink.colorMode = ColorMode.MAGENTA;
-        
+        Ink = new Ink(ColorMode.NONE);        
         canMove = true;
         coord = c;
         SetPosition(coord);
         direction = Swipe.Direction.NONE;
         Services.EventManager.Register<SwipeEvent>(OnSwipe);
         moveSpeed = 2;
-        arriveSpeed = 10;
+        arriveSpeed = 1;
         ResetIntensitySwipes();
         CurrentColorMode = Ink.colorMode;
     }
@@ -133,12 +131,42 @@ public class Player : Entity
         }
         else
         {
-            float xArriveMod = direction == Swipe.Direction.LEFT ? 0.33f : 1;
-            float yArriveMod = direction == Swipe.Direction.DOWN ? 0.33f : 1;
+            float xArriveMod = direction == Swipe.Direction.LEFT ? 15f : 1;
+            float yArriveMod = direction == Swipe.Direction.DOWN ? 15f : 1f;
 
 
             float xPos = Mathf.Lerp(transform.position.x,(int)transform.position.x, Time.deltaTime * arriveSpeed * xArriveMod);
             float yPos = Mathf.Lerp(transform.position.y,(int)transform.position.y, Time.deltaTime * arriveSpeed * yArriveMod);
+            // check direction and stop 1 before that candidate coord
+
+            switch(dir)
+            {
+                case Swipe.Direction.LEFT:
+                    if(xPos < Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.position.x){
+                        xPos = Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.position.x;
+                    }
+                break;
+            case Swipe.Direction.RIGHT:
+                if(xPos > Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.position.x){
+                        xPos = Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.position.x;
+                    }
+                break;
+            case Swipe.Direction.UP:
+                if(yPos > Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.position.y){
+                        yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.position.y;
+                    }
+                
+                break;
+            case Swipe.Direction.DOWN:
+                if(yPos < Services.Board.Map[candidateCoord.x,  candidateCoord.y + 1].transform.position.y){
+                        yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y + 1].transform.position.y;
+                    }
+                break;
+            default:
+                deltaPos = MapCoord.ZERO;
+                Debug.LogError("ERROR : Invalid Direction");
+                break;
+            }
             transform.position = new Vector3(xPos, yPos, transform.position.z);
         }
     }
@@ -184,15 +212,12 @@ public class Player : Entity
 
             if (tile is PumpTile)
             {
-                Debug.Log("HERE");
                 Ink = ((PumpTile)tile).tileInk;
-                Ink.Intensity = MAX_INTENSITY_LEVEL;
                 CurrentColorMode = Ink.colorMode;
                 ResetIntensitySwipes();
             }
             if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0 && tile.canTraverse)
             {
-                Debug.Log("Change Color: " + collision.name);
                 Ink.color = GetColor();
 
                 // This should only happen when I enter a tile

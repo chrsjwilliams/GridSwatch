@@ -13,7 +13,7 @@ public class Ink
     public int Intensity {
         get { return intensity; }
         set {
-            if(value > 1)
+            if(value >= 1)
             {
                 currentLevel = Level.FULL;
             }

@@ -8,7 +8,7 @@ public class Tile : MonoBehaviour
     private TaskManager _tm = new TaskManager();
 
     public bool canTraverse { get; protected set; }
-
+    public int intensity { get; protected set;}
     public Ink tileInk { get; protected set; }
     public ColorMode CurrentColorMode { get; protected set; }
     public Color CurrentColor { get; protected set; }
@@ -30,6 +30,7 @@ public class Tile : MonoBehaviour
     {
         if (isInit)
             tileInk = ink;
+        
         // TODO: Fade in color effect!
 
         if (ShouldMixColors(ink))
@@ -45,15 +46,19 @@ public class Tile : MonoBehaviour
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]--;
             }
             tileInk = ink;
-            
+            intensity = tileInk.Intensity;
+
         }
+        else{
+            return;
+        }
+
         if(tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
             Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
         CurrentColorMode = tileInk.colorMode;
 
         sr.color = tileInk.color;
-        
 
     }
 
@@ -65,9 +70,9 @@ public class Tile : MonoBehaviour
         return  //  Tile has no color
                 (tileInk.colorMode == ColorMode.NONE) ||
                 //  Tile is not Black Color
-                (tileInk.colorMode != ColorMode.BLACK) ||
+                (tileInk.colorMode != ColorMode.BLACK &&
                 //  New color has higher intensity
-                (newInk.colorMode == tileInk.colorMode && newInk.Intensity > tileInk.Intensity);
+                newInk.colorMode == tileInk.colorMode && newInk.Intensity > intensity);
                 //  Should lower intensity colors mix to make higher intensity colors?
     }
 

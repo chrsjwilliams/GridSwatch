@@ -10,25 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
-  m_Name: TestMap
+  m_Name: TutorialMap0
   m_EditorClassIdentifier: 
-  BoardSize: {x: 10, y: 15}
+  BoardSize: {x: 3, y: 3}
   UseMagenta: 1
-  UseCyan: 1
-  UseYellow: 1
+  UseCyan: 0
+  UseYellow: 0
   ImpassableMapCoords:
-  - {x: 3, y: 3}
-  - {x: 4, y: 4}
-  - {x: 5, y: 5}
-  - {x: 0, y: 14}
-  - {x: 9, y: 13}
+  - {x: 2, y: 2}
   PlayerStartPos: {x: 0, y: 0}
   PumpLocationsMagenta:
-  - {x: 3, y: 2}
-  PumpLocationsCyan:
-  - {x: 5, y: 8}
-  PumpLocationsYellow:
-  - {x: 9, y: 7}
+  - {x: 2, y: 1}
+  PumpLocationsCyan: []
+  PumpLocationsYellow: []
   MapGoal: 
   percentMagenta: 0
   percentCyan: 0
@@ -36,5 +30,5 @@ MonoBehaviour:
   percentPurple: 0
   percentOrange: 0
   percentGreen: 0
-  colorGoals: 0100000003000000020000000500000006000000
-  colorTileCountGoal: 040000000a000000140000000200000001000000
+  colorGoals: 
+  colorTileCountGoal: 
