@@ -4,15 +4,6 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    /*
-     *  TODO:
-     *          Have color be determined by ColorMode
-     *          Level design pipline? csv sheets?
-     *          BUG: Lower intensity colors overwrite higher intensity ones
-     *          Program in win condition
-     *          Add game UI
-     */
-
     public const int FULL_INTENSITY_SWIPES = 2;
     public const int DIM_INTENSITY_SWIPES = 1;
 

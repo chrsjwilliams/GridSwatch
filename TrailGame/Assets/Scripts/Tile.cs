@@ -31,7 +31,6 @@ public class Tile : MonoBehaviour
         if (isInit)
             tileInk = ink;
         
-        // TODO: Fade in color effect!
 
         if (ShouldMixColors(ink))
         {

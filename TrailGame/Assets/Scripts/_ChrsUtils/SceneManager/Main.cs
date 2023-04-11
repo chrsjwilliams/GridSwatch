@@ -91,6 +91,6 @@ public class Main : MonoBehaviour
         Services.LevelManager = GetComponent<LevelManager>();
         Services.LevelManager.Init();
         Services.Scenes = new GameSceneManager<TransitionData>(gameObject, Services.Prefabs.Scenes);
-        
+
     }
 }

@@ -20,6 +20,6 @@ public class PrefabDB : ScriptableObject
     [SerializeField] private Tile _tile;
     public Tile Tile
     {
-        get { return _tile;  }
+        get { return _tile; }
     }
 }
