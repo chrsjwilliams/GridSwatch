@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using GameScreen;
 
 public class TitleSceneScript : Scene<TransitionData>
 {

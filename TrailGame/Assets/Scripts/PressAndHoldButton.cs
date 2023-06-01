@@ -1,7 +1,8 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using GameScreen;
+
 
 public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {

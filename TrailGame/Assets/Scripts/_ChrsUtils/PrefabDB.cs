@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-
+using GameData;
+using GameScreen;
 
 [CreateAssetMenu (menuName = "Prefab DB")]
 public class PrefabDB : ScriptableObject

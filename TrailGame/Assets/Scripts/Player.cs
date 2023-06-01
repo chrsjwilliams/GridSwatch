@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
+using GameData;
 
 public class Player : Entity
 {
@@ -12,9 +11,11 @@ public class Player : Entity
     public int fullIntensitySwipeCount;
     public int dimIntensitySwipeCount;
 
+    public bool isMoving;
+
     public override void Init(MapCoord c)
     {
-        
+        isMoving = false;
         Ink = new Ink(ColorMode.NONE);        
         canMove = true;
         coord = c;
@@ -119,6 +120,7 @@ public class Player : Entity
                 // This should nly happen when I enter a tile
                 //currentTile.SetColor(Ink);
             }
+            isMoving = true;
         }
         else
         {
@@ -158,8 +160,14 @@ public class Player : Entity
                 Debug.LogError("ERROR : Invalid Direction");
                 break;
             }
-            transform.position = new Vector3(xPos, yPos, transform.position.z);
+            Vector3 newPosition = new Vector3(xPos, yPos, transform.position.z);
+            isMoving = false;
+
+            transform.position = newPosition;
+
         }
+
+        //isMoving = new Vector3((int)transform.position.x, (int)transform.position.y) == new Vector3(candidateCoord.x, candidateCoord.y);
     }
     // Have a method that gives me the direction I should move!
 
