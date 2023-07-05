@@ -10,10 +10,8 @@
  *                                             
  *   
  *  GAME:
- *  - Program in win condition
  *  - Fade in color effect!
  *  - Have color be determined by ColorMode
- *  - Level design pipline? csv sheets?
  *  - Add game UI
  * 
  *  FLOW:
@@ -29,6 +27,8 @@
  *          - potentially fixed (5/10/23 8:47 PM)
  *
  * 
- * 
+ * OPEN QUESTION:
+ * - What is the level design pipeline?
+ * - Are desaturated colors confusing?
  * 
  */ 

@@ -10,24 +10,11 @@ public class TitleSceneScript : Scene<TransitionData>
 
     private TaskManager _tm = new TaskManager();
 
-    private Text title;
-    private Text click;
+
 
 
     internal override void OnEnter(TransitionData data)
     {
-        title = GameObject.Find("TITLE").GetComponent<Text>();
-        click = GameObject.Find("Click").GetComponent<Text>();
-
-        /*
-        _tm.Do
-        (
-
-                        new WaitTask(SECONDS_TO_WAIT))
-               .Then(new LERPColor(title, white, fontColor, 0.5f))
-               .Then(new LERPColor(click, white, fontColor, 0.5f)
-        );
-        */
 
     }
 
@@ -38,7 +25,7 @@ public class TitleSceneScript : Scene<TransitionData>
 
     public void PressedStartGame()
     {
-        Services.Scenes.Swap<GameSceneScript>();
+        Services.Scenes.Swap<LevelSelectSceneScript>();
     }
 
     public void PressedOptions()
@@ -49,11 +36,6 @@ public class TitleSceneScript : Scene<TransitionData>
     private void TitleTransition()
     {
 
-    }
-
-    private void ChangeScene()
-    {
-        Services.Scenes.Swap<GameSceneScript>();
     }
 
     private void Update()
