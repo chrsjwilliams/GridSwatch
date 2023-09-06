@@ -25,7 +25,7 @@ public class TitleSceneScript : Scene<TransitionData>
 
     public void PressedStartGame()
     {
-        Services.Scenes.Swap<LevelSelectSceneScript>();
+        Services.Scenes.Swap<MapSelectSceneScript>();
     }
 
     public void PressedOptions()

@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelSelectSceneScript : Scene<TransitionData>
+public class MapSelectSceneScript : Scene<TransitionData>
 {
 
-    [SerializeField] Transform levelContent;
+    [SerializeField] Transform mapContent;
 
     internal override void OnEnter(TransitionData data)
     {

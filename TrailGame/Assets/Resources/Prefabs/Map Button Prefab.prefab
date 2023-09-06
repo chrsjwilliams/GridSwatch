@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 5567138955138988623}
   - component: {fileID: 2267368296856455058}
   m_Layer: 0
-  m_Name: Level Name
+  m_Name: Map Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: LEVEL NAME
+  m_text: MAP NAME
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: fc8d8f4bee9984de59676e2d78e498d1, type: 2}
   m_sharedMaterial: {fileID: -4481506728089919768, guid: fc8d8f4bee9984de59676e2d78e498d1, type: 2}
@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 8691077777708594634}
   - component: {fileID: 3040946821865399055}
   m_Layer: 0
-  m_Name: Level Icon
+  m_Name: Map Icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ GameObject:
   - component: {fileID: 6409769222723795474}
   - component: {fileID: 7287570026725044648}
   m_Layer: 0
-  m_Name: Level Name
+  m_Name: Button Name
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 3657174769589235778}
   - component: {fileID: 6625343307953997628}
   m_Layer: 0
-  m_Name: Level Button Prefab
+  m_Name: Map Button Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -555,11 +555,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9945b71e3da6a40fbb648f46cc547e5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelName: {fileID: 7287570026725044648}
-  _levelIcon: {fileID: 3040946821865399055}
+  _mapName: {fileID: 2267368296856455058}
+  _mapIcon: {fileID: 3040946821865399055}
   _locked: {fileID: 21300000, guid: 856c969a33e0e45f584e24e1f6de8540, type: 3}
   _completed: {fileID: 21300000, guid: 17925d6f33a754850933efde6499b88d, type: 3}
-  _levelButton: {fileID: 7196746204750529621}
+  _mapButton: {fileID: 7196746204750529621}
 --- !u!1001 &3164088148866011928
 PrefabInstance:
   m_ObjectHideFlags: 0

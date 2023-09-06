@@ -12,7 +12,7 @@ public class Services
     public static ColorManager ColorManager { get; set; }
 
     public static InputManager InputManager { get; set; }
-    public static LevelManager LevelManager { get; set; }
+    public static MapManager MapManager { get; set; }
     public static GameSceneManager<TransitionData> Scenes { get; set; }
 
     public static GameSceneScript GameScene { get; set; }
