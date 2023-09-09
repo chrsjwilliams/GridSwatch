@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameData;
@@ -21,6 +22,8 @@ public class MapButton : MonoBehaviour
     [SerializeField] private Sprite _completed;
     [SerializeField] private Button _mapButton;
 
+    public Action<MapData> Pressed;
+
     public void Init(MapData data, MapStatus status)
     {
         Status = status;
@@ -36,19 +39,25 @@ public class MapButton : MonoBehaviour
             _mapButton.interactable = false;
             _mapIcon.sprite = _locked;
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+            _mapIcon.raycastTarget = true;
         }
         else if (Status == MapStatus.NOT_COMPLETED)
         {
             _mapButton.interactable = true;
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0f);
+            _mapIcon.raycastTarget = false;
         }
         else
         {
             _mapButton.interactable = true;
             _mapIcon.sprite = _completed;
             _mapIcon.color = Color.white;
+            _mapIcon.raycastTarget = false;
         }
     }
     
-    
+    public void OnPressed()
+    {
+        Pressed?.Invoke(MapData);
+    }
 }

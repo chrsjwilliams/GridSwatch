@@ -28,6 +28,12 @@ public class Player : Entity
         CurrentColorMode = Ink.colorMode;
     }
 
+    private void OnDestroy()
+    {
+        Services.EventManager.Unregister<SwipeEvent>(OnSwipe);
+
+    }
+
     public void ResetIntensitySwipes()
     {
         Ink.Intensity = MAX_INTENSITY_LEVEL;

@@ -32,24 +32,14 @@ namespace GameScreen
         private void Start()
         {
 
-            Services.GameScene = this;
-            Services.Board = board;
-
-            Services.Board.CreateBoard(MapData);
-            uIController.SetGameUI(MapData);
-
-            //Services.Board.CreateBaord(3, 3);
-            Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
-
-            player = Instantiate<Player>(Services.Prefabs.Player);
-            player.transform.parent = transform;
-            MapCoord startCoord = new MapCoord(MapData.PlayerStartPos.x, MapData.PlayerStartPos.y);
-            player.Init(startCoord);
 
         }
 
         internal override void OnEnter(TransitionData data)
         {
+            if (data == null || data.SelecetdMap == null) return;
+
+            MapData = data.SelecetdMap;
             Services.GameScene = this;
             Services.Board = board;
             Debug.Log("~~~~ MAKE BOARD");
@@ -98,6 +88,7 @@ namespace GameScreen
 
         private void Update()
         {
+            if (player == null || uIController == null) return; 
             if(!player.isMoving && uIController.IsGoalMet())
             {
                 Debug.Log("GAME WON!");
