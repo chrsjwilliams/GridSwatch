@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-//using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "GameObject Collection"
                 , menuName = "GameObject Collection")]

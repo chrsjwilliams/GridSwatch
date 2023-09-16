@@ -1,4 +1,4 @@
-﻿//using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using DG.Tweening;
 using UnityEngine;
 
@@ -7,11 +7,9 @@ public class TransformPunchPositionTweener : TransformTweener
     // Ways to extend this:
     //      Differentiate between which axis you want to punch.
     [SerializeField] bool randomPunch;
-    //[SerializeField, HideIf("randomPunch", true)] Vector3 punch;
-    [SerializeField] Vector3 punch;
+    [SerializeField, HideIf("randomPunch", true)] Vector3 punch;
 
-    //[SerializeField, ShowIf("randomPunch", true), MinMaxSlider(0, 2)] Vector2 punchRange;
-    [SerializeField] Vector2 punchRange;
+    [SerializeField, ShowIf("randomPunch", true), MinMaxSlider(0, 2)] Vector2 punchRange;
 
 
     [SerializeField] int vibrato;

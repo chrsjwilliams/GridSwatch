@@ -7,9 +7,12 @@ namespace GameScreen
 {
     public class GameScreenUIController : MonoBehaviour
     {
+
         [SerializeField] ColorGoal_UI colorGoalPrefab;
         [SerializeField] Transform colorGoalParent;
         [SerializeField, ReadOnly] List<ColorGoal_UI> colorGoals = new List<ColorGoal_UI>();
+        [SerializeField] RectTransform canvas;
+        [SerializeField] GameOverBanner gameOverBanner;
 
         MapData map;
 
@@ -17,21 +20,29 @@ namespace GameScreen
 
         public void SetGameUI(MapData mapData)
         {
+            gameOverBanner.HideBanner();
+
+
             map = mapData;
             for (int i = 0; i < mapData.colorGoals.Count; i++)
             {
                 var colorGoal = Instantiate(colorGoalPrefab, colorGoalParent);
 
-                float xPos = Screen.width * ((i + 1) / (float)(mapData.colorGoals.Count + 1));
-                colorGoal.transform.localPosition = new Vector3(xPos, 0, 0);
-
+               
                 colorGoal.Init(Services.ColorManager.GetColor(mapData.colorGoals[i].colorMode),
                                 Services.Board.CurrentFillAmount[(int)mapData.colorGoals[i].colorMode],mapData.colorGoals[i].amount);
+                float xPos = Screen.width * ((i + 1) / (float)(mapData.colorGoals.Count + 1));
+                colorGoal.rectTransform.localPosition = new Vector3(xPos, 0, 0);
 
                 colorGoals.Add(colorGoal);
             }
 
             uiSet = true;
+        }
+
+        private void OnDestroy()
+        {
+  
         }
 
         public void DestroyGameUI()
@@ -48,6 +59,8 @@ namespace GameScreen
                 if (!colorGoals[i].IsGoalMet())
                     return false;
             }
+
+            gameOverBanner.ShowBanner();
 
             return true;
         }

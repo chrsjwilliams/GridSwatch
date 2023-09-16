@@ -43,8 +43,9 @@ public abstract class MonoTweener : MonoBehaviour
 
     [SerializeField, FoldoutGroup("Events")] UnityEvent OnKill;
 
-
     public float length { get { return duration + delay; } }
+
+    [SerializeField] protected Ease easing;
 
     private Tweener tweener;
 
@@ -54,6 +55,7 @@ public abstract class MonoTweener : MonoBehaviour
     public void Play()
     {
         Play(() => { });
+        
     }
 
     public void Kill()

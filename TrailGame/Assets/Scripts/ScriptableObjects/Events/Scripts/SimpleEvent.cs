@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
-//using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "New Simple Event"
                 , menuName = "Events/Simple")]
@@ -10,7 +10,7 @@ public class SimpleEvent : ScriptableObject
 
     List<Action> callbacks = new List<Action>();
 
-    //[Button]
+    [Button]
     public void Raise()
     {
         for (var i = callbacks.Count - 1; i >= 0; i--)

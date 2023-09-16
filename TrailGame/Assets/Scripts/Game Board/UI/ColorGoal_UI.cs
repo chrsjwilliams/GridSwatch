@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -6,8 +7,10 @@ namespace GameScreen
 {
     public class ColorGoal_UI : MonoBehaviour
     {
+        public RectTransform rectTransform;
         [SerializeField] Image icon;
         [SerializeField] TextMeshProUGUI iconText;
+        
         private int _count;
         public int Count { get { return _count; } }
         private int _goal;
@@ -21,6 +24,7 @@ namespace GameScreen
             iconText.text = Count + " / " + Goal;
         }
 
+        // ~TODO: Find a way to move this call out of an update function
         public void UpdateText(int count, int goal)
         {
             _count = count;

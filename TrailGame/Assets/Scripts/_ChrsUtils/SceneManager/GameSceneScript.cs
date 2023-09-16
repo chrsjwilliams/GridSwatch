@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using GameData;
+using System;
 
 namespace GameScreen
 {
@@ -18,9 +19,13 @@ namespace GameScreen
 
         public Player player;
 
+        [SerializeField] MonoTweener swipeTextPulse;
+
         TaskManager _tm = new TaskManager();
 
         GameScreenUIController uIController;
+
+        bool finished;
 
         private void Awake()
         {
@@ -31,22 +36,34 @@ namespace GameScreen
         // Width Range: 3 - 9
         private void Start()
         {
+            Services.EventManager.Register<SwipeEvent>(OnSwipe);
 
+        }
 
+        private void OnDestroy()
+        {
+            Services.EventManager.Unregister<SwipeEvent>(OnSwipe);
+
+        }
+
+        private void OnSwipe(SwipeEvent e)
+        {
+            swipeTextPulse.Kill();
         }
 
         internal override void OnEnter(TransitionData data)
         {
             if (data == null || data.SelecetdMap == null) return;
 
+            swipeTextPulse?.Play();
+            finished = false;
             MapData = data.SelecetdMap;
             Services.GameScene = this;
             Services.Board = board;
-            Debug.Log("~~~~ MAKE BOARD");
+
             Services.Board.CreateBoard(MapData);
             uIController.SetGameUI(MapData);
 
-            //Services.Board.CreateBaord(3, 3);
             Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
 
             player = Instantiate<Player>(Services.Prefabs.Player);
@@ -75,6 +92,11 @@ namespace GameScreen
             );
         }
 
+        public void GoToMapSelect()
+        {
+            Services.Scenes.Swap<MapSelectSceneScript>();
+        }
+
         private void EndGame()
         {
             Services.AudioManager.FadeAudio();
@@ -88,10 +110,12 @@ namespace GameScreen
 
         private void Update()
         {
-            if (player == null || uIController == null) return; 
+            if (player == null || uIController == null) return;
+            if (finished) return;
+
             if(!player.isMoving && uIController.IsGoalMet())
-            {
-                Debug.Log("GAME WON!");
+            {    
+                finished = true;
             }
         }
     }

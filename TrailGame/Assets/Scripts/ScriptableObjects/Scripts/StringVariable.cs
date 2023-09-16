@@ -1,5 +1,5 @@
 using UnityEngine;
-//using Sirenix.OdinInspector;
+using Sirenix.OdinInspector;
 
 [CreateAssetMenu(fileName = "New String Variable"
                 , menuName = "Variable/String")]

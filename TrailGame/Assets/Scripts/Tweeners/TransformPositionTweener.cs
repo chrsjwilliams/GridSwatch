@@ -1,4 +1,4 @@
-﻿//using Sirenix.OdinInspector;
+﻿using Sirenix.OdinInspector;
 using DG.Tweening;
 using UnityEngine;
 
@@ -6,11 +6,7 @@ public class TransformPositionTweener : TransformTweener
 {
     [SerializeField] bool snapping;
     [SerializeField] bool hasTarget;
-    //[SerializeField, ShowIf("hasTarget", true)] GameObjectCollectionSO targetObject;
-    [SerializeField] GameObjectCollectionSO targetObject;
-
-
-    [SerializeField] Ease easing;
+    [SerializeField, ShowIf("hasTarget", true)] GameObjectCollectionSO targetObject;
 
     protected override Tweener LocalPlay()
     {
