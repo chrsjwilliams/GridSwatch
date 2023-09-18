@@ -387,8 +387,10 @@ GameObject:
   - component: {fileID: 545119797403914725}
   - component: {fileID: 3707623287615445956}
   - component: {fileID: 8783803864181024243}
+  - component: {fileID: 5404113552238480251}
+  - component: {fileID: 5900369373464523878}
   m_Layer: 5
-  m_Name: Home_Icon_Back
+  m_Name: Home Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -453,6 +455,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &5404113552238480251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782580577707341472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f25b696ce1054239b0916c45d1033ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 545119797403914725}
+  holdScale: 1.1
+  pauseTime: 0.66
+  scaleTime: 0.11
+  filledImage: {fileID: 3740291293042608850}
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5900369373464523878}
+        m_TargetAssemblyTypeName: HomeButton, Assembly-CSharp
+        m_MethodName: ToMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5900369373464523878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782580577707341472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6367baad13f84944a6933eabbf6a4a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2064808187335643039
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,8 +869,10 @@ GameObject:
   - component: {fileID: 517073919186909496}
   - component: {fileID: 1725632616024106345}
   - component: {fileID: 6749816265961291861}
+  - component: {fileID: 4829219323902990952}
+  - component: {fileID: 51785358372323899}
   m_Layer: 5
-  m_Name: Options_Icon_Back
+  m_Name: Options Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,6 +937,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4829219323902990952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3313003004684461139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f25b696ce1054239b0916c45d1033ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetTransform: {fileID: 517073919186909496}
+  holdScale: 1.1
+  pauseTime: 0.66
+  scaleTime: 0.11
+  filledImage: {fileID: 7147204565633753154}
+  OnComplete:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 51785358372323899}
+        m_TargetAssemblyTypeName: OptionsButton, Assembly-CSharp
+        m_MethodName: OpenOptionsMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &51785358372323899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3313003004684461139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b87b5b21db3db4d15a7159ca8fb76ad6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3943087476685008805
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,7 +1127,6 @@ GameObject:
   - component: {fileID: 4394820559921226145}
   - component: {fileID: 5883005729850446164}
   - component: {fileID: 7147204565633753154}
-  - component: {fileID: 2124594657429386447}
   m_Layer: 5
   m_Name: Options_Icon_Front
   m_TagString: Untagged
@@ -1101,19 +1192,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &2124594657429386447
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4421168658680399127}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f25b696ce1054239b0916c45d1033ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filledImage: {fileID: 7147204565633753154}
 --- !u!1 &4671807107285978531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1565,7 +1643,6 @@ GameObject:
   - component: {fileID: 5836352725579113510}
   - component: {fileID: 3890503399223736210}
   - component: {fileID: 3740291293042608850}
-  - component: {fileID: 3662427458657186987}
   m_Layer: 5
   m_Name: Home_Icon_Front
   m_TagString: Untagged
@@ -1631,19 +1708,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3662427458657186987
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8637433532281453452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f25b696ce1054239b0916c45d1033ee, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  filledImage: {fileID: 3740291293042608850}
 --- !u!1001 &4720530403671203341
 PrefabInstance:
   m_ObjectHideFlags: 0
