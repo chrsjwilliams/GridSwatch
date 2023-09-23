@@ -8,49 +8,16 @@ public class ColorManager : MonoBehaviour
 {
     public enum Intensity { FULL = 0, DIM }
 
-    public List<Color[]> Colors;
-
-    public Color ErrorColor;
-
-    public Color[] Magenta;
-    public Color[] Cyan;
-    public Color[] Yellow;
-    public Color[] Black;
-
-    public Color[] Purple;
-    public Color[] Orange;
-    public Color[] Green;
+    [SerializeField] ColorSchemeOption _colorScheme;
+    public ColorSchemeOption ColorScheme { get { return _colorScheme; } }
 
     public void Init()
     {
-        Colors = new List<Color[]>();
-        Colors.Add(Cyan);
-        Colors.Add(Magenta);
-        Colors.Add(Yellow);
-        Colors.Add(Black);
     }
 
     public Color GetColor(ColorMode mode, Intensity intensity = Intensity.FULL)
     {
-        switch (mode)
-        {
-            case ColorMode.MAGENTA:
-                return Magenta[(int)intensity];
-            case ColorMode.YELLOW:
-                return Yellow[(int)intensity];
-            case ColorMode.CYAN:
-                return Cyan[(int)intensity];
-            case ColorMode.GREEN:
-                return Green[(int)intensity];
-            case ColorMode.ORANGE:
-                return Orange[(int)intensity];
-            case ColorMode.PURPLE:
-                return Purple[(int)intensity];
-            case ColorMode.BLACK:
-                return Black[(int)intensity];
-            default:
-                return Black[(int)Intensity.FULL];
-        }
+        return _colorScheme.GetColor(mode)[(int)intensity];
     }
 
     public ColorMode GetDominantColor(Ink inkA, Ink inkB)

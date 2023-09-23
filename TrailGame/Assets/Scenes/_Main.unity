@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44407046, g: 0.49331486, b: 0.57238823, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465788, g: 0.49641287, b: 0.5748173, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -212,6 +212,7 @@ Transform:
   m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
   m_LocalPosition: {x: 0, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
@@ -384,6 +385,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -414,34 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcddae53a2f7649f693fc15004c45add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ErrorColor: {r: 0, g: 0, b: 0, a: 0}
-  Magenta:
-  - {r: 0.92941177, g: 0.13333334, b: 0.36078432, a: 1}
-  - {r: 0.972549, g: 0.7019608, b: 0.78039217, a: 1}
-  Cyan:
-  - {r: 0.11764706, g: 0.6313726, b: 0.7294118, a: 1}
-  - {r: 0.65882355, g: 0.8980392, b: 0.94509804, a: 1}
-  Yellow:
-  - {r: 1, g: 0.9882353, b: 0.14509805, a: 1}
-  - {r: 1, g: 0.99215686, b: 0.7058824, a: 1}
-  Black:
-  - {r: 0.12941177, g: 0.12941177, b: 0.12941177, a: 1}
-  - {r: 0.47058824, g: 0.47058824, b: 0.47058824, a: 1}
-  Purple:
-  - {r: 0.5254902, g: 0.38431373, b: 0.54509807, a: 1}
-  - {r: 0.8156863, g: 0.8, b: 0.8627451, a: 1}
-  - {r: 0.79607844, g: 0.5176471, b: 0.654902, a: 1}
-  - {r: 0.54509807, g: 0.6666667, b: 0.75686276, a: 1}
-  Orange:
-  - {r: 0.9647059, g: 0.56078434, b: 0.25490198, a: 1}
-  - {r: 0.9882353, g: 0.84705883, b: 0.74509805, a: 1}
-  - {r: 0.9647059, g: 0.5647059, b: 0.53333336, a: 1}
-  - {r: 0.9882353, g: 0.84705883, b: 0.4627451, a: 1}
-  Green:
-  - {r: 0.56078434, g: 0.8117647, b: 0.4392157, a: 1}
-  - {r: 0.83137256, g: 0.94509804, b: 0.827451, a: 1}
-  - {r: 0.56078434, g: 0.8117647, b: 0.7176471, a: 1}
-  - {r: 0.83137256, g: 0.94509804, b: 0.54509807, a: 1}
+  _colorScheme: {fileID: 11400000, guid: 6c816e3fe9d3541398a0be3c8c234da4, type: 2}
 --- !u!1 &1525750840
 GameObject:
   m_ObjectHideFlags: 0
@@ -472,6 +447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_SendPointerHoverToParent: 1
   m_HorizontalAxis: Horizontal
   m_VerticalAxis: Vertical
   m_SubmitButton: Submit
@@ -504,6 +480,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -588,6 +565,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

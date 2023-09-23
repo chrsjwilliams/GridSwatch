@@ -70,19 +70,19 @@ namespace GameData
                         Ink pumpInk;
                         if (data.PumpLocationsCyan.Contains(candidateCoord))
                         {
-                            pumpInk = new Ink(Services.ColorManager.Cyan[0], ColorMode.CYAN, int.MaxValue);
+                            pumpInk = new Ink(Services.ColorManager.ColorScheme.GetColor(ColorMode.CYAN)[0], ColorMode.CYAN, int.MaxValue);
                         }
                         else if (data.PumpLocationsMagenta.Contains(candidateCoord))
                         {
-                            pumpInk = new Ink(Services.ColorManager.Magenta[0], ColorMode.MAGENTA, int.MaxValue);
+                            pumpInk = new Ink(Services.ColorManager.ColorScheme.GetColor(ColorMode.MAGENTA)[0], ColorMode.MAGENTA, int.MaxValue);
                         }
                         else if (data.PumpLocationsYellow.Contains(candidateCoord))
                         {
-                            pumpInk = new Ink(Services.ColorManager.Yellow[0], ColorMode.YELLOW, int.MaxValue);
+                            pumpInk = new Ink(Services.ColorManager.ColorScheme.GetColor(ColorMode.YELLOW)[0], ColorMode.YELLOW, int.MaxValue);
                         }
                         else
                         {
-                            pumpInk = new Ink(Services.ColorManager.ErrorColor, ColorMode.BLACK, int.MaxValue);
+                            pumpInk = new Ink(Services.ColorManager.ColorScheme.ErrorColor, ColorMode.BLACK, int.MaxValue);
                         }
 
                         pumpTile.Init(new MapCoord(x, y), pumpInk, canTraverse);
@@ -98,48 +98,6 @@ namespace GameData
                 }
             }
         }
-
-        public void CreateBoard(int w, int h)
-        {
-            _width = w;
-            _height = h;
-            _map = new Tile[Width, Height];
-            Ink initInk;
-
-            for (int x = 0; x < Width; x++)
-            {
-                for (int y = 0; y < Height; y++)
-                {
-                    Tile newTile = Instantiate(Services.Prefabs.Tile, new Vector2(x, y), Quaternion.identity);
-                    if (x == 0 && y == 2)
-                    {
-                        Destroy(newTile.gameObject.GetComponent<Tile>());
-                        newTile.gameObject.AddComponent<PumpTile>();
-                    }
-                    newTile.name = "Tile: [ X: " + x + ", Y: " + y + "]";
-                    newTile.transform.parent = transform;
-                    if (x == 0 && y == 2)
-                    {
-                        PumpTile pumpTile = newTile.GetComponent<PumpTile>();
-                        Ink pumpInk = new Ink(Services.ColorManager.Colors[0][0], ColorMode.CYAN, int.MaxValue);
-
-                        pumpTile.Init(new MapCoord(x, y), pumpInk, true);
-                        _map[x, y] = pumpTile;
-                    }
-                    else
-                    {
-
-                        initInk = new Ink();
-
-                        newTile.Init(new MapCoord(x, y), initInk);
-                        _map[x, y] = newTile;
-                    }
-                }
-            }
-
-        }
-
-
 
         public bool ContainsCoord(MapCoord candidateCoord)
         {

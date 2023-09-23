@@ -52,8 +52,7 @@ public class Player : Entity
         else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
         else return Color.clear;
 
-
-        return Services.ColorManager.Colors[(int)CurrentColorMode - 1][intensityIndex];
+        return Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
     }
 
     public void SetPosition(MapCoord c)

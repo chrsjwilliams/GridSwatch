@@ -48,39 +48,16 @@ public class Ink
         if(colorMode == ColorMode.BLACK)
         {
             if (currentLevel == Level.FULL)
-                color = Services.ColorManager.Black[0];
+                color = Services.ColorManager.ColorScheme.GetColor(ColorMode.BLACK)[0];
             else
-                color = Services.ColorManager.Black[1];
+                color = Services.ColorManager.ColorScheme.GetColor(ColorMode.BLACK)[1];
         }
     }
 
     public Ink(ColorMode mode)
     {
-        colorMode = mode;
-        switch(colorMode)
-        {
-            case ColorMode.MAGENTA:
-                color = Services.ColorManager.Magenta[0];
-                break;
-            case ColorMode.CYAN:
-                color = Services.ColorManager.Cyan[0];
-                break;
-            case ColorMode.YELLOW:
-                color = Services.ColorManager.Yellow[0];
-                break;
-            case ColorMode.GREEN:
-                color = Services.ColorManager.Green[0];
-                break;
-            case ColorMode.ORANGE:
-                color = Services.ColorManager.Orange[0];
-                break;
-            case ColorMode.PURPLE:
-                color = Services.ColorManager.Purple[0];
-                break;
-            case ColorMode.BLACK:
-                color = Services.ColorManager.Black[0];
-                break;
-        }
+
+        color = Services.ColorManager.ColorScheme.GetColor(mode)[0];
         Intensity = Player.MAX_INTENSITY_LEVEL;
     }
 }
