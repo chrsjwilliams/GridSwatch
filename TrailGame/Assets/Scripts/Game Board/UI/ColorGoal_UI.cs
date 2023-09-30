@@ -2,14 +2,18 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 namespace GameScreen
 {
     public class ColorGoal_UI : MonoBehaviour
     {
+        
         public RectTransform rectTransform;
         [SerializeField] Image icon;
         [SerializeField] TextMeshProUGUI iconText;
+        [SerializeField] Color defaultColor;
+        [SerializeField] Color finishedColor;
         
         private int _count;
         public int Count { get { return _count; } }
@@ -34,6 +38,8 @@ namespace GameScreen
 
         public bool IsGoalMet()
         {
+            Color textColot = Count >= Goal ? finishedColor : defaultColor;
+            iconText.DOColor(textColot, 0.66f).SetEase(Ease.InOutExpo);
             return Count >= Goal;
         }
     }

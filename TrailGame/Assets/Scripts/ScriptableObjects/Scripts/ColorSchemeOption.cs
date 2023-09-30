@@ -7,6 +7,7 @@ using UnityEngine;
                 , menuName = "Data/Color Scheme Option")]
 public class ColorSchemeOption : ScriptableObject
 {
+    
     [SerializeField] Color _errorColor;
     public Color ErrorColor { get { return _errorColor; } }
     [SerializeField] List<ColorEntry> _colorSchemes;
