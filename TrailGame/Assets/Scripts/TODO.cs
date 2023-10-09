@@ -11,11 +11,9 @@
  *   
  *  GAME:
  *  - Fade in color effect!
- *  - Have color be determined by ColorMode
+ *  - How does the game know if it's in colorblind mode to display patterns?
  *      
  *  
- *  ACCESSIBILTY:
- *  - Colorblind version
  *  
  *  
  *  - BUG: Player clips out of bounds on the higer end

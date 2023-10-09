@@ -22,11 +22,23 @@ public class ColorSchemeOption : ScriptableObject
 
         return null;
     }
+
+    public Sprite GetColorblindPattern(ColorMode colorName)
+    {
+        foreach (ColorEntry entry in _colorSchemes)
+        {
+            if (entry.colorName == colorName)
+                return entry.colorBlindPattern;
+        }
+
+        return null;
+    }
 }
 
 [System.Serializable]
 public struct ColorEntry
 {
     public ColorMode colorName;
+    public Sprite colorBlindPattern;
     public List<Color> colors;
 }

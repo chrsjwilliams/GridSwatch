@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using static ColorManager;
 
 public enum ColorMode { NONE = 0, CYAN, MAGENTA, YELLOW, BLACK, GREEN, PURPLE, ORANGE }
 
@@ -54,6 +55,11 @@ public class ColorManager : MonoBehaviour
     public Color GetColor(ColorMode mode, Intensity intensity = Intensity.FULL)
     {
         return _colorScheme.GetColor(mode)[(int)intensity];
+    }
+
+    public Sprite GetColorblindPattern(ColorMode mode)
+    {
+        return _colorScheme.GetColorblindPattern(mode);
     }
 
     public ColorMode GetDominantColor(Ink inkA, Ink inkB)
