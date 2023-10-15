@@ -23,13 +23,6 @@ namespace GameData {
 
         public string MapGoal;
 
-        public float percentMagenta;
-        public float percentCyan;
-        public float percentYellow;
-        public float percentPurple;
-        public float percentOrange;
-        public float percentGreen;
-
         public List<ColorGoal> colorGoals;
 
         [System.Serializable]

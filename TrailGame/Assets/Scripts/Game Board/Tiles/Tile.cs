@@ -36,6 +36,12 @@ namespace GameData
             {
                 Services.Board.CurrentFillAmount[(int)tileInk.colorMode]--;
                 tileInk = Services.ColorManager.MixColors(tileInk, ink);
+                sr.color = tileInk.color;
+                if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
+                    Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
+
+                CurrentColorMode = tileInk.colorMode;
+
             }
             else if (CanOverwriteColor(ink))
             {
@@ -45,7 +51,12 @@ namespace GameData
                         Services.Board.CurrentFillAmount[(int)tileInk.colorMode]--;
                 }
                 tileInk = ink;
-                intensity = tileInk.Intensity;
+
+                sr.color = tileInk.color;
+                if(tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
+                    Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
+
+                CurrentColorMode = tileInk.colorMode;
 
             }
             else if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
@@ -53,14 +64,6 @@ namespace GameData
                 //Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
             }
-
-            if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
-                Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
-
-            CurrentColorMode = tileInk.colorMode;
-
-            sr.color = tileInk.color;
-
         }
 
         // QUESTION: Should CYAN overwrite GREEN? Leaning NO
@@ -71,9 +74,9 @@ namespace GameData
             return  //  Tile has no color
                     (tileInk.colorMode == ColorMode.NONE) ||
                     //  Tile is not Black Color
-                    (tileInk.colorMode != ColorMode.BLACK &&
+                    ((tileInk.colorMode != ColorMode.BLACK) &&
                     //  New color has higher intensity
-                    newInk.colorMode == tileInk.colorMode && newInk.Intensity > intensity);
+                    (newInk.colorMode == tileInk.colorMode && newInk.Intensity > tileInk.Intensity));
             //  Should lower intensity colors mix to make higher intensity colors?
         }
 
