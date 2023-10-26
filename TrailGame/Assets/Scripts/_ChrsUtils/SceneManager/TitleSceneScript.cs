@@ -41,9 +41,5 @@ public class TitleSceneScript : Scene<TransitionData>
     private void Update()
     {
         _tm.Update();
-        if (Input.GetKeyDown(startGame) || Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1))
-        {
-            Services.AudioManager.PlayClip(Clips.CLICK);
-        }
     }
 }

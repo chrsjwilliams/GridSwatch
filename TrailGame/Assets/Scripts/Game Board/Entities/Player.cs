@@ -6,12 +6,14 @@ public class Player : Entity
     public const int FULL_INTENSITY_SWIPES = 2;
     public const int DIM_INTENSITY_SWIPES = 1;
 
-    public const int MAX_INTENSITY_LEVEL = 3;
+    public const int MAX_INTENSITY_LEVEL = 2;
 
     public int fullIntensitySwipeCount;
     public int dimIntensitySwipeCount;
 
     public bool isMoving;
+
+    int swipeCount = 0;
 
     public override void Init(MapCoord c)
     {
@@ -37,7 +39,7 @@ public class Player : Entity
     public void ResetIntensitySwipes()
     {
         Ink.Intensity = MAX_INTENSITY_LEVEL;
-        fullIntensitySwipeCount = FULL_INTENSITY_SWIPES;
+        fullIntensitySwipeCount = swipeCount = FULL_INTENSITY_SWIPES;
         dimIntensitySwipeCount = DIM_INTENSITY_SWIPES;
     }
 
@@ -67,8 +69,12 @@ public class Player : Entity
             float xPos = Mathf.Round(transform.position.x);
             float yPos = Mathf.Round(transform.position.y);
             transform.position = new Vector3(xPos, yPos, transform.position.z);
-            Ink.Intensity--;
-            if (Ink.Intensity == 0)
+            if (Services.Board.BoardType == GameBoard.ColorType.BRUSH)
+            {
+                Ink.Intensity--;
+            }
+            swipeCount--;
+            if (Ink.Intensity == 0 || (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER))
             {
                 Ink.Intensity = 0;
                 CurrentColorMode = ColorMode.NONE;

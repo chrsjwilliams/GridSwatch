@@ -7,6 +7,7 @@ namespace GameData {
     public class MapData : ScriptableObject
     {
         public string mapName;
+        public GameBoard.ColorType BoardType;
         public Vector2 BoardSize;
 
         public bool UseMagenta;

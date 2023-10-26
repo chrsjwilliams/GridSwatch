@@ -70,10 +70,6 @@ public class ColorManager : MonoBehaviour
 
     public Ink MixColors(Ink inkA, Ink inkB)
     {
-        float r = (inkA.color.r + inkB.color.r) / 2f;
-        float g = (inkA.color.g + inkB.color.g) / 2f;
-        float b = (inkA.color.b + inkB.color.b) / 2f;
-
         ColorMode cMode = ColorMode.NONE;
         if(inkA.colorMode == ColorMode.MAGENTA && inkB.colorMode == ColorMode.CYAN ||
             inkA.colorMode == ColorMode.CYAN && inkB.colorMode == ColorMode.MAGENTA)
@@ -95,7 +91,9 @@ public class ColorManager : MonoBehaviour
             cMode = ColorMode.BLACK;
         }
 
-        return new Ink(new Color(r, g, b), cMode, 2);
+        int intensity = inkA.Intensity < 2 || inkB.Intensity < 2 ? 1 : 0;
+        
+        return new Ink(ColorScheme.GetColor(cMode)[intensity], cMode, intensity + 1);
     }
 
 }

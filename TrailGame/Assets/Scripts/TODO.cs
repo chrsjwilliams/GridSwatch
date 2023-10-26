@@ -12,7 +12,12 @@
  *  GAME:
  *  - Fade in color effect!
  *  - How does the game know if it's in colorblind mode to display patterns?
- *      
+ *  - Black Tiles are impassible. players can make black tiles
+ *  - paint bucket tile splashes color in all adjacent tiles
+ *  - erasererases color in a tile direction
+ *  - swerve tile - changes players direction
+ *  - screen wrap tile
+ *  - warp tiles
  *  
  *  
  *  

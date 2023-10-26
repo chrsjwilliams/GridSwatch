@@ -6,6 +6,8 @@ namespace GameData
 {
     public class GameBoard : MonoBehaviour
     {
+        public enum ColorType { MARKER, BRUSH}
+
         private int _width;
         public int Width
         {
@@ -24,6 +26,9 @@ namespace GameData
             get { return _map; }
         }
 
+        private ColorType _boardType;
+        public ColorType BoardType { get { return _boardType; } }
+
         private int _emptyTileCount;
         public int EmptyTileCount { get { return _emptyTileCount; } }
 
@@ -36,6 +41,7 @@ namespace GameData
             _width = (int)data.BoardSize.x;
             _height = (int)data.BoardSize.y;
             _map = new Tile[Width, Height];
+            _boardType = data.BoardType;
 
             List<Vector2> allPumpLocations = new List<Vector2>();
             allPumpLocations.AddRange(data.PumpLocationsCyan);
