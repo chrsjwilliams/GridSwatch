@@ -86,12 +86,27 @@ public class ColorManager : MonoBehaviour
         {
             cMode = ColorMode.GREEN;
         }
+        else if (((inkA.colorMode == ColorMode.CYAN || inkA.colorMode == ColorMode.MAGENTA) && inkB.colorMode == ColorMode.PURPLE) ||
+            ((inkB.colorMode == ColorMode.CYAN || inkB.colorMode == ColorMode.MAGENTA) && inkA.colorMode == ColorMode.PURPLE))
+        {
+            cMode = ColorMode.PURPLE;
+        }
+        else if (((inkA.colorMode == ColorMode.CYAN || inkA.colorMode == ColorMode.YELLOW) && inkB.colorMode == ColorMode.GREEN) ||
+            ((inkB.colorMode == ColorMode.CYAN || inkB.colorMode == ColorMode.YELLOW) && inkA.colorMode == ColorMode.GREEN))
+        {
+            cMode = ColorMode.GREEN;
+        }
+        else if (((inkA.colorMode == ColorMode.YELLOW || inkA.colorMode == ColorMode.MAGENTA) && inkB.colorMode == ColorMode.ORANGE) ||
+            ((inkB.colorMode == ColorMode.YELLOW || inkB.colorMode == ColorMode.MAGENTA) && inkA.colorMode == ColorMode.ORANGE))
+        {
+            cMode = ColorMode.ORANGE;
+        }
         else
         {
             cMode = ColorMode.BLACK;
         }
 
-        int intensity = inkA.Intensity < 2 || inkB.Intensity < 2 ? 1 : 0;
+        int intensity = 0;
         
         return new Ink(ColorScheme.GetColor(cMode)[intensity], cMode, intensity + 1);
     }
