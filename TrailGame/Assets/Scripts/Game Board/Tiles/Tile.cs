@@ -13,6 +13,7 @@ namespace GameData
         public ColorMode CurrentColorMode { get; protected set; }
         public Color CurrentColor { get; protected set; }
         [SerializeField] protected SpriteRenderer sr;
+        [SerializeField] protected SpriteRenderer pumpIndicator;
 
         public virtual void Init(MapCoord c, Ink initInk, bool _canTraverse = true)
         {
@@ -21,6 +22,10 @@ namespace GameData
             sr = GetComponent<SpriteRenderer>();
             tileInk = new Ink();
             SetColor(initInk, true);
+
+            
+
+
         }
 
         public void SetTraversal(bool b) { canTraverse = b; }
@@ -63,6 +68,11 @@ namespace GameData
             {
                 //Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
+            }
+
+            if(CurrentColorMode == ColorMode.BLACK)
+            {
+                canTraverse = false;
             }
         }
 

@@ -42,6 +42,7 @@ public class MapManager : MonoBehaviour
                     leftToLoad--;
                     if (leftToLoad == 0)
                     {
+                        _maps.Reverse();
                         callback?.Invoke();
                     }
                 };

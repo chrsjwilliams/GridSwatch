@@ -8,7 +8,7 @@ namespace GameData
 
         private TaskManager _tm = new TaskManager();
 
-        public void Init(MapCoord c, Ink initInk, bool _canTraverse = true)
+        public override void Init(MapCoord c, Ink initInk, bool _canTraverse = true)
         {
             coord = c;
             canTraverse = _canTraverse;
@@ -16,6 +16,12 @@ namespace GameData
             sr = GetComponent<SpriteRenderer>();
             tileInk = new Ink();
             SetColor(initInk);
+
+            pumpIndicator = GetComponentsInChildren<SpriteRenderer>()[1];
+
+
+            sr.color = Color.white;
+            pumpIndicator.color = tileInk.color;
         }
 
         // Update is called once per frame

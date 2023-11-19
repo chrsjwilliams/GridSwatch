@@ -15,6 +15,8 @@ public class Player : Entity
 
     int swipeCount = 0;
 
+    [SerializeField] SpriteRenderer colorIndicator;
+
     public override void Init(MapCoord c)
     {
         isMoving = false;
@@ -48,11 +50,14 @@ public class Player : Entity
     {
         if (CurrentColorMode == ColorMode.NONE) return Color.clear;
 
+
         int intensityIndex = -1;
 
         if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
         else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
         else return Color.clear;
+
+
 
         return Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
     }
@@ -69,15 +74,25 @@ public class Player : Entity
             float xPos = Mathf.Round(transform.position.x);
             float yPos = Mathf.Round(transform.position.y);
             transform.position = new Vector3(xPos, yPos, transform.position.z);
+            int intensityIndex = -1;
             if (Services.Board.BoardType == GameBoard.ColorType.BRUSH)
             {
                 Ink.Intensity--;
             }
+            if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
+            else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
+
+            if (intensityIndex != -1 && CurrentColorMode != ColorMode.NONE)
+            {
+                colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
+            }
+  
             swipeCount--;
             if (Ink.Intensity == 0 || (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER))
             {
                 Ink.Intensity = 0;
                 CurrentColorMode = ColorMode.NONE;
+                colorIndicator.color = Color.white;
             }
 
         }
@@ -224,6 +239,7 @@ public class Player : Entity
             {
                 Ink = ((PumpTile)tile).tileInk;
                 CurrentColorMode = Ink.colorMode;
+                colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0];
                 ResetIntensitySwipes();
             }
             if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0 && tile.canTraverse)

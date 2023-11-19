@@ -105,6 +105,30 @@ namespace GameData
             }
         }
 
+        public void ResetMap()
+        {
+
+            for(int i = 0; i < CurrentFillAmount.Length; i++)
+            {
+                CurrentFillAmount[i] = 0;
+            }
+
+            List<Tile> tilesToDelete = new List<Tile>();
+            for (int x = 0; x < Width; x++)
+            {
+                for (int y = 0; y < Height; y++)
+                {
+                    tilesToDelete.Add(_map[x, y]);
+                }
+            }
+
+            foreach(Tile tile in tilesToDelete)
+            {
+                Destroy(tile.gameObject);
+            }
+
+        }
+
         public bool ContainsCoord(MapCoord candidateCoord)
         {
             return 0 <= candidateCoord.x && candidateCoord.x < Width &&

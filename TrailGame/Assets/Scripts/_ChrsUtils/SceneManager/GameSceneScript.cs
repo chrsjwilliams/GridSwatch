@@ -97,6 +97,27 @@ namespace GameScreen
             Services.Scenes.Swap<MapSelectSceneScript>();
         }
 
+        public void RestartMap()
+        {
+            Destroy(player.gameObject);
+            board.ResetMap();
+
+            swipeTextPulse?.Play();
+            finished = false;
+            Services.GameScene = this;
+            Services.Board = board;
+
+            Services.Board.CreateBoard(MapData);
+            //uIController.SetGameUI(MapData);
+
+            Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
+
+            player = Instantiate<Player>(Services.Prefabs.Player);
+            player.transform.parent = transform;
+            MapCoord startCoord = new MapCoord(MapData.PlayerStartPos.x, MapData.PlayerStartPos.y);
+            player.Init(startCoord);
+        }
+
         private void EndGame()
         {
             Services.AudioManager.FadeAudio();
@@ -113,8 +134,8 @@ namespace GameScreen
             if (player == null || uIController == null) return;
             if (finished) return;
 
-            if(!player.isMoving && uIController.IsGoalMet())
-            {    
+            if (!player.isMoving && uIController.IsGoalMet())
+            {
                 finished = true;
             }
         }
