@@ -10,32 +10,30 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
-  m_Name: _TutorialMap6
+  m_Name: _TutorialMap002
   m_EditorClassIdentifier: 
-  mapName: Tutorial Map 6
-  BoardType: 0
-  BoardSize: {x: 5, y: 7}
+  mapName: Tutorial Map 2
+  BoardSize: {x: 5, y: 5}
   UseMagenta: 0
   UseCyan: 1
-  UseYellow: 1
+  UseYellow: 0
   ImpassableMapCoords:
+  - {x: 0, y: 1}
   - {x: 0, y: 2}
-  - {x: 1, y: 2}
-  - {x: 0, y: 6}
-  - {x: 1, y: 6}
-  - {x: 4, y: 4}
-  - {x: 3, y: 4}
+  - {x: 1, y: 1}
+  - {x: 1, y: 4}
+  - {x: 2, y: 1}
+  - {x: 3, y: 3}
+  - {x: 4, y: 0}
+  - {x: 4, y: 3}
   PlayerStartPos: {x: 0, y: 0}
   PumpLocationsMagenta: []
   PumpLocationsCyan:
-  - {x: 2, y: 0}
-  - {x: 3, y: 1}
-  - {x: 2, y: 6}
-  PumpLocationsYellow:
-  - {x: 1, y: 1}
-  - {x: 4, y: 0}
-  - {x: 3, y: 3}
+  - {x: 4, y: 1}
+  - {x: 4, y: 4}
+  - {x: 0, y: 4}
+  PumpLocationsYellow: []
   MapGoal: 
   colorGoals:
   - colorMode: 1
-    amount: 5
+    amount: 10

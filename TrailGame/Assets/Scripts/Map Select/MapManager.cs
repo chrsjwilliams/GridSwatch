@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -23,26 +24,26 @@ public class MapManager : MonoBehaviour
     {
 
         var op = Addressables.LoadResourceLocationsAsync(mapLabel);
-
+        List<MapData> loadedMaps = new List<MapData>();
         op.Completed += ophandle =>
         {
             var result = ophandle.Result;
-
+            
             var leftToLoad = ophandle.Result.Count;
             foreach (var readLocation in ophandle.Result)
             {
                 var loaderOp = Addressables.LoadAssetAsync<MapData>(readLocation);
                 loaderOp.Completed += opHandle =>
                 {
-                    if (!_maps.Contains(loaderOp.Result))
+                    if (!loadedMaps.Contains(loaderOp.Result))
                     {
-                        _maps.Add(loaderOp.Result);
+                        loadedMaps.Add(loaderOp.Result);
                     }
 
                     leftToLoad--;
                     if (leftToLoad == 0)
                     {
-                        _maps.Reverse();
+                        _maps = loadedMaps.OrderBy(x => x.name).ToList();
                         callback?.Invoke();
                     }
                 };
