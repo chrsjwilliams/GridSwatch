@@ -7,6 +7,7 @@ using Sirenix.OdinInspector;
 
 public class DayNightModeButton : Option
 {
+    public static DisplayMode CurrentDisplayMode;
     public enum DisplayMode { NONE = 0, DAY, NIGHT}
 
     [SerializeField, ReadOnly] private DisplayMode _currentMode;
@@ -65,6 +66,8 @@ public class DayNightModeButton : Option
 
         dayIcon.sprite = _currentMode == DisplayMode.DAY ? dayOnIcon : dayOffIcon;
         nightIcon.sprite = _currentMode == DisplayMode.NIGHT ? nightOnIcon : nightOffIcon;
+
+        CurrentDisplayMode = _currentMode;
 
         DisplayModeChanged?.Invoke(_currentMode);
         PlayerPrefs.SetInt(displayModeKey, (int)mode);

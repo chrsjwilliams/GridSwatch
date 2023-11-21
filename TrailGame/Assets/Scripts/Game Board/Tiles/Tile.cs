@@ -39,8 +39,13 @@ namespace GameData
 
             if (ShouldMixColors(ink))
             {
-                Services.Board.CurrentFillAmount[(int)tileInk.colorMode]--;
+                Ink oldTileInk = tileInk;
                 tileInk = Services.ColorManager.MixColors(tileInk, ink);
+                if(oldTileInk.colorMode != tileInk.colorMode)
+                {
+                    Services.Board.CurrentFillAmount[(int)oldTileInk.colorMode]--;
+                }
+
                 sr.color = tileInk.color;
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
@@ -86,7 +91,14 @@ namespace GameData
                     //  Tile is not Black Color
                     ((tileInk.colorMode != ColorMode.BLACK) &&
                     //  New color has higher intensity
-                    (newInk.colorMode == tileInk.colorMode && newInk.Intensity > tileInk.Intensity));
+                    (newInk.colorMode == tileInk.colorMode && newInk.Intensity > tileInk.Intensity)) ||
+                    // Primary colors cannot overwrite secondary colors
+                    ((  tileInk.colorMode == ColorMode.GREEN ||
+                        tileInk.colorMode == ColorMode.PURPLE ||
+                        tileInk.colorMode == ColorMode.ORANGE) &&
+                        (newInk.colorMode == ColorMode.CYAN ||
+                        newInk.colorMode == ColorMode.MAGENTA ||
+                        newInk.colorMode == ColorMode.YELLOW));
             //  Should lower intensity colors mix to make higher intensity colors?
         }
 
