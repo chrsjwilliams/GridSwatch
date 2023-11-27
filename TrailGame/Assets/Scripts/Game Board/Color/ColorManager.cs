@@ -48,10 +48,6 @@ public class ColorManager : MonoBehaviour
 
     }
 
-    public void Init()
-    {
-    }
-
     public Color GetColor(ColorMode mode, Intensity intensity = Intensity.FULL)
     {
         return _colorScheme.GetColor(mode)[(int)intensity];

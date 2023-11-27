@@ -13,7 +13,7 @@ public class Player : Entity
 
     public bool isMoving;
 
-    int swipeCount = 0;
+    [SerializeField] int swipeCount = 0;
 
     [SerializeField] SpriteRenderer colorIndicator;
 
@@ -69,33 +69,38 @@ public class Player : Entity
 
     protected void OnSwipe(SwipeEvent e)
     {
-        if(AxisSwipeChange(e))
+        // removing axis swipe becase it breaks marker mode
+        // if i wnt levels of color i need to be able to detect when i move orthonogally(?)
+        // no, it's more like, if the color below me is also my colortype, then i shouldn't lose
+        // power
+        float xPos = Mathf.Round(transform.position.x);
+        float yPos = Mathf.Round(transform.position.y);
+        transform.position = new Vector3(xPos, yPos, transform.position.z);
+        int intensityIndex = -1;
+        if (Services.Board.BoardType == GameBoard.ColorType.BRUSH)
         {
-            float xPos = Mathf.Round(transform.position.x);
-            float yPos = Mathf.Round(transform.position.y);
-            transform.position = new Vector3(xPos, yPos, transform.position.z);
-            int intensityIndex = -1;
-            if (Services.Board.BoardType == GameBoard.ColorType.BRUSH)
-            {
-                Ink.Intensity--;
-            }
-            if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
-            else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
-
-            if (intensityIndex != -1 && CurrentColorMode != ColorMode.NONE)
-            {
-                colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
-            }
-  
-            swipeCount--;
-            if (Ink.Intensity == 0 || (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER))
-            {
-                Ink.Intensity = 0;
-                CurrentColorMode = ColorMode.NONE;
-                colorIndicator.color = Color.white;
-            }
-
+            Ink.Intensity--;
         }
+        if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
+        else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
+
+        if (intensityIndex != -1 && CurrentColorMode != ColorMode.NONE)
+        {
+            colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
+        }
+
+        if (Ink.Intensity == 0 || (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER))
+        {
+            Ink.Intensity = 0;
+            CurrentColorMode = ColorMode.NONE;
+            colorIndicator.color = Color.white;
+            swipeCount = 0;
+        }
+        if (CurrentColorMode != ColorMode.NONE)
+        {
+            swipeCount--;
+        }
+
         direction = e.gesture.CurrentDirection;
 
     }
@@ -217,16 +222,11 @@ public class Player : Entity
 
     public bool AxisSwipeChange(SwipeEvent e)
     {
-        return ((direction == Swipe.Direction.LEFT ||
-                 direction == Swipe.Direction.RIGHT) &&
-                (e.gesture.CurrentDirection == Swipe.Direction.UP ||
-                 e.gesture.CurrentDirection == Swipe.Direction.DOWN)) ||
-               ((direction == Swipe.Direction.UP ||
-                 direction == Swipe.Direction.DOWN) &&
-                (e.gesture.CurrentDirection == Swipe.Direction.LEFT ||
-                 e.gesture.CurrentDirection == Swipe.Direction.RIGHT)) ||
-                (direction == Swipe.Direction.NONE &&
-                e.gesture.CurrentDirection != Swipe.Direction.NONE);
+        return ((direction == Swipe.Direction.LEFT || direction == Swipe.Direction.RIGHT) &&
+                (e.gesture.CurrentDirection == Swipe.Direction.UP || e.gesture.CurrentDirection == Swipe.Direction.DOWN)) ||
+               ((direction == Swipe.Direction.UP || direction == Swipe.Direction.DOWN) &&
+                (e.gesture.CurrentDirection == Swipe.Direction.LEFT || e.gesture.CurrentDirection == Swipe.Direction.RIGHT)) ||
+                (direction == Swipe.Direction.NONE &&e.gesture.CurrentDirection != Swipe.Direction.NONE);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
