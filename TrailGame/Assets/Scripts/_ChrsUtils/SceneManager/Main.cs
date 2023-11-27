@@ -84,7 +84,6 @@ public class Main : MonoBehaviour
         Services.GameManager = GetComponent<GameManager>();
         Services.GameManager.Init();
         Services.ColorManager = GetComponent<ColorManager>();
-        Services.ColorManager.Init();
         Services.CameraController = Camera.main.GetComponent<CameraController>();
         Services.CameraController.Init();
         Services.AudioManager = GetComponent<AudioManager>();
