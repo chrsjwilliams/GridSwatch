@@ -35,7 +35,6 @@ public class Player : Entity
     private void OnDestroy()
     {
         Services.EventManager.Unregister<SwipeEvent>(OnSwipe);
-
     }
 
     public void ResetIntensitySwipes()
@@ -210,7 +209,6 @@ public class Player : Entity
             canTraverse = true;
 
         return canTraverse;
-
     }
 
     private void Update() {
@@ -232,24 +230,37 @@ public class Player : Entity
     public void OnTriggerEnter2D(Collider2D collision)
     {
         Tile tile = collision.GetComponent<Tile>();
-        if(tile != null)
+        if (tile == null) return;
+        if (tile is PumpTile)
         {
+            Ink = ((PumpTile)tile).tileInk;
+            CurrentColorMode = Ink.colorMode;
+            colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0];
+            ResetIntensitySwipes();
+        }
+        else if(CurrentColorMode != ColorMode.NONE &&
+            dimIntensitySwipeCount > 0 &&
+            tile.canTraverse &&
+            tile.CurrentColorMode == ColorMode.NONE)
+        {
+            Ink.color = GetColor();
+            tile.SetColor(Ink);
+        }
+    }
 
-            if (tile is PumpTile)
-            {
-                Ink = ((PumpTile)tile).tileInk;
-                CurrentColorMode = Ink.colorMode;
-                colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0];
-                ResetIntensitySwipes();
-            }
-            if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0 && tile.canTraverse)
-            {
-                Ink.color = GetColor();
-
-                // This should only happen when I enter a tile
-                tile.SetColor(Ink);
-           }
-
+    public void OnTriggerExit2D(Collider2D collision)
+    {
+        Tile tile = collision.GetComponent<Tile>();
+        if (tile == null) return;
+        if (tile is PumpTile) return;
+        // This allows us to pass before potentially setting a tile to Black
+        if (CurrentColorMode != ColorMode.NONE &&
+            dimIntensitySwipeCount > 0 &&
+            tile.canTraverse &&
+            tile.CurrentColorMode != ColorMode.NONE)
+        {
+            Ink.color = GetColor();
+            tile.SetColor(Ink);
         }
     }
 
