@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using DG.Tweening;
 
 namespace GameData
 {
@@ -20,18 +21,15 @@ namespace GameData
             coord = c;
             canTraverse = _canTraverse;
             sr = GetComponent<SpriteRenderer>();
+            sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
             tileInk = new Ink();
             SetColor(initInk, true);
-
-            
-
-
         }
 
         public void SetTraversal(bool b) { canTraverse = b; }
 
 
-        public void SetColor(Ink ink, bool isInit = false)
+        public virtual void SetColor(Ink ink, bool isInit = false)
         {
             if (isInit)
                 tileInk = ink;
@@ -46,7 +44,8 @@ namespace GameData
                     Services.Board.CurrentFillAmount[(int)oldTileInk.colorMode]--;
                 }
 
-                sr.color = tileInk.color;
+                //sr.color = tileInk.color;
+                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
@@ -62,8 +61,8 @@ namespace GameData
                 }
                 tileInk = ink;
 
-                sr.color = tileInk.color;
-                if(tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
+                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
                 CurrentColorMode = tileInk.colorMode;

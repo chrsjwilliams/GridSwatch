@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening;
 
 namespace GameData
 {
@@ -14,14 +15,17 @@ namespace GameData
             canTraverse = _canTraverse;
             PumpColor = initInk.colorMode;
             sr = GetComponent<SpriteRenderer>();
-            tileInk = new Ink();
-            SetColor(initInk);
+            tileInk = initInk;
+            //SetColor(initInk);
 
             pumpIndicator = GetComponentsInChildren<SpriteRenderer>()[1];
 
+            sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
+            pumpIndicator.DOColor(tileInk.color, 0.0f).SetEase(Ease.InCubic);
+        }
 
-            sr.color = Color.white;
-            pumpIndicator.color = tileInk.color;
+        public override void SetColor(Ink ink, bool isInit = false)
+        {
         }
 
         // Update is called once per frame
