@@ -3,6 +3,8 @@ using UnityEngine;
 using GameData;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Collections;
+using System;
 
 public class Player : Entity
 {
@@ -14,6 +16,7 @@ public class Player : Entity
     public int fullIntensitySwipeCount;
     public int dimIntensitySwipeCount;
 
+    public bool receiveInput;
     public bool isMoving;
 
     [SerializeField] int swipeCount = 0;
@@ -24,6 +27,7 @@ public class Player : Entity
 
     public override void Init(MapCoord c)
     {
+        receiveInput = true;
         isMoving = false;
         Ink = new Ink(ColorMode.NONE);        
         canMove = true;
@@ -86,6 +90,7 @@ public class Player : Entity
 
     protected void OnSwipe(SwipeEvent e)
     {
+        if (!receiveInput) return;
         // removing axis swipe becase it breaks marker mode
         // if i wnt levels of color i need to be able to detect when i move orthonogally(?)
         // no, it's more like, if the color below me is also my colortype, then i shouldn't lose
@@ -268,6 +273,27 @@ public class Player : Entity
             Ink.color = GetColor();
             tile.SetColor(Ink);
         }
+
+        if (tile.pivotDirection == Swipe.Direction.NONE) return;
+
+        Action pivotAction = () => { direction = tile.pivotDirection; };
+
+        List<Action> afterMovementActions = new List<Action>();
+
+        afterMovementActions.Add(pivotAction);
+        StartCoroutine(TerrainActions(afterMovementActions));
+    }
+
+    IEnumerator TerrainActions(List<Action> actions)
+    {
+        receiveInput = false;
+        foreach (Action a in actions)
+        {
+            yield return new WaitForSeconds(0.2f);
+            a?.Invoke();
+        }
+
+        receiveInput = true;
     }
 
     public void OnTriggerExit2D(Collider2D collision)

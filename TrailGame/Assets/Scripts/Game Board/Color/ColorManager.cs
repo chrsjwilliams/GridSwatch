@@ -5,6 +5,7 @@ using UnityEngine;
 using DG.Tweening;
 using static ColorManager;
 
+[System.Serializable]
 public enum ColorMode { NONE = 0, CYAN, MAGENTA, YELLOW, BLACK, GREEN, PURPLE, ORANGE }
 
 public class ColorManager : MonoBehaviour

@@ -3,11 +3,18 @@ using DG.Tweening;
 
 namespace GameData
 {
-    public class PumpTile : Tile
+    public class PumpTile : Tile, IPivotTile
     {
         public ColorMode PumpColor;
 
         private TaskManager _tm = new TaskManager();
+
+        Swipe.Direction IPivotTile.Direction
+        {
+            get => pivotDirection;
+            set => pivotDirection = value;
+        }
+        public Swipe.Direction pivotDirection;
 
         public override void Init(MapCoord c, Ink initInk, bool _canTraverse = true)
         {

@@ -3,16 +3,20 @@ using DG.Tweening;
 
 namespace GameData
 {
-    public class Tile : MonoBehaviour
+    public class Tile : MonoBehaviour, IPivotTile
     {
         public MapCoord coord { get; protected set; }
-        private TaskManager _tm = new TaskManager();
 
         public bool canTraverse { get; protected set; }
         public int intensity { get; protected set; }
         public Ink tileInk { get; protected set; }
         public ColorMode CurrentColorMode { get; protected set; }
-        public Color CurrentColor { get; protected set; }
+        Swipe.Direction IPivotTile.Direction
+        {
+            get => pivotDirection;
+            set => pivotDirection = value;
+        }
+        public Swipe.Direction pivotDirection;
         [SerializeField] protected SpriteRenderer sr;
         [SerializeField] protected SpriteRenderer pumpIndicator;
 
@@ -28,12 +32,10 @@ namespace GameData
 
         public void SetTraversal(bool b) { canTraverse = b; }
 
-
         public virtual void SetColor(Ink ink, bool isInit = false)
         {
             if (isInit)
                 tileInk = ink;
-
 
             if (ShouldMixColors(ink))
             {
@@ -68,20 +70,12 @@ namespace GameData
                 CurrentColorMode = tileInk.colorMode;
 
             }
-            else if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
-            {
-                //Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
-
-            }
 
             if(CurrentColorMode == ColorMode.BLACK)
             {
                 canTraverse = false;
             }
         }
-
-        // QUESTION: Should CYAN overwrite GREEN? Leaning NO
-
 
         public bool CanOverwriteColor(Ink newInk)
         {
@@ -109,10 +103,5 @@ namespace GameData
         }
 
 
-        // Update is called once per frame
-        void Update()
-        {
-            _tm.Update();
-        }
     }
 }

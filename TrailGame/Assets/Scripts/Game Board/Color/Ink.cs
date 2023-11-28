@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Ink 
 {
     public enum Level { DIM = 0, FULL}
 
     public Level currentLevel;
-    public Color color;
+    public Color color { get; set; }
     public ColorMode colorMode;
     private int intensity;
     public int Intensity {
@@ -56,7 +57,7 @@ public class Ink
 
     public Ink(ColorMode mode)
     {
-
+        colorMode = mode;
         color = Services.ColorManager.ColorScheme.GetColor(mode)[0];
         Intensity = Player.MAX_INTENSITY_LEVEL;
     }
