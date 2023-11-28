@@ -1,5 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 using GameData;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class Player : Entity
 {
@@ -15,7 +18,9 @@ public class Player : Entity
 
     [SerializeField] int swipeCount = 0;
 
-    [SerializeField] SpriteRenderer colorIndicator;
+    [SerializeField] List<Image> colorIndicators;
+
+    ColorMode prevColorMode;
 
     public override void Init(MapCoord c)
     {
@@ -42,6 +47,19 @@ public class Player : Entity
         Ink.Intensity = MAX_INTENSITY_LEVEL;
         fullIntensitySwipeCount = swipeCount = FULL_INTENSITY_SWIPES;
         dimIntensitySwipeCount = DIM_INTENSITY_SWIPES;
+    }
+
+    void SetIndicators(Color color)
+    {
+        foreach(var inidcator in colorIndicators)
+        {
+            inidcator.DOColor(color, 0.33f).SetEase(Ease.InCubic);
+        }
+    }
+
+    void UseInidcator(int index)
+    {
+        colorIndicators[index].DOColor(Color.white, 0.33f).SetEase(Ease.InCubic);
     }
 
 
@@ -85,18 +103,18 @@ public class Player : Entity
 
         if (intensityIndex != -1 && CurrentColorMode != ColorMode.NONE)
         {
-            colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
+            //colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
         }
 
         if (Ink.Intensity == 0 || (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER))
         {
             Ink.Intensity = 0;
             CurrentColorMode = ColorMode.NONE;
-            colorIndicator.color = Color.white;
             swipeCount = 0;
         }
         if (CurrentColorMode != ColorMode.NONE)
         {
+            UseInidcator(swipeCount - 1);
             swipeCount--;
         }
 
@@ -235,13 +253,17 @@ public class Player : Entity
         {
             Ink = ((PumpTile)tile).tileInk;
             CurrentColorMode = Ink.colorMode;
-            colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0];
+            SetIndicators(Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0]);
             ResetIntensitySwipes();
+            prevColorMode = CurrentColorMode;
         }
         else if(CurrentColorMode != ColorMode.NONE &&
             dimIntensitySwipeCount > 0 &&
             tile.canTraverse &&
-            tile.CurrentColorMode == ColorMode.NONE)
+            (tile.CurrentColorMode == ColorMode.NONE ||
+            tile.CurrentColorMode == ColorMode.MAGENTA ||
+            tile.CurrentColorMode == ColorMode.YELLOW ||
+            tile.CurrentColorMode == ColorMode.CYAN))
         {
             Ink.color = GetColor();
             tile.SetColor(Ink);
@@ -253,11 +275,14 @@ public class Player : Entity
         Tile tile = collision.GetComponent<Tile>();
         if (tile == null) return;
         if (tile is PumpTile) return;
-        // This allows us to pass before potentially setting a tile to Black
+        if (prevColorMode != CurrentColorMode) return;
+
         if (CurrentColorMode != ColorMode.NONE &&
             dimIntensitySwipeCount > 0 &&
             tile.canTraverse &&
-            tile.CurrentColorMode != ColorMode.NONE)
+            (tile.CurrentColorMode == ColorMode.GREEN ||
+            tile.CurrentColorMode == ColorMode.ORANGE ||
+            tile.CurrentColorMode == ColorMode.PURPLE))
         {
             Ink.color = GetColor();
             tile.SetColor(Ink);
