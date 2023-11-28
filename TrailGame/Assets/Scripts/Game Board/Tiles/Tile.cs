@@ -3,26 +3,30 @@ using DG.Tweening;
 
 namespace GameData
 {
-    public class Tile : MonoBehaviour, IPivotTile
+    public class Tile : MonoBehaviour
     {
-        public MapCoord coord { get; protected set; }
 
         public bool canTraverse { get; protected set; }
         public int intensity { get; protected set; }
         public Ink tileInk { get; protected set; }
         public ColorMode CurrentColorMode { get; protected set; }
-        Swipe.Direction IPivotTile.Direction
-        {
-            get => pivotDirection;
-            set => pivotDirection = value;
-        }
-        public Swipe.Direction pivotDirection;
-        [SerializeField] protected SpriteRenderer sr;
-        [SerializeField] protected SpriteRenderer pumpIndicator;
 
-        public virtual void Init(MapCoord c, Ink initInk, bool _canTraverse = true)
+        [SerializeField] protected SpriteRenderer sr;
+        public SpriteRenderer Sprite { get { return sr; } }
+        [SerializeField] protected SpriteRenderer pumpIndicator;
+        public SpriteRenderer PumpIndicator { get { return pumpIndicator; } }
+        [SerializeField] protected SpriteRenderer pivotUp;
+        public SpriteRenderer PivotUp { get { return pivotUp; } }
+        [SerializeField] protected SpriteRenderer pivotDown;
+        public SpriteRenderer PivotDown { get { return pivotDown; } }
+        [SerializeField] protected SpriteRenderer pivotLeft;
+        public SpriteRenderer PivotLeft { get { return pivotLeft; } }
+        [SerializeField] protected SpriteRenderer pivotRight;
+        public SpriteRenderer PivotRight { get { return pivotRight; } }
+
+
+        public virtual void Init(Ink initInk, bool _canTraverse = true)
         {
-            coord = c;
             canTraverse = _canTraverse;
             sr = GetComponent<SpriteRenderer>();
             sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
@@ -102,6 +106,50 @@ namespace GameData
                     tileInk.colorMode != newInk.colorMode;
         }
 
+
+        protected virtual void TriggerEnterEffect(Entity entity)
+        {
+            if (!canTraverse) return;
+            if (entity.CurrentColorMode != ColorMode.NONE &&
+            (CurrentColorMode == ColorMode.NONE ||
+            CurrentColorMode == ColorMode.MAGENTA ||
+            CurrentColorMode == ColorMode.YELLOW ||
+            CurrentColorMode == ColorMode.CYAN))
+            {
+                Ink newInk = new Ink(entity.CurrentColorMode);
+                SetColor(newInk);
+            }
+        }
+
+        protected virtual void TriggerExitEffect(Entity entity)
+        {
+            // WARNING: THIS MIGHT BE BROKEN
+            if (!canTraverse) return;
+            if (entity.CurrentColorMode != ColorMode.NONE &&
+            (CurrentColorMode == ColorMode.GREEN ||
+            CurrentColorMode == ColorMode.ORANGE ||
+            CurrentColorMode == ColorMode.PURPLE))
+            {
+                Ink newInk = new Ink(entity.CurrentColorMode);
+                SetColor(newInk);
+            }
+        }
+
+        public void OnTriggerEnter2D(Collider2D collision)
+        {
+            Player player = collision.GetComponent<Player>();
+            if (player == null) return;
+
+            TriggerEnterEffect(player);
+        }
+
+        public void OnTriggerExit2D(Collider2D collision)
+        {
+            Player player = collision.GetComponent<Player>();
+            if (player == null) return;
+
+            TriggerExitEffect(player);
+        }
 
     }
 }

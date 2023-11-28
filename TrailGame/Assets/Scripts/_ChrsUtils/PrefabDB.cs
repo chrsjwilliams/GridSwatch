@@ -23,4 +23,10 @@ public class PrefabDB : ScriptableObject
     {
         get { return _tile; }
     }
+
+    [SerializeField] private PumpTile _pumpTile;
+    public PumpTile PumpTile
+    {
+        get { return _pumpTile; }
+    }
 }

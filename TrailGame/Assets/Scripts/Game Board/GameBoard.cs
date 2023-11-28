@@ -34,8 +34,6 @@ namespace GameData
 
         public int[] CurrentFillAmount = new int[Enum.GetNames(typeof(ColorMode)).Length];
 
-        private TaskManager _tm = new TaskManager();
-
         public void CreateBoard(MapData data)
         {
             _width = (int)data.BoardSize.x;
@@ -57,77 +55,49 @@ namespace GameData
             {
                 for (int y = 0; y < Height; y++)
                 {
+                    // Create coordinate
                     Vector2 candidateCoord = new Vector2(x, y);
                     canTraverse = data.ImpassableMapCoords.Contains(candidateCoord) ? false : true;
 
-
+                    // Create Tile
                     Tile newTile = Instantiate(Services.Prefabs.Tile, candidateCoord, Quaternion.identity);
-
                     newTile.name = "Tile: [X: " + x + ", Y: " + y + "]";
                     newTile.transform.parent = transform;
 
 
-                    if (data.HasTileData(candidateCoord))
+                    TileData tileData = data.GetTile(candidateCoord);
+
+                    // If we have no other tle data, move to next tile
+                    if(tileData.coord.x == -1)
                     {
-
-                        TileData tileData = data.GetTile(candidateCoord);
-                        Ink ink = new Ink();
-                        if (tileData.hasCustomInk)
-                        {
-                            ink = new Ink(tileData.ink.colorMode);
-                        }
-
-                        if (tileData.isPumpTile)
-                        {
-                            Destroy(newTile.gameObject.GetComponent<Tile>());
-                            newTile.gameObject.AddComponent<PumpTile>();
-                            PumpTile pumpTile = newTile.GetComponent<PumpTile>();
-                            pumpTile.Init(new MapCoord(x, y), ink, canTraverse);
-                            newTile.name = newTile.name + " PUMP: " + ink.colorMode;
-                            _map[x, y] = pumpTile;
-                        }
-
-                        if (tileData.isPivotTile)
-                        {
-                            newTile.pivotDirection = tileData.PivotDirection;
-                            newTile.name = newTile.name + " | PIVOT: " + newTile.pivotDirection.ToString();
-                            newTile.Init(new MapCoord(x, y), ink, canTraverse);
-                            _map[x, y] = newTile;
-                        }
-                    }
-                    //if (allPumpLocations.Contains(candidateCoord))
-                    //{
-                    //    Destroy(newTile.gameObject.GetComponent<Tile>());
-                    //    newTile.gameObject.AddComponent<PumpTile>();
-                    //    PumpTile pumpTile = newTile.GetComponent<PumpTile>();
-                    //    Ink pumpInk;
-                    //    if (data.PumpLocationsCyan.Contains(candidateCoord))
-                    //    {
-                    //        pumpInk = new Ink(Services.ColorManager.ColorScheme.GetColor(ColorMode.CYAN)[0], ColorMode.CYAN, int.MaxValue);
-                    //    }
-                    //    else if (data.PumpLocationsMagenta.Contains(candidateCoord))
-                    //    {
-                    //        pumpInk = new Ink(Services.ColorManager.ColorScheme.GetColor(ColorMode.MAGENTA)[0], ColorMode.MAGENTA, int.MaxValue);
-                    //    }
-                    //    else if (data.PumpLocationsYellow.Contains(candidateCoord))
-                    //    {
-                    //        pumpInk = new Ink(Services.ColorManager.ColorScheme.GetColor(ColorMode.YELLOW)[0], ColorMode.YELLOW, int.MaxValue);
-                    //    }
-                    //    else
-                    //    {
-                    //        pumpInk = new Ink(Services.ColorManager.ColorScheme.ErrorColor, ColorMode.BLACK, int.MaxValue);
-                    //    }
-
-                    //    pumpTile.Init(new MapCoord(x, y), pumpInk, canTraverse);
-                    //    newTile.name = newTile.name + " PUMP: " + pumpInk.colorMode;
-                    //    _map[x, y] = pumpTile;
-                    //}
-                    else
-                    {
-                        newTile.Init(new MapCoord(x, y), new Ink(canTraverse), canTraverse);
+                        newTile.Init(new Ink(canTraverse), canTraverse);
                         _map[x, y] = newTile;
+                        continue;
                     }
 
+                    Ink ink = new Ink();
+                    if (tileData.hasCustomInk)
+                    {
+                        ink = new Ink(tileData.ink.colorMode);
+                    }
+
+                    if (tileData.isPumpTile)
+                    {
+                        newTile.gameObject.AddComponent<PumpTile>();
+                        PumpTile pumpTile = newTile.GetComponent<PumpTile>();
+                        pumpTile.Init(newTile, ink, canTraverse);
+                        newTile.name = newTile.name + " | PUMP: " + ink.colorMode;
+                        _map[x, y] = pumpTile;
+                    }
+
+                    if (tileData.isPivotTile)
+                    {
+                        newTile.gameObject.AddComponent<PivotTile>();
+                        PivotTile pivotTile = newTile.GetComponent<PivotTile>();
+                        pivotTile.Init(newTile, ink, true, tileData.PivotDirection);
+                        newTile.name = newTile.name + " | PIVOT: " + tileData.PivotDirection.ToString();
+                        _map[x, y] = pivotTile;
+                    }
                 }
             }
         }
@@ -160,12 +130,6 @@ namespace GameData
         {
             return 0 <= candidateCoord.x && candidateCoord.x < Width &&
                     0 <= candidateCoord.y && candidateCoord.y < Height;
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            _tm.Update();
         }
     }
 }

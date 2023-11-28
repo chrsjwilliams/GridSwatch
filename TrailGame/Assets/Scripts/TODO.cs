@@ -11,7 +11,7 @@
  *   
  *  GAME:
  *  - add icon for pivot tile
- *  - refactor
+ *  - refactor  
  *  - paint bucket tile splashes color in all adjacent tiles
  *  - screen wrap tile
  *  - warp tiles

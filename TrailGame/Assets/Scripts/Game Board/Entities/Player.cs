@@ -16,14 +16,11 @@ public class Player : Entity
     public int fullIntensitySwipeCount;
     public int dimIntensitySwipeCount;
 
-    public bool receiveInput;
     public bool isMoving;
 
     [SerializeField] int swipeCount = 0;
 
     [SerializeField] List<Image> colorIndicators;
-
-    ColorMode prevColorMode;
 
     public override void Init(MapCoord c)
     {
@@ -41,20 +38,27 @@ public class Player : Entity
         CurrentColorMode = Ink.colorMode;
     }
 
+    public override void PivotDirection(Swipe.Direction d)
+    {
+        direction = d;
+    }
+
     private void OnDestroy()
     {
         Services.EventManager.Unregister<SwipeEvent>(OnSwipe);
     }
 
-    public void ResetIntensitySwipes()
+    public override void ResetIntensitySwipes()
     {
         Ink.Intensity = MAX_INTENSITY_LEVEL;
         fullIntensitySwipeCount = swipeCount = FULL_INTENSITY_SWIPES;
         dimIntensitySwipeCount = DIM_INTENSITY_SWIPES;
     }
 
-    void SetIndicators(Color color)
+    public override void SetIndicators(Color color)
     {
+        if (colorIndicators == null) return;
+
         foreach(var inidcator in colorIndicators)
         {
             inidcator.DOColor(color, 0.33f).SetEase(Ease.InCubic);
@@ -222,7 +226,6 @@ public class Player : Entity
 
         //isMoving = new Vector3((int)transform.position.x, (int)transform.position.y) == new Vector3(candidateCoord.x, candidateCoord.y);
     }
-    // Have a method that gives me the direction I should move!
 
     private bool CanTraverse(MapCoord candidateCoord)
     {
@@ -252,67 +255,48 @@ public class Player : Entity
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        Tile tile = collision.GetComponent<Tile>();
-        if (tile == null) return;
-        if (tile is PumpTile)
-        {
-            Ink = ((PumpTile)tile).tileInk;
-            CurrentColorMode = Ink.colorMode;
-            SetIndicators(Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0]);
-            ResetIntensitySwipes();
-            prevColorMode = CurrentColorMode;
-        }
-        else if(CurrentColorMode != ColorMode.NONE &&
-            dimIntensitySwipeCount > 0 &&
-            tile.canTraverse &&
-            (tile.CurrentColorMode == ColorMode.NONE ||
-            tile.CurrentColorMode == ColorMode.MAGENTA ||
-            tile.CurrentColorMode == ColorMode.YELLOW ||
-            tile.CurrentColorMode == ColorMode.CYAN))
-        {
-            Ink.color = GetColor();
-            tile.SetColor(Ink);
-        }
+        //Tile tile = collision.GetComponent<Tile>();
+        //if (tile == null) return;
+        //if (tile is PumpTile)
+        //{
+        //    Ink = ((PumpTile)tile).tileInk;
+        //    CurrentColorMode = Ink.colorMode;
+        //    SetIndicators(Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0]);
+        //    ResetIntensitySwipes();
+        //    PrevColorMode = CurrentColorMode;
+        //}
+        //else if(CurrentColorMode != ColorMode.NONE &&
+        //    dimIntensitySwipeCount > 0 &&
+        //    tile.canTraverse &&
+        //    (tile.CurrentColorMode == ColorMode.NONE ||
+        //    tile.CurrentColorMode == ColorMode.MAGENTA ||
+        //    tile.CurrentColorMode == ColorMode.YELLOW ||
+        //    tile.CurrentColorMode == ColorMode.CYAN))
+        //{
+        //    Ink.color = GetColor();
+        //    tile.SetColor(Ink);
+        //}
 
-        if (tile.pivotDirection == Swipe.Direction.NONE) return;
 
-        Action pivotAction = () => { direction = tile.pivotDirection; };
-
-        List<Action> afterMovementActions = new List<Action>();
-
-        afterMovementActions.Add(pivotAction);
-        StartCoroutine(TerrainActions(afterMovementActions));
-    }
-
-    IEnumerator TerrainActions(List<Action> actions)
-    {
-        receiveInput = false;
-        foreach (Action a in actions)
-        {
-            yield return new WaitForSeconds(0.2f);
-            a?.Invoke();
-        }
-
-        receiveInput = true;
     }
 
     public void OnTriggerExit2D(Collider2D collision)
     {
-        Tile tile = collision.GetComponent<Tile>();
-        if (tile == null) return;
-        if (tile is PumpTile) return;
-        if (prevColorMode != CurrentColorMode) return;
+        //Tile tile = collision.GetComponent<Tile>();
+        //if (tile == null) return;
+        //if (tile is PumpTile) return;
+        //if (PrevColorMode != CurrentColorMode) return;
 
-        if (CurrentColorMode != ColorMode.NONE &&
-            dimIntensitySwipeCount > 0 &&
-            tile.canTraverse &&
-            (tile.CurrentColorMode == ColorMode.GREEN ||
-            tile.CurrentColorMode == ColorMode.ORANGE ||
-            tile.CurrentColorMode == ColorMode.PURPLE))
-        {
-            Ink.color = GetColor();
-            tile.SetColor(Ink);
-        }
+        //if (CurrentColorMode != ColorMode.NONE &&
+        //    dimIntensitySwipeCount > 0 &&
+        //    tile.canTraverse &&
+        //    (tile.CurrentColorMode == ColorMode.GREEN ||
+        //    tile.CurrentColorMode == ColorMode.ORANGE ||
+        //    tile.CurrentColorMode == ColorMode.PURPLE))
+        //{
+        //    Ink.color = GetColor();
+        //    tile.SetColor(Ink);
+        //}
     }
 
 }

@@ -3,29 +3,20 @@ using DG.Tweening;
 
 namespace GameData
 {
-    public class PumpTile : Tile, IPivotTile
+    public class PumpTile : Tile
     {
         public ColorMode PumpColor;
 
-        private TaskManager _tm = new TaskManager();
 
-        Swipe.Direction IPivotTile.Direction
+        public void Init(Tile tile, Ink initInk, bool _canTraverse = true)
         {
-            get => pivotDirection;
-            set => pivotDirection = value;
-        }
-        public Swipe.Direction pivotDirection;
-
-        public override void Init(MapCoord c, Ink initInk, bool _canTraverse = true)
-        {
-            coord = c;
             canTraverse = _canTraverse;
             PumpColor = initInk.colorMode;
-            sr = GetComponent<SpriteRenderer>();
+            sr = tile.Sprite;
             tileInk = initInk;
             //SetColor(initInk);
 
-            pumpIndicator = GetComponentsInChildren<SpriteRenderer>()[1];
+            pumpIndicator = tile.PumpIndicator;
 
             sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
             pumpIndicator.DOColor(tileInk.color, 0.0f).SetEase(Ease.InCubic);
@@ -35,10 +26,18 @@ namespace GameData
         {
         }
 
-        // Update is called once per frame
-        void Update()
+        protected override void TriggerEnterEffect(Entity entity)
         {
-            _tm.Update();
+            entity.Ink = tileInk;
+            entity.CurrentColorMode = PumpColor;
+            entity.SetIndicators(Services.ColorManager.ColorScheme.GetColor(PumpColor)[0]);
+            entity.ResetIntensitySwipes();
+            entity.PrevColorMode = PumpColor;
+        }
+
+        protected override void TriggerExitEffect(Entity entity)
+        {
+
         }
     }
 }

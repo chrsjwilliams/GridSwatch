@@ -48,6 +48,8 @@ public class Swipe : MonoBehaviour
 
     private void Update()
     {
+
+
         tap = swipeLeft = swipeRight = swipeDown = swipeUp = false;
 
         #region Standalone Inputs
