@@ -137,6 +137,10 @@ namespace GameScreen
             if (!player.isMoving && uIController.IsGoalMet())
             {
                 finished = true;
+                MapData.finished = true;
+                PlayerPrefs.SetInt(MapData.name, Convert.ToInt32(finished));
+                PlayerPrefs.Save();
+                Debug.Log("SAVE PLAYER PREFS " + MapData.name);
             }
         }
     }

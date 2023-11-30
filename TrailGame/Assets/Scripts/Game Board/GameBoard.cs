@@ -41,14 +41,8 @@ namespace GameData
             _map = new Tile[Width, Height];
             _boardType = data.BoardType;
 
-            List<Vector2> allPumpLocations = new List<Vector2>();
-            allPumpLocations.AddRange(data.PumpLocationsCyan);
-            allPumpLocations.AddRange(data.PumpLocationsMagenta);
-            allPumpLocations.AddRange(data.PumpLocationsYellow);
 
-
-
-            _emptyTileCount = (Width * Height) - (allPumpLocations.Count + data.ImpassableMapCoords.Count);
+            _emptyTileCount = (Width * Height) - (data.tileData.Count + data.ImpassableMapCoords.Count);
 
             bool canTraverse;
             for (int x = 0; x < Width; x++)

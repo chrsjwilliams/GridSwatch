@@ -7,7 +7,7 @@ using DG.Tweening;
 
 public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-
+    public bool canPerfromAction = true;
     [SerializeField] Transform targetTransform;
     [SerializeField] float holdScale;
     [SerializeField] float pauseTime;
@@ -51,6 +51,8 @@ public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     private void Update()
     {
+        if (!canPerfromAction) return;
+
         filledImage.fillAmount = timeHeld / pauseTime;
         if (pressed)
         {

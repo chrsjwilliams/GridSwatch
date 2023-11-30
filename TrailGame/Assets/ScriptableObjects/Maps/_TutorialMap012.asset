@@ -15,9 +15,6 @@ MonoBehaviour:
   mapName: Tutorial Map 12
   BoardType: 0
   BoardSize: {x: 7, y: 9}
-  UseMagenta: 1
-  UseCyan: 1
-  UseYellow: 0
   ImpassableMapCoords:
   - {x: 0, y: 0}
   - {x: 1, y: 0}
@@ -56,3 +53,60 @@ MonoBehaviour:
     amount: 8
   - colorMode: 5
     amount: 10
+  tileData:
+  - coord: {x: 0, y: 4}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 6, y: 2}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 5, y: 6}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 2, y: 1}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 5, y: 1}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 6, y: 4}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 3, y: 8}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0

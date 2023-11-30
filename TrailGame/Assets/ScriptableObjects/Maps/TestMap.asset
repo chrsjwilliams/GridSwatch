@@ -15,9 +15,6 @@ MonoBehaviour:
   mapName: Test Map
   BoardType: 1
   BoardSize: {x: 10, y: 15}
-  UseMagenta: 1
-  UseCyan: 1
-  UseYellow: 1
   ImpassableMapCoords:
   - {x: 3, y: 3}
   - {x: 4, y: 4}
@@ -50,3 +47,52 @@ MonoBehaviour:
     amount: 10
   - colorMode: 3
     amount: 5
+  tileData:
+  - coord: {x: 0, y: 10}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 2
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 9, y: 2}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 7, y: 14}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 9, y: 7}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 5, y: 0}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 8, y: 13}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0

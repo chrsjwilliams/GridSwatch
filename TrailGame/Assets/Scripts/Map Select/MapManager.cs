@@ -37,6 +37,7 @@ public class MapManager : MonoBehaviour
                 {
                     if (!loadedMaps.Contains(loaderOp.Result))
                     {
+
                         loadedMaps.Add(loaderOp.Result);
                     }
 

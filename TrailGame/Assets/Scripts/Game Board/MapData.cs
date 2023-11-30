@@ -8,24 +8,20 @@ namespace GameData
     [CreateAssetMenu(fileName = "MapData", menuName = "ScriptableObjects/MapData", order = 1)]
     public class MapData : ScriptableObject
     {
+        public bool finished;
         public string mapName;
+        [TextArea] public string MapGoal;
         public GameBoard.ColorType BoardType;
         public Vector2 BoardSize;
 
-        public List<Vector2> ImpassableMapCoords;
-
         public Vector2 PlayerStartPos;
-
-        public List<Vector2> PumpLocationsMagenta;
-        public List<Vector2> PumpLocationsCyan;
-        public List<Vector2> PumpLocationsYellow;
+        public List<Vector2> ImpassableMapCoords;
+        public List<TileData> tileData;
 
 
-        public string MapGoal;
 
         public List<ColorGoal> colorGoals;
 
-        public List<TileData> tileData;
 
         [System.Serializable]
         public struct ColorGoal

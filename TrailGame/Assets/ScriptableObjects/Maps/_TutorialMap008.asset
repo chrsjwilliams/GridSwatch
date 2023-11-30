@@ -15,9 +15,6 @@ MonoBehaviour:
   mapName: Tutorial Map 8
   BoardType: 0
   BoardSize: {x: 7, y: 7}
-  UseMagenta: 1
-  UseCyan: 1
-  UseYellow: 0
   ImpassableMapCoords:
   - {x: 1, y: 2}
   - {x: 1, y: 5}
@@ -45,3 +42,44 @@ MonoBehaviour:
     amount: 14
   - colorMode: 1
     amount: 7
+  tileData:
+  - coord: {x: 2, y: 4}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 2
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 5, y: 4}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 2
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 6, y: 1}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 2
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 1, y: 1}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+  - coord: {x: 3, y: 1}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0

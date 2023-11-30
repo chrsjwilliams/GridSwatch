@@ -10,7 +10,6 @@ namespace GameData
 
         public void Init(Tile tile, Ink ink, bool _canTraverse, Swipe.Direction pivotDirection)
         {
-            tileInk = ink;
             canTraverse = _canTraverse;
             _pivotDirection = pivotDirection;
             pivotUp = tile.PivotUp;
@@ -19,8 +18,7 @@ namespace GameData
             pivotRight = tile.PivotRight;
             sr = tile.Sprite;
 
-            Debug.Log("CAN TRAVERSE PIVOT: " + canTraverse);
-
+            SetColor(ink, isInit: true);
             switch (PivotDirection)
             {
                 case Swipe.Direction.UP:
@@ -59,7 +57,7 @@ namespace GameData
 
         public override void SetColor(Ink ink, bool isInit = false)
         {
-            base.SetColor(ink, isInit);
+            //Debug.Log("INK: " + ink.color);
 
             switch (PivotDirection)
             {
@@ -95,6 +93,8 @@ namespace GameData
                     pivotRight.color = Color.clear;
                     break;
             }
+
+            base.SetColor(ink, isInit);
         }
 
         IEnumerator Pivot(Entity entity)

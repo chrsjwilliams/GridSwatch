@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using GameData;
@@ -16,7 +17,9 @@ public class MapSelectSceneScript : Scene<TransitionData>
         foreach(MapData mapData in Services.MapManager.Maps)
         {
             MapButton mapButton = Instantiate(_mapButtonPrefab, _mapContent);
-            mapButton.Init(mapData, MapButton.MapStatus.NOT_COMPLETED);
+            bool finished = Convert.ToBoolean(PlayerPrefs.GetInt(mapData.name));
+            MapButton.MapStatus status = finished ? MapButton.MapStatus.COMPLETED : MapButton.MapStatus.NOT_COMPLETED;
+            mapButton.Init(mapData, status);
             mapButton.Pressed += OnMapSelected;
         }
 

@@ -16,11 +16,11 @@ public class MapButton : MonoBehaviour
     public MapData MapData { get; private set; }
     public MapStatus Status { get; private set; }
 
+    [SerializeField] private PressAndHoldButton _button;
     [SerializeField] private TextMeshProUGUI _mapName;
     [SerializeField] private Image _mapIcon;
     [SerializeField] private Sprite _locked;
     [SerializeField] private Sprite _completed;
-    [SerializeField] private Button _mapButton;
 
     public Action<MapData> Pressed;
 
@@ -36,23 +36,24 @@ public class MapButton : MonoBehaviour
     {
         if (Status == MapStatus.LOCKED)
         {
-            _mapButton.interactable = false;
             _mapIcon.sprite = _locked;
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
             _mapIcon.raycastTarget = true;
+            _button.canPerfromAction = false;
         }
         else if (Status == MapStatus.NOT_COMPLETED)
         {
-            _mapButton.interactable = true;
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0f);
             _mapIcon.raycastTarget = false;
+            _button.canPerfromAction = true;
+
         }
         else
         {
-            _mapButton.interactable = true;
             _mapIcon.sprite = _completed;
-            _mapIcon.color = Color.white;
+            _mapIcon.color = Services.ColorManager.GetColor(ColorMode.GREEN);
             _mapIcon.raycastTarget = false;
+            _button.canPerfromAction = true;
         }
     }
     

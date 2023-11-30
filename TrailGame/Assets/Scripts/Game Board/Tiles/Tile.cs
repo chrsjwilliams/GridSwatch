@@ -74,8 +74,16 @@ namespace GameData
                 CurrentColorMode = tileInk.colorMode;
 
             }
+            else
+            {
+                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
+                    Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
-            if(CurrentColorMode == ColorMode.BLACK)
+                CurrentColorMode = tileInk.colorMode;
+            }
+
+            if (CurrentColorMode == ColorMode.BLACK)
             {
                 canTraverse = false;
             }
@@ -84,6 +92,7 @@ namespace GameData
         public bool CanOverwriteColor(Ink newInk)
         {
             return  //  Tile has no color
+                    (tileInk == null) ||
                     (tileInk.colorMode == ColorMode.NONE) ||
                     //  Tile is not Black Color
                     ((tileInk.colorMode != ColorMode.BLACK) &&
