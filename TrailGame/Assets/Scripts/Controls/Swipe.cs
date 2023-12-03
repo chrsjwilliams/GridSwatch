@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Direction { NONE = 0, LEFT, RIGHT, DOWN, UP };
+
 public class Swipe : MonoBehaviour
 {
-    public enum Direction { NONE = 0, LEFT, RIGHT, DOWN, UP };
 
     private int currentMovementIndex = -1;
     private Direction[] movementArray = {   Direction.LEFT, Direction.RIGHT,

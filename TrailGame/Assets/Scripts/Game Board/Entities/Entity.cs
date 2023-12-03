@@ -7,7 +7,10 @@ public abstract class Entity : MonoBehaviour
 
     [SerializeField]
     protected Swipe swipe;
-    public Swipe.Direction direction { get; protected set; }
+    public Direction direction { get; set; }
+
+    [SerializeField]
+    protected SpriteRenderer Sprite;
 
     public float moveSpeed { get; protected set; }
     public float arriveSpeed { get; protected set; }
@@ -17,12 +20,12 @@ public abstract class Entity : MonoBehaviour
     public ColorMode CurrentColorMode { get; set; }
 
     public bool receiveInput { get; set; }
-    public bool canMove { get; protected set; }
-    public MapCoord coord { get; protected set; }
+    public bool canMove { get; set; }
+    public MapCoord coord { get; set; }
     public abstract void Init(MapCoord c);
-    public abstract void PivotDirection(Swipe.Direction d);
+    public abstract void PivotDirection(Direction d);
     public abstract void SetIndicators(Color c);
     public abstract void ResetIntensitySwipes();
-
+    public abstract void Show(bool show);
 
 }

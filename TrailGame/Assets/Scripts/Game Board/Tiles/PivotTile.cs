@@ -5,10 +5,10 @@ namespace GameData
 {
     public class PivotTile : Tile
     {
-        [SerializeField] Swipe.Direction _pivotDirection;
-        public Swipe.Direction PivotDirection { get { return _pivotDirection; } }
+        [SerializeField] Direction _pivotDirection;
+        public Direction PivotDirection { get { return _pivotDirection; } }
 
-        public void Init(Tile tile, Ink ink, bool _canTraverse, Swipe.Direction pivotDirection)
+        public void Init(Tile tile, Ink ink, bool _canTraverse, Direction pivotDirection)
         {
             canTraverse = _canTraverse;
             _pivotDirection = pivotDirection;
@@ -21,26 +21,26 @@ namespace GameData
             SetColor(ink, isInit: true);
             switch (PivotDirection)
             {
-                case Swipe.Direction.UP:
+                case Direction.UP:
                     pivotUp.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
                     pivotDown.color = Color.clear; 
                     pivotLeft.color = Color.clear;  
                     pivotRight.color = Color.clear;
 
                     break;
-                case Swipe.Direction.DOWN:
+                case Direction.DOWN:
                     pivotUp.color = Color.clear;
                     pivotDown.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
                     pivotLeft.color = Color.clear;
                     pivotRight.color = Color.clear;
                     break;
-                case Swipe.Direction.LEFT:
+                case Direction.LEFT:
                     pivotUp.color = Color.clear;
                     pivotDown.color =  Color.clear;
                     pivotLeft.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
                     pivotRight.color = Color.clear;
                     break;
-                case Swipe.Direction.RIGHT:
+                case Direction.RIGHT:
                     pivotUp.color = Color.clear;
                     pivotDown.color = Color.clear;
                     pivotLeft.color = Color.clear;
@@ -57,30 +57,28 @@ namespace GameData
 
         public override void SetColor(Ink ink, bool isInit = false)
         {
-            //Debug.Log("INK: " + ink.color);
-
             switch (PivotDirection)
             {
-                case Swipe.Direction.UP:
+                case Direction.UP:
                     pivotUp.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
                     pivotDown.color = Color.clear;
                     pivotLeft.color = Color.clear;
                     pivotRight.color = Color.clear;
 
                     break;
-                case Swipe.Direction.DOWN:
+                case Direction.DOWN:
                     pivotUp.color = Color.clear;
                     pivotDown.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
                     pivotLeft.color = Color.clear;
                     pivotRight.color = Color.clear;
                     break;
-                case Swipe.Direction.LEFT:
+                case Direction.LEFT:
                     pivotUp.color = Color.clear;
                     pivotDown.color = Color.clear;
                     pivotLeft.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
                     pivotRight.color = Color.clear;
                     break;
-                case Swipe.Direction.RIGHT:
+                case Direction.RIGHT:
                     pivotUp.color = Color.clear;
                     pivotDown.color = Color.clear;
                     pivotLeft.color = Color.clear;

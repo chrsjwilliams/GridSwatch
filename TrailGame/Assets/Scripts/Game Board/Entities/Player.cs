@@ -19,7 +19,7 @@ public class Player : Entity
     public bool isMoving;
 
     [SerializeField] int swipeCount = 0;
-
+    [SerializeField] CanvasGroup indicatorGroup;
     [SerializeField] List<Image> colorIndicators;
 
     public override void Init(MapCoord c)
@@ -30,7 +30,7 @@ public class Player : Entity
         canMove = true;
         coord = c;
         SetPosition(coord);
-        direction = Swipe.Direction.NONE;
+        direction = Direction.NONE;
         Services.EventManager.Register<SwipeEvent>(OnSwipe);
         moveSpeed = 2;
         arriveSpeed = 1;
@@ -38,7 +38,7 @@ public class Player : Entity
         CurrentColorMode = Ink.colorMode;
     }
 
-    public override void PivotDirection(Swipe.Direction d)
+    public override void PivotDirection(Direction d)
     {
         direction = d;
     }
@@ -46,6 +46,12 @@ public class Player : Entity
     private void OnDestroy()
     {
         Services.EventManager.Unregister<SwipeEvent>(OnSwipe);
+    }
+
+    public override void Show(bool show)
+    {
+        Sprite.color = show ? Color.black : Color.clear;
+        indicatorGroup.alpha = show ? 1 : 0;
     }
 
     public override void ResetIntensitySwipes()
@@ -131,23 +137,23 @@ public class Player : Entity
 
     }
 
-    protected void Move(Swipe.Direction dir)
+    public void Move(Direction dir)
     {
-        if(dir == Swipe.Direction.NONE) return;
+        if(dir == Direction.NONE) return;
 
         MapCoord deltaPos;
         switch(dir)
         {
-            case Swipe.Direction.LEFT:
+            case Direction.LEFT:
                 deltaPos = MapCoord.LEFT;
                 break;
-            case Swipe.Direction.RIGHT:
+            case Direction.RIGHT:
                 deltaPos = MapCoord.RIGHT;
                 break;
-            case Swipe.Direction.UP:
+            case Direction.UP:
                 deltaPos = MapCoord.UP;
                 break;
-            case Swipe.Direction.DOWN:
+            case Direction.DOWN:
                 deltaPos = MapCoord.DOWN;
                 break;
             default:
@@ -181,8 +187,8 @@ public class Player : Entity
         }
         else
         {
-            float xArriveMod = direction == Swipe.Direction.LEFT ? 15f : 1;
-            float yArriveMod = direction == Swipe.Direction.DOWN ? 15f : 1f;
+            float xArriveMod = direction == Direction.LEFT ? 15f : 1;
+            float yArriveMod = direction == Direction.DOWN ? 15f : 1f;
 
 
             float xPos = Mathf.Lerp(transform.position.x,(int)transform.position.x, Time.deltaTime * arriveSpeed * xArriveMod);
@@ -191,23 +197,23 @@ public class Player : Entity
 
             switch(dir)
             {
-                case Swipe.Direction.LEFT:
+                case Direction.LEFT:
                     if(xPos < Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.position.x){
                         xPos = Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.position.x;
                     }
                 break;
-            case Swipe.Direction.RIGHT:
+            case Direction.RIGHT:
                 if(xPos > Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.position.x){
                         xPos = Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.position.x;
                     }
                 break;
-            case Swipe.Direction.UP:
+            case Direction.UP:
                 if(yPos > Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.position.y){
                         yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.position.y;
                     }
                 
                 break;
-            case Swipe.Direction.DOWN:
+            case Direction.DOWN:
                 if(yPos < Services.Board.Map[candidateCoord.x,  candidateCoord.y + 1].transform.position.y){
                         yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y + 1].transform.position.y;
                     }
@@ -246,11 +252,11 @@ public class Player : Entity
 
     public bool AxisSwipeChange(SwipeEvent e)
     {
-        return ((direction == Swipe.Direction.LEFT || direction == Swipe.Direction.RIGHT) &&
-                (e.gesture.CurrentDirection == Swipe.Direction.UP || e.gesture.CurrentDirection == Swipe.Direction.DOWN)) ||
-               ((direction == Swipe.Direction.UP || direction == Swipe.Direction.DOWN) &&
-                (e.gesture.CurrentDirection == Swipe.Direction.LEFT || e.gesture.CurrentDirection == Swipe.Direction.RIGHT)) ||
-                (direction == Swipe.Direction.NONE &&e.gesture.CurrentDirection != Swipe.Direction.NONE);
+        return ((direction == Direction.LEFT || direction == Direction.RIGHT) &&
+                (e.gesture.CurrentDirection == Direction.UP || e.gesture.CurrentDirection == Direction.DOWN)) ||
+               ((direction == Direction.UP || direction == Direction.DOWN) &&
+                (e.gesture.CurrentDirection == Direction.LEFT || e.gesture.CurrentDirection == Direction.RIGHT)) ||
+                (direction == Direction.NONE &&e.gesture.CurrentDirection != Direction.NONE);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)

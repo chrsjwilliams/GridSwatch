@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
   m_Name: _TutorialMap001
   m_EditorClassIdentifier: 
+  finished: 1
   mapName: Tutorial Map 1
   MapGoal: 
   BoardType: 0
-  BoardSize: {x: 3, y: 3}
+  BoardSize: {x: 5, y: 3}
   PlayerStartPos: {x: 0, y: 0}
   ImpassableMapCoords:
   - {x: 2, y: 2}
@@ -28,6 +29,8 @@ MonoBehaviour:
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
   colorGoals:
   - colorMode: 2
     amount: 5

@@ -65,8 +65,10 @@ namespace GameData
 
         public bool isPivotTile;
         [ShowIf("isPivotTile")]
-        public Swipe.Direction PivotDirection;
-        
+        public Direction PivotDirection;
 
+        public bool isWrapTile;
+        [ShowIf("isWrapTile")]
+        public Direction WrapDirection;
     }
 }

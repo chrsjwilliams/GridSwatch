@@ -23,6 +23,8 @@ namespace GameData
         public SpriteRenderer PivotLeft { get { return pivotLeft; } }
         [SerializeField] protected SpriteRenderer pivotRight;
         public SpriteRenderer PivotRight { get { return pivotRight; } }
+        [SerializeField] protected SpriteRenderer wrapArrow;
+        public SpriteRenderer WrapArrow { get { return wrapArrow; } }
 
 
         public virtual void Init(Ink initInk, bool _canTraverse = true)
@@ -30,7 +32,7 @@ namespace GameData
             canTraverse = _canTraverse;
             sr = GetComponent<SpriteRenderer>();
             sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
-            tileInk = new Ink();
+            tileInk = initInk;
             SetColor(initInk, true);
         }
 

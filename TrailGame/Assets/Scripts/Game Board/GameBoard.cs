@@ -69,7 +69,7 @@ namespace GameData
                         continue;
                     }
 
-                    Ink ink = new Ink();
+                    Ink ink = new Ink(canTraverse: true);
                     if (tileData.hasCustomInk)
                     {
                         ink = new Ink(tileData.ink.colorMode);
@@ -91,6 +91,15 @@ namespace GameData
                         pivotTile.Init(newTile, ink, true, tileData.PivotDirection);
                         newTile.name = newTile.name + " | PIVOT: " + tileData.PivotDirection.ToString();
                         _map[x, y] = pivotTile;
+                    }
+
+                    if(tileData.isWrapTile)
+                    {
+                        newTile.gameObject.AddComponent<WrapTile>();
+                        WrapTile wrapTile = newTile.GetComponent<WrapTile>();
+                        wrapTile.Init(newTile, ink, tileData.WrapDirection);
+                        newTile.name = newTile.name + " | WRAP: " + tileData.WrapDirection.ToString();
+                        _map[x, y] = wrapTile;
                     }
                 }
             }
