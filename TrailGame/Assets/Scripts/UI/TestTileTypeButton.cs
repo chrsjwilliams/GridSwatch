@@ -15,6 +15,9 @@ public class TestTileTypeButton : MonoBehaviour
     {
         showingNormalMaps = true;
         buttonText.text = "Test Tile Type";
+
+        normalMapsGroup.ShowGroup(true);
+        tileTypeTestGroup.ShowGroup(false);
     }
 
     public void OnPressed()
