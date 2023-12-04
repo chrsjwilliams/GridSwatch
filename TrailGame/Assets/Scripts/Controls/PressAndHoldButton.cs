@@ -38,14 +38,15 @@ public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        targetTransform.DOScale(1f, scaleTime).SetEase(Ease.OutExpo);
         ReturnToNeutral();
     }
+
 
 
     private void ReturnToNeutral()
     {
         pressed = false;
+        targetTransform.DOScale(1f, scaleTime).SetEase(Ease.OutExpo);
         targetTransform.localScale = Vector3.one;
     }
 
@@ -60,6 +61,8 @@ public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUp
             if (timeHeld >= pauseTime)
             {
                 OnComplete?.Invoke();
+                timeHeld = 0;
+                ReturnToNeutral();
             }
         }
         else
