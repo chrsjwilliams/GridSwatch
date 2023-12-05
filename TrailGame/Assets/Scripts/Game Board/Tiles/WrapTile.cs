@@ -44,7 +44,10 @@ namespace GameData
             // up = 90
             // left = 180
             // down 270
-            SetColor(ink, isInit: true);
+            if (!IsPump())
+            {
+                SetColor(ink, isInit: true);
+            }
             switch (direction)
             {
                 case Direction.RIGHT:
@@ -66,6 +69,8 @@ namespace GameData
 
         public override void SetColor(Ink ink, bool isInit = false)
         {
+            if (IsPump()) return;
+
             base.SetColor(ink, isInit);
             wrapArrow.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
         }

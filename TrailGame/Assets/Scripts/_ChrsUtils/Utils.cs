@@ -38,4 +38,9 @@ public static class Utils
         group.enabled = false;
         group.enabled = true;
     }
+
+    public static bool CoordsOverlap(this Vector3 v1, Vector3 v2)
+    {
+        return v1.x == v2.x && v1.y == v2.y;
+    }
 }

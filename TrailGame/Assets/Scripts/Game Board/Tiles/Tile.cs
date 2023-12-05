@@ -38,6 +38,8 @@ namespace GameData
 
         public void SetTraversal(bool b) { canTraverse = b; }
 
+        public bool IsPump() { return null != GetComponent<PumpTile>(); }
+
         public virtual void SetColor(Ink ink, bool isInit = false)
         {
             if (isInit)

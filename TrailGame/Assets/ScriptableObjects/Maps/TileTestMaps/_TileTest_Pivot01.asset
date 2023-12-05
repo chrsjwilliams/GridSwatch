@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
+  m_Name: _TileTest_Pivot01
+  m_EditorClassIdentifier: 
+  finished: 1
+  mapName: Pivot Map 02
+  MapGoal: 
+  BoardType: 0
+  BoardSize: {x: 5, y: 7}
+  PlayerStartPos: {x: 2, y: 5}
+  ImpassableMapCoords:
+  - {x: 4, y: 0}
+  - {x: 2, y: 1}
+  - {x: 4, y: 6}
+  tileData:
+  - coord: {x: 0, y: 0}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 1
+    PivotDirection: 4
+    isWrapTile: 0
+    WrapDirection: 0
+  - coord: {x: 0, y: 3}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+  - coord: {x: 2, y: 3}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 1
+    PivotDirection: 2
+    isWrapTile: 0
+    WrapDirection: 0
+  - coord: {x: 4, y: 3}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 1
+    PivotDirection: 3
+    isWrapTile: 0
+    WrapDirection: 0
+  - coord: {x: 0, y: 5}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 1
+    PivotDirection: 2
+    isWrapTile: 0
+    WrapDirection: 0
+  - coord: {x: 0, y: 6}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 1
+    PivotDirection: 3
+    isWrapTile: 0
+    WrapDirection: 0
+  - coord: {x: 3, y: 6}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+  colorGoals:
+  - colorMode: 1
+    amount: 10
+  - colorMode: 3
+    amount: 2
+  - colorMode: 5
+    amount: 8

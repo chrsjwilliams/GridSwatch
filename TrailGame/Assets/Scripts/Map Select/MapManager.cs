@@ -21,7 +21,9 @@ public class MapManager : MonoBehaviour
 
     public void Init()
     {
-        LoadMapsAddressables(() => { Debug.Log("Finished Loading"); });
+        LoadMapsAddressables(() => { Debug.Log("Finished Loading Normal Maps"); });
+        LoadTileTestMapsAddressables(() => { Debug.Log("Finished Loading Tile Test Maps"); });
+
     }
 
     public void LoadMapsAddressables(Action callback)

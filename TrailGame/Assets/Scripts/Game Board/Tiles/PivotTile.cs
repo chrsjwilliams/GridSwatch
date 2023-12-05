@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using DG.Tweening;
 
 namespace GameData
 {
@@ -18,7 +19,10 @@ namespace GameData
             pivotRight = tile.PivotRight;
             sr = tile.Sprite;
 
-            SetColor(ink, isInit: true);
+            if (!IsPump())
+            {
+                SetColor(ink, isInit: true);
+            }
             switch (PivotDirection)
             {
                 case Direction.UP:
@@ -57,6 +61,8 @@ namespace GameData
 
         public override void SetColor(Ink ink, bool isInit = false)
         {
+            if (IsPump()) return;
+
             switch (PivotDirection)
             {
                 case Direction.UP:
@@ -97,7 +103,9 @@ namespace GameData
 
         IEnumerator Pivot(Entity entity)
         {
+            entity.transform.DOLocalMove(new Vector3(transform.localPosition.x, transform.localPosition.y, entity.transform.localPosition.z), 0.1f);
             entity.receiveInput = false;
+            entity.direction = Direction.NONE;
             yield return new WaitForSeconds(0.2f);
             entity.PivotDirection(PivotDirection);
             entity.receiveInput = true;
