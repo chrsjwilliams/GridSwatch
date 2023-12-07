@@ -215,12 +215,12 @@ namespace GameData
             if (WrapDirection == Direction.LEFT || WrapDirection == Direction.RIGHT)
             {
                 isHorizontal = true;
-                mapBound = Services.Board.Width - 1;
+                mapBound = Services.Board.Width;
                 currIndex = xPos;
             }
             else if (WrapDirection == Direction.UP || WrapDirection == Direction.DOWN)
             {
-                mapBound = Services.Board.Height - 1;
+                mapBound = Services.Board.Height;
                 currIndex = yPos;
             }
 

@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
+  m_Name: _TileTest_Wrap02
+  m_EditorClassIdentifier: 
+  finished: 1
+  mapName: Wrap Map 2
+  MapGoal: 
+  BoardType: 0
+  BoardSize: {x: 11, y: 2}
+  PlayerStartPos: {x: 5, y: 1}
+  ImpassableMapCoords:
+  - {x: 1, y: 0}
+  - {x: 1, y: 1}
+  - {x: 2, y: 1}
+  - {x: 9, y: 0}
+  - {x: 9, y: 1}
+  - {x: 8, y: 1}
+  tileData:
+  - coord: {x: 0, y: 1}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 1
+    WrapDirection: 2
+  - coord: {x: 10, y: 1}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 1
+    WrapDirection: 1
+  - coord: {x: 2, y: 0}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 1
+    WrapDirection: 1
+  - coord: {x: 8, y: 0}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 1
+    WrapDirection: 2
+  - coord: {x: 7, y: 0}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+  colorGoals:
+  - colorMode: 3
+    amount: 6
+  - colorMode: 5
+    amount: 5

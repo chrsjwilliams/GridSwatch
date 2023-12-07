@@ -100,6 +100,12 @@ public class Player : Entity
 
     protected void OnSwipe(SwipeEvent e)
     {
+        if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
+        {
+            UseInidcator(swipeCount - 1);
+            swipeCount--;
+        }
+
         if (!receiveInput) return;
         // removing axis swipe becase it breaks marker mode
         // if i wnt levels of color i need to be able to detect when i move orthonogally(?)
@@ -127,11 +133,7 @@ public class Player : Entity
             CurrentColorMode = ColorMode.NONE;
             swipeCount = 0;
         }
-        if (CurrentColorMode != ColorMode.NONE)
-        {
-            UseInidcator(swipeCount - 1);
-            swipeCount--;
-        }
+        
 
         direction = e.gesture.CurrentDirection;
 
