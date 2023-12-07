@@ -75,7 +75,6 @@ namespace GameData
             wrapArrow.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
         }
 
-        // ~TODO: CLEAN THIS CHAIN OF FUNCTIONS UP PLEASE
         IEnumerator Wrap(Entity entity)
         {
             entity.receiveInput = false;
@@ -84,114 +83,103 @@ namespace GameData
             Vector2 _wrapPos = FindWrapPosition();
             yield return new WaitForSeconds(0.2f);
 
-            TweenCallback setPos = ()=>
-            {
-                switch (WrapDirection)
-                {
-                    case Direction.LEFT:
-                        entity.transform.DOLocalMoveX(_wrapPos.x, 0.5f)
-                        .OnStart(()=> {
-                            entity.Show(true);
-                        })
-                        .SetDelay(0.2f)
-                        .OnComplete(() => {
-                            entity.coord = new MapCoord(_wrapPos.x, _wrapPos.y);
-                            entity.receiveInput = true;
-                            entity.canMove = true;
-                            if (entity is Player)
-                            {
-                                ((Player)entity).Move(WrapDirection);
-                            }
-                        });
-                        break;
-                    case Direction.RIGHT:
-                        entity.transform.DOLocalMoveX(_wrapPos.x, 0.5f)
-                        .OnStart(() => {
-                            entity.Show(true);
-                        })
-                        .SetDelay(0.2f)
-                        .OnComplete(() => {
-                            entity.coord = new MapCoord(_wrapPos.x, _wrapPos.y);
-                            entity.receiveInput = true;
-                            entity.canMove = true;
-                            if (entity is Player)
-                            {
-                                ((Player)entity).Move(WrapDirection);
-                            }
-                        });
-                        break;
-                    case Direction.DOWN:
-                        entity.transform.DOLocalMoveY(_wrapPos.y, 0.5f)
-                        .OnStart(() => {
-                            entity.Show(true);
-                        })
-                        .SetDelay(0.2f)
-                        .OnComplete(() => {
-                            entity.coord = new MapCoord(_wrapPos.x, _wrapPos.y);
-                            entity.receiveInput = true;
-                            entity.canMove = true;
-                            if (entity is Player)
-                            {
-                                ((Player)entity).Move(WrapDirection);
-                            }
-                        });
-                        break;
-                    case Direction.UP:
-                        entity.transform.DOLocalMoveY(_wrapPos.y, 0.5f)
-                        .OnStart(() => {
-                            entity.Show(true);
-                        })
-                        .SetDelay(0.2f)
-                        .OnComplete(() => {
-                            entity.coord = new MapCoord(_wrapPos.x, _wrapPos.y);
-                            entity.receiveInput = true;
-                            entity.canMove = true;
-                            if (entity is Player)
-                            {
-                                ((Player)entity).Move(WrapDirection);
-                            }
-                        });
-                        break;
-                }
-
-                
-            };
-
+            // Moves entity offscreen
             switch (WrapDirection)
             {
                 case Direction.LEFT:
                     entity.transform.DOLocalMoveX(transform.position.x - 1, 0.2f)
-                        .OnComplete(()=>
+                        .OnComplete(() =>
                         {
-                            entity.Show(false);
-                            entity.transform.position = new Vector3(_wrapPos.x + 1, _wrapPos.y, entity.transform.position.z);
-                            setPos();
+                            PerformWrapTween(entity, _wrapPos);
                         });
                     break;
                 case Direction.RIGHT:
-                    entity.transform.DOLocalMoveX(transform.position.x + 1, 0.2f).OnComplete(() =>
-                    {
-                        entity.Show(false);
-                        entity.transform.position = new Vector3(_wrapPos.x - 1, _wrapPos.y, entity.transform.position.z);
-                        setPos();
+                    entity.transform.DOLocalMoveX(transform.position.x + 1, 0.2f)
+                        .OnComplete(() =>
+                        {
+                            PerformWrapTween(entity, _wrapPos);
+                        });
+                    break;
+                case Direction.DOWN:
+                    entity.transform.DOLocalMoveY(transform.position.y - 1, 0.2f)
+                        .OnComplete(() =>
+                        {
+                            PerformWrapTween(entity, _wrapPos);
+                        });
+                    break;
+                case Direction.UP:
+                    entity.transform.DOLocalMoveY(transform.position.y + 1, 0.2f)
+                        .OnComplete(() =>
+                        {
+                            PerformWrapTween(entity, _wrapPos);
+                        });
+                    break;
+            }
+        }
+
+        private void PerformWrapTween(Entity e, Vector3 wrapPos)
+        {
+            e.Show(false);
+            switch (WrapDirection)
+            {
+                case Direction.LEFT:
+                    e.transform.position = new Vector3(wrapPos.x + 1, wrapPos.y, e.transform.position.z);
+                    e.transform.DOLocalMoveX(wrapPos.x, 0.5f)
+                    .OnStart(() => {
+                        e.Show(true);
+                    })
+                    .SetDelay(0.2f)
+                    .OnComplete(() => {
+                        ContinuePlayerMovement(e, wrapPos);
+                    });
+                    break;
+                case Direction.RIGHT:
+                    e.transform.position = new Vector3(wrapPos.x - 1, wrapPos.y, e.transform.position.z);
+                    e.transform.DOLocalMoveX(wrapPos.x, 0.5f)
+                    .OnStart(() => {
+                        e.Show(true);
+                    })
+                    .SetDelay(0.2f)
+                    .OnComplete(() => {
+                        ContinuePlayerMovement(e, wrapPos);
                     });
                     break;
                 case Direction.DOWN:
-                    entity.transform.DOLocalMoveY(transform.position.y - 1, 0.2f).OnComplete(() =>
-                    {
-                        entity.Show(false);
-                        entity.transform.position = new Vector3(_wrapPos.x, _wrapPos.y + 1, entity.transform.position.z);
-                        setPos();
+                    e.transform.position = new Vector3(wrapPos.x, wrapPos.y + 1, e.transform.position.z);
+                    e.transform.DOLocalMoveY(wrapPos.y, 0.5f)
+                    .OnStart(() => {
+                        e.Show(true);
+                    })
+                    .SetDelay(0.2f)
+                    .OnComplete(() => {
+                        ContinuePlayerMovement(e, wrapPos);
                     });
                     break;
                 case Direction.UP:
-                    entity.transform.DOLocalMoveY(transform.position.y + 1, 0.2f).OnComplete(() =>
-                    {
-                        entity.Show(false);
-                        entity.transform.position = new Vector3(_wrapPos.x, _wrapPos.y - 1, entity.transform.position.z);
-                        setPos();
+                    e.transform.position = new Vector3(wrapPos.x, wrapPos.y - 1, e.transform.position.z);
+                    e.transform.DOLocalMoveY(wrapPos.y, 0.5f)
+                    .OnStart(() => {
+                        e.Show(true);
+                    })
+                    .SetDelay(0.2f)
+                    .OnComplete(() => {
+                        ContinuePlayerMovement(e, wrapPos);
                     });
                     break;
+                default:
+                    e.transform.DOLocalMove(Vector3.negativeInfinity, 10f);
+                    break;
+            }
+        }
+
+        private void ContinuePlayerMovement(Entity e, Vector2 wrapPos)
+        {
+            e.coord = new MapCoord(wrapPos.x, wrapPos.y);
+            e.receiveInput = true;
+            e.canMove = true;
+            if (e is Player)
+            {
+                ((Player)e).Move(WrapDirection);
             }
         }
 
