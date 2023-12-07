@@ -36,7 +36,7 @@ public class CameraController : MonoBehaviour
         float size = Remap(tempSize, 3, 15, 5, 13);
 
         transform.position = new Vector3(x, y, -10);
-        _camera.orthographicSize = size;
+        _camera.orthographicSize = Mathf.Ceil(size + 1);
     }
 
     // Update is called once per frame

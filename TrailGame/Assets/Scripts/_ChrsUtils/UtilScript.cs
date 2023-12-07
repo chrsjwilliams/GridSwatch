@@ -2,7 +2,6 @@
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
-using SimpleJSON;
 
 //UtilScript uses a collection of static functions
 //to make programming more convinent in Unity.

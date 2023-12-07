@@ -75,10 +75,12 @@ namespace GameData
             wrapArrow.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
         }
 
+        // ~TODO: CLEAN THIS CHAIN OF FUNCTIONS UP PLEASE
         IEnumerator Wrap(Entity entity)
         {
             entity.receiveInput = false;
             entity.canMove = false;
+
             Vector2 _wrapPos = FindWrapPosition();
             yield return new WaitForSeconds(0.2f);
 
@@ -87,7 +89,7 @@ namespace GameData
                 switch (WrapDirection)
                 {
                     case Direction.LEFT:
-                        entity.transform.DOLocalMoveX(_wrapPos.x, 0.2f)
+                        entity.transform.DOLocalMoveX(_wrapPos.x, 0.5f)
                         .OnStart(()=> {
                             entity.Show(true);
                         })
@@ -103,7 +105,7 @@ namespace GameData
                         });
                         break;
                     case Direction.RIGHT:
-                        entity.transform.DOLocalMoveX(_wrapPos.x, 0.2f)
+                        entity.transform.DOLocalMoveX(_wrapPos.x, 0.5f)
                         .OnStart(() => {
                             entity.Show(true);
                         })
@@ -119,7 +121,7 @@ namespace GameData
                         });
                         break;
                     case Direction.DOWN:
-                        entity.transform.DOLocalMoveY(_wrapPos.y, 0.2f)
+                        entity.transform.DOLocalMoveY(_wrapPos.y, 0.5f)
                         .OnStart(() => {
                             entity.Show(true);
                         })
@@ -135,7 +137,7 @@ namespace GameData
                         });
                         break;
                     case Direction.UP:
-                        entity.transform.DOLocalMoveX(_wrapPos.y, 0.2f)
+                        entity.transform.DOLocalMoveY(_wrapPos.y, 0.5f)
                         .OnStart(() => {
                             entity.Show(true);
                         })
@@ -183,7 +185,7 @@ namespace GameData
                     });
                     break;
                 case Direction.UP:
-                    entity.transform.DOLocalMoveX(transform.position.y + 1, 0.2f).OnComplete(() =>
+                    entity.transform.DOLocalMoveY(transform.position.y + 1, 0.2f).OnComplete(() =>
                     {
                         entity.Show(false);
                         entity.transform.position = new Vector3(_wrapPos.x, _wrapPos.y - 1, entity.transform.position.z);
@@ -210,50 +212,51 @@ namespace GameData
 
         Vector2 FindWrapPosition()
         {
+            bool isHorizontal = false;
+            int currIndex = -1;
+            int motion = 0;
+            int mapBound = 0;
             int xPos = (int)transform.localPosition.x;
             int yPos = (int)transform.localPosition.y;
-            if(WrapDirection == Direction.LEFT)
+
+            if (WrapDirection == Direction.RIGHT || WrapDirection == Direction.UP)
+                motion = 1;
+            else if (WrapDirection == Direction.LEFT || WrapDirection == Direction.DOWN)
+                motion = -1;
+
+            if (WrapDirection == Direction.LEFT || WrapDirection == Direction.RIGHT)
             {
-                for(int x = Services.Board.Width - 1; x >= xPos; x--)
-                {
-                    if (Services.Board.Map[x, yPos].canTraverse)
-                    {
-                        return Services.Board.Map[x, yPos].transform.position;
-                    }
-                }
+                isHorizontal = true;
+                mapBound = Services.Board.Width - 1;
+                currIndex = xPos;
             }
-            else if (WrapDirection == Direction.UP)
+            else if (WrapDirection == Direction.UP || WrapDirection == Direction.DOWN)
             {
-                for (int y = 0; y <= yPos; y++)
-                {
-                    if (Services.Board.Map[xPos, y].canTraverse)
-                    {
-                        return Services.Board.Map[xPos, y].transform.position;
-                    }
-                }
-            }
-            else if(WrapDirection == Direction.RIGHT)
-            {
-                for (int x = 0; x <= xPos; x++)
-                {
-                    if (Services.Board.Map[x, yPos].canTraverse)
-                    {
-                        return Services.Board.Map[x, yPos].transform.position;
-                    }
-                }
-            }
-            else
-            {
-                for (int y = Services.Board.Height - 1; y >= yPos; y--)
-                {
-                    if (Services.Board.Map[xPos, y].canTraverse)
-                    {
-                        return Services.Board.Map[xPos, y].transform.position;
-                    }
-                }
+                mapBound = Services.Board.Height - 1;
+                currIndex = yPos;
             }
 
+            currIndex += motion;
+            for(int i = currIndex; (i - currIndex) * motion < mapBound; i+= motion)
+            {
+                int index = (i + mapBound) % mapBound;
+                if(isHorizontal)
+                {
+                    if (Services.Board.Map[index, yPos].canTraverse)
+                    {
+                        return Services.Board.Map[index, yPos].transform.position;
+                    }
+                }
+                else
+                {
+                    if (Services.Board.Map[xPos, index].canTraverse)
+                    {
+                        return Services.Board.Map[xPos, index].transform.position;
+                    }
+                }
+            }
             return Vector2.negativeInfinity;
         }
+
     }
 }
