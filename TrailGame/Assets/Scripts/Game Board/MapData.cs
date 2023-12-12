@@ -70,5 +70,7 @@ namespace GameData
         public bool isWrapTile;
         [ShowIf("isWrapTile")]
         public Direction WrapDirection;
+
+        public bool isInvertTile;
     }
 }

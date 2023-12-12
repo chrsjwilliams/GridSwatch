@@ -100,13 +100,18 @@ public class Player : Entity
 
     protected void OnSwipe(SwipeEvent e)
     {
-        if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
-        {
-            UseInidcator(swipeCount - 1);
-            swipeCount--;
-        }
 
-        if (!receiveInput) return;
+
+        if (!receiveInput)
+        {
+            if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
+            {
+                UseInidcator(swipeCount - 1);
+                swipeCount--;
+            }
+
+            return;
+        }
         // removing axis swipe becase it breaks marker mode
         // if i wnt levels of color i need to be able to detect when i move orthonogally(?)
         // no, it's more like, if the color below me is also my colortype, then i shouldn't lose
@@ -133,7 +138,14 @@ public class Player : Entity
             CurrentColorMode = ColorMode.NONE;
             swipeCount = 0;
         }
-        
+
+        // We update swipe counts here since some tile effects
+        // stop the player from receiving input
+        if (CurrentColorMode != ColorMode.NONE)
+        {
+            UseInidcator(swipeCount - 1);
+            swipeCount--;
+        }
 
         direction = e.gesture.CurrentDirection;
 

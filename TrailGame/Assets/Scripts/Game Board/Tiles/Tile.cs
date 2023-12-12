@@ -25,7 +25,18 @@ namespace GameData
         public SpriteRenderer PivotRight { get { return pivotRight; } }
         [SerializeField] protected SpriteRenderer wrapArrow;
         public SpriteRenderer WrapArrow { get { return wrapArrow; } }
-
+        [SerializeField] protected SpriteRenderer invertIcon;
+        public SpriteRenderer InvertIcon { get { return invertIcon; } }
+        [SerializeField] protected Sprite SplashFillColorModeSprite;
+        [SerializeField] protected Sprite SplashFillNoColorModeSprite;
+        [SerializeField] protected SpriteRenderer splashFillColor;
+        public SpriteRenderer SplashFillColor { get { return splashFillColor; } }
+        [SerializeField] protected SpriteRenderer horizonalEndIcon;
+        public SpriteRenderer HorizonalEndIcon { get { return horizonalEndIcon; } }
+        [SerializeField] protected SpriteRenderer verticleEndIcon;
+        public SpriteRenderer VerticleEndIcon { get { return verticleEndIcon; } }
+        [SerializeField] protected SpriteRenderer adjacentIcon;
+        public SpriteRenderer AdjacentIcon { get { return adjacentIcon; } }
 
         public virtual void Init(Ink initInk, bool _canTraverse = true)
         {

@@ -40,10 +40,7 @@ namespace GameData
             sr = tile.Sprite;
             wrapArrow = tile.WrapArrow;
             tileInk = ink;
-            // right = 0
-            // up = 90
-            // left = 180
-            // down 270
+
             if (!IsPump())
             {
                 SetColor(ink, isInit: true);
@@ -51,16 +48,19 @@ namespace GameData
             switch (direction)
             {
                 case Direction.RIGHT:
-                    transform.rotation = Quaternion.Euler(0, 0, 0);
+                    wrapArrow.transform.localPosition = new Vector3(0.3f, -0.25f, 0);
                     break;
                 case Direction.UP:
-                    transform.rotation = Quaternion.Euler(0, 0, 90);
+                    wrapArrow.transform.localPosition = new Vector3(-0.04f, 0.14f, 0);
+
                     break;
                 case Direction.LEFT:
-                    transform.rotation = Quaternion.Euler(0, 0, 180);
+                    wrapArrow.transform.localPosition = new Vector3(-0.47f, -0.22f, 0);
+
                     break;
                 case Direction.DOWN:
-                    transform.rotation = Quaternion.Euler(0, 0, 270);
+                    wrapArrow.transform.localPosition = new Vector3(-0.08f, -0.64f, 0);
+
                     break;
                 default:
                     break;

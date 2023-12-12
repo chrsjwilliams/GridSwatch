@@ -101,6 +101,15 @@ namespace GameData
                         newTile.name = newTile.name + " | WRAP: " + tileData.WrapDirection.ToString();
                         _map[x, y] = wrapTile;
                     }
+
+                    if(tileData.isInvertTile)
+                    {
+                        newTile.gameObject.AddComponent<InvertTile>();
+                        InvertTile invertTile = newTile.GetComponent<InvertTile>();
+                        invertTile.Init(newTile, ink);
+                        newTile.name = newTile.name + " | Invert";
+                        _map[x, y] = invertTile;
+                    }
                 }
             }
         }
