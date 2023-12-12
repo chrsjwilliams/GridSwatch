@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
   m_Name: _TutorialMap002
   m_EditorClassIdentifier: 
+  finished: 0
   mapName: Tutorial Map 2
+  MapGoal: 
   BoardType: 0
   BoardSize: {x: 5, y: 5}
+  PlayerStartPos: {x: 0, y: 0}
   ImpassableMapCoords:
   - {x: 0, y: 1}
   - {x: 0, y: 2}
@@ -24,17 +27,6 @@ MonoBehaviour:
   - {x: 3, y: 3}
   - {x: 4, y: 0}
   - {x: 4, y: 3}
-  PlayerStartPos: {x: 0, y: 0}
-  PumpLocationsMagenta: []
-  PumpLocationsCyan:
-  - {x: 4, y: 1}
-  - {x: 4, y: 4}
-  - {x: 0, y: 4}
-  PumpLocationsYellow: []
-  MapGoal: 
-  colorGoals:
-  - colorMode: 1
-    amount: 10
   tileData:
   - coord: {x: 4, y: 1}
     hasCustomInk: 1
@@ -44,6 +36,12 @@ MonoBehaviour:
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
   - coord: {x: 4, y: 4}
     hasCustomInk: 1
     ink:
@@ -52,6 +50,12 @@ MonoBehaviour:
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
   - coord: {x: 0, y: 4}
     hasCustomInk: 1
     ink:
@@ -60,3 +64,12 @@ MonoBehaviour:
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+  colorGoals:
+  - colorMode: 1
+    amount: 10

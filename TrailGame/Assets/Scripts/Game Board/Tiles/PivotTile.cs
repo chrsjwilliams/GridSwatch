@@ -9,8 +9,9 @@ namespace GameData
         [SerializeField] Direction _pivotDirection;
         public Direction PivotDirection { get { return _pivotDirection; } }
 
-        public void Init(Tile tile, Ink ink, bool _canTraverse, Direction pivotDirection)
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink, bool _canTraverse, Direction pivotDirection)
         {
+            Coord = mapCoord;
             canTraverse = _canTraverse;
             _pivotDirection = pivotDirection;
             pivotUp = tile.PivotUp;

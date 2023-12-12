@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 [System.Serializable]
 public struct MapCoord
@@ -9,6 +10,10 @@ public struct MapCoord
     public static readonly MapCoord RIGHT = new MapCoord(1, 0);
     public static readonly MapCoord DOWN = new MapCoord(0, -1);
     public static readonly MapCoord UP = new MapCoord(0, 1);
+    public static readonly MapCoord UP_LEFT = new MapCoord(-1, 1);
+    public static readonly MapCoord UP_RIGHT = new MapCoord(1, 1);
+    public static readonly MapCoord DOWN_LEFT = new MapCoord(-1, -1);
+    public static readonly MapCoord DOWN_RIGHT = new MapCoord(1, -1);
     public int x;
     public int y;
 
@@ -22,6 +27,77 @@ public struct MapCoord
     {
         x = x_;
         y = y_;
+    }
+
+    public List<MapCoord> GetAllAdjacentCoords()
+    {
+        List<MapCoord> adjacentCoords = new List<MapCoord>();
+
+
+        MapCoord origin = this;
+
+        adjacentCoords.Add(origin.Add(LEFT));
+        adjacentCoords.Add(origin.Add(RIGHT));
+        adjacentCoords.Add(origin.Add(UP));
+        adjacentCoords.Add(origin.Add(DOWN));
+        adjacentCoords.Add(origin.Add(UP_LEFT));
+        adjacentCoords.Add(origin.Add(UP_RIGHT));
+        adjacentCoords.Add(origin.Add(DOWN_LEFT));
+        adjacentCoords.Add(origin.Add(DOWN_RIGHT));
+
+        return adjacentCoords;
+    }
+
+    public List<MapCoord> GetAdjacentHorizontalCoords()
+    {
+        List<MapCoord> adjacentCoords = new List<MapCoord>();
+
+        MapCoord origin = this;
+
+        adjacentCoords.Add(origin.Add(LEFT));
+        adjacentCoords.Add(origin.Add(RIGHT));
+
+        return adjacentCoords;
+    }
+
+    public List<MapCoord> GetAdjacentVerticleCoords()
+    {
+        List<MapCoord> adjacentCoords = new List<MapCoord>();
+
+        MapCoord origin = this;
+
+        adjacentCoords.Add(origin.Add(UP));
+        adjacentCoords.Add(origin.Add(DOWN));
+
+        return adjacentCoords;
+    }
+
+    public List<MapCoord> GetAdjacentIntercardinalCoords()
+    {
+        List<MapCoord> adjacentCoords = new List<MapCoord>();
+
+        MapCoord origin = this;
+
+        adjacentCoords.Add(origin.Add(UP_LEFT));
+        adjacentCoords.Add(origin.Add(UP_RIGHT));
+        adjacentCoords.Add(origin.Add(DOWN_LEFT));
+        adjacentCoords.Add(origin.Add(DOWN_RIGHT));
+
+        return adjacentCoords;
+    }
+
+    public List<MapCoord> GetAdjacentCardinalCoords()
+    {
+        List<MapCoord> adjacentCoords = new List<MapCoord>();
+
+        MapCoord origin = this;
+
+        adjacentCoords.Add(origin.Add(LEFT));
+        adjacentCoords.Add(origin.Add(RIGHT));
+        adjacentCoords.Add(origin.Add(UP));
+        adjacentCoords.Add(origin.Add(DOWN));
+
+        return adjacentCoords;
     }
 
     public override bool Equals(object obj)

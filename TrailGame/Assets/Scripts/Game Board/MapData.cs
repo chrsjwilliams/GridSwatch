@@ -72,5 +72,11 @@ namespace GameData
         public Direction WrapDirection;
 
         public bool isInvertTile;
+
+        public bool isFillTile;
+        [ShowIf("isFillTile")]
+        public FillType fillType;
+        [ShowIf("isFillTile")]
+        public ColorMode fillColor;
     }
 }

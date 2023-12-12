@@ -32,9 +32,9 @@ namespace GameData
 
         }
 
-        public void Init(Tile tile, Ink ink, Direction direction)
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink, Direction direction)
         {
-
+            Coord = mapCoord;
             canTraverse = true;
             _wrapDirection = direction;
             sr = tile.Sprite;

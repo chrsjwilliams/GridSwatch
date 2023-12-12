@@ -5,7 +5,7 @@ namespace GameData
 {
     public class Tile : MonoBehaviour
     {
-
+        public MapCoord Coord { get; protected set; }
         public bool canTraverse { get; protected set; }
         public int intensity { get; protected set; }
         public Ink tileInk { get; protected set; }
@@ -27,19 +27,28 @@ namespace GameData
         public SpriteRenderer WrapArrow { get { return wrapArrow; } }
         [SerializeField] protected SpriteRenderer invertIcon;
         public SpriteRenderer InvertIcon { get { return invertIcon; } }
-        [SerializeField] protected Sprite SplashFillColorModeSprite;
-        [SerializeField] protected Sprite SplashFillNoColorModeSprite;
+        [SerializeField] public Sprite SplashFillColorModeSprite;
+        [SerializeField] public Sprite SplashFillNoColorModeSprite;
         [SerializeField] protected SpriteRenderer splashFillColor;
         public SpriteRenderer SplashFillColor { get { return splashFillColor; } }
+        [SerializeField] protected SpriteRenderer horizonalIcon;
+        public SpriteRenderer HorizonalIcon { get { return horizonalIcon; } }
         [SerializeField] protected SpriteRenderer horizonalEndIcon;
         public SpriteRenderer HorizonalEndIcon { get { return horizonalEndIcon; } }
         [SerializeField] protected SpriteRenderer verticleEndIcon;
+        public SpriteRenderer VerticleIcon { get { return verticleIcon; } }
+        [SerializeField] protected SpriteRenderer verticleIcon;
         public SpriteRenderer VerticleEndIcon { get { return verticleEndIcon; } }
+        [SerializeField] protected SpriteRenderer interCardinal;
+        public SpriteRenderer InterCardinal { get { return interCardinal; } }
+        [SerializeField] protected SpriteRenderer interCardinalEnd;
+        public SpriteRenderer InterCardinalEnd { get { return interCardinalEnd; } }
         [SerializeField] protected SpriteRenderer adjacentIcon;
         public SpriteRenderer AdjacentIcon { get { return adjacentIcon; } }
 
-        public virtual void Init(Ink initInk, bool _canTraverse = true)
+        public virtual void Init(MapCoord mapCoord, Ink initInk, bool _canTraverse)
         {
+            Coord = mapCoord;
             canTraverse = _canTraverse;
             sr = GetComponent<SpriteRenderer>();
             sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
@@ -55,6 +64,13 @@ namespace GameData
         {
             if (isInit)
                 tileInk = ink;
+
+            if (!canTraverse)
+            {
+                CurrentColorMode = ColorMode.BLACK;
+                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                return;
+            }
 
             if (ShouldMixColors(ink))
             {

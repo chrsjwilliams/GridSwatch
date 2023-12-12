@@ -7,13 +7,19 @@ namespace GameData
 {
     public class InvertTile : Tile
     {
-        public void Init(Tile tile, Ink ink)
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink)
         {
+            Coord = mapCoord;
             canTraverse = true;
             sr = tile.Sprite;
             tileInk = ink;
             invertIcon = tile.InvertIcon;
             invertIcon.DOColor(Color.black, 0.25f).SetEase(Ease.InExpo);
+
+            if (!IsPump())
+            {
+                SetColor(ink, isInit: true);
+            }
         }
 
         public override void SetColor(Ink ink, bool isInit = false)

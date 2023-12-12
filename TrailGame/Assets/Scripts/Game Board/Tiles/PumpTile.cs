@@ -8,8 +8,9 @@ namespace GameData
         public ColorMode PumpColor;
 
 
-        public void Init(Tile tile, Ink initInk, bool _canTraverse = true)
+        public void Init(MapCoord mapCoord, Tile tile, Ink initInk, bool _canTraverse = true)
         {
+            Coord = mapCoord;
             canTraverse = _canTraverse;
             PumpColor = initInk.colorMode;
             sr = tile.Sprite;
