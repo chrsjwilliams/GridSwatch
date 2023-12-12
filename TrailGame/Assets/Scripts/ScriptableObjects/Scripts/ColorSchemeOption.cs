@@ -10,6 +10,7 @@ public class ColorSchemeOption : ScriptableObject
     
     [SerializeField] Color _errorColor;
     public Color ErrorColor { get { return _errorColor; } }
+    [ListDrawerSettings(DraggableItems = false, Expanded = true, ShowIndexLabels = false, ShowPaging = false, ShowItemCount = false, HideRemoveButton = true)]
     [SerializeField] List<ColorEntry> _colorSchemes;
 
     public List<Color> GetColor(ColorMode colorName)
@@ -40,5 +41,6 @@ public struct ColorEntry
 {
     public ColorMode colorName;
     public Sprite colorBlindPattern;
+    [ListDrawerSettings(DraggableItems = false, Expanded = true, ShowIndexLabels = false, ShowPaging = false, ShowItemCount = false, HideRemoveButton = true)]
     public List<Color> colors;
 }

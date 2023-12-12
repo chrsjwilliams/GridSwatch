@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 [System.Serializable]
@@ -7,8 +8,10 @@ public class Ink
 {
     public enum Level { DIM = 0, FULL}
 
+    [HorizontalGroup("Group 1"), LabelWidth(100)]
     public Level currentLevel;
     public Color color { get; set; }
+    [HorizontalGroup("Group 1"), LabelWidth(100)]
     public ColorMode colorMode;
     private int intensity;
     public int Intensity {
