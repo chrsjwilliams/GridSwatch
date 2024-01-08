@@ -16,7 +16,6 @@ public class MapButton : MonoBehaviour
     public MapData MapData { get; private set; }
     public MapStatus Status { get; private set; }
 
-    [SerializeField] private PressAndHoldButton _button;
     [SerializeField] private TextMeshProUGUI _mapName;
     [SerializeField] private Image _mapIcon;
     [SerializeField] private Sprite _locked;
@@ -39,13 +38,11 @@ public class MapButton : MonoBehaviour
             _mapIcon.sprite = _locked;
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
             _mapIcon.raycastTarget = true;
-            _button.canPerfromAction = false;
         }
         else if (Status == MapStatus.NOT_COMPLETED)
         {
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0f);
             _mapIcon.raycastTarget = false;
-            _button.canPerfromAction = true;
 
         }
         else
@@ -53,7 +50,6 @@ public class MapButton : MonoBehaviour
             _mapIcon.sprite = _completed;
             _mapIcon.color = Services.ColorManager.GetColor(ColorMode.GREEN);
             _mapIcon.raycastTarget = false;
-            _button.canPerfromAction = true;
         }
     }
     

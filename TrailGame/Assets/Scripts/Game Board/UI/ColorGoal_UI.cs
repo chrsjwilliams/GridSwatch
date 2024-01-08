@@ -38,8 +38,8 @@ namespace GameScreen
 
         public bool IsGoalMet()
         {
-            Color textColot = Count >= Goal ? finishedColor : defaultColor;
-            iconText.DOColor(textColot, 0.66f).SetEase(Ease.InOutExpo);
+            Color textColor = Count >= Goal ? finishedColor : defaultColor;
+            iconText.color = textColor;
             return Count >= Goal;
         }
     }
