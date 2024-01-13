@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using DG.Tweening;
+using TMPro;
 
 namespace GameData
 {
@@ -45,6 +46,9 @@ namespace GameData
         public SpriteRenderer InterCardinalEnd { get { return interCardinalEnd; } }
         [SerializeField] protected SpriteRenderer adjacentIcon;
         public SpriteRenderer AdjacentIcon { get { return adjacentIcon; } }
+        [SerializeField] protected TextMeshProUGUI _fadeCounter;
+        public TextMeshProUGUI FadeCounter { get { return _fadeCounter; }
+        }
 
         public virtual void Init(MapCoord mapCoord, Ink initInk, bool _canTraverse)
         {
@@ -69,6 +73,7 @@ namespace GameData
             {
                 CurrentColorMode = ColorMode.BLACK;
                 sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                Debug.Log("TO BLACK");
                 return;
             }
 
@@ -81,8 +86,9 @@ namespace GameData
                     Services.Board.CurrentFillAmount[(int)oldTileInk.colorMode]--;
                 }
 
-                //sr.color = tileInk.color;
+                sr.color = tileInk.color;
                 sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 
@@ -99,6 +105,7 @@ namespace GameData
                 tileInk = ink;
 
                 sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+               
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 

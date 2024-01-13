@@ -120,6 +120,15 @@ namespace GameData
                         newTile.name = newTile.name + " | Fill: " + tileData.fillType.ToString();
                         _map[x, y] = fillTile;
                     }
+
+                    if (tileData.isFadeTile)
+                    {
+                        newTile.gameObject.AddComponent<FadeTile>();
+                        FadeTile fadeTile = newTile.GetComponent<FadeTile>();
+                        fadeTile.Init(coord, newTile, ink, tileData.fadeCount);
+                        newTile.name = newTile.name + " | Fade";
+                        _map[x, y] = fadeTile;
+                    }
                 }
             }
         }

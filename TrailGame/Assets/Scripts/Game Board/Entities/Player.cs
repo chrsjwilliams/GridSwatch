@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
 using System;
+using System.Runtime.InteropServices.ComTypes;
 
 public class Player : Entity
 {
@@ -22,11 +23,16 @@ public class Player : Entity
     [SerializeField] CanvasGroup indicatorGroup;
     [SerializeField] List<Image> colorIndicators;
 
+    // TODO: delete duplicate lines
+    [SerializeField] private BrushStroke brushStrokePrefab;
+    private BrushStroke currentBrushStroke;
+    
+    private List<Vector3> playerPoints;
     public override void Init(MapCoord c)
     {
         receiveInput = true;
         isMoving = false;
-        Ink = new Ink(ColorMode.NONE);        
+        Ink = new Ink(ColorMode.NONE);
         canMove = true;
         coord = c;
         SetPosition(coord);
@@ -36,6 +42,8 @@ public class Player : Entity
         arriveSpeed = 1;
         ResetIntensitySwipes();
         CurrentColorMode = Ink.colorMode;
+        playerPoints = new List<Vector3>();
+        playerPoints.Add(new Vector3(coord.x, coord.y));
     }
 
     public override void PivotDirection(Direction d)
@@ -65,10 +73,11 @@ public class Player : Entity
     {
         if (colorIndicators == null) return;
 
-        foreach(var inidcator in colorIndicators)
+        foreach (var inidcator in colorIndicators)
         {
             inidcator.DOColor(color, 0.33f).SetEase(Ease.InCubic);
         }
+
     }
 
     void UseInidcator(int index)
@@ -80,15 +89,12 @@ public class Player : Entity
     public Color GetColor()
     {
         if (CurrentColorMode == ColorMode.NONE) return Color.clear;
-
-
+        
         int intensityIndex = -1;
 
         if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
         else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
         else return Color.clear;
-
-
 
         return Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
     }
@@ -100,8 +106,6 @@ public class Player : Entity
 
     protected void OnSwipe(SwipeEvent e)
     {
-
-
         if (!receiveInput)
         {
             if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
@@ -112,6 +116,7 @@ public class Player : Entity
 
             return;
         }
+
         // removing axis swipe becase it breaks marker mode
         // if i wnt levels of color i need to be able to detect when i move orthonogally(?)
         // no, it's more like, if the color below me is also my colortype, then i shouldn't lose
@@ -124,6 +129,7 @@ public class Player : Entity
         {
             Ink.Intensity--;
         }
+
         if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
         else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
 
@@ -143,8 +149,12 @@ public class Player : Entity
         // stop the player from receiving input
         if (CurrentColorMode != ColorMode.NONE)
         {
+            
             UseInidcator(swipeCount - 1);
             swipeCount--;
+            currentBrushStroke = Instantiate(brushStrokePrefab, Services.GameScene.BrushStrokeHolder);
+            
+            currentBrushStroke.Init(GetColor(), new Vector3(coord.x, coord.y), transform.position);
         }
 
         direction = e.gesture.CurrentDirection;
@@ -153,10 +163,10 @@ public class Player : Entity
 
     public void Move(Direction dir)
     {
-        if(dir == Direction.NONE) return;
+        if (dir == Direction.NONE) return;
 
         MapCoord deltaPos;
-        switch(dir)
+        switch (dir)
         {
             case Direction.LEFT:
                 deltaPos = MapCoord.LEFT;
@@ -180,24 +190,24 @@ public class Player : Entity
         if (CanTraverse(candidateCoord))
         {
             Vector3 movePos = new Vector3(deltaPos.x, deltaPos.y);
-            transform.position += movePos * Time.deltaTime * moveSpeed * Services.GameManager.MainCamera.orthographicSize;
-            int xPos = (int)Mathf.Floor(transform.position.x);
-            int yPos = (int)Mathf.Floor(transform.position.y);
+            transform.position +=
+                movePos * Time.deltaTime * moveSpeed * Services.GameManager.MainCamera.orthographicSize;
+            int xPos = (int)Mathf.Floor(transform.localPosition.x);
+            int yPos = (int)Mathf.Floor(transform.localPosition.y);
             coord = new MapCoord(xPos, yPos);
-
-            Tile currentTile = Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y];
-            if (currentTile is PumpTile)
-            {
-                
-            }
-            else if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
+            Tile currentTile = Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y]; 
+            if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
             {
                 Ink.color = GetColor();
-
-                // This should nly happen when I enter a tile
-                //currentTile.SetColor(Ink);
             }
+
             isMoving = true;
+            playerPoints[playerPoints.Count - 1] = transform.localPosition;
+            if (currentBrushStroke != null)
+            {
+                currentBrushStroke.SetEndPos(transform.localPosition);
+            }
+            
         }
         else
         {
@@ -205,60 +215,71 @@ public class Player : Entity
             float yArriveMod = direction == Direction.DOWN ? 15f : 1f;
 
 
-            float xPos = Mathf.Lerp(transform.position.x,(int)transform.position.x, Time.deltaTime * arriveSpeed * xArriveMod);
-            float yPos = Mathf.Lerp(transform.position.y,(int)transform.position.y, Time.deltaTime * arriveSpeed * yArriveMod);
+            float xPos = Mathf.Lerp(transform.localPosition.x, (int)transform.localPosition.x,
+                Time.deltaTime * arriveSpeed * xArriveMod);
+            float yPos = Mathf.Lerp(transform.localPosition.y, (int)transform.localPosition.y,
+                Time.deltaTime * arriveSpeed * yArriveMod);
             // check direction and stop 1 before that candidate coord
 
-            switch(dir)
+            switch (dir)
             {
                 case Direction.LEFT:
-                    if(xPos < Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.position.x){
-                        xPos = Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.position.x;
+                    if (xPos > Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.localPosition.x)
+                    {
+                        xPos = Services.Board.Map[candidateCoord.x + 1, candidateCoord.y].transform.localPosition.x;
                     }
-                break;
-            case Direction.RIGHT:
-                if(xPos > Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.position.x){
-                        xPos = Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.position.x;
-                    }
-                break;
-            case Direction.UP:
-                if(yPos > Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.position.y){
-                        yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.position.y;
-                    }
-                
-                break;
-            case Direction.DOWN:
-                if(yPos < Services.Board.Map[candidateCoord.x,  candidateCoord.y + 1].transform.position.y){
-                        yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y + 1].transform.position.y;
-                    }
-                break;
-            default:
-                deltaPos = MapCoord.ZERO;
-                Debug.LogError("ERROR : Invalid Direction");
-                break;
-            }
-            Vector3 newPosition = new Vector3(xPos, yPos, transform.position.z);
-            isMoving = false;
 
-            transform.position = newPosition;
+                    break;
+                case Direction.RIGHT:
+                    if (xPos > Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.localPosition.x)
+                    {
+                        xPos = Services.Board.Map[candidateCoord.x - 1, candidateCoord.y].transform.localPosition.x;
+                    }
+
+                    break;
+                case Direction.UP:
+                    if (yPos > Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.localPosition.y)
+                    {
+                        yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y - 1].transform.localPosition.y;
+                    }
+
+                    break;
+                case Direction.DOWN:
+                    
+                    if (yPos > Services.Board.Map[candidateCoord.x, candidateCoord.y + 1].transform.localPosition.y)
+                    {
+                        yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y + 1].transform.localPosition.y;
+                    }
+                    break;
+                default:
+                    deltaPos = MapCoord.ZERO;
+                    Debug.LogError("ERROR : Invalid Direction");
+                    break;
+            }
+
+            Vector3 newPosition = new Vector3(xPos, yPos, transform.localPosition.z);
+            isMoving = false;
+            transform.DOLocalMove(newPosition, 0.01f).SetEase(Ease.InCirc);
+            if (currentBrushStroke != null)
+            {
+                currentBrushStroke.SetEndPos(new Vector3(coord.x, coord.y));
+                currentBrushStroke = null;
+            }
 
         }
-
-        //isMoving = new Vector3((int)transform.position.x, (int)transform.position.y) == new Vector3(candidateCoord.x, candidateCoord.y);
     }
 
     private bool CanTraverse(MapCoord candidateCoord)
     {
-        bool canTraverse = false;
-        if( Services.GameScene.board.ContainsCoord(candidateCoord) &&
-            Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y].canTraverse)
-            canTraverse = true;
+        bool canTraverse = Services.GameScene.board.ContainsCoord(candidateCoord) &&
+                           Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y].canTraverse;
 
         return canTraverse;
     }
 
-    private void Update() {
-        if(canMove)
+    private void Update()
+    {
+        if (canMove)
         {
             Move(direction);
         }
@@ -270,53 +291,6 @@ public class Player : Entity
                 (e.gesture.CurrentDirection == Direction.UP || e.gesture.CurrentDirection == Direction.DOWN)) ||
                ((direction == Direction.UP || direction == Direction.DOWN) &&
                 (e.gesture.CurrentDirection == Direction.LEFT || e.gesture.CurrentDirection == Direction.RIGHT)) ||
-                (direction == Direction.NONE &&e.gesture.CurrentDirection != Direction.NONE);
+               (direction == Direction.NONE && e.gesture.CurrentDirection != Direction.NONE);
     }
-
-    public void OnTriggerEnter2D(Collider2D collision)
-    {
-        //Tile tile = collision.GetComponent<Tile>();
-        //if (tile == null) return;
-        //if (tile is PumpTile)
-        //{
-        //    Ink = ((PumpTile)tile).tileInk;
-        //    CurrentColorMode = Ink.colorMode;
-        //    SetIndicators(Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0]);
-        //    ResetIntensitySwipes();
-        //    PrevColorMode = CurrentColorMode;
-        //}
-        //else if(CurrentColorMode != ColorMode.NONE &&
-        //    dimIntensitySwipeCount > 0 &&
-        //    tile.canTraverse &&
-        //    (tile.CurrentColorMode == ColorMode.NONE ||
-        //    tile.CurrentColorMode == ColorMode.MAGENTA ||
-        //    tile.CurrentColorMode == ColorMode.YELLOW ||
-        //    tile.CurrentColorMode == ColorMode.CYAN))
-        //{
-        //    Ink.color = GetColor();
-        //    tile.SetColor(Ink);
-        //}
-
-
-    }
-
-    public void OnTriggerExit2D(Collider2D collision)
-    {
-        //Tile tile = collision.GetComponent<Tile>();
-        //if (tile == null) return;
-        //if (tile is PumpTile) return;
-        //if (PrevColorMode != CurrentColorMode) return;
-
-        //if (CurrentColorMode != ColorMode.NONE &&
-        //    dimIntensitySwipeCount > 0 &&
-        //    tile.canTraverse &&
-        //    (tile.CurrentColorMode == ColorMode.GREEN ||
-        //    tile.CurrentColorMode == ColorMode.ORANGE ||
-        //    tile.CurrentColorMode == ColorMode.PURPLE))
-        //{
-        //    Ink.color = GetColor();
-        //    tile.SetColor(Ink);
-        //}
-    }
-
 }

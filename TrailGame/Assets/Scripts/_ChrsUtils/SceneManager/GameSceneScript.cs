@@ -25,6 +25,13 @@ namespace GameScreen
 
         GameScreenUIController uIController;
 
+
+        [SerializeField] private Transform _brushStrokeHolder;
+        public Transform BrushStrokeHolder
+        {
+            get { return _brushStrokeHolder; }
+        }
+
         bool finished;
 
         private void Awake()

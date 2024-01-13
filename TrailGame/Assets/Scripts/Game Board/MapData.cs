@@ -96,7 +96,12 @@ namespace GameData
         [HorizontalGroup("Group 5"), LabelWidth(50)]
         [ShowIf("isFillTile")]
         public ColorMode fillColor;
+    
+        [HorizontalGroup("Group 6"), LabelWidth(100)]
+        public bool isFadeTile;
+        [ShowIf("isFadeTile")] 
+        public int fadeCount;
 
-        
+
     }
 }
