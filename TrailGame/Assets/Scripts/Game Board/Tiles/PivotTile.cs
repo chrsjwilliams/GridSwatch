@@ -8,8 +8,29 @@ namespace GameData
     {
         [SerializeField] Direction _pivotDirection;
         public Direction PivotDirection { get { return _pivotDirection; } }
+        private SpriteRenderer _pivotSprite;
+        public override void ShowTile(bool show)
+        {
+            if (!IsPump())
+            {
+                base.ShowTile(show);
+            }
+            else
+            {
+                sr.color = show ? Color.white : Color.clear;
+            }
 
-        public void Init(MapCoord mapCoord, Tile tile, Ink ink, bool _canTraverse, Direction pivotDirection)
+            if (show)
+            {
+                _pivotSprite.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+            }
+            else
+            {
+                _pivotSprite.color = Color.clear;
+            }
+        }
+
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink, bool _canTraverse, Direction pivotDirection, AnimationParams animationParams)
         {
             Coord = mapCoord;
             canTraverse = _canTraverse;
@@ -19,87 +40,62 @@ namespace GameData
             pivotLeft = tile.PivotLeft;
             pivotRight = tile.PivotRight;
             sr = tile.Sprite;
-
-            if (!IsPump())
-            {
-                SetColor(ink, isInit: true);
-            }
+            tileInk = ink;
+            
+            pivotUp.color = Color.clear;
+            pivotDown.color = Color.clear; 
+            pivotLeft.color = Color.clear;  
+            pivotRight.color = Color.clear;
+            
             switch (PivotDirection)
             {
                 case Direction.UP:
-                    pivotUp.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
-                    pivotDown.color = Color.clear; 
-                    pivotLeft.color = Color.clear;  
-                    pivotRight.color = Color.clear;
-
+                    _pivotSprite = pivotUp;
                     break;
                 case Direction.DOWN:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
-                    pivotLeft.color = Color.clear;
-                    pivotRight.color = Color.clear;
+                    _pivotSprite = pivotDown;
                     break;
                 case Direction.LEFT:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color =  Color.clear;
-                    pivotLeft.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
-                    pivotRight.color = Color.clear;
+                    _pivotSprite = pivotLeft;
                     break;
                 case Direction.RIGHT:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color = Color.clear;
-                    pivotLeft.color = Color.clear;
-                    pivotRight.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+                    _pivotSprite = pivotRight;
                     break;
                 default:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color = Color.clear;
-                    pivotLeft.color = Color.clear;
-                    pivotRight.color = Color.clear;
+                    _pivotSprite = pivotUp;
                     break;
             }
+            ShowTile(false);
+            PlayEntryAnimation(animationParams);
+        }
+
+        public override void PlayEntryAnimation(AnimationParams animationParams)
+        {
+            Color tileColor = IsPump() ? Color.white : tileInk.color;
+            
+            sr.DOColor(tileColor, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(()=>
+                {
+                    animationParams.OnBegin();
+                }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                    if (!IsPump())
+                    {
+                        SetColor(tileInk, isInit: true);
+                    }
+                });
+            Color iconColor = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+            _pivotSprite.DOColor(iconColor, animationParams.duration).SetEase(animationParams.easingFunction);
         }
 
         public override void SetColor(Ink ink, bool isInit = false)
         {
             if (IsPump()) return;
-
-            switch (PivotDirection)
-            {
-                case Direction.UP:
-                    pivotUp.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
-                    pivotDown.color = Color.clear;
-                    pivotLeft.color = Color.clear;
-                    pivotRight.color = Color.clear;
-
-                    break;
-                case Direction.DOWN:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
-                    pivotLeft.color = Color.clear;
-                    pivotRight.color = Color.clear;
-                    break;
-                case Direction.LEFT:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color = Color.clear;
-                    pivotLeft.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
-                    pivotRight.color = Color.clear;
-                    break;
-                case Direction.RIGHT:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color = Color.clear;
-                    pivotLeft.color = Color.clear;
-                    pivotRight.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
-                    break;
-                default:
-                    pivotUp.color = Color.clear;
-                    pivotDown.color = Color.clear;
-                    pivotLeft.color = Color.clear;
-                    pivotRight.color = Color.clear;
-                    break;
-            }
-
+            
             base.SetColor(ink, isInit);
+            _pivotSprite.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
         }
 
         IEnumerator Pivot(Entity entity)
@@ -116,12 +112,6 @@ namespace GameData
         {
             base.TriggerEnterEffect(entity);
             StartCoroutine(Pivot(entity));
-        }
-
-        protected override void TriggerExitEffect(Entity entity)
-        {
-            base.TriggerExitEffect(entity);
-
         }
     }
 }

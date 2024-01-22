@@ -12,8 +12,30 @@ namespace GameData
 
         private int _fadeCount;
         private bool _diffused = false;
-        
-        public void Init(MapCoord mapCoord, Tile tile, Ink ink, int fadeCount)
+
+        public override void ShowTile(bool show)
+        {
+            if (!IsPump())
+            {
+                base.ShowTile(show);
+            }
+            else
+            {
+                sr.color = show ? Color.white : Color.clear;
+            }
+
+            if (show)
+            {
+                Color textColor = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+                _fadeCounter.color = textColor;
+            }
+            else
+            {
+                _fadeCounter.color = Color.clear;
+            }
+        }
+
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink, int fadeCount, AnimationParams animationParams)
         {
             Coord = mapCoord;
             canTraverse = true;
@@ -25,7 +47,26 @@ namespace GameData
             direction = Direction.NONE;
             _diffused = false;
             Services.EventManager.Register<SwipeEvent>(OnSwipe);
-            SetColor(tileInk, isInit: true);
+            ShowTile(false);
+            PlayEntryAnimation(animationParams);
+        }
+
+        public void PlayEntryAnimation(AnimationParams animationParams)
+        {
+            Color tileColor = IsPump() ? Color.white : tileInk.color;
+            sr.DOColor(tileColor, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(() => { animationParams.OnBegin(); }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                    if (!IsPump())
+                    {
+                        SetColor(tileInk, isInit: true);
+                    }
+                });
+            Color textColor = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+            _fadeCounter.DOColor(textColor, animationParams.duration).SetEase(animationParams.easingFunction);
+
         }
 
         private void OnDestroy()

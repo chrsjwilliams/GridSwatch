@@ -8,19 +8,44 @@ namespace GameData
         public ColorMode PumpColor;
 
 
-        public void Init(MapCoord mapCoord, Tile tile, Ink initInk, bool _canTraverse = true)
+        public override void ShowTile(bool show)
+        {
+            if (show)
+            {
+                pumpIndicator.color = tileInk.color;
+                sr.color = Color.white;
+            }
+            else
+            {
+                sr.color = Color.clear;
+                pumpIndicator.color = Color.clear;
+            }
+        }
+
+        public void Init(MapCoord mapCoord, Tile tile, Ink initInk, bool _canTraverse, AnimationParams animationParams)
         {
             Coord = mapCoord;
             canTraverse = _canTraverse;
             PumpColor = initInk.colorMode;
             sr = tile.Sprite;
             tileInk = initInk;
-            //SetColor(initInk);
-
             pumpIndicator = tile.PumpIndicator;
+            ShowTile(false);
+            PlayEntryAnimation(animationParams);
+        }
 
-            sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
-            pumpIndicator.DOColor(tileInk.color, 0.0f).SetEase(Ease.InCubic);
+        public override void PlayEntryAnimation(AnimationParams animationParams)
+        {
+            sr.DOColor(Color.white, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(()=>
+                {
+                    animationParams.OnBegin();
+                }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                });            
+            pumpIndicator.DOColor(tileInk.color, animationParams.duration).SetEase(animationParams.easingFunction);
         }
 
         public override void SetColor(Ink ink, bool isInit = false)

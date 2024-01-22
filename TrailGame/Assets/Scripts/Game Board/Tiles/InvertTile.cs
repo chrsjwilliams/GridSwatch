@@ -7,7 +7,27 @@ namespace GameData
 {
     public class InvertTile : Tile
     {
-        public void Init(MapCoord mapCoord, Tile tile, Ink ink)
+        public override void ShowTile(bool show)
+        {
+            if (!IsPump())
+            {
+                base.ShowTile(show);
+            }
+            else
+            {
+                sr.color = show ? Color.white : Color.clear;
+            }
+            if (show)
+            {
+                invertIcon.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+            }
+            else
+            {
+                invertIcon.color = Color.clear;
+            }
+        }
+        
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink, AnimationParams animationParams)
         {
             Coord = mapCoord;
             canTraverse = true;
@@ -16,11 +36,30 @@ namespace GameData
             invertIcon = tile.InvertIcon;
             invertIcon.DOColor(Color.black, 0.25f).SetEase(Ease.InExpo);
 
-            if (!IsPump())
-            {
-                SetColor(ink, isInit: true);
-            }
+            PlayEntryAnimation(animationParams);
         }
+
+        public override void PlayEntryAnimation(AnimationParams animationParams)
+        {
+            Color tileColor = IsPump() ? Color.white : tileInk.color;
+            
+            sr.DOColor(tileColor, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(()=>
+                {
+                    animationParams.OnBegin();
+                }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                    if (!IsPump())
+                    {
+                        SetColor(tileInk, isInit: true);
+                    }
+                });
+            Color iconColor = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+            invertIcon.DOColor(iconColor, animationParams.duration).SetEase(animationParams.easingFunction);
+        }
+
 
         public override void SetColor(Ink ink, bool isInit = false)
         {

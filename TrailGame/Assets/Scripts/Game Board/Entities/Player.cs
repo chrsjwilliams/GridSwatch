@@ -22,10 +22,6 @@ public class Player : Entity
     [SerializeField] int swipeCount = 0;
     [SerializeField] CanvasGroup indicatorGroup;
     [SerializeField] List<Image> colorIndicators;
-
-    // TODO: delete duplicate lines
-    [SerializeField] private BrushStroke brushStrokePrefab;
-    private BrushStroke currentBrushStroke;
     
     private List<Vector3> playerPoints;
     public override void Init(MapCoord c)
@@ -152,9 +148,6 @@ public class Player : Entity
             
             UseInidcator(swipeCount - 1);
             swipeCount--;
-            currentBrushStroke = Instantiate(brushStrokePrefab, Services.GameScene.BrushStrokeHolder);
-            
-            currentBrushStroke.Init(GetColor(), new Vector3(coord.x, coord.y), transform.position);
         }
 
         direction = e.gesture.CurrentDirection;
@@ -203,11 +196,6 @@ public class Player : Entity
 
             isMoving = true;
             playerPoints[playerPoints.Count - 1] = transform.localPosition;
-            if (currentBrushStroke != null)
-            {
-                currentBrushStroke.SetEndPos(transform.localPosition);
-            }
-            
         }
         else
         {
@@ -260,12 +248,6 @@ public class Player : Entity
             Vector3 newPosition = new Vector3(xPos, yPos, transform.localPosition.z);
             isMoving = false;
             transform.DOLocalMove(newPosition, 0.01f).SetEase(Ease.InCirc);
-            if (currentBrushStroke != null)
-            {
-                currentBrushStroke.SetEndPos(new Vector3(coord.x, coord.y));
-                currentBrushStroke = null;
-            }
-
         }
     }
 

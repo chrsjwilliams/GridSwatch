@@ -32,7 +32,28 @@ namespace GameData
 
         }
 
-        public void Init(MapCoord mapCoord, Tile tile, Ink ink, Direction direction)
+        public override void ShowTile(bool show)
+        {
+            if (!IsPump())
+            {
+                base.ShowTile(show);
+            }
+            else
+            {
+                sr.color = show ? Color.white : Color.clear;
+            }
+
+            if (show)
+            {
+                wrapArrow.color = tileInk.color;
+            }
+            else
+            {
+                wrapArrow.color = Color.clear;
+            }
+        }
+
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink, Direction direction, AnimationParams animationParams)
         {
             Coord = mapCoord;
             canTraverse = true;
@@ -40,11 +61,10 @@ namespace GameData
             sr = tile.Sprite;
             wrapArrow = tile.WrapArrow;
             tileInk = ink;
+            ShowTile(false);
+            PlayEntryAnimation(animationParams);
 
-            if (!IsPump())
-            {
-                SetColor(ink, isInit: true);
-            }
+            
             switch (direction)
             {
                 case Direction.RIGHT:
@@ -65,6 +85,24 @@ namespace GameData
                 default:
                     break;
             }
+        }
+
+        public override void PlayEntryAnimation(AnimationParams animationParams)
+        {
+            wrapArrow.DOColor(tileInk.color, animationParams.duration).SetEase(animationParams.easingFunction);
+            sr.DOColor(tileInk.color, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(()=>
+                {
+                    animationParams.OnBegin();
+                }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                    if (!IsPump())
+                    {
+                        SetColor(tileInk, isInit: true);
+                    }
+                }).OnUpdate(() => { wrapArrow.color = sr.color;});            
         }
 
         public override void SetColor(Ink ink, bool isInit = false)

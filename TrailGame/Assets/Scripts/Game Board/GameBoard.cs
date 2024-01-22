@@ -1,11 +1,15 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using System;
+using DG.Tweening;
+using Random = System.Random;
 
 namespace GameData
 {
     public class GameBoard : MonoBehaviour
     {
+        enum AnimationType{ RANDOM, BOTTOM_LEFT, FROM_PLAYER}
+        
         public enum ColorType { MARKER, BRUSH}
 
         private int _width;
@@ -28,11 +32,13 @@ namespace GameData
 
         private ColorType _boardType;
         public ColorType BoardType { get { return _boardType; } }
-
+        
+        [HideInInspector] public int[] CurrentFillAmount = new int[Enum.GetNames(typeof(ColorMode)).Length];
+        [SerializeField] private float entryAnimationTotalDuration;
         private int _emptyTileCount;
         public int EmptyTileCount { get { return _emptyTileCount; } }
 
-        public int[] CurrentFillAmount = new int[Enum.GetNames(typeof(ColorMode)).Length];
+        private AnimationType _animationType;
 
         public void CreateBoard(MapData data)
         {
@@ -40,10 +46,11 @@ namespace GameData
             _height = (int)data.BoardSize.y;
             _map = new Tile[Width, Height];
             _boardType = data.BoardType;
-
-
+            
             _emptyTileCount = (Width * Height) - (data.tileData.Count + data.ImpassableMapCoords.Count);
 
+            _animationType = (AnimationType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(AnimationType)).Length);
+            
             bool canTraverse;
             for (int x = 0; x < Width; x++)
             {
@@ -62,10 +69,15 @@ namespace GameData
 
                     TileData tileData = data.GetTile(candidateCoord);
 
+                    AnimationParams aniParams;
+                    aniParams.duration = GetAnimationDuration(x, y); 
+                    aniParams.easingFunction = Ease.InCubic;
+                    aniParams.OnBegin = aniParams.OnComplete = () => { };
+                    
                     // If we have no other tle data, move to next tile
-                    if(tileData.coord.x == -1)
+                    if(tileData.coord.x == -1) 
                     {
-                        newTile.Init(coord, new Ink(canTraverse), canTraverse);
+                        newTile.Init(coord, new Ink(canTraverse), canTraverse, aniParams);
                         _map[x, y] = newTile;
                         continue;
                     }
@@ -80,7 +92,7 @@ namespace GameData
                     {
                         newTile.gameObject.AddComponent<PumpTile>();
                         PumpTile pumpTile = newTile.GetComponent<PumpTile>();
-                        pumpTile.Init(coord, newTile, ink, canTraverse);
+                        pumpTile.Init(coord, newTile, ink, canTraverse, aniParams);
                         newTile.name = newTile.name + " | PUMP: " + ink.colorMode;
                         _map[x, y] = pumpTile;
                     }
@@ -89,7 +101,7 @@ namespace GameData
                     {
                         newTile.gameObject.AddComponent<PivotTile>();
                         PivotTile pivotTile = newTile.GetComponent<PivotTile>();
-                        pivotTile.Init(coord, newTile, ink, true, tileData.PivotDirection);
+                        pivotTile.Init(coord, newTile, ink, true, tileData.PivotDirection, aniParams);
                         newTile.name = newTile.name + " | PIVOT: " + tileData.PivotDirection.ToString();
                         _map[x, y] = pivotTile;
                     }
@@ -98,7 +110,7 @@ namespace GameData
                     {
                         newTile.gameObject.AddComponent<WrapTile>();
                         WrapTile wrapTile = newTile.GetComponent<WrapTile>();
-                        wrapTile.Init(coord, newTile, ink, tileData.WrapDirection);
+                        wrapTile.Init(coord, newTile, ink, tileData.WrapDirection, aniParams);
                         newTile.name = newTile.name + " | WRAP: " + tileData.WrapDirection.ToString();
                         _map[x, y] = wrapTile;
                     }
@@ -107,7 +119,7 @@ namespace GameData
                     {
                         newTile.gameObject.AddComponent<InvertTile>();
                         InvertTile invertTile = newTile.GetComponent<InvertTile>();
-                        invertTile.Init(coord, newTile, ink);
+                        invertTile.Init(coord, newTile, ink, aniParams);
                         newTile.name = newTile.name + " | Invert";
                         _map[x, y] = invertTile;
                     }
@@ -116,7 +128,7 @@ namespace GameData
                     {
                         newTile.gameObject.AddComponent<FillTile>();
                         FillTile fillTile = newTile.GetComponent<FillTile>();
-                        fillTile.Init(coord, newTile, ink, tileData.fillType, tileData.fillColor);
+                        fillTile.Init(coord, newTile, ink, tileData.fillType, tileData.fillColor, aniParams);
                         newTile.name = newTile.name + " | Fill: " + tileData.fillType.ToString();
                         _map[x, y] = fillTile;
                     }
@@ -125,7 +137,7 @@ namespace GameData
                     {
                         newTile.gameObject.AddComponent<FadeTile>();
                         FadeTile fadeTile = newTile.GetComponent<FadeTile>();
-                        fadeTile.Init(coord, newTile, ink, tileData.fadeCount);
+                        fadeTile.Init(coord, newTile, ink, tileData.fadeCount, aniParams);
                         newTile.name = newTile.name + " | Fade";
                         _map[x, y] = fadeTile;
                     }
@@ -272,6 +284,20 @@ namespace GameData
         {
             return 0 <= candidateCoord.x && candidateCoord.x < Width &&
                     0 <= candidateCoord.y && candidateCoord.y < Height;
+        }
+
+        float GetAnimationDuration(float x, float y)
+        {
+            switch (_animationType)
+            {
+                case AnimationType.RANDOM:
+                    return UnityEngine.Random.Range(0f, entryAnimationTotalDuration);
+                case AnimationType.FROM_PLAYER:
+                case AnimationType.BOTTOM_LEFT:
+                    return entryAnimationTotalDuration * ((x + y) / ((float)Width + (float)Height));
+                default:
+                    return entryAnimationTotalDuration;
+            }
         }
     }
 }

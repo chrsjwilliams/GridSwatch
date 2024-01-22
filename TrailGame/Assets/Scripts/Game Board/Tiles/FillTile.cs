@@ -18,7 +18,37 @@ namespace GameData
         ColorMode fillColor;
 
 
-        public void Init(MapCoord mapCoord, Tile tile, Ink ink, FillType fill, ColorMode colorMode)
+        public override void ShowTile(bool show)
+        {
+            if (!IsPump())
+            {
+                base.ShowTile(show);
+            }
+            else
+            {
+                sr.color = show ? Color.white : Color.clear;
+            }
+            if (show)
+            {
+                Color iconColor = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
+                foreach(SpriteRenderer icon in fillIcons)
+                {
+
+                    icon.color = iconColor;
+                }            
+            }
+            else
+            {
+                foreach(SpriteRenderer icon in fillIcons)
+                {
+
+                    icon.color = Color.clear;
+                }              
+            }
+        }
+
+        public void Init(MapCoord mapCoord, Tile tile, Ink ink, FillType fill, ColorMode colorMode,
+            AnimationParams animationParams)
         {
             canTraverse = true;
             Coord = mapCoord;
@@ -27,7 +57,9 @@ namespace GameData
             sr = tile.Sprite;
             splashFillColor = tile.SplashFillColor;
 
-            splashFillColor.sprite = colorMode != ColorMode.NONE? tile.SplashFillColorModeSprite : tile.SplashFillNoColorModeSprite;
+            splashFillColor.sprite = colorMode != ColorMode.NONE
+                ? tile.SplashFillColorModeSprite
+                : tile.SplashFillNoColorModeSprite;
             if (colorMode == ColorMode.NONE)
             {
                 fillIcons.Add(splashFillColor);
@@ -37,7 +69,7 @@ namespace GameData
                 splashFillColor.DOColor(Services.ColorManager.GetColor(colorMode), 0.25f);
             }
 
-            switch(fill)
+            switch (fill)
             {
                 case FillType.HORIZONTAL:
                     horizonalIcon = tile.HorizonalIcon;
@@ -88,16 +120,32 @@ namespace GameData
                     break;
             }
 
-            Color iconColor = fillColor == ColorMode.NONE ? Color.black : Services.ColorManager.GetColor(fillColor);
+            ShowTile(false);
+            PlayEntryAnimation(animationParams);
+        }
+
+        public override void PlayEntryAnimation(AnimationParams animationParams)
+        {
+            Color tileColor = IsPump() ? Color.white : tileInk.color;
+            
+            sr.DOColor(tileColor, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(()=>
+                {
+                    animationParams.OnBegin();
+                }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                    if (!IsPump())
+                    {
+                        SetColor(tileInk, isInit: true);
+                    }
+                });
+            Color iconColor = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
             foreach(SpriteRenderer icon in fillIcons)
             {
                 
-                icon.DOColor(iconColor, 0.25f).SetEase(Ease.InExpo);
-            }
-
-            if (!IsPump())
-            {
-                SetColor(ink, isInit: true);
+                icon.DOColor(iconColor, animationParams.duration).SetEase(animationParams.easingFunction);
             }
         }
 

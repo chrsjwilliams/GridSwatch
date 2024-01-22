@@ -2,17 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GateTile : MonoBehaviour
+namespace GameData
 {
-    // Start is called before the first frame update
-    void Start()
+    // Only allow player to pass if the player has the 
+    // specified color
+    public class GateTile : Tile
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

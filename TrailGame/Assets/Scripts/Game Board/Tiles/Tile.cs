@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using DG.Tweening;
 using TMPro;
 
@@ -6,6 +7,7 @@ namespace GameData
 {
     public class Tile : MonoBehaviour
     {
+        #region Properties
         public MapCoord Coord { get; protected set; }
         public bool canTraverse { get; protected set; }
         public int intensity { get; protected set; }
@@ -47,19 +49,63 @@ namespace GameData
         [SerializeField] protected SpriteRenderer adjacentIcon;
         public SpriteRenderer AdjacentIcon { get { return adjacentIcon; } }
         [SerializeField] protected TextMeshProUGUI _fadeCounter;
-        public TextMeshProUGUI FadeCounter { get { return _fadeCounter; }
+        public TextMeshProUGUI FadeCounter { get { return _fadeCounter; } }
+        #endregion
+
+        private void Awake()
+        {
+            sr = GetComponent<SpriteRenderer>();
         }
 
-        public virtual void Init(MapCoord mapCoord, Ink initInk, bool _canTraverse)
+        public virtual void Init(MapCoord mapCoord, Ink initInk, bool _canTraverse, AnimationParams animationParams)
         {
             Coord = mapCoord;
             canTraverse = _canTraverse;
-            sr = GetComponent<SpriteRenderer>();
-            sr.DOColor(Color.white, 0.0f).SetEase(Ease.InCubic);
             tileInk = initInk;
-            SetColor(initInk, true);
+            ShowTile(false);
+            PlayEntryAnimation(animationParams);
         }
 
+        public virtual void ShowTile(bool show)
+        {
+            if (show)
+            {
+                sr.color = tileInk.color;
+            }
+            else
+            {
+                sr.color = Color.clear;
+            }
+        }
+        
+        public virtual void PlayEntryAnimation(AnimationParams animationParams)
+        {
+            sr.DOColor(tileInk.color, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(()=>
+                {
+                    animationParams.OnBegin();
+                }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                    SetColor(tileInk, true);
+                });
+                
+        }
+
+        public virtual void PlayExitAnimation(AnimationParams animationParams)
+        {
+            sr.DOColor(Color.clear, animationParams.duration)
+                .SetEase(animationParams.easingFunction)
+                .OnStart(()=>
+                {
+                    animationParams.OnBegin();
+                }).OnComplete(() =>
+                {
+                    animationParams.OnComplete();
+                });
+        }
+        
         public void SetTraversal(bool b) { canTraverse = b; }
 
         public bool IsPump() { return null != GetComponent<PumpTile>(); }
@@ -73,7 +119,6 @@ namespace GameData
             {
                 CurrentColorMode = ColorMode.BLACK;
                 sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
-                Debug.Log("TO BLACK");
                 return;
             }
 
