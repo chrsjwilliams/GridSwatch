@@ -22,7 +22,9 @@ namespace GameData
         public Vector2 PlayerStartPos;
         public List<Vector2> ImpassableMapCoords;
         public List<TileData> tileData;
-
+        public bool hasCustomAnimationPosition;
+        [ShowIf("hasCustomAnimationPosition")] 
+        public Vector2 startAnimationPosition;
 
 
         public List<ColorGoal> colorGoals;

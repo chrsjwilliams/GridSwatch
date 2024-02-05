@@ -11,14 +11,9 @@
  *   
  *  GAME:
  *  - add icon for pivot tile
- *  - refactor  
- *  - paint bucket tile splashes color in all adjacent tiles
- *  - screen wrap tile
- *  - warp tiles
  *  
  *  
- *  
- *  - BUG: Player clips out of bounds on the higer end
+ *  - BUG: Player clips out of bounds on the higher end
  *          -   Could not reproduce (5/10/23 7:25 PM)
  *  - BUG: Lower intensity colors overwrite higher intensity ones
  *          - potentially fixed (5/10/23 8:47 PM)

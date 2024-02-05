@@ -8,7 +8,7 @@ namespace GameData
 {
     public class GameBoard : MonoBehaviour
     {
-        enum AnimationType{ RANDOM, BOTTOM_LEFT, FROM_PLAYER}
+        enum AnimationType{ RANDOM, BOTTOM_LEFT, FROM_PLAYER, TOP_LEFT, BOTTOM_RIGHT, TOP_RIGHT,CUSTOM_POSITION}
         
         public enum ColorType { MARKER, BRUSH}
 
@@ -49,7 +49,12 @@ namespace GameData
             
             _emptyTileCount = (Width * Height) - (data.tileData.Count + data.ImpassableMapCoords.Count);
 
-            _animationType = (AnimationType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(AnimationType)).Length);
+            // We use Length - 1 so if there is a custom position, we always use that as a starting point
+            _animationType = data.hasCustomAnimationPosition ? 
+                        AnimationType.CUSTOM_POSITION : (AnimationType)UnityEngine.Random.Range(0, Enum.GetNames(typeof(AnimationType)).Length - 1);
+
+            Vector2 originPos = GetAnimationStartPosition(data);
+            
             
             bool canTraverse;
             for (int x = 0; x < Width; x++)
@@ -70,7 +75,7 @@ namespace GameData
                     TileData tileData = data.GetTile(candidateCoord);
 
                     AnimationParams aniParams;
-                    aniParams.duration = GetAnimationDuration(x, y); 
+                    aniParams.duration = GetAnimationDuration(x, y, originPos); 
                     aniParams.easingFunction = Ease.InCubic;
                     aniParams.OnBegin = aniParams.OnComplete = () => { };
                     
@@ -286,13 +291,40 @@ namespace GameData
                     0 <= candidateCoord.y && candidateCoord.y < Height;
         }
 
-        float GetAnimationDuration(float x, float y)
+        Vector2 GetAnimationStartPosition(MapData data)
+        {
+            if (data.hasCustomAnimationPosition && _animationType == AnimationType.CUSTOM_POSITION)
+                return data.startAnimationPosition;
+            
+            switch (_animationType)
+            {
+                case AnimationType.FROM_PLAYER:
+                    return data.PlayerStartPos;
+                case AnimationType.TOP_LEFT:
+                    return new Vector2(0, Height - 1);
+                case AnimationType.TOP_RIGHT:
+                    return new Vector2(Width - 1, Height - 1);
+                case AnimationType.BOTTOM_RIGHT:
+                    return new Vector2(Width - 1, 0);
+                case AnimationType.RANDOM:
+                case AnimationType.BOTTOM_LEFT:
+                default:
+                    return Vector2.zero;
+            }
+        }
+        
+        float GetAnimationDuration(float x, float y, Vector2 originPosition)
         {
             switch (_animationType)
             {
                 case AnimationType.RANDOM:
                     return UnityEngine.Random.Range(0f, entryAnimationTotalDuration);
                 case AnimationType.FROM_PLAYER:
+                case AnimationType.TOP_LEFT:
+                case AnimationType.TOP_RIGHT:
+                case AnimationType.BOTTOM_RIGHT:
+                case AnimationType.CUSTOM_POSITION:        
+                    return entryAnimationTotalDuration * (Vector2.Distance(new Vector2(x, y), originPosition) / ((float)Width + (float)Height));
                 case AnimationType.BOTTOM_LEFT:
                     return entryAnimationTotalDuration * ((x + y) / ((float)Width + (float)Height));
                 default:
