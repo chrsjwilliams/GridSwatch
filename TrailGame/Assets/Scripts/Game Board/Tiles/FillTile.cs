@@ -56,7 +56,8 @@ namespace GameData
             fillColor = colorMode;
             sr = tile.Sprite;
             splashFillColor = tile.SplashFillColor;
-
+            tileInk = ink;
+            
             splashFillColor.sprite = colorMode != ColorMode.NONE
                 ? tile.SplashFillColorModeSprite
                 : tile.SplashFillNoColorModeSprite;
