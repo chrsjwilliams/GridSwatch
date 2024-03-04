@@ -39,8 +39,7 @@ namespace GameScreen
             uIController = GetComponent<GameScreenUIController>();
         }
 
-        // Height Range: 3 - 15
-        // Width Range: 3 - 9
+       
         private void Start()
         {
             Services.EventManager.Register<SwipeEvent>(OnSwipe);

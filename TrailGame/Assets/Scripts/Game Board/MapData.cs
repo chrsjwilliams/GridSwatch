@@ -17,6 +17,8 @@ namespace GameData
         public string mapName;
         [TextArea] public string MapGoal;
         public GameBoard.ColorType BoardType;
+        // Height Range: 3 - 13
+        // Width Range: 3 - 9
         public Vector2 BoardSize;
 
         public Vector2 PlayerStartPos;
