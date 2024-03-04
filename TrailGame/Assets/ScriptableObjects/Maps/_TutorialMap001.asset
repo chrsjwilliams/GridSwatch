@@ -25,7 +25,7 @@ MonoBehaviour:
   mapName: Tutorial Map 1
   MapGoal: 
   BoardType: 0
-  BoardSize: {x: 3, y: 3}
+  BoardSize: {x: 6, y: 3}
   PlayerStartPos: {x: 0, y: 0}
   ImpassableMapCoords:
   - {x: 2, y: 2}
@@ -46,6 +46,49 @@ MonoBehaviour:
     fillColor: 0
     isFadeTile: 0
     fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 3, y: 0}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 1
+    gateColor: 1
+    isNotGate: 1
+  - coord: {x: 5, y: 0}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  hasCustomAnimationPosition: 0
+  startAnimationPosition: {x: 0, y: 0}
   colorGoals:
   - colorMode: 2
     amount: 5

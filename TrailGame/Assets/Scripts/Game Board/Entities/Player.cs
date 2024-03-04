@@ -254,7 +254,7 @@ public class Player : Entity
     private bool CanTraverse(MapCoord candidateCoord)
     {
         bool canTraverse = Services.GameScene.board.ContainsCoord(candidateCoord) &&
-                           Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y].canTraverse;
+                           Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y].GetCanTraverse(this);
 
         return canTraverse;
     }

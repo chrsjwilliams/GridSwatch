@@ -146,6 +146,15 @@ namespace GameData
                         newTile.name = newTile.name + " | Fade";
                         _map[x, y] = fadeTile;
                     }
+
+                    if (tileData.isGateTile)
+                    {
+                        newTile.gameObject.AddComponent<GateTile>();
+                        GateTile gateTile = newTile.GetComponent<GateTile>();
+                        gateTile.Init(coord, newTile, ink, tileData.gateColor, tileData.isNotGate, aniParams);
+                        newTile.name = newTile.name + " | Gate: " + tileData.gateColor.ToString();
+                        _map[x, y] = gateTile;
+                    }
                 }
             }
         }

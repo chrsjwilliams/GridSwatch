@@ -104,6 +104,11 @@ namespace GameData
         [ShowIf("isFadeTile")] 
         public int fadeCount;
 
-
+        [HorizontalGroup("Group 7"), LabelWidth(100)]
+        public bool isGateTile;
+        [ShowIf("isGateTile")] 
+        public ColorMode gateColor;
+        [ShowIf("isGateTile")] 
+        public bool isNotGate;
     }
 }

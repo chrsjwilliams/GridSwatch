@@ -50,6 +50,9 @@ namespace GameData
         public SpriteRenderer AdjacentIcon { get { return adjacentIcon; } }
         [SerializeField] protected TextMeshProUGUI _fadeCounter;
         public TextMeshProUGUI FadeCounter { get { return _fadeCounter; } }
+        [SerializeField] protected SpriteRenderer gateIcon;
+        public SpriteRenderer GateIcon { get { return gateIcon; } }
+        public Sprite[] GateIcons;
         #endregion
 
         private void Awake()
@@ -64,6 +67,11 @@ namespace GameData
             tileInk = initInk;
             ShowTile(false);
             PlayEntryAnimation(animationParams);
+        }
+
+        public virtual bool GetCanTraverse(Entity entity)
+        {
+            return canTraverse;
         }
 
         public virtual void ShowTile(bool show)
