@@ -2,6 +2,7 @@
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using Random = UnityEngine.Random;
 
 namespace GameData
 {
@@ -55,14 +56,22 @@ namespace GameData
         public Sprite[] GateIcons;
         #endregion
 
-        private void Awake()
+        protected Quaternion GetRandomRotation()
         {
-            sr = GetComponent<SpriteRenderer>();
-        }
+            float rand = Random.Range(0, 1000);
+            float mod = rand % 4;
+            float newRotation = 90 * mod;
 
+            return Quaternion.Euler(0, 0, newRotation);
+        }
+        
+        
         public virtual void Init(MapCoord mapCoord, Ink initInk, bool _canTraverse, AnimationParams animationParams)
         {
             Coord = mapCoord;
+            transform.localRotation = GetRandomRotation();
+            sr.transform.localRotation = GetRandomRotation();
+            
             canTraverse = _canTraverse;
             tileInk = initInk;
             ShowTile(false);

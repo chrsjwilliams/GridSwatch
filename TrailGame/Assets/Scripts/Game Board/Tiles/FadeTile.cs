@@ -21,7 +21,7 @@ namespace GameData
             }
             else
             {
-                sr.color = show ? Color.white : Color.clear;
+                sr.color = show ? tileInk.color : Color.clear;
             }
 
             if (show)

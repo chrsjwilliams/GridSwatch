@@ -13,13 +13,13 @@ namespace GameData
             if (show)
             {
                 pumpIndicator.color = tileInk.color;
-                sr.color = Color.white;
             }
             else
             {
-                sr.color = Color.clear;
                 pumpIndicator.color = Color.clear;
             }
+            sr.color = Color.clear;
+
         }
 
         public void Init(MapCoord mapCoord, Tile tile, Ink initInk, bool _canTraverse, AnimationParams animationParams)
@@ -36,7 +36,7 @@ namespace GameData
 
         public override void PlayEntryAnimation(AnimationParams animationParams)
         {
-            sr.DOColor(Color.white, animationParams.duration)
+            sr.DOColor(Color.clear, animationParams.duration)
                 .SetEase(animationParams.easingFunction)
                 .OnStart(()=>
                 {

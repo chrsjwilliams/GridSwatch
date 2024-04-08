@@ -34,7 +34,7 @@ public class Player : Entity
         SetPosition(coord);
         direction = Direction.NONE;
         Services.EventManager.Register<SwipeEvent>(OnSwipe);
-        moveSpeed = 2;
+        moveSpeed = 1.5f;
         arriveSpeed = 1;
         ResetIntensitySwipes();
         CurrentColorMode = Ink.colorMode;
@@ -78,6 +78,7 @@ public class Player : Entity
 
     void UseInidcator(int index)
     {
+        Debug.Log("USING INDICATOR: " + index);
         colorIndicators[index].DOColor(Color.white, 0.33f).SetEase(Ease.InCubic);
     }
 
@@ -106,15 +107,18 @@ public class Player : Entity
         {
             if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
             {
+                
                 UseInidcator(swipeCount - 1);
                 swipeCount--;
+                Debug.Log("EARLY OUT: " + swipeCount);
             }
-
+            
+            direction = e.gesture.CurrentDirection;
             return;
         }
 
-        // removing axis swipe becase it breaks marker mode
-        // if i wnt levels of color i need to be able to detect when i move orthonogally(?)
+        // removing axis swipe because it breaks marker mode
+        // if i want levels of color i need to be able to detect when i move orthonogally(?)
         // no, it's more like, if the color below me is also my colortype, then i shouldn't lose
         // power
         float xPos = Mathf.Round(transform.position.x);
@@ -134,6 +138,14 @@ public class Player : Entity
             //colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
         }
 
+        // We update swipe counts here since some tile effects
+        // stop the player from receiving input
+        if (CurrentColorMode != ColorMode.NONE)
+        {
+            UseInidcator(swipeCount - 1);
+            swipeCount--;
+        }
+        
         if (Ink.Intensity == 0 || (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER))
         {
             Ink.Intensity = 0;
@@ -141,14 +153,7 @@ public class Player : Entity
             swipeCount = 0;
         }
 
-        // We update swipe counts here since some tile effects
-        // stop the player from receiving input
-        if (CurrentColorMode != ColorMode.NONE)
-        {
-            
-            UseInidcator(swipeCount - 1);
-            swipeCount--;
-        }
+        
 
         direction = e.gesture.CurrentDirection;
 

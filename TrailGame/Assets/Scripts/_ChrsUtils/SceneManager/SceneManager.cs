@@ -13,6 +13,9 @@ using Object = UnityEngine.Object;
 
      private readonly Dictionary<Type, GameObject> _scenes = new Dictionary<Type, GameObject>();
      private readonly Stack<Scene<TTransitionData>> _sceneStack = new Stack<Scene<TTransitionData>>();
+
+     public static Action SceneChanged;
+     
      public Scene<TTransitionData> CurrentScene
      {
          get

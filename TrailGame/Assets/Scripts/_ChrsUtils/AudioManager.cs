@@ -2,10 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Clips { CLICK }
+public enum Clips { CLICK, MODAL, CONFIRM, DECLINE,CANCEL }
 
 public class AudioManager : MonoBehaviour
 {
+    [System.Serializable]
+    struct AudioClipEntry
+    {
+        public Clips clip;
+        public AudioClip audioClip;
+    }
+
+    [SerializeField] private List<AudioClipEntry> audioClips;
     public Dictionary<Clips, AudioClip> audioLibrary { get; private set; }
     private AudioSource audioSource;
     private AudioClip audioClip;
@@ -14,7 +22,7 @@ public class AudioManager : MonoBehaviour
 
     private TaskManager tm = new TaskManager();
 	// Use this for initialization
-	void Start ()
+	void Awake ()
     {
         audioLibrary = new Dictionary<Clips, AudioClip>();
         audioSource = GetComponent<AudioSource>();
@@ -23,7 +31,10 @@ public class AudioManager : MonoBehaviour
 
     private void LoadLibrary()
     {
-        audioLibrary.Add(Clips.CLICK, Resources.Load<AudioClip>("Audio/Click"));
+        foreach (var clip in audioClips)
+        {
+            audioLibrary.Add(clip.clip, clip.audioClip);
+        }
     }
 
     public void PlayClipVaryPitch(Clips clip)

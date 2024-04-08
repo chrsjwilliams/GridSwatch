@@ -3,7 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using GameData;
 using GameScreen;
+using Unity.Services.Analytics;
 using UnityEngine;
+using UnityEngine.Analytics;
 
 public class MapSelectSceneScript : Scene<TransitionData>
 {
@@ -46,6 +48,12 @@ public class MapSelectSceneScript : Scene<TransitionData>
     {
         TransitionData tData = new TransitionData();
         tData.SelecetdMap = data;
+        CustomEvent mapStartedEvent = new CustomEvent("Map_Selected")
+        {
+            { "map_name", tData.SelecetdMap.mapName },
+        };
+        
+        AnalyticsService.Instance.RecordEvent(mapStartedEvent);
         Services.Scenes.Swap<GameSceneScript>(tData);
     }
 

@@ -1,5 +1,11 @@
-﻿using UnityEngine;
+﻿using System;
+using Sirenix.Utilities;
+using Unity.Services.Analytics;
+using Unity.Services.Core;
+using Unity.Services.Core.Environments;
+using UnityEngine;
 using UnityEngine.Assertions;
+using UnityEngine.Analytics;
 
 #region Main.cs Overview
 /************************************************************************************************************************/
@@ -62,21 +68,26 @@ using UnityEngine.Assertions;
 public class Main : MonoBehaviour
 {
     [SerializeField] private bool DEBUG_MODE;
-
+    [SerializeField] private ModalContent analyticsModalContent;
     private void Awake()
     {
         Assert.raiseExceptions = true;
 
         InitalizeServices();
 
-        if(!DEBUG_MODE)
-            Services.Scenes.PushScene<TitleSceneScript>();
+        
     }
+    
 
-    private void InitalizeServices()
+    private async void InitalizeServices()
     {
         Services.Main = this;
-
+        var options = new InitializationOptions();
+        options.SetEnvironmentName("development");
+        
+        // Initialize Unity Services
+        await UnityServices.InitializeAsync(options);
+        
         Services.EventManager = new GameEventsManager();
         Services.GeneralTaskManager = new TaskManager();
         Services.Prefabs = Resources.Load<PrefabDB>("Prefabs/PrefabDB");
@@ -90,6 +101,41 @@ public class Main : MonoBehaviour
         Services.MapManager = GetComponent<MapManager>();
         Services.MapManager.Init();
         Services.Scenes = new GameSceneManager<TransitionData>(gameObject, Services.Prefabs.Scenes);
+        
+        if(!DEBUG_MODE)
+            Services.Scenes.PushScene<TitleSceneScript>();
+    }
 
+    private void Start()
+    {
+        
+        string value = PlayerPrefs.GetString("enabled_analytics");
+        bool enabledAnalytics = false;
+        if (!string.IsNullOrEmpty(value))
+        {
+            enabledAnalytics = bool.Parse(value);
+        }
+
+        if (!enabledAnalytics)
+        {
+            ModalControl.Instance.DisplayQuestion(analyticsModalContent, (response) =>
+            {
+                enabledAnalytics = response;
+
+                if (enabledAnalytics)
+                {
+                    AnalyticsService.Instance.StartDataCollection();
+                    Debug.Log("Start Collecting");
+                }
+                
+                PlayerPrefs.SetString("enabled_analytics", enabledAnalytics.ToString());
+                PlayerPrefs.Save();
+            });
+        }
+        else
+        {
+            AnalyticsService.Instance.StartDataCollection();
+            Debug.Log("Start Collecting");
+        }
     }
 }
