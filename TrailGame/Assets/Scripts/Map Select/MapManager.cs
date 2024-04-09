@@ -10,6 +10,7 @@ using UnityEngine.AddressableAssets;
 public class MapManager : MonoBehaviour
 {
     [SerializeField] string mapLabel;
+    [SerializeField] string betaMapsLabel;
     [SerializeField] string tileTestLabel;
     TaskManager tm = new TaskManager();
 

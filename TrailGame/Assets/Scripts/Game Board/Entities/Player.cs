@@ -107,10 +107,8 @@ public class Player : Entity
         {
             if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
             {
-                
-                UseInidcator(swipeCount - 1);
                 swipeCount--;
-                Debug.Log("EARLY OUT: " + swipeCount);
+                UseInidcator(swipeCount);
             }
             
             direction = e.gesture.CurrentDirection;
@@ -140,23 +138,12 @@ public class Player : Entity
 
         // We update swipe counts here since some tile effects
         // stop the player from receiving input
-        if (CurrentColorMode != ColorMode.NONE)
+        if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
         {
-            UseInidcator(swipeCount - 1);
             swipeCount--;
+            UseInidcator(swipeCount);
         }
-        
-        if (Ink.Intensity == 0 || (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER))
-        {
-            Ink.Intensity = 0;
-            CurrentColorMode = ColorMode.NONE;
-            swipeCount = 0;
-        }
-
-        
-
         direction = e.gesture.CurrentDirection;
-
     }
 
     public void Move(Direction dir)
@@ -193,7 +180,6 @@ public class Player : Entity
             int xPos = (int)Mathf.Floor(transform.localPosition.x);
             int yPos = (int)Mathf.Floor(transform.localPosition.y);
             coord = new MapCoord(xPos, yPos);
-            Tile currentTile = Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y]; 
             if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
             {
                 Ink.color = GetColor();
@@ -202,10 +188,10 @@ public class Player : Entity
             isMoving = true;
             playerPoints[playerPoints.Count - 1] = transform.localPosition;
         }
-        else
+        else if(!CanTraverse(candidateCoord) && isMoving)
         {
-            float xArriveMod = direction == Direction.LEFT ? 15f : 1;
-            float yArriveMod = direction == Direction.DOWN ? 15f : 1f;
+            float xArriveMod = direction == Direction.LEFT ? 15f : 15f;
+            float yArriveMod = direction == Direction.DOWN ? 15f : 15f;
 
 
             float xPos = Mathf.Lerp(transform.localPosition.x, (int)transform.localPosition.x,
@@ -252,7 +238,15 @@ public class Player : Entity
 
             Vector3 newPosition = new Vector3(xPos, yPos, transform.localPosition.z);
             isMoving = false;
-            transform.DOLocalMove(newPosition, 0.01f).SetEase(Ease.InCirc);
+            transform.DOLocalMove(newPosition, 0.07f).SetEase(Ease.InCirc).OnComplete(() =>
+            {
+                if (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER)
+                {
+                    Ink.Intensity = 0;
+                    CurrentColorMode = ColorMode.NONE;
+                    swipeCount = 0;
+                }
+            });
         }
     }
 
