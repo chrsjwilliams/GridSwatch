@@ -73,12 +73,10 @@ public class Player : Entity
         {
             inidcator.DOColor(color, 0.33f).SetEase(Ease.InCubic);
         }
-
     }
 
     void UseInidcator(int index)
-    {
-        Debug.Log("USING INDICATOR: " + index);
+    { 
         colorIndicators[index].DOColor(Color.white, 0.33f).SetEase(Ease.InCubic);
     }
 
@@ -86,14 +84,7 @@ public class Player : Entity
     public Color GetColor()
     {
         if (CurrentColorMode == ColorMode.NONE) return Color.clear;
-        
-        int intensityIndex = -1;
-
-        if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
-        else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
-        else return Color.clear;
-
-        return Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
+        return Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[0];
     }
 
     public void SetPosition(MapCoord c)
@@ -103,47 +94,25 @@ public class Player : Entity
 
     protected void OnSwipe(SwipeEvent e)
     {
-        if (!receiveInput)
+        if (swipeCount <= 0 && CurrentColorMode != ColorMode.NONE)
         {
-            if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
-            {
-                swipeCount--;
-                UseInidcator(swipeCount);
-            }
-            
-            direction = e.gesture.CurrentDirection;
-            return;
+            Ink.Intensity = 0;
+            CurrentColorMode = ColorMode.NONE;
+            swipeCount = 0;
         }
-
-        // removing axis swipe because it breaks marker mode
-        // if i want levels of color i need to be able to detect when i move orthonogally(?)
-        // no, it's more like, if the color below me is also my colortype, then i shouldn't lose
-        // power
-        float xPos = Mathf.Round(transform.position.x);
-        float yPos = Mathf.Round(transform.position.y);
-        transform.position = new Vector3(xPos, yPos, transform.position.z);
-        int intensityIndex = -1;
-        if (Services.Board.BoardType == GameBoard.ColorType.BRUSH)
-        {
-            Ink.Intensity--;
-        }
-
-        if (Ink.Intensity > 1) intensityIndex = (int)ColorManager.Intensity.FULL;
-        else if (Ink.Intensity > 0) intensityIndex = (int)ColorManager.Intensity.DIM;
-
-        if (intensityIndex != -1 && CurrentColorMode != ColorMode.NONE)
-        {
-            //colorIndicator.color = Services.ColorManager.ColorScheme.GetColor(CurrentColorMode)[intensityIndex];
-        }
-
-        // We update swipe counts here since some tile effects
-        // stop the player from receiving input
+        
         if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
         {
             swipeCount--;
             UseInidcator(swipeCount);
         }
         direction = e.gesture.CurrentDirection;
+
+        if (!receiveInput) return;
+        
+        float xPos = Mathf.Round(transform.position.x);
+        float yPos = Mathf.Round(transform.position.y);
+        transform.position = new Vector3(xPos, yPos, transform.position.z);
     }
 
     public void Move(Direction dir)
@@ -180,7 +149,7 @@ public class Player : Entity
             int xPos = (int)Mathf.Floor(transform.localPosition.x);
             int yPos = (int)Mathf.Floor(transform.localPosition.y);
             coord = new MapCoord(xPos, yPos);
-            if (CurrentColorMode != ColorMode.NONE && dimIntensitySwipeCount > 0)
+            if (CurrentColorMode != ColorMode.NONE)
             {
                 Ink.color = GetColor();
             }
@@ -238,14 +207,13 @@ public class Player : Entity
 
             Vector3 newPosition = new Vector3(xPos, yPos, transform.localPosition.z);
             isMoving = false;
+            if (CurrentColorMode != ColorMode.NONE)
+            {
+                Ink.color = GetColor();
+            }
             transform.DOLocalMove(newPosition, 0.07f).SetEase(Ease.InCirc).OnComplete(() =>
             {
-                if (swipeCount == 0 && Services.Board.BoardType == GameBoard.ColorType.MARKER)
-                {
-                    Ink.Intensity = 0;
-                    CurrentColorMode = ColorMode.NONE;
-                    swipeCount = 0;
-                }
+                
             });
         }
     }

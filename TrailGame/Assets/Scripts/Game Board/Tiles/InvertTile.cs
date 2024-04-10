@@ -89,7 +89,6 @@ namespace GameData
             entity.Ink = inverseInk;
             entity.CurrentColorMode = inverse;
             entity.SetIndicators(Services.ColorManager.ColorScheme.GetColor(inverse)[0]);
-            entity.PrevColorMode = inverse;
         }
 
         ColorMode FindInverse(ColorMode mode)

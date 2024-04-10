@@ -56,9 +56,8 @@ namespace GameData
         {
             entity.Ink = tileInk;
             entity.CurrentColorMode = PumpColor;
-            entity.SetIndicators(Services.ColorManager.ColorScheme.GetColor(PumpColor)[0]);
             entity.ResetIntensitySwipes();
-            entity.PrevColorMode = PumpColor;
+            entity.SetIndicators(Services.ColorManager.ColorScheme.GetColor(PumpColor)[0]);
         }
 
         protected override void TriggerExitEffect(Entity entity)
