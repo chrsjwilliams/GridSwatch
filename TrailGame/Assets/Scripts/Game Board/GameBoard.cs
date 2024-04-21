@@ -82,6 +82,7 @@ namespace GameData
                     // If we have no other tle data, move to next tile
                     if(tileData.coord.x == -1) 
                     {
+                        
                         newTile.Init(coord, new Ink(canTraverse), canTraverse, aniParams);
                         _map[x, y] = newTile;
                         continue;
@@ -91,6 +92,13 @@ namespace GameData
                     if (tileData.hasCustomInk)
                     {
                         ink = new Ink(tileData.ink.colorMode);
+                        if (!tileData.isPumpTile)
+                        {
+                            newTile.SetColor(ink, isInit: true);
+                            newTile.Init(coord, ink, true, aniParams);
+                            newTile.name = newTile.name + " | START COLOR: " + ink.colorMode;
+                            _map[x, y] = newTile;
+                        }
                     }
 
                     if (tileData.isPumpTile)
