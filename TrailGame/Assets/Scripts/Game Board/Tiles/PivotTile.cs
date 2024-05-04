@@ -105,6 +105,11 @@ namespace GameData
             entity.direction = Direction.NONE;
             yield return new WaitForSeconds(0.2f);
             entity.PivotDirection(PivotDirection);
+            if (entity is Player)
+            {
+                ((Player)entity).Move(PivotDirection);
+                Debug.Log("MOVE " + PivotDirection);
+            }
             entity.receiveInput = true;
         }
 

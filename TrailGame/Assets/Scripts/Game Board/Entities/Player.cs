@@ -206,6 +206,8 @@ public class Player : Entity
             }
 
             Vector3 newPosition = new Vector3(xPos, yPos, transform.localPosition.z);
+            coord = new MapCoord(xPos, yPos);
+
             isMoving = false;
             if (CurrentColorMode != ColorMode.NONE)
             {
@@ -213,13 +215,18 @@ public class Player : Entity
             }
             transform.DOLocalMove(newPosition, 0.07f).SetEase(Ease.InCirc).OnComplete(() =>
             {
-                
             });
+        }
+        else
+        {
+            
+            Debug.Log("CANNNOT TRAVERSE");
         }
     }
 
     private bool CanTraverse(MapCoord candidateCoord)
     {
+        Debug.Log("CANDIDATE COORD: " + candidateCoord);
         bool canTraverse = Services.GameScene.board.ContainsCoord(candidateCoord) &&
                            Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y].GetCanTraverse(this);
 
