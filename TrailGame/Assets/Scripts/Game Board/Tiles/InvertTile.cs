@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -88,7 +89,9 @@ namespace GameData
 
             entity.Ink = inverseInk;
             entity.CurrentColorMode = inverse;
-            entity.SetIndicators(Services.ColorManager.ColorScheme.GetColor(inverse)[0]);
+            Debug.Log("SETTING INDICATORS");
+            int remainingSwipes = Math.Abs(((Player)entity).ColorIndicators.Count - entity.SwipeCount);
+            entity.SetIndicators(Services.ColorManager.ColorScheme.GetColor(inverse)[0], remainingSwipes);
         }
 
         ColorMode FindInverse(ColorMode mode)

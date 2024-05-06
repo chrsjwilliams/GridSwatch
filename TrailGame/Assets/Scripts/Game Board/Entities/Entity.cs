@@ -14,6 +14,11 @@ public abstract class Entity : MonoBehaviour
 
     public float moveSpeed { get; protected set; }
     public float arriveSpeed { get; protected set; }
+    [SerializeField] protected int swipeCount = 0;
+    public int SwipeCount
+    {
+        get { return swipeCount; }
+    }
 
     public Ink Ink { get; set; }
     public ColorMode PrevColorMode { get; set; }
@@ -24,7 +29,7 @@ public abstract class Entity : MonoBehaviour
     public MapCoord coord { get; set; }
     public abstract void Init(MapCoord c);
     public abstract void PivotDirection(Direction d);
-    public abstract void SetIndicators(Color c);
+    public abstract void SetIndicators(Color c, int swipeCount = 0);
     public abstract void ResetIntensitySwipes();
     public abstract void Show(bool show);
 

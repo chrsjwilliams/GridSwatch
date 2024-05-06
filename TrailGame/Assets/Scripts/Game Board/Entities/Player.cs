@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using DG.Tweening;
 using System.Collections;
 using System;
+using System.Collections.ObjectModel;
 using System.Runtime.InteropServices.ComTypes;
 
 public class Player : Entity
@@ -19,10 +20,14 @@ public class Player : Entity
 
     public bool isMoving;
 
-    [SerializeField] int swipeCount = 0;
+    
     [SerializeField] CanvasGroup indicatorGroup;
     [SerializeField] List<Image> colorIndicators;
-    
+    public ReadOnlyCollection<Image> ColorIndicators
+    {
+        get { return colorIndicators.AsReadOnly(); }
+    }
+
     private List<Vector3> playerPoints;
     public override void Init(MapCoord c)
     {
@@ -65,19 +70,22 @@ public class Player : Entity
         dimIntensitySwipeCount = DIM_INTENSITY_SWIPES;
     }
 
-    public override void SetIndicators(Color color)
+    public override void SetIndicators(Color color, int swipes  = 0)
     {
         if (colorIndicators == null) return;
 
-        foreach (var inidcator in colorIndicators)
+        for (int i = colorIndicators.Count - 1; i >=  swipes; i--)
         {
-            inidcator.DOColor(color, 0.33f).SetEase(Ease.InCubic);
+            Debug.Log("SET COOL: " + i);
+            colorIndicators[i].DOColor(color, 0.33f).SetEase(Ease.InCubic);
         }
     }
 
     void UseInidcator(int index)
-    { 
-        colorIndicators[index].DOColor(Color.white, 0.33f).SetEase(Ease.InCubic);
+    {
+        int i = Math.Abs(colorIndicators.Count - index);
+        Debug.Log("USE COOL: " + i);
+        colorIndicators[i].DOColor(Color.white, 0.33f).SetEase(Ease.InCubic);
     }
 
 
@@ -103,8 +111,8 @@ public class Player : Entity
         
         if (CurrentColorMode != ColorMode.NONE && swipeCount > 0)
         {
-            swipeCount--;
             UseInidcator(swipeCount);
+            swipeCount--;
         }
         direction = e.gesture.CurrentDirection;
 
@@ -217,16 +225,10 @@ public class Player : Entity
             {
             });
         }
-        else
-        {
-            
-            Debug.Log("CANNNOT TRAVERSE");
-        }
     }
 
     private bool CanTraverse(MapCoord candidateCoord)
     {
-        Debug.Log("CANDIDATE COORD: " + candidateCoord);
         bool canTraverse = Services.GameScene.board.ContainsCoord(candidateCoord) &&
                            Services.GameScene.board.Map[candidateCoord.x, candidateCoord.y].GetCanTraverse(this);
 
