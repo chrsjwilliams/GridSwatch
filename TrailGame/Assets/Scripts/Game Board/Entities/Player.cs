@@ -76,7 +76,6 @@ public class Player : Entity
 
         for (int i = colorIndicators.Count - 1; i >=  swipes; i--)
         {
-            Debug.Log("SET COOL: " + i);
             colorIndicators[i].DOColor(color, 0.33f).SetEase(Ease.InCubic);
         }
     }
@@ -84,7 +83,6 @@ public class Player : Entity
     void UseInidcator(int index)
     {
         int i = Math.Abs(colorIndicators.Count - index);
-        Debug.Log("USE COOL: " + i);
         colorIndicators[i].DOColor(Color.white, 0.33f).SetEase(Ease.InCubic);
     }
 
