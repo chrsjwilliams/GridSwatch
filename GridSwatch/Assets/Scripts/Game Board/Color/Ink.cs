@@ -29,8 +29,9 @@ public class Ink
         }
     }
 
-    public Ink(bool canTraverse = false){
-        if (canTraverse) color = new Color(0.6078432f, 0.5568628f, 0.4392157f, 0f);
+    public Ink(bool canTraverse = false)
+    {
+        if (canTraverse) color = Color.white;
         else color = Services.ColorManager.GetColor(ColorMode.BLACK);
         colorMode = ColorMode.NONE;
         Intensity = 0;

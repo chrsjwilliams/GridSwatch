@@ -28,7 +28,7 @@ public class ModalControl : MonoBehaviour
     public CanvasGroup modalCanvasGroup;
     public TextMeshProUGUI title, textContent;
     public MeshRenderer modelContent;
-    public GameObject banner;
+    public RectTransform banner;
     public TextMeshProUGUI bannerTitle, bannerContent;
     public Image imageContent;
     public RectTransform buttonContainer;
@@ -171,6 +171,7 @@ public class ModalControl : MonoBehaviour
         Instance = this;
         hideButton(buttonAffirm, buttonDecline, buttonWatchAd);
         rootRT.anchoredPosition = hidePos;
+        banner.anchoredPosition = hidePos;
     }
 
     /// <summary>
@@ -372,7 +373,7 @@ public class ModalControl : MonoBehaviour
             case InfoType.Text:
                 modelContent.gameObject.SetActive(false);
                 imageContent.gameObject.SetActive(false);
-                banner.SetActive(false);
+                banner.gameObject.SetActive(false);
 
                 textContent.gameObject.SetActive(true);
                 textContent.text = request.content;
@@ -381,7 +382,7 @@ public class ModalControl : MonoBehaviour
                 break;
             case InfoType.Image:
                 modelContent.gameObject.SetActive(false);
-                banner.SetActive(false);
+                banner.gameObject.SetActive(false);
 
                 textContent.gameObject.SetActive(true);
                 imageContent.gameObject.SetActive(true);
@@ -391,7 +392,7 @@ public class ModalControl : MonoBehaviour
                 break;
             case InfoType.Mesh:
                 imageContent.gameObject.SetActive(false);
-                banner.SetActive(false);
+                banner.gameObject.SetActive(false);
 
                 textContent.gameObject.SetActive(true);
                 modelContent.gameObject.SetActive(true);
@@ -404,7 +405,7 @@ public class ModalControl : MonoBehaviour
                 textContent.gameObject.SetActive(false);
 
 
-                banner.SetActive(true);
+                banner.gameObject.SetActive(true);
                 break;
         }
 
