@@ -40,7 +40,7 @@ namespace GameData
             }
             else
             {
-                sr.color = show ? tileInk.color : Color.clear;
+                sr.color = show ? tileInk.color : Color.white;
             }
 
             if (show)
@@ -49,7 +49,7 @@ namespace GameData
             }
             else
             {
-                wrapArrow.color = Color.clear;
+                wrapArrow.color = Color.white;
             }
         }
 
