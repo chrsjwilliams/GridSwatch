@@ -27,7 +27,7 @@ public class MapButton : MonoBehaviour
     {
         Status = status;
         MapData = data;
-        _mapName.text = MapData.mapName;
+        _mapName.text = MapData.mapName.Replace("Map", "");
         UpdateIcon();
     }
 

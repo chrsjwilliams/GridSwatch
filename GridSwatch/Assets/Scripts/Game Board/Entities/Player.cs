@@ -100,6 +100,8 @@ public class Player : Entity
 
     protected void OnSwipe(SwipeEvent e)
     {
+        if (!receiveInput) return;
+
         if (swipeCount <= 0 && CurrentColorMode != ColorMode.NONE)
         {
             Ink.Intensity = 0;
@@ -114,7 +116,6 @@ public class Player : Entity
         }
         direction = e.gesture.CurrentDirection;
 
-        if (!receiveInput) return;
         
         float xPos = Mathf.Round(transform.position.x);
         float yPos = Mathf.Round(transform.position.y);

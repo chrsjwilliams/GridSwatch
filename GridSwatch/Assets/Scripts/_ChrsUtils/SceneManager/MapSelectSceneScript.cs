@@ -16,8 +16,12 @@ public class MapSelectSceneScript : Scene<TransitionData>
     [SerializeField] private Transform _tileTypeTestContent;
 
 
+    private bool _inGame = false;
+
     internal override void OnEnter(TransitionData data)
     {
+        _inGame = data != null && data.SelecetdMap != null;
+        
         // load levels
         foreach(MapData mapData in Services.MapManager.Maps)
         {
@@ -54,11 +58,23 @@ public class MapSelectSceneScript : Scene<TransitionData>
         };
         
         AnalyticsService.Instance.RecordEvent(mapStartedEvent);
-        Services.Scenes.Swap<GameSceneScript>(tData);
+        if (_inGame)
+        {
+            Services.Scenes.PopScene(tData);
+        }
+        else
+        {
+            Services.Scenes.Swap<GameSceneScript>(tData);
+        }
     }
 
     public void BackButtonPressed()
     {
         Services.Scenes.Swap<TitleSceneScript>();
+    }
+
+    public void CloseMapSelect()
+    {
+        Services.Scenes.PopScene();
     }
 }

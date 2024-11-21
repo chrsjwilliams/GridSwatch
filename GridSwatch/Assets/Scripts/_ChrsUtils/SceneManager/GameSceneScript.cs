@@ -60,7 +60,17 @@ namespace GameScreen
         internal override void OnEnter(TransitionData data)
         {
             if (data == null || data.SelecetdMap == null) return;
-
+            if (data.SelecetdMap == MapData)
+            {
+                player.receiveInput = true;
+                return;
+            }
+            else if(MapData != null)
+            {
+                Destroy(player.gameObject);
+                board.ResetMap();
+            }
+            
             swipeTextPulse?.Play();
             finished = false;
             MapData = data.SelecetdMap;
@@ -72,10 +82,12 @@ namespace GameScreen
 
             Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
 
+
             player = Instantiate<Player>(Services.Prefabs.Player);
             player.transform.parent = transform;
             MapCoord startCoord = new MapCoord(MapData.PlayerStartPos.x, MapData.PlayerStartPos.y);
             player.Init(startCoord);
+
         }
 
         public void EnterScene()
@@ -100,7 +112,10 @@ namespace GameScreen
 
         public void GoToMapSelect()
         {
-            Services.Scenes.Swap<MapSelectSceneScript>();
+            player.receiveInput = false;
+            TransitionData transitionData = new TransitionData();
+            transitionData.SelecetdMap = MapData;
+            Services.Scenes.PushScene<MapSelectSceneScript>(transitionData, prevSceneActive: true);
         }
 
         public void RestartMap()

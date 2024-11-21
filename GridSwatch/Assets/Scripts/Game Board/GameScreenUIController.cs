@@ -20,9 +20,24 @@ namespace GameScreen
 
         public void SetGameUI(MapData mapData)
         {
+            List<ColorGoal_UI> uiToDeleteList = new List<ColorGoal_UI>();
+
+            foreach (var uiIcon in colorGoalParent.GetComponentsInChildren<ColorGoal_UI>())
+            {
+                uiToDeleteList.Add(uiIcon);
+            }
+
+            foreach (var uiToDelete in uiToDeleteList)
+            {
+                Destroy(uiToDelete.gameObject);
+            }
+            
             gameOverBanner.HideBanner();
 
-
+            colorGoals = new List<ColorGoal_UI>();
+            
+            
+            
             map = mapData;
             for (int i = 0; i < mapData.colorGoals.Count; i++)
             {

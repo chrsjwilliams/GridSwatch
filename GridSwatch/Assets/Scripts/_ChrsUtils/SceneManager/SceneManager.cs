@@ -63,7 +63,7 @@ using Object = UnityEngine.Object;
          }
      }
 
-     public void PushScene<T>(TTransitionData data = default(TTransitionData)) where T : Scene<TTransitionData>
+     public void PushScene<T>(TTransitionData data = default(TTransitionData), bool prevSceneActive = false) where T : Scene<TTransitionData>
      {
          var previousScene = CurrentScene;
          var nextScene = GetScene<T>();
@@ -74,7 +74,7 @@ using Object = UnityEngine.Object;
          if (previousScene != null)
          {
              previousScene._OnExit();
-             previousScene.Root.SetActive(false);
+             previousScene.Root.SetActive(prevSceneActive);
          }
      }
 
