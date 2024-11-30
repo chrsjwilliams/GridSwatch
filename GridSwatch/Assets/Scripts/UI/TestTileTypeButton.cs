@@ -17,7 +17,7 @@ public class TestTileTypeButton : MonoBehaviour
         showingNormalMaps = true;
         buttonText.text = "Test Tile Type";
 
-        screenText.text = "Normal Map Select";
+        screenText.text = "Map Select";
 
         normalMapsGroup.ShowGroup(true);
         tileTypeTestGroup.ShowGroup(false);
@@ -26,8 +26,8 @@ public class TestTileTypeButton : MonoBehaviour
     public void OnPressed()
     {
         showingNormalMaps = !showingNormalMaps;
-        buttonText.text = showingNormalMaps ? "Test Tile Type" : "Show Normal Maps";
-        screenText.text = showingNormalMaps ? "Normal Map Select" : "Test Tile Type Map Select";
+        buttonText.text = showingNormalMaps ? "Test Tile Type" : "Show Maps";
+        screenText.text = showingNormalMaps ? "Map Select" : "Test Tile Type Map Select";
 
         normalMapsGroup.ShowGroup(showingNormalMaps);
         tileTypeTestGroup.ShowGroup(!showingNormalMaps);

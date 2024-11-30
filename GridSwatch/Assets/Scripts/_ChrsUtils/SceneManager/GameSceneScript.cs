@@ -123,14 +123,15 @@ namespace GameScreen
             Destroy(player.gameObject);
             board.ResetMap();
 
+            
             swipeTextPulse?.Play();
             finished = false;
             Services.GameScene = this;
             Services.Board = board;
 
             Services.Board.CreateBoard(MapData);
-            //uIController.SetGameUI(MapData);
-
+            uIController.SetGameUI(MapData);
+            //uIController.HideBanner();
             Services.CameraController.AdjustCameraToGameBoard(board.Width, board.Height);
 
             player = Instantiate<Player>(Services.Prefabs.Player);

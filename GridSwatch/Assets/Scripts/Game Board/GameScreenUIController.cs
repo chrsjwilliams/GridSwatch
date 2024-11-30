@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 using GameData;
+using TMPro;
 
 namespace GameScreen
 {
@@ -13,13 +15,24 @@ namespace GameScreen
         [SerializeField, ReadOnly] List<ColorGoal_UI> colorGoals = new List<ColorGoal_UI>();
         [SerializeField] RectTransform canvas;
         [SerializeField] GameOverBanner gameOverBanner;
-
+        [SerializeField] TextMeshProUGUI mapText;
+        [SerializeField] TextMeshProUGUI solvedText;
+        
         MapData map;
 
         [SerializeField] private bool uiSet = false;
 
+        public void HideBanner()
+        {
+            gameOverBanner.HideBanner();
+        }
+        
         public void SetGameUI(MapData mapData)
         {
+            mapText.text = mapData.mapName;
+            bool finished = Convert.ToBoolean(PlayerPrefs.GetInt(mapData.name));
+
+            solvedText.text = finished ? "SOLVED" : "";
             List<ColorGoal_UI> uiToDeleteList = new List<ColorGoal_UI>();
 
             foreach (var uiIcon in colorGoalParent.GetComponentsInChildren<ColorGoal_UI>())

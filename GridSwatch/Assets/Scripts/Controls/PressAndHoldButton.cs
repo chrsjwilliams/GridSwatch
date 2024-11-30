@@ -20,6 +20,7 @@ public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUp
     private readonly Vector3 offset = 50 * Vector3.left;
     private Vector3 basePos;
 
+    public UnityEvent OnPressd;
     public UnityEvent OnComplete;
 
     private delegate void ButtonAction();
@@ -31,6 +32,7 @@ public class PressAndHoldButton : MonoBehaviour, IPointerDownHandler, IPointerUp
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        OnPressd?.Invoke();
         targetTransform.DOScale(holdScale, scaleTime).SetEase(Ease.InExpo);
         pressed = true;
         timeHeld = 0;

@@ -108,7 +108,7 @@ public class Main : MonoBehaviour
 
     private void Start()
     {
-        
+        /*
         string value = PlayerPrefs.GetString("enabled_analytics");
         bool enabledAnalytics = false;
         if (!string.IsNullOrEmpty(value))
@@ -137,5 +137,6 @@ public class Main : MonoBehaviour
             AnalyticsService.Instance.StartDataCollection();
             Debug.Log("Start Collecting");
         }
+        */
     }
 }
