@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using Ads;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using GameScreen;
 
@@ -41,7 +43,8 @@ public class GameManager : MonoBehaviour
     {
         NumPlayers = 1;
         _mainCamera = Camera.main;
-        Services.EventManager.Register<KeyPressedEvent>(OnKeyPressed); 
+        Services.EventManager.Register<KeyPressedEvent>(OnKeyPressed);
+
     }
 
     private void OnKeyPressed(KeyPressedEvent e)

@@ -22,9 +22,9 @@ namespace Ads
                 Destroy(gameObject);
                 return;
             }
-
             Instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("Initializing Ads...");
             intializeAds.InitializeAds(() =>
             {
                 bannerAds.LoadBanner();
@@ -36,7 +36,7 @@ namespace Ads
 
         public void ShowAd(AdType type, Action callback)
         {
-            if (!_enableAds || !readyToShowAds)
+            if (!_enableAds && !readyToShowAds)
             {
                 callback?.Invoke();
                 return;

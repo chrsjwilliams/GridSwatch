@@ -6,11 +6,14 @@ namespace Ads
 {
     public class InitalizeAds : MonoBehaviour, IUnityAdsInitializationListener
     {
+        public static Action InitializationComplete;
+        
         [SerializeField] private string _androidGameId;
         [SerializeField] private string _iOSGameId;
         [SerializeField] private bool _testMode = true;
         private string _gameId;
 
+        private Action _callback;
         public void InitializeAds(Action callback)
         {
         #if UNITY_IOS
@@ -21,6 +24,7 @@ namespace Ads
             _gameId = _iOSGameId;
         #endif
 
+            _callback = callback;
             if (!Advertisement.isInitialized && Advertisement.isSupported)
             {
                 Advertisement.Initialize(_gameId, _testMode, this);
@@ -30,6 +34,7 @@ namespace Ads
         public void OnInitializationComplete()
         {
             Debug.Log("Unity Ads initialization complete.");
+            _callback?.Invoke();
         }
  
         public void OnInitializationFailed(UnityAdsInitializationError error, string message)

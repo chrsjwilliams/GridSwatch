@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Ads;
+using UnityEngine;
 using UnityEngine.UI;
 using GameScreen;
 
@@ -31,6 +32,12 @@ public class TitleSceneScript : Scene<TransitionData>
     public void PressedOptions()
     {
 
+    }
+
+    public void PressedWatchAd()
+    {
+        Debug.Log("Showing Test Ad...");
+        AdManager.Instance.ShowAd(AdType.INTERSTITIAL, () => { Debug.Log("Test Ad closed");});
     }
 
     private void TitleTransition()

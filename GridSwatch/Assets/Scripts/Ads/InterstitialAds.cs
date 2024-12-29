@@ -7,7 +7,7 @@ namespace Ads
     public class InterstitialAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
     {
         [SerializeField] string _androidAdUnitId = "Interstitial_Android";
-        [SerializeField] string _iOSAdUnitId = "Interstitial_iOS";
+        [SerializeField] string _iOSAdUnitId = "ca-app-pub-1859397222016863/3562361161";
         string _adUnitId;
 
         private Action afterAdCallback;
@@ -45,6 +45,7 @@ namespace Ads
         public void OnUnityAdsAdLoaded(string adUnitId)
         {
             // Optionally execute code if the Ad Unit successfully loads content.
+            Debug.Log("Interstitial Ad Loaded. adUnitId: " + adUnitId);
         }
 
         public void OnUnityAdsFailedToLoad(string _adUnitId, UnityAdsLoadError error, string message)
@@ -61,6 +62,7 @@ namespace Ads
 
         public void OnUnityAdsShowStart(string _adUnitId)
         {
+            Debug.Log("Showing Ad " + _adUnitId + "...");
         }
 
         public void OnUnityAdsShowClick(string _adUnitId)
