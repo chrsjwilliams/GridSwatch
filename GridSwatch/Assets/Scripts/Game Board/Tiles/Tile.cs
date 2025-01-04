@@ -9,6 +9,8 @@ namespace GameData
     public class Tile : MonoBehaviour
     {
         #region Properties
+
+        protected float fadeDuration = 1f;
         public MapCoord Coord { get; protected set; }
         public bool canTraverse { get; protected set; }
         public int intensity { get; protected set; }
@@ -135,7 +137,7 @@ namespace GameData
             if (!canTraverse)
             {
                 CurrentColorMode = ColorMode.BLACK;
-                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
                 return;
             }
 
@@ -149,7 +151,7 @@ namespace GameData
                 }
 
                 sr.color = tileInk.color;
-                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
                 
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
@@ -166,7 +168,7 @@ namespace GameData
                 }
                 tileInk = ink;
 
-                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
                
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
@@ -176,7 +178,7 @@ namespace GameData
             }
             else
             {
-                sr.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 

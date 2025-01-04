@@ -160,8 +160,8 @@ namespace GameData
             }
             for (int i = 0; i < fillIcons.Count; i++)
             {
-                fillIcons[i].DOColor(iconColor, 0.25f)
-               .SetEase(Ease.InExpo);
+                fillIcons[i].DOColor(iconColor, fadeDuration)
+               .SetEase(Ease.OutExpo);
             }
         }
 

@@ -110,7 +110,7 @@ namespace GameData
                 Services.EventManager.Unregister<SwipeEvent>(OnSwipe);
                 _diffused = true;
                 FadeCounter.DOFade(0, 0.25f)
-                    .SetEase(Ease.InExpo)
+                    .SetEase(Ease.OutExpo)
                     .OnComplete(() =>
                     {
                         base.SetColor(ink, isInit);

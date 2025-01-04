@@ -35,7 +35,7 @@ namespace GameData
             sr = tile.Sprite;
             tileInk = ink;
             invertIcon = tile.InvertIcon;
-            invertIcon.DOColor(Color.black, 0.25f).SetEase(Ease.InExpo);
+            invertIcon.DOColor(Color.black, fadeDuration).SetEase(Ease.OutExpo);
 
             PlayEntryAnimation(animationParams);
         }
@@ -64,8 +64,11 @@ namespace GameData
 
         public override void SetColor(Ink ink, bool isInit = false)
         {
-            invertIcon.DOColor(Color.white, 0.25f)
-                .SetEase(Ease.InExpo)
+            if (ink.colorMode == ColorMode.NONE) return;
+            Color iconColor = ink.colorMode == ColorMode.NONE ? Color.black : Color.white;
+
+            invertIcon.DOColor(iconColor, fadeDuration)
+                .SetEase(Ease.OutExpo)
                 .OnComplete(() =>
                 {
                     base.SetColor(ink, isInit);
@@ -75,6 +78,7 @@ namespace GameData
         protected override void TriggerEnterEffect(Entity entity)
         {
             InvertColor(entity);
+            SetColor(new Ink(entity.CurrentColorMode));
         }
 
         protected override void TriggerExitEffect(Entity entity)

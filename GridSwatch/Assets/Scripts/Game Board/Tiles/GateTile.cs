@@ -68,8 +68,8 @@ namespace GameData
         {
             if (ink.colorMode != ColorMode.NONE && !_negationGate)
             {
-                gateIcon.DOColor(Color.white, 0.25f)
-                    .SetEase(Ease.InExpo)
+                gateIcon.DOColor(Color.white, fadeDuration)
+                    .SetEase(Ease.OutExpo)
                     .OnComplete(() => { base.SetColor(ink, isInit); });
             }
             else

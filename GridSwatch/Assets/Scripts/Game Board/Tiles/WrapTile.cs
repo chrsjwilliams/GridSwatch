@@ -110,7 +110,7 @@ namespace GameData
             if (IsPump()) return;
 
             base.SetColor(ink, isInit);
-            wrapArrow.DOColor(tileInk.color, 0.0f).SetDelay(0.05f).SetEase(Ease.InExpo);
+            wrapArrow.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
         }
 
         IEnumerator Wrap(Entity entity)
