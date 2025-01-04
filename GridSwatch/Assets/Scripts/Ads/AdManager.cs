@@ -34,9 +34,19 @@ namespace Ads
             });
         }
 
+        public void EnableAds()
+        {
+            _enableAds = true;
+        }
+
+        public void DisbaleAds()
+        {
+            _enableAds = false;
+        }
+
         public void ShowAd(AdType type, Action callback)
         {
-            if (!_enableAds && !readyToShowAds)
+            if (!_enableAds || !readyToShowAds)
             {
                 callback?.Invoke();
                 return;
