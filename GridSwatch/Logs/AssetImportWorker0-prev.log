@@ -22,7 +22,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-51262
+59058
 -job-worker-count
 4
 -background-job-worker-count
@@ -68,7 +68,7 @@ Successfully changed project path to: /Users/chriswilliams/UnityRepo/GridSwatch/
     "memorysetup-temp-allocator-size-gfx=262144"
 Player connection [8713028160]  Target information:
 
-Player connection [8713028160]  * "[IP] 192.168.1.199 [Port] 0 [Flags] 2 [Guid] 1864780579 [EditorId] 1864780579 [Version] 1048832 [Id] OSXEditor(0,MacBookPro) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
+Player connection [8713028160]  * "[IP] 192.168.1.199 [Port] 0 [Flags] 2 [Guid] 2439359429 [EditorId] 2439359429 [Version] 1048832 [Id] OSXEditor(0,MacBookPro) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
 
 Player connection [8713028160] Host joined multi-casting on [225.0.0.222:54997]...
 Player connection [8713028160] Host joined alternative multi-casting on [225.0.0.222:34997]...
@@ -82,7 +82,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 1.86 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.71 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.32f1 (b2e806cf271c)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -97,7 +97,7 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56060
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56515
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
@@ -105,47 +105,47 @@ Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/Uni
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
-Registered in 0.001556 seconds.
-- Loaded All Assemblies, in  0.240 seconds
+Registered in 0.001721 seconds.
+- Loaded All Assemblies, in  0.254 seconds
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 [usbmuxd] Send listen message
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 85 ms
+Android Extension - Scanning For ADB Devices 100 ms
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.426 seconds
-Domain Reload Profiling: 666ms
-	BeginReloadAssembly (50ms)
+- Finished resetting the current domain, in  0.439 seconds
+Domain Reload Profiling: 693ms
+	BeginReloadAssembly (59ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (0ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (31ms)
-	LoadAllAssembliesAndSetupDomain (122ms)
-		LoadAssemblies (50ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (32ms)
+	LoadAllAssembliesAndSetupDomain (123ms)
+		LoadAssemblies (59ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (120ms)
-			TypeCache.Refresh (119ms)
-				TypeCache.ScanAssembly (110ms)
+		AnalyzeDomain (121ms)
+			TypeCache.Refresh (120ms)
+				TypeCache.ScanAssembly (111ms)
 			BuildScriptInfoCaches (0ms)
 			ResolveRequiredComponents (0ms)
-	FinalizeReload (426ms)
+	FinalizeReload (439ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (390ms)
+		SetupLoadedEditorAssemblies (402ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (194ms)
+			InitializePlatformSupportModulesInManaged (213ms)
 			SetLoadedEditorAssemblies (3ms)
 			BeforeProcessingInitializeOnLoad (44ms)
-			ProcessInitializeOnLoadAttributes (97ms)
-			ProcessInitializeOnLoadMethodAttributes (52ms)
+			ProcessInitializeOnLoadAttributes (90ms)
+			ProcessInitializeOnLoadMethodAttributes (51ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -155,62 +155,500 @@ Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.488 seconds
-Refreshing native plugins compatible for Editor in 1.37 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.507 seconds
+Refreshing native plugins compatible for Editor in 1.38 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.30 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.31 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.005 seconds
-Domain Reload Profiling: 1493ms
-	BeginReloadAssembly (88ms)
+- Finished resetting the current domain, in  1.062 seconds
+Domain Reload Profiling: 1569ms
+	BeginReloadAssembly (90ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (28ms)
+		CreateAndSetChildDomain (31ms)
 	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (345ms)
-		LoadAssemblies (200ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (19ms)
+	LoadAllAssembliesAndSetupDomain (359ms)
+		LoadAssemblies (210ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (181ms)
-			TypeCache.Refresh (138ms)
-				TypeCache.ScanAssembly (123ms)
-			BuildScriptInfoCaches (37ms)
+		AnalyzeDomain (183ms)
+			TypeCache.Refresh (141ms)
+				TypeCache.ScanAssembly (124ms)
+			BuildScriptInfoCaches (36ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (1006ms)
+	FinalizeReload (1063ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (917ms)
+		SetupLoadedEditorAssemblies (967ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (16ms)
 			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (90ms)
-			ProcessInitializeOnLoadAttributes (698ms)
-			ProcessInitializeOnLoadMethodAttributes (108ms)
+			BeforeProcessingInitializeOnLoad (92ms)
+			ProcessInitializeOnLoadAttributes (751ms)
+			ProcessInitializeOnLoadMethodAttributes (104ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (2ms)
 Launching external process: /Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.07 seconds
-Refreshing native plugins compatible for Editor in 1.42 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
+Refreshing native plugins compatible for Editor in 1.25 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 97 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5126 unused Assets / (4.0 MB). Loaded Objects now: 5672.
-Memory consumption went from 124.9 MB to 120.9 MB.
-Total: 20.560375 ms (FindLiveObjects: 0.236334 ms CreateObjectMapping: 0.144916 ms MarkObjects: 18.962584 ms  DeleteObjects: 1.215708 ms)
+Unloading 5126 unused Assets / (4.1 MB). Loaded Objects now: 5672.
+Memory consumption went from 125.0 MB to 120.9 MB.
+Total: 21.200292 ms (FindLiveObjects: 0.257833 ms CreateObjectMapping: 0.148542 ms MarkObjects: 19.309125 ms  DeleteObjects: 1.484000 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 628241.477624 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map000.asset
-  artifactKey: Guid(d84bb06b029b6465abe5ca8ff2b0ec34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map000.asset using Guid(d84bb06b029b6465abe5ca8ff2b0ec34) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '80f9b9548e1185262ef75c0ca38ada38') in 0.02040175 seconds
+  Time since last request: 654339.331601 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps
+  artifactKey: Guid(5b61266e242d14a5fa46a3741068d1de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps using Guid(5b61266e242d14a5fa46a3741068d1de) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '01c378dcd1980876ded7869550e542f8') in 0.003081792 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
+
+========================================================================
+Received Import Request.
+  Time since last request: 293.453062 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/MapData.asset
+  artifactKey: Guid(8777f66c3e91345b3893f5498b6a4427) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/MapData.asset using Guid(8777f66c3e91345b3893f5498b6a4427) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '83d984a5e80b8b510579f4b9ecbed186') in 0.01832 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
+========================================================================
+Received Import Request.
+  Time since last request: 43.373022 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map001.asset
+  artifactKey: Guid(9ec53db9904e64d869d86fd161de1624) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map001.asset using Guid(9ec53db9904e64d869d86fd161de1624) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9626ce1ce208c70e78044bd5d5a242a2') in 0.000895583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 34.796053 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map001.asset
+  artifactKey: Guid(9ec53db9904e64d869d86fd161de1624) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map001.asset using Guid(9ec53db9904e64d869d86fd161de1624) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c16bc16c2eda239fe1c28805987a919d') in 0.000984625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.963522 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map002.asset
+  artifactKey: Guid(d51d7a0d4ecf74f489d0a49a8d8cb0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map002.asset using Guid(d51d7a0d4ecf74f489d0a49a8d8cb0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c335da7e9e91f5adbb4f0c29270ea92f') in 0.001091625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 25.092709 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map002.asset
+  artifactKey: Guid(d51d7a0d4ecf74f489d0a49a8d8cb0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map002.asset using Guid(d51d7a0d4ecf74f489d0a49a8d8cb0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4f234c547fcbb970bb8663082090897c') in 0.000861166 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.176797 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map003.asset
+  artifactKey: Guid(5f60c07c8098145ed828c49f47db021b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map003.asset using Guid(5f60c07c8098145ed828c49f47db021b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '46cf6ce6bd05290acb1e59e3150ef814') in 0.000906417 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 28.871853 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map003.asset
+  artifactKey: Guid(5f60c07c8098145ed828c49f47db021b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map003.asset using Guid(5f60c07c8098145ed828c49f47db021b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f0abebda9aef586c19e73c7ef7e6de32') in 0.000918333 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 16.673414 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map004.asset
+  artifactKey: Guid(76a0ea459dd37490fa1bea46442d5f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map004.asset using Guid(76a0ea459dd37490fa1bea46442d5f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3c4c35d43aaf7cd7400861ba82b4da87') in 0.000800041 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 70.508511 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map002.asset
+  artifactKey: Guid(d51d7a0d4ecf74f489d0a49a8d8cb0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map002.asset using Guid(d51d7a0d4ecf74f489d0a49a8d8cb0cf) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1b40138e9b67014bb202900ee116ca5d') in 0.000900125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000093 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map004.asset
+  artifactKey: Guid(76a0ea459dd37490fa1bea46442d5f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map004.asset using Guid(76a0ea459dd37490fa1bea46442d5f30) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0ea34e44ebf4f1604c9a232e16b8f297') in 0.000693 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.021020 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map005.asset
+  artifactKey: Guid(88575e5548bd94defa64de0d27d7cbe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map005.asset using Guid(88575e5548bd94defa64de0d27d7cbe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '23cae365e2738419cb7dfcd76e7f7036') in 0.00131125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 19.069451 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map005.asset
+  artifactKey: Guid(88575e5548bd94defa64de0d27d7cbe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map005.asset using Guid(88575e5548bd94defa64de0d27d7cbe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c7ff4cd119fc70287bf7e596e9585332') in 0.000885667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 8.643477 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map006.asset
+  artifactKey: Guid(81d0674cb5cf7494bab0c1f86d732258) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map006.asset using Guid(81d0674cb5cf7494bab0c1f86d732258) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a2c1ad1d586992ffefd21af0f37b84b3') in 0.000849125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 2.623002 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map006 1.asset
+  artifactKey: Guid(857912474d46b48769ac2a04eb022b1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map006 1.asset using Guid(857912474d46b48769ac2a04eb022b1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f0eaaa91e77baa898138114177784b1f') in 0.000857833 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 3.704181 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map007.asset
+  artifactKey: Guid(857912474d46b48769ac2a04eb022b1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map007.asset using Guid(857912474d46b48769ac2a04eb022b1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f86ebdd012683c051d463dc3007f31c5') in 0.0010605 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 816.323077 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map007.asset
+  artifactKey: Guid(857912474d46b48769ac2a04eb022b1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map007.asset using Guid(857912474d46b48769ac2a04eb022b1a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6248ea32b3a2edce3895e2c3c7d6f6e4') in 0.000774834 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.350908 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map008.asset
+  artifactKey: Guid(718df61dc2e4b4ed6b060523dbf914e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map008.asset using Guid(718df61dc2e4b4ed6b060523dbf914e9) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '27546ae3f2faf8b2a986395c71d6ae31') in 0.000889583 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 66.631626 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map001.asset
+  artifactKey: Guid(9ec53db9904e64d869d86fd161de1624) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map001.asset using Guid(9ec53db9904e64d869d86fd161de1624) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '938fe301d6809b9953c9ee592adf2594') in 0.000898375 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000039 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map005.asset
+  artifactKey: Guid(88575e5548bd94defa64de0d27d7cbe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map005.asset using Guid(88575e5548bd94defa64de0d27d7cbe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a64f9bdf783f38b1c29138fe9692c30a') in 0.000575542 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000090 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map006.asset
+  artifactKey: Guid(81d0674cb5cf7494bab0c1f86d732258) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map006.asset using Guid(81d0674cb5cf7494bab0c1f86d732258) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e3ee7d5427763bbddec566ae29a69905') in 0.000544666 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000097 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map008 1.asset
+  artifactKey: Guid(5e55a8ea1661b4c8386c167f50648014) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map008 1.asset using Guid(5e55a8ea1661b4c8386c167f50648014) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '37e4bb0a653874bc9fb2baaa11799fb1') in 0.000584917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000108 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map003.asset
+  artifactKey: Guid(5f60c07c8098145ed828c49f47db021b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map003.asset using Guid(5f60c07c8098145ed828c49f47db021b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9593ed2e35ffea0da349d2db43b4df31') in 0.000429667 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 33.368771 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map009.asset
+  artifactKey: Guid(5e55a8ea1661b4c8386c167f50648014) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map009.asset using Guid(5e55a8ea1661b4c8386c167f50648014) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0732405342df92c0c08ae95bcf1e7555') in 0.000843917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 90.656666 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map009 1.asset
+  artifactKey: Guid(d168013143e9e4d849610c3b7f80b877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map009 1.asset using Guid(d168013143e9e4d849610c3b7f80b877) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'eba2a7718b17fced007e8b45e73adfe1') in 0.000987625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 4.022749 seconds.
+  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map010.asset
+  artifactKey: Guid(d168013143e9e4d849610c3b7f80b877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map010.asset using Guid(d168013143e9e4d849610c3b7f80b877) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '40db80e78e92baa75e94fff65f7dc602') in 0.000893042 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 23044.533406 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map010 1.asset
+  artifactKey: Guid(61d24a197b65244aaa47cda6faf41b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map010 1.asset using Guid(61d24a197b65244aaa47cda6faf41b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '08bd50b0b64fc8655ee31dedaf700d65') in 0.001045958 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000113 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map017 1.asset
+  artifactKey: Guid(368855385d70a4ce28bf0b990e1d4207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map017 1.asset using Guid(368855385d70a4ce28bf0b990e1d4207) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '02cc1dfaff3fd1a8b73bafd6b9718eef') in 0.000694625 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000121 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map018 1.asset
+  artifactKey: Guid(ae18226e75b184bc0b425ee1e580adb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map018 1.asset using Guid(ae18226e75b184bc0b425ee1e580adb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '28c876734483b3c3ae7c90fd80020a33') in 0.000717584 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000109 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map019 1.asset
+  artifactKey: Guid(664035889ec434eb681bb664b41bc0dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map019 1.asset using Guid(664035889ec434eb681bb664b41bc0dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a93b4dc49f2472ba3a8ddd4a2e0eeeff') in 0.000775167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000094 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map014 1.asset
+  artifactKey: Guid(6e66e6f5340154ffe8a58ed5747812fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map014 1.asset using Guid(6e66e6f5340154ffe8a58ed5747812fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5ef7382144c3e389ad5e8946a302d154') in 0.000683917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 348.543263 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map010.asset
+  artifactKey: Guid(61d24a197b65244aaa47cda6faf41b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map010.asset using Guid(61d24a197b65244aaa47cda6faf41b8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2a7f1fd1314dc64424f775764096893e') in 0.000929167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.734223 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map011.asset
+  artifactKey: Guid(c6691f854ac594dc8bef661adfeaf6e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map011.asset using Guid(c6691f854ac594dc8bef661adfeaf6e3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'efc1d1ac84bf4dff3e070a151b507e3c') in 0.000956959 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 6.565520 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map012.asset
+  artifactKey: Guid(b69fefba434364c51bd56aee3c5a5588) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map012.asset using Guid(b69fefba434364c51bd56aee3c5a5588) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '94bc1f60ddf369da325d5b73d34cda34') in 0.000810584 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.365945 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map013.asset
+  artifactKey: Guid(742de37238d6b4b68a48c112e8b34e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map013.asset using Guid(742de37238d6b4b68a48c112e8b34e07) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '214a6f48792893674ceacc89d49abe7b') in 0.000894917 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 10.158854 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map014.asset
+  artifactKey: Guid(6e66e6f5340154ffe8a58ed5747812fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map014.asset using Guid(6e66e6f5340154ffe8a58ed5747812fd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2b990d7a0f454acde57e00d58116c074') in 0.000942167 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.898475 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map015.asset
+  artifactKey: Guid(bb644c115a95f4cf09e94e54e8296c56) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map015.asset using Guid(bb644c115a95f4cf09e94e54e8296c56) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f466ba2e43af259f9f4185ce6e8ec294') in 0.000904 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.519460 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map016.asset
+  artifactKey: Guid(9f57b0d28af6c4fb9a8d7d637f7cbbe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map016.asset using Guid(9f57b0d28af6c4fb9a8d7d637f7cbbe8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fe86d4c7c981272dc9760253d20f7ccb') in 0.000834083 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 5.698517 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map017.asset
+  artifactKey: Guid(368855385d70a4ce28bf0b990e1d4207) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map017.asset using Guid(368855385d70a4ce28bf0b990e1d4207) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ff4af181d64f5ebfe240107a48675532') in 0.000860125 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.615404 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map018.asset
+  artifactKey: Guid(ae18226e75b184bc0b425ee1e580adb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map018.asset using Guid(ae18226e75b184bc0b425ee1e580adb4) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2ac1cf129719dfdcacaaadcc22a22bbb') in 0.000912208 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 7.437367 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map019.asset
+  artifactKey: Guid(664035889ec434eb681bb664b41bc0dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map019.asset using Guid(664035889ec434eb681bb664b41bc0dc) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'be54ec41892d4ca1311dcf5e935a3896') in 0.000971875 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 412.360837 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map010.asset
+  artifactKey: Guid(f82f3b2db21584d26964804113795264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map010.asset using Guid(f82f3b2db21584d26964804113795264) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '239e3dc4b6e636d8d8aa075097581859') in 0.000943042 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x32fffb000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.542 seconds
+Refreshing native plugins compatible for Editor in 1.25 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.50 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.002 seconds
+Domain Reload Profiling: 1546ms
+	BeginReloadAssembly (128ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (63ms)
+	RebuildCommonClasses (26ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (362ms)
+		LoadAssemblies (269ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (123ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (112ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (1003ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (905ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (16ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (89ms)
+			ProcessInitializeOnLoadAttributes (687ms)
+			ProcessInitializeOnLoadMethodAttributes (108ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Refreshing native plugins compatible for Editor in 1.72 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5680.
+Memory consumption went from 130.7 MB to 126.9 MB.
+Total: 21.183334 ms (FindLiveObjects: 0.264666 ms CreateObjectMapping: 0.155917 ms MarkObjects: 19.540167 ms  DeleteObjects: 1.222000 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x339243000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.483 seconds
+Refreshing native plugins compatible for Editor in 1.31 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.62 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  1.009 seconds
+Domain Reload Profiling: 1494ms
+	BeginReloadAssembly (130ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (65ms)
+	RebuildCommonClasses (29ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (299ms)
+		LoadAssemblies (199ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (131ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (119ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (1009ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (908ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (15ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (114ms)
+			ProcessInitializeOnLoadAttributes (664ms)
+			ProcessInitializeOnLoadMethodAttributes (109ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.23 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (4.2 MB). Loaded Objects now: 5685.
+Memory consumption went from 130.6 MB to 126.3 MB.
+Total: 20.770667 ms (FindLiveObjects: 0.255291 ms CreateObjectMapping: 0.258333 ms MarkObjects: 18.983792 ms  DeleteObjects: 1.272709 ms)
+
+Prepare: number of updated asset objects reloaded= 0
