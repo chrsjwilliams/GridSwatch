@@ -2,8 +2,8 @@ Unity Editor version:    6000.0.32f1 (b2e806cf271c)
 Branch:                  6000.0/staging
 Build type:              Release
 Batch mode:              YES
-macOS version:           Version 15.2 (Build 24C101)
-Darwin version:          24.2.0
+macOS version:           Version 15.3 (Build 24D60)
+Darwin version:          24.3.0
 Architecture:            arm64
 Running under Rosetta:   NO
 Available memory:        65536 MB
@@ -22,7 +22,7 @@ AssetImportWorker0
 -logFile
 Logs/AssetImportWorker0.log
 -srvPort
-57236
+56462
 -job-worker-count
 4
 -background-job-worker-count
@@ -66,12 +66,10 @@ Successfully changed project path to: /Users/chriswilliams/UnityRepo/GridSwatch/
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gi-baking-worker=262144"
     "memorysetup-temp-allocator-size-gfx=262144"
-Player connection [8223343168]  Target information:
+Player connection [8595933248]  Target information:
 
-Player connection [8223343168]  * "[IP] 192.168.1.199 [Port] 0 [Flags] 2 [Guid] 4288010775 [EditorId] 4288010775 [Version] 1048832 [Id] OSXEditor(0,MacBookPro) [Debug] 1 [PackageName] OSXEditor [ProjectName] Editor" 
-
-Player connection [8223343168] Host joined multi-casting on [225.0.0.222:54997]...
-Player connection [8223343168] Host joined alternative multi-casting on [225.0.0.222:34997]...
+Player connection [8595933248] Host joined multi-casting on [225.0.0.222:54997]...
+Player connection [8595933248] Host joined alternative multi-casting on [225.0.0.222:34997]...
 JobSystem: Creating JobQueue using job-worker-count value 4
 [Physics::Module] Initialized fallback backend.
 [Physics::Module] Id: 0xdecafbad
@@ -82,7 +80,7 @@ Library Redirect Path: Library/
 [Physics::Module] SDK Version: 4.1.2
 [Physics::Module] Integration Version: 1.0.0
 [Physics::Module] Threading Mode: Multi-Threaded
-Refreshing native plugins compatible for Editor in 2.36 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 4.31 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Initialize engine version: 6000.0.32f1 (b2e806cf271c)
 [Subsystems] Discovering subsystems at path /Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/Resources/UnitySubsystems
@@ -97,7 +95,7 @@ Initialize mono
 Mono path[0] = '/Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/Managed'
 Mono path[1] = '/Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/unityjit-macos'
 Mono config path = '/Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/MonoBleedingEdge/etc'
-Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56262
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56766
 Begin MonoManager ReloadAssembly
 Registering precompiled unity dll's ...
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/WebGLSupport/UnityEditor.WebGL.Extensions.dll
@@ -105,47 +103,47 @@ Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/Uni
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll
 Register platform support module: /Applications/Unity/Hub/Editor/6000.0.32f1/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.dll
-Registered in 0.001524 seconds.
-- Loaded All Assemblies, in  0.272 seconds
+Registered in 0.005711 seconds.
+- Loaded All Assemblies, in  0.719 seconds
 [usbmuxd] Start listen thread
 [usbmuxd] Listen thread started
 [usbmuxd] Send listen message
 Native extension for iOS target not found
 Native extension for Android target not found
-Android Extension - Scanning For ADB Devices 85 ms
+Android Extension - Scanning For ADB Devices 267 ms
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.411 seconds
-Domain Reload Profiling: 683ms
-	BeginReloadAssembly (73ms)
+- Finished resetting the current domain, in  1.373 seconds
+Domain Reload Profiling: 2092ms
+	BeginReloadAssembly (136ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (0ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (1ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (32ms)
-	LoadAllAssembliesAndSetupDomain (128ms)
-		LoadAssemblies (75ms)
+	RebuildCommonClasses (84ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (100ms)
+	LoadAllAssembliesAndSetupDomain (371ms)
+		LoadAssemblies (136ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (123ms)
-			TypeCache.Refresh (122ms)
-				TypeCache.ScanAssembly (111ms)
+		AnalyzeDomain (364ms)
+			TypeCache.Refresh (362ms)
+				TypeCache.ScanAssembly (330ms)
 			BuildScriptInfoCaches (0ms)
-			ResolveRequiredComponents (0ms)
-	FinalizeReload (411ms)
+			ResolveRequiredComponents (1ms)
+	FinalizeReload (1374ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (376ms)
+		SetupLoadedEditorAssemblies (1274ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (202ms)
-			SetLoadedEditorAssemblies (3ms)
-			BeforeProcessingInitializeOnLoad (39ms)
-			ProcessInitializeOnLoadAttributes (85ms)
-			ProcessInitializeOnLoadMethodAttributes (46ms)
+			InitializePlatformSupportModulesInManaged (686ms)
+			SetLoadedEditorAssemblies (9ms)
+			BeforeProcessingInitializeOnLoad (158ms)
+			ProcessInitializeOnLoadAttributes (296ms)
+			ProcessInitializeOnLoadMethodAttributes (125ms)
 			AfterProcessingInitializeOnLoad (0ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
@@ -155,761 +153,667 @@ Worker process is ready to serve import requests
 Import Worker Mode flag is 0x00
 Begin MonoManager ReloadAssembly
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.526 seconds
-Refreshing native plugins compatible for Editor in 1.13 ms, found 2 plugins.
+- Loaded All Assemblies, in  1.599 seconds
+Refreshing native plugins compatible for Editor in 3.59 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.34 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 5.89 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.026 seconds
-Domain Reload Profiling: 1552ms
-	BeginReloadAssembly (88ms)
+- Finished resetting the current domain, in  3.584 seconds
+Domain Reload Profiling: 5183ms
+	BeginReloadAssembly (358ms)
 		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
+		DisableScriptedObjects (11ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (28ms)
-	RebuildCommonClasses (29ms)
-	RebuildNativeTypeToScriptingClass (9ms)
-	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (383ms)
-		LoadAssemblies (229ms)
+		CreateAndSetChildDomain (169ms)
+	RebuildCommonClasses (87ms)
+	RebuildNativeTypeToScriptingClass (28ms)
+	initialDomainReloadingComplete (54ms)
+	LoadAllAssembliesAndSetupDomain (1070ms)
+		LoadAssemblies (585ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (189ms)
-			TypeCache.Refresh (146ms)
-				TypeCache.ScanAssembly (128ms)
-			BuildScriptInfoCaches (37ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (1026ms)
+		AnalyzeDomain (597ms)
+			TypeCache.Refresh (459ms)
+				TypeCache.ScanAssembly (410ms)
+			BuildScriptInfoCaches (121ms)
+			ResolveRequiredComponents (13ms)
+	FinalizeReload (3585ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (938ms)
+		SetupLoadedEditorAssemblies (3300ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (16ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (88ms)
-			ProcessInitializeOnLoadAttributes (728ms)
-			ProcessInitializeOnLoadMethodAttributes (101ms)
-			AfterProcessingInitializeOnLoad (1ms)
+			InitializePlatformSupportModulesInManaged (61ms)
+			SetLoadedEditorAssemblies (12ms)
+			BeforeProcessingInitializeOnLoad (323ms)
+			ProcessInitializeOnLoadAttributes (2339ms)
+			ProcessInitializeOnLoadMethodAttributes (564ms)
+			AfterProcessingInitializeOnLoad (2ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (2ms)
+		AwakeInstancesAfterBackupRestoration (5ms)
+database is locked
+database is locked
+database is locked
 Launching external process: /Applications/Unity/Hub/Editor/6000.0.32f1/Unity.app/Contents/Tools/UnityShaderCompiler
-Launched and connected shader compiler UnityShaderCompiler after 0.03 seconds
-Refreshing native plugins compatible for Editor in 1.39 ms, found 2 plugins.
+Launched and connected shader compiler UnityShaderCompiler after 0.12 seconds
+Refreshing native plugins compatible for Editor in 4.45 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 97 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5126 unused Assets / (4.1 MB). Loaded Objects now: 5672.
-Memory consumption went from 124.9 MB to 120.8 MB.
-Total: 21.253750 ms (FindLiveObjects: 0.682333 ms CreateObjectMapping: 0.163417 ms MarkObjects: 19.051833 ms  DeleteObjects: 1.355667 ms)
+Unloading 5126 unused Assets / (4.5 MB). Loaded Objects now: 5673.
+Memory consumption went from 124.6 MB to 120.2 MB.
+Total: 49.781917 ms (FindLiveObjects: 0.432667 ms CreateObjectMapping: 0.385083 ms MarkObjects: 46.038291 ms  DeleteObjects: 2.924916 ms)
 
 ========================================================================
 Received Import Request.
-  Time since last request: 366644.894880 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map012.asset
-  artifactKey: Guid(b8a7b20ea89f94081b58479e3174196b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map012.asset using Guid(b8a7b20ea89f94081b58479e3174196b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c6239b29b6e2e4ac13eac821518e62bb') in 0.024137334 seconds
+  Time since last request: 469603.610635 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map028.asset
+  artifactKey: Guid(daec1dfce647145bd81af73917088870) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map028.asset using Guid(daec1dfce647145bd81af73917088870) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1a586bd9c31d3e00d4acad434a0664ec') in 0.048891584 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000100 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map000.asset
-  artifactKey: Guid(d84bb06b029b6465abe5ca8ff2b0ec34) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map000.asset using Guid(d84bb06b029b6465abe5ca8ff2b0ec34) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0136f8e184c8b6103c59433c4650d670') in 0.00072225 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000147 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map013.asset
-  artifactKey: Guid(f194e7466cdec4f62acc558604365f84) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map013.asset using Guid(f194e7466cdec4f62acc558604365f84) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c57b35fe3480400acf51a00fc9e9265b') in 0.000515917 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000153 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map004.asset
-  artifactKey: Guid(3211c0515a8a44faea65c52504ddc7c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map004.asset using Guid(3211c0515a8a44faea65c52504ddc7c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '8994f9e3108729f84ab91cb46d84a302') in 0.000690792 seconds
+  Time since last request: 0.000087 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map026.asset
+  artifactKey: Guid(071e1ed5802864ceba4973f59eeaeac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map026.asset using Guid(071e1ed5802864ceba4973f59eeaeac3) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '35b99f78120b6d3985ef30b4c6a068df') in 0.001427041 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
   Time since last request: 0.000164 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map005.asset
-  artifactKey: Guid(57b173004b7634c7ebd108d6697df995) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map005.asset using Guid(57b173004b7634c7ebd108d6697df995) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7d3d289be2683335f140ef84052c8167') in 0.000497375 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000116 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map002.asset
-  artifactKey: Guid(b9f861467b1d64aeca892aee95e4a61f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map002.asset using Guid(b9f861467b1d64aeca892aee95e4a61f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '9795bd34aa698cb513a747d8e48f9869') in 0.000586417 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000085 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map008.asset
-  artifactKey: Guid(6aa23ea0927994784a6f40ebfd05902b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map008.asset using Guid(6aa23ea0927994784a6f40ebfd05902b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f424f86d2ee9a87efa5edd3469b0c60f') in 0.000446875 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000088 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map001.asset
-  artifactKey: Guid(2b444f68b48dc4b1ebce22bf07ea76a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map001.asset using Guid(2b444f68b48dc4b1ebce22bf07ea76a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '365ae0636da74c0a4ffb4df8319f7e8c') in 0.000326584 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000112 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map003.asset
-  artifactKey: Guid(8c9ea93a5cbd4485da927f9a72859e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map003.asset using Guid(8c9ea93a5cbd4485da927f9a72859e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b08735ed92748b32108dfa40a0da4e36') in 0.00033275 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000100 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map010.asset
-  artifactKey: Guid(f82f3b2db21584d26964804113795264) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map010.asset using Guid(f82f3b2db21584d26964804113795264) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '50729a85a4b5002e082558a491722a3b') in 0.000338791 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000125 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map011.asset
-  artifactKey: Guid(5771ab012d74e41d5907062a8fea4633) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map011.asset using Guid(5771ab012d74e41d5907062a8fea4633) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ffcead118c61634e384e8b613be90c0f') in 0.000808542 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000105 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map006.asset
-  artifactKey: Guid(4d072a8d52ed1484387e1fefa054fa9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map006.asset using Guid(4d072a8d52ed1484387e1fefa054fa9e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '42a85a26538a343c4e5bfc6eb9da0c76') in 0.00034125 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000128 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map007.asset
-  artifactKey: Guid(9987209db734f4ebea4b774fb414220e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map007.asset using Guid(9987209db734f4ebea4b774fb414220e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b8ea5387d21439b52c062d5537b850c9') in 0.000382833 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000127 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map009.asset
-  artifactKey: Guid(e47e4ce8b3c0d43f69b1f3e8ad2d3eed) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map009.asset using Guid(e47e4ce8b3c0d43f69b1f3e8ad2d3eed) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '52bae9ae4860be32d06d3113ef0140aa') in 0.000459125 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 49.599549 seconds.
-  path: Assets/Readme.asset
-  artifactKey: Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/Readme.asset using Guid(83c2ed844a8c74b779a4c823d16594b1) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e5ed2fc37bb0fdcbc5da810330d55cd0') in 0.002159375 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 2
-
-========================================================================
-Received Import Request.
-  Time since last request: 7.369969 seconds.
-  path: Assets/ScriptableObjects
-  artifactKey: Guid(b576deb6b39e242daa6bcca1764679d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects using Guid(b576deb6b39e242daa6bcca1764679d5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5cdfa9e306138513e4ed6902c1956faa') in 0.000352292 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 4.402029 seconds.
-  path: Assets/ScriptableObjects/Maps/FinalGameMaps/__Map010.asset
-  artifactKey: Guid(d168013143e9e4d849610c3b7f80b877) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/FinalGameMaps/__Map010.asset using Guid(d168013143e9e4d849610c3b7f80b877) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '05bfaa1135a9eaeb0ce36e4992420a44') in 0.000800917 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 808.100436 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map014.asset
-  artifactKey: Guid(b9e6f3d1a0e984c3ea2d6b123656c5a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map014.asset using Guid(b9e6f3d1a0e984c3ea2d6b123656c5a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'b36d40ea7221da0abf8248c5e19b1648') in 0.001166584 seconds
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map025.asset
+  artifactKey: Guid(5ed1ce022b035474f8bf6c10d19e5c01) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map025.asset using Guid(5ed1ce022b035474f8bf6c10d19e5c01) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '031c828d128154f4239102e205eb70d8') in 0.001162458 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x31e6df000 may have been prematurely finalized
+Thread 0x16ffbb000 may have been prematurely finalized
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.523 seconds
-Refreshing native plugins compatible for Editor in 1.51 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.997 seconds
-Domain Reload Profiling: 1521ms
-	BeginReloadAssembly (133ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (65ms)
-	RebuildCommonClasses (30ms)
-	RebuildNativeTypeToScriptingClass (11ms)
-	initialDomainReloadingComplete (19ms)
-	LoadAllAssembliesAndSetupDomain (331ms)
-		LoadAssemblies (233ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (131ms)
-			TypeCache.Refresh (8ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (117ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (997ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (896ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (14ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (87ms)
-			ProcessInitializeOnLoadAttributes (692ms)
-			ProcessInitializeOnLoadMethodAttributes (97ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.65 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.2 MB). Loaded Objects now: 5680.
-Memory consumption went from 132.3 MB to 128.1 MB.
-Total: 21.280417 ms (FindLiveObjects: 0.257416 ms CreateObjectMapping: 0.240709 ms MarkObjects: 19.605750 ms  DeleteObjects: 1.175833 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 746.293041 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map014.asset
-  artifactKey: Guid(b9e6f3d1a0e984c3ea2d6b123656c5a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map014.asset using Guid(b9e6f3d1a0e984c3ea2d6b123656c5a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '6edee86f82bcbd2cca6994139c84eb07') in 0.018003625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31f9cb000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.520 seconds
-Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.64 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.009 seconds
-Domain Reload Profiling: 1530ms
-	BeginReloadAssembly (132ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (65ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (16ms)
-	LoadAllAssembliesAndSetupDomain (335ms)
-		LoadAssemblies (236ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (131ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (119ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (1009ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (910ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (16ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (109ms)
-			ProcessInitializeOnLoadAttributes (678ms)
-			ProcessInitializeOnLoadMethodAttributes (102ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.69 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.2 MB). Loaded Objects now: 5685.
-Memory consumption went from 132.2 MB to 128.0 MB.
-Total: 21.239333 ms (FindLiveObjects: 0.292083 ms CreateObjectMapping: 0.186584 ms MarkObjects: 19.478459 ms  DeleteObjects: 1.281583 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 1937.689585 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map015.asset
-  artifactKey: Guid(fbea99ab89ab043e5b118d9de728f05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map015.asset using Guid(fbea99ab89ab043e5b118d9de728f05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7ffcbc6f4c583e23e828cd60cb2d5af5') in 0.019263583 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31e74b000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.486 seconds
+- Loaded All Assemblies, in  0.463 seconds
 Refreshing native plugins compatible for Editor in 1.10 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.29 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.988 seconds
-Domain Reload Profiling: 1476ms
+- Finished resetting the current domain, in  0.976 seconds
+Domain Reload Profiling: 1440ms
 	BeginReloadAssembly (128ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (63ms)
+		CreateAndSetChildDomain (60ms)
 	RebuildCommonClasses (28ms)
 	RebuildNativeTypeToScriptingClass (10ms)
 	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (303ms)
-		LoadAssemblies (209ms)
+	LoadAllAssembliesAndSetupDomain (281ms)
+		LoadAssemblies (191ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (126ms)
+		AnalyzeDomain (123ms)
 			TypeCache.Refresh (6ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (114ms)
+			BuildScriptInfoCaches (111ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (989ms)
+	FinalizeReload (976ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (893ms)
+		SetupLoadedEditorAssemblies (880ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (93ms)
-			ProcessInitializeOnLoadAttributes (680ms)
-			ProcessInitializeOnLoadMethodAttributes (100ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (3ms)
+			BeforeProcessingInitializeOnLoad (85ms)
+			ProcessInitializeOnLoadAttributes (681ms)
+			ProcessInitializeOnLoadMethodAttributes (95ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.96 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5690.
-Memory consumption went from 132.3 MB to 128.3 MB.
-Total: 21.212542 ms (FindLiveObjects: 0.266792 ms CreateObjectMapping: 0.144833 ms MarkObjects: 19.529000 ms  DeleteObjects: 1.271083 ms)
+Unloading 5124 unused Assets / (4.2 MB). Loaded Objects now: 5681.
+Memory consumption went from 131.9 MB to 127.7 MB.
+Total: 20.432458 ms (FindLiveObjects: 0.222458 ms CreateObjectMapping: 0.143875 ms MarkObjects: 18.752000 ms  DeleteObjects: 1.313541 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x354d5f000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.479 seconds
+Refreshing native plugins compatible for Editor in 1.23 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.43 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.967 seconds
+Domain Reload Profiling: 1447ms
+	BeginReloadAssembly (124ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (59ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (300ms)
+		LoadAssemblies (204ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (129ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (116ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (968ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (870ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (15ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (108ms)
+			ProcessInitializeOnLoadAttributes (644ms)
+			ProcessInitializeOnLoadMethodAttributes (99ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.29 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5686.
+Memory consumption went from 131.5 MB to 127.5 MB.
+Total: 20.613750 ms (FindLiveObjects: 0.283208 ms CreateObjectMapping: 0.145292 ms MarkObjects: 19.049416 ms  DeleteObjects: 1.135000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Import Request.
-  Time since last request: 772.602416 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map015.asset
-  artifactKey: Guid(fbea99ab89ab043e5b118d9de728f05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map015.asset using Guid(fbea99ab89ab043e5b118d9de728f05a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1c1ced8355de037199616ba98f163c76') in 0.02167425 seconds
+  Time since last request: 960.774471 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map030.asset
+  artifactKey: Guid(b8b7809ed316d49a3839d1d76f0f562e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map030.asset using Guid(b8b7809ed316d49a3839d1d76f0f562e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '54e3b732fcaa5507498cb3d11aaf0fd9') in 0.019848291 seconds
+Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
+
+========================================================================
+Received Import Request.
+  Time since last request: 0.000082 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map032.asset
+  artifactKey: Guid(6f5b4399944a24ce084cbcc288f83a4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map032.asset using Guid(6f5b4399944a24ce084cbcc288f83a4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0db582478cfc7e4cdbdb96c628f07f94') in 0.00083525 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x31eac3000 may have been prematurely finalized
+Thread 0x16fdb7000 may have been prematurely finalized
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.503 seconds
-Refreshing native plugins compatible for Editor in 1.22 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.471 seconds
+Refreshing native plugins compatible for Editor in 1.21 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.38 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.39 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.025 seconds
-Domain Reload Profiling: 1530ms
-	BeginReloadAssembly (135ms)
+- Finished resetting the current domain, in  0.996 seconds
+Domain Reload Profiling: 1468ms
+	BeginReloadAssembly (123ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (68ms)
-	RebuildCommonClasses (29ms)
+		CreateAndSetChildDomain (61ms)
+	RebuildCommonClasses (26ms)
 	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (313ms)
-		LoadAssemblies (211ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (298ms)
+		LoadAssemblies (197ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (135ms)
+		AnalyzeDomain (130ms)
 			TypeCache.Refresh (6ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (123ms)
+			BuildScriptInfoCaches (118ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (1025ms)
+	FinalizeReload (996ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (920ms)
+		SetupLoadedEditorAssemblies (898ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (14ms)
+			InitializePlatformSupportModulesInManaged (13ms)
 			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (96ms)
-			ProcessInitializeOnLoadAttributes (706ms)
-			ProcessInitializeOnLoadMethodAttributes (100ms)
+			BeforeProcessingInitializeOnLoad (106ms)
+			ProcessInitializeOnLoadAttributes (671ms)
+			ProcessInitializeOnLoadMethodAttributes (102ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.43 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.16 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (3.7 MB). Loaded Objects now: 5695.
-Memory consumption went from 132.3 MB to 128.6 MB.
-Total: 20.922667 ms (FindLiveObjects: 0.247375 ms CreateObjectMapping: 0.143958 ms MarkObjects: 19.344459 ms  DeleteObjects: 1.186250 ms)
+Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5691.
+Memory consumption went from 131.3 MB to 127.4 MB.
+Total: 21.445625 ms (FindLiveObjects: 0.246542 ms CreateObjectMapping: 0.156083 ms MarkObjects: 19.635375 ms  DeleteObjects: 1.407000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x31e6df000 may have been prematurely finalized
+Thread 0x16e16b000 may have been prematurely finalized
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.493 seconds
-Refreshing native plugins compatible for Editor in 1.53 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.478 seconds
+Refreshing native plugins compatible for Editor in 1.14 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.69 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.40 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.979 seconds
-Domain Reload Profiling: 1474ms
-	BeginReloadAssembly (125ms)
+- Finished resetting the current domain, in  1.004 seconds
+Domain Reload Profiling: 1483ms
+	BeginReloadAssembly (123ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
 		CreateAndSetChildDomain (60ms)
-	RebuildCommonClasses (29ms)
+	RebuildCommonClasses (27ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (304ms)
+		LoadAssemblies (203ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (131ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (119ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (1004ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (905ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (99ms)
+			ProcessInitializeOnLoadAttributes (684ms)
+			ProcessInitializeOnLoadMethodAttributes (104ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (4ms)
+Refreshing native plugins compatible for Editor in 1.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5696.
+Memory consumption went from 130.7 MB to 126.7 MB.
+Total: 22.002125 ms (FindLiveObjects: 0.291416 ms CreateObjectMapping: 0.175125 ms MarkObjects: 20.169792 ms  DeleteObjects: 1.365166 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x16e16b000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.480 seconds
+Refreshing native plugins compatible for Editor in 1.18 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.23 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.978 seconds
+Domain Reload Profiling: 1460ms
+	BeginReloadAssembly (125ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (64ms)
+	RebuildCommonClasses (26ms)
 	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (19ms)
-	LoadAllAssembliesAndSetupDomain (311ms)
-		LoadAssemblies (214ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (304ms)
+		LoadAssemblies (202ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (131ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (119ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (978ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (882ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (92ms)
+			ProcessInitializeOnLoadAttributes (669ms)
+			ProcessInitializeOnLoadMethodAttributes (101ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.23 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (3.8 MB). Loaded Objects now: 5701.
+Memory consumption went from 130.2 MB to 126.4 MB.
+Total: 20.520250 ms (FindLiveObjects: 0.237458 ms CreateObjectMapping: 0.144709 ms MarkObjects: 18.993709 ms  DeleteObjects: 1.143417 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x16e16b000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.447 seconds
+Refreshing native plugins compatible for Editor in 1.08 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.36 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.967 seconds
+Domain Reload Profiling: 1416ms
+	BeginReloadAssembly (119ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (59ms)
+	RebuildCommonClasses (25ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (16ms)
+	LoadAllAssembliesAndSetupDomain (279ms)
+		LoadAssemblies (189ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (119ms)
+			TypeCache.Refresh (7ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (107ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (968ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (879ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (89ms)
+			ProcessInitializeOnLoadAttributes (675ms)
+			ProcessInitializeOnLoadMethodAttributes (98ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.34 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5706.
+Memory consumption went from 129.7 MB to 125.8 MB.
+Total: 20.315000 ms (FindLiveObjects: 0.249416 ms CreateObjectMapping: 0.147250 ms MarkObjects: 18.750917 ms  DeleteObjects: 1.166708 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x16e16b000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.487 seconds
+Refreshing native plugins compatible for Editor in 1.21 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.29 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.974 seconds
+Domain Reload Profiling: 1463ms
+	BeginReloadAssembly (127ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (60ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (308ms)
+		LoadAssemblies (207ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (131ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (119ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (974ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (873ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (13ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (94ms)
+			ProcessInitializeOnLoadAttributes (665ms)
+			ProcessInitializeOnLoadMethodAttributes (97ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.24 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5711.
+Memory consumption went from 129.2 MB to 125.3 MB.
+Total: 20.758375 ms (FindLiveObjects: 0.228792 ms CreateObjectMapping: 0.139625 ms MarkObjects: 19.118000 ms  DeleteObjects: 1.271458 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x16e16b000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.479 seconds
+Refreshing native plugins compatible for Editor in 1.09 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.22 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.972 seconds
+Domain Reload Profiling: 1453ms
+	BeginReloadAssembly (125ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (3ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (62ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (9ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (301ms)
+		LoadAssemblies (202ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
 		AnalyzeDomain (129ms)
 			TypeCache.Refresh (6ms)
 				TypeCache.ScanAssembly (0ms)
 			BuildScriptInfoCaches (117ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (979ms)
+	FinalizeReload (972ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (879ms)
+		SetupLoadedEditorAssemblies (875ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (14ms)
 			SetLoadedEditorAssemblies (4ms)
 			BeforeProcessingInitializeOnLoad (93ms)
-			ProcessInitializeOnLoadAttributes (669ms)
-			ProcessInitializeOnLoadMethodAttributes (99ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.42 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5700.
-Memory consumption went from 132.0 MB to 128.1 MB.
-Total: 21.233875 ms (FindLiveObjects: 0.265583 ms CreateObjectMapping: 0.146042 ms MarkObjects: 19.603542 ms  DeleteObjects: 1.217667 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 142.220000 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map016.asset
-  artifactKey: Guid(619b63a97952b4cddba178833efc0db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map016.asset using Guid(619b63a97952b4cddba178833efc0db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '74ed4568f1a1a6f2e00c82c78e85bf99') in 0.018011625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31e6df000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.499 seconds
-Refreshing native plugins compatible for Editor in 1.28 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.35 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.953 seconds
-Domain Reload Profiling: 1453ms
-	BeginReloadAssembly (128ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (63ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (318ms)
-		LoadAssemblies (230ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (119ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (108ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (953ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (857ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (14ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (90ms)
-			ProcessInitializeOnLoadAttributes (650ms)
-			ProcessInitializeOnLoadMethodAttributes (98ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (4ms)
-Refreshing native plugins compatible for Editor in 1.67 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.2 MB). Loaded Objects now: 5705.
-Memory consumption went from 132.0 MB to 127.8 MB.
-Total: 21.120375 ms (FindLiveObjects: 0.241625 ms CreateObjectMapping: 0.152333 ms MarkObjects: 19.459833 ms  DeleteObjects: 1.265750 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 261166.830159 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map016.asset
-  artifactKey: Guid(619b63a97952b4cddba178833efc0db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map016.asset using Guid(619b63a97952b4cddba178833efc0db0) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0411100cd70d4e01a8259c56305a8f31') in 0.022131209 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31ea03000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.476 seconds
-Refreshing native plugins compatible for Editor in 1.40 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.73 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.933 seconds
-Domain Reload Profiling: 1411ms
-	BeginReloadAssembly (130ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (62ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (292ms)
-		LoadAssemblies (198ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (128ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (115ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (933ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (839ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (14ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (92ms)
-			ProcessInitializeOnLoadAttributes (629ms)
-			ProcessInitializeOnLoadMethodAttributes (99ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.64 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5710.
-Memory consumption went from 131.9 MB to 128.0 MB.
-Total: 21.172833 ms (FindLiveObjects: 0.258375 ms CreateObjectMapping: 0.161541 ms MarkObjects: 19.559834 ms  DeleteObjects: 1.192250 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 2774.578779 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map018.asset
-  artifactKey: Guid(b71815cf3492d4ddca0b3e99a386e891) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map018.asset using Guid(b71815cf3492d4ddca0b3e99a386e891) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '0500fe96f84f338a2b850285e26d459c') in 0.017834667 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31e653000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.501 seconds
-Refreshing native plugins compatible for Editor in 1.29 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.42 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.953 seconds
-Domain Reload Profiling: 1456ms
-	BeginReloadAssembly (126ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (3ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (62ms)
-	RebuildCommonClasses (29ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (322ms)
-		LoadAssemblies (222ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (130ms)
-			TypeCache.Refresh (7ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (117ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (953ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (855ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (14ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (93ms)
-			ProcessInitializeOnLoadAttributes (642ms)
+			ProcessInitializeOnLoadAttributes (663ms)
 			ProcessInitializeOnLoadMethodAttributes (101ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.40 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.26 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.3 MB). Loaded Objects now: 5715.
-Memory consumption went from 131.9 MB to 127.6 MB.
-Total: 21.216625 ms (FindLiveObjects: 0.253417 ms CreateObjectMapping: 0.144166 ms MarkObjects: 19.398167 ms  DeleteObjects: 1.420416 ms)
+Unloading 5124 unused Assets / (3.8 MB). Loaded Objects now: 5716.
+Memory consumption went from 128.7 MB to 124.9 MB.
+Total: 20.872833 ms (FindLiveObjects: 0.264917 ms CreateObjectMapping: 0.185208 ms MarkObjects: 19.237833 ms  DeleteObjects: 1.183833 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x31e653000 may have been prematurely finalized
+Thread 0x16e16b000 may have been prematurely finalized
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.497 seconds
-Refreshing native plugins compatible for Editor in 1.52 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.493 seconds
+Refreshing native plugins compatible for Editor in 1.39 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.33 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.59 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.968 seconds
-Domain Reload Profiling: 1467ms
-	BeginReloadAssembly (134ms)
+- Finished resetting the current domain, in  0.979 seconds
+Domain Reload Profiling: 1474ms
+	BeginReloadAssembly (127ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (4ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (68ms)
-	RebuildCommonClasses (28ms)
+		CreateAndSetChildDomain (63ms)
+	RebuildCommonClasses (29ms)
 	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (309ms)
-		LoadAssemblies (209ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (312ms)
+		LoadAssemblies (211ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (133ms)
-			TypeCache.Refresh (7ms)
+		AnalyzeDomain (131ms)
+			TypeCache.Refresh (6ms)
 				TypeCache.ScanAssembly (0ms)
 			BuildScriptInfoCaches (119ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (969ms)
+	FinalizeReload (979ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (868ms)
+		SetupLoadedEditorAssemblies (878ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
+			InitializePlatformSupportModulesInManaged (13ms)
 			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (93ms)
-			ProcessInitializeOnLoadAttributes (660ms)
-			ProcessInitializeOnLoadMethodAttributes (94ms)
+			BeforeProcessingInitializeOnLoad (96ms)
+			ProcessInitializeOnLoadAttributes (664ms)
+			ProcessInitializeOnLoadMethodAttributes (101ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.64 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.22 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5720.
-Memory consumption went from 131.7 MB to 127.8 MB.
-Total: 21.103667 ms (FindLiveObjects: 0.250292 ms CreateObjectMapping: 0.174875 ms MarkObjects: 19.439916 ms  DeleteObjects: 1.237792 ms)
+Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5721.
+Memory consumption went from 128.2 MB to 124.3 MB.
+Total: 21.266583 ms (FindLiveObjects: 0.240542 ms CreateObjectMapping: 0.150958 ms MarkObjects: 19.652333 ms  DeleteObjects: 1.221958 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x31e653000 may have been prematurely finalized
+Thread 0x16e16b000 may have been prematurely finalized
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.488 seconds
-Refreshing native plugins compatible for Editor in 1.32 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.484 seconds
+Refreshing native plugins compatible for Editor in 1.11 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.75 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.13 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.965 seconds
-Domain Reload Profiling: 1455ms
+- Finished resetting the current domain, in  0.957 seconds
+Domain Reload Profiling: 1442ms
 	BeginReloadAssembly (126ms)
+		ExecutionOrderSort (0ms)
+		DisableScriptedObjects (4ms)
+		BackupInstance (0ms)
+		ReleaseScriptingObjects (0ms)
+		CreateAndSetChildDomain (62ms)
+	RebuildCommonClasses (28ms)
+	RebuildNativeTypeToScriptingClass (10ms)
+	initialDomainReloadingComplete (17ms)
+	LoadAllAssembliesAndSetupDomain (305ms)
+		LoadAssemblies (208ms)
+		RebuildTransferFunctionScriptingTraits (0ms)
+		AnalyzeDomain (127ms)
+			TypeCache.Refresh (6ms)
+				TypeCache.ScanAssembly (0ms)
+			BuildScriptInfoCaches (115ms)
+			ResolveRequiredComponents (4ms)
+	FinalizeReload (957ms)
+		ReleaseScriptCaches (0ms)
+		RebuildScriptCaches (0ms)
+		SetupLoadedEditorAssemblies (860ms)
+			LogAssemblyErrors (0ms)
+			InitializePlatformSupportModulesInManaged (14ms)
+			SetLoadedEditorAssemblies (4ms)
+			BeforeProcessingInitializeOnLoad (91ms)
+			ProcessInitializeOnLoadAttributes (653ms)
+			ProcessInitializeOnLoadMethodAttributes (99ms)
+			AfterProcessingInitializeOnLoad (1ms)
+			EditorAssembliesLoaded (0ms)
+		ExecutionOrderSort2 (0ms)
+		AwakeInstancesAfterBackupRestoration (3ms)
+Refreshing native plugins compatible for Editor in 1.27 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
+Unloading 5124 unused Assets / (4.3 MB). Loaded Objects now: 5726.
+Memory consumption went from 127.7 MB to 123.5 MB.
+Total: 21.674000 ms (FindLiveObjects: 0.286167 ms CreateObjectMapping: 0.158250 ms MarkObjects: 19.776542 ms  DeleteObjects: 1.452417 ms)
+
+Prepare: number of updated asset objects reloaded= 0
+========================================================================
+Received Prepare
+Begin MonoManager ReloadAssembly
+Thread 0x16ffc3000 may have been prematurely finalized
+Symbol file LoadedFromMemory is not a mono symbol file
+- Loaded All Assemblies, in  0.475 seconds
+Refreshing native plugins compatible for Editor in 1.15 ms, found 2 plugins.
+Native extension for iOS target not found
+Native extension for Android target not found
+Native extension for WindowsStandalone target not found
+Native extension for OSXStandalone target not found
+Native extension for WebGL target not found
+Refreshing native plugins compatible for Editor in 1.41 ms, found 2 plugins.
+Mono: successfully reloaded assembly
+- Finished resetting the current domain, in  0.975 seconds
+Domain Reload Profiling: 1452ms
+	BeginReloadAssembly (124ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (3ms)
 		BackupInstance (0ms)
@@ -918,619 +822,128 @@ Domain Reload Profiling: 1455ms
 	RebuildCommonClasses (28ms)
 	RebuildNativeTypeToScriptingClass (10ms)
 	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (308ms)
-		LoadAssemblies (208ms)
+	LoadAllAssembliesAndSetupDomain (298ms)
+		LoadAssemblies (200ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (133ms)
+		AnalyzeDomain (128ms)
 			TypeCache.Refresh (6ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (119ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (965ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (866ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (93ms)
-			ProcessInitializeOnLoadAttributes (650ms)
-			ProcessInitializeOnLoadMethodAttributes (103ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.40 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (3.9 MB). Loaded Objects now: 5725.
-Memory consumption went from 131.4 MB to 127.4 MB.
-Total: 21.090042 ms (FindLiveObjects: 0.254042 ms CreateObjectMapping: 0.157208 ms MarkObjects: 19.487792 ms  DeleteObjects: 1.190084 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31e653000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.490 seconds
-Refreshing native plugins compatible for Editor in 1.16 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 2.54 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  0.975 seconds
-Domain Reload Profiling: 1468ms
-	BeginReloadAssembly (125ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (59ms)
-	RebuildCommonClasses (29ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (311ms)
-		LoadAssemblies (212ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (132ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (118ms)
+			BuildScriptInfoCaches (116ms)
 			ResolveRequiredComponents (4ms)
 	FinalizeReload (975ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
 		SetupLoadedEditorAssemblies (877ms)
 			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
+			InitializePlatformSupportModulesInManaged (14ms)
 			SetLoadedEditorAssemblies (4ms)
 			BeforeProcessingInitializeOnLoad (93ms)
 			ProcessInitializeOnLoadAttributes (663ms)
-			ProcessInitializeOnLoadMethodAttributes (100ms)
+			ProcessInitializeOnLoadMethodAttributes (102ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.39 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.10 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5730.
-Memory consumption went from 131.1 MB to 127.1 MB.
-Total: 20.668875 ms (FindLiveObjects: 0.261666 ms CreateObjectMapping: 0.155292 ms MarkObjects: 19.038208 ms  DeleteObjects: 1.213292 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 390.872724 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map019.asset
-  artifactKey: Guid(cbb25fb36bcf24b8e98fc01bb989a1de) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map019.asset using Guid(cbb25fb36bcf24b8e98fc01bb989a1de) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'a3a1a21302ab5b5531f27fe34ff58dc9') in 0.018720625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 81581.532200 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map020 1.asset
-  artifactKey: Guid(fc82ee0586f844db2a0c7496956d4304) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map020 1.asset using Guid(fc82ee0586f844db2a0c7496956d4304) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '88f2ed0bc550658ebb555d8a2bd24307') in 0.00142475 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000081 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map023 1.asset
-  artifactKey: Guid(995356a718efd449f93e1c2db9d27ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map023 1.asset using Guid(995356a718efd449f93e1c2db9d27ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4f854a366f7d54b811aa1bf6c6b49419') in 0.000497833 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000066 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map030 1.asset
-  artifactKey: Guid(57793549a3863454b9ac1327c8baa5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map030 1.asset using Guid(57793549a3863454b9ac1327c8baa5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4368489fa7dc9f51d7d6413c726bb710') in 0.000984083 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000063 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map028 1.asset
-  artifactKey: Guid(75b620eb3811d4e84a394cd8ddecf771) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map028 1.asset using Guid(75b620eb3811d4e84a394cd8ddecf771) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '34dbc561776d4a08d2076811a20ed56e') in 0.00068725 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000079 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map026 1.asset
-  artifactKey: Guid(60352af2bf9f64edcb6f0c90bd1a9afa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map026 1.asset using Guid(60352af2bf9f64edcb6f0c90bd1a9afa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'f822a2cddff69ea7fb98dfd8e296ebde') in 0.000742708 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000121 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map022 1.asset
-  artifactKey: Guid(78901ede1d7824e88ac1ea091b6f169a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map022 1.asset using Guid(78901ede1d7824e88ac1ea091b6f169a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'c90aeee9f4aa71864c020940890f2a83') in 0.000649 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000098 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map027 1.asset
-  artifactKey: Guid(5e3e35636872d4628b90dae0e91f107f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map027 1.asset using Guid(5e3e35636872d4628b90dae0e91f107f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd97b745a5be613cfdbe9854a7eebc7ba') in 0.000677167 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000097 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map024 1.asset
-  artifactKey: Guid(e23f6dcd364f94dd29e2ed2ae3afa0ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map024 1.asset using Guid(e23f6dcd364f94dd29e2ed2ae3afa0ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dd09d81698797bbb690a0c190b821892') in 0.000739291 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000113 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map029 1.asset
-  artifactKey: Guid(bf5ee52b1ddb14471b303fababece688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map029 1.asset using Guid(bf5ee52b1ddb14471b303fababece688) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7e6a857d686ecb01a971b5475c9e2598') in 0.000763291 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 0.000071 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map025 1.asset
-  artifactKey: Guid(6664978f95983492e890e03fcc8aaf2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map025 1.asset using Guid(6664978f95983492e890e03fcc8aaf2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '34aeb773b8e7ff28e8e5087476b281b4') in 0.001740875 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 10.484348 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map020.asset
-  artifactKey: Guid(fc82ee0586f844db2a0c7496956d4304) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map020.asset using Guid(fc82ee0586f844db2a0c7496956d4304) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd19df0ed77482de1d7df7dc7d7848b5c') in 0.0009605 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 16.595589 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map021.asset
-  artifactKey: Guid(7094b058636e045f39c1968d12c2f23e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map021.asset using Guid(7094b058636e045f39c1968d12c2f23e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2bb9df8e61b32bcd1bfd97cd610706b6') in 0.001066042 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.592684 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map023.asset
-  artifactKey: Guid(995356a718efd449f93e1c2db9d27ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map023.asset using Guid(995356a718efd449f93e1c2db9d27ba2) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ff95851cf79aac13d118569479460700') in 0.000996833 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 17.539432 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map024.asset
-  artifactKey: Guid(e23f6dcd364f94dd29e2ed2ae3afa0ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map024.asset using Guid(e23f6dcd364f94dd29e2ed2ae3afa0ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '785f5220554ba03c57c06b589e7afa9e') in 0.000889625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.349617 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map025.asset
-  artifactKey: Guid(6664978f95983492e890e03fcc8aaf2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map025.asset using Guid(6664978f95983492e890e03fcc8aaf2e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'dbef22924c3a834427db65fb1ff093e4') in 0.000897917 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.628815 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map026.asset
-  artifactKey: Guid(60352af2bf9f64edcb6f0c90bd1a9afa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map026.asset using Guid(60352af2bf9f64edcb6f0c90bd1a9afa) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '42d67f0ed6ad5f491dbf675f4264adcc') in 0.001057792 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 8.791557 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map027.asset
-  artifactKey: Guid(5e3e35636872d4628b90dae0e91f107f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map027.asset using Guid(5e3e35636872d4628b90dae0e91f107f) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '595aee31a4a8fbbff2e0f9b0c47aa2f0') in 0.000885375 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 12.055201 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map028.asset
-  artifactKey: Guid(75b620eb3811d4e84a394cd8ddecf771) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map028.asset using Guid(75b620eb3811d4e84a394cd8ddecf771) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'd55ed53c71f17f552521639d116a3b78') in 0.001058333 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 21.953681 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map029.asset
-  artifactKey: Guid(bf5ee52b1ddb14471b303fababece688) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map029.asset using Guid(bf5ee52b1ddb14471b303fababece688) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5f86d9ccadea86560cb58c8f2d6d84d4') in 0.001032375 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 11.032103 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map030.asset
-  artifactKey: Guid(57793549a3863454b9ac1327c8baa5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map030.asset using Guid(57793549a3863454b9ac1327c8baa5cd) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '7de6adf25b75eb3febbc186621d6d656') in 0.000952333 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 20.070857 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/z_Map022.asset
-  artifactKey: Guid(78901ede1d7824e88ac1ea091b6f169a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/z_Map022.asset using Guid(78901ede1d7824e88ac1ea091b6f169a) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2316f38e12122d2a474f637b21aa8f50') in 0.000929 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 84.148861 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map020.asset
-  artifactKey: Guid(fee7f225f968a4741a377607533d0fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map020.asset using Guid(fee7f225f968a4741a377607533d0fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'fb2a9a3ede1c78ef43a8ef0103e677f3') in 0.000918959 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31e653000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.534 seconds
-Refreshing native plugins compatible for Editor in 1.13 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.62 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.046 seconds
-Domain Reload Profiling: 1582ms
-	BeginReloadAssembly (135ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (70ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (345ms)
-		LoadAssemblies (241ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (135ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (123ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (1046ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (942ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (16ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (99ms)
-			ProcessInitializeOnLoadAttributes (715ms)
-			ProcessInitializeOnLoadMethodAttributes (107ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.40 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5735.
-Memory consumption went from 131.2 MB to 127.2 MB.
-Total: 21.210875 ms (FindLiveObjects: 0.235791 ms CreateObjectMapping: 0.141000 ms MarkObjects: 19.600000 ms  DeleteObjects: 1.233333 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 523.459877 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map021.asset
-  artifactKey: Guid(8f0e9c25c41584b8494282976792070e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map021.asset using Guid(8f0e9c25c41584b8494282976792070e) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '2486a65005c86e348410bb99d903e442') in 0.017514125 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Import Request.
-  Time since last request: 14.032399 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map020.asset
-  artifactKey: Guid(fee7f225f968a4741a377607533d0fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map020.asset using Guid(fee7f225f968a4741a377607533d0fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'e3e8417b1c1dabfc874b16a3e40a2f86') in 0.000876083 seconds
-Number of updated asset objects reloaded before import = 1Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31e447000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.535 seconds
-Refreshing native plugins compatible for Editor in 1.14 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.88 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.036 seconds
-Domain Reload Profiling: 1572ms
-	BeginReloadAssembly (133ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (68ms)
-	RebuildCommonClasses (28ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (21ms)
-	LoadAllAssembliesAndSetupDomain (345ms)
-		LoadAssemblies (243ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (133ms)
-			TypeCache.Refresh (7ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (120ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (1036ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (933ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (95ms)
-			ProcessInitializeOnLoadAttributes (718ms)
-			ProcessInitializeOnLoadMethodAttributes (100ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.40 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (3.8 MB). Loaded Objects now: 5740.
-Memory consumption went from 131.1 MB to 127.3 MB.
-Total: 21.239292 ms (FindLiveObjects: 0.245417 ms CreateObjectMapping: 0.139791 ms MarkObjects: 19.641834 ms  DeleteObjects: 1.211458 ms)
-
-Prepare: number of updated asset objects reloaded= 0
-========================================================================
-Received Import Request.
-  Time since last request: 286.885575 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map022.asset
-  artifactKey: Guid(36aff148cf4d94bac94f1582aeaa4421) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map022.asset using Guid(36aff148cf4d94bac94f1582aeaa4421) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'de610d6b3fcdc681333f0b5e7aeb04fe') in 0.019088875 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
-
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31eadf000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.508 seconds
-Refreshing native plugins compatible for Editor in 1.39 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.28 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.004 seconds
-Domain Reload Profiling: 1515ms
-	BeginReloadAssembly (129ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (67ms)
-	RebuildCommonClasses (27ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (16ms)
-	LoadAllAssembliesAndSetupDomain (328ms)
-		LoadAssemblies (234ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (124ms)
-			TypeCache.Refresh (7ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (111ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (1005ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (908ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (14ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (98ms)
-			ProcessInitializeOnLoadAttributes (687ms)
-			ProcessInitializeOnLoadMethodAttributes (105ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.61 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.2 MB). Loaded Objects now: 5745.
-Memory consumption went from 131.2 MB to 127.0 MB.
-Total: 21.655125 ms (FindLiveObjects: 0.239917 ms CreateObjectMapping: 0.142333 ms MarkObjects: 19.994208 ms  DeleteObjects: 1.278250 ms)
+Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5731.
+Memory consumption went from 127.2 MB to 123.2 MB.
+Total: 20.273958 ms (FindLiveObjects: 0.224458 ms CreateObjectMapping: 0.131750 ms MarkObjects: 18.724167 ms  DeleteObjects: 1.192541 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Prepare
 Begin MonoManager ReloadAssembly
-Thread 0x31eadf000 may have been prematurely finalized
+Thread 0x16ffc3000 may have been prematurely finalized
 Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.497 seconds
-Refreshing native plugins compatible for Editor in 1.15 ms, found 2 plugins.
+- Loaded All Assemblies, in  0.470 seconds
+Refreshing native plugins compatible for Editor in 1.19 ms, found 2 plugins.
 Native extension for iOS target not found
 Native extension for Android target not found
 Native extension for WindowsStandalone target not found
 Native extension for OSXStandalone target not found
 Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.39 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.43 ms, found 2 plugins.
 Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.003 seconds
-Domain Reload Profiling: 1503ms
-	BeginReloadAssembly (129ms)
+- Finished resetting the current domain, in  0.932 seconds
+Domain Reload Profiling: 1404ms
+	BeginReloadAssembly (127ms)
 		ExecutionOrderSort (0ms)
 		DisableScriptedObjects (3ms)
 		BackupInstance (0ms)
 		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (64ms)
-	RebuildCommonClasses (29ms)
+		CreateAndSetChildDomain (63ms)
+	RebuildCommonClasses (28ms)
 	RebuildNativeTypeToScriptingClass (10ms)
 	initialDomainReloadingComplete (17ms)
-	LoadAllAssembliesAndSetupDomain (314ms)
-		LoadAssemblies (212ms)
+	LoadAllAssembliesAndSetupDomain (290ms)
+		LoadAssemblies (195ms)
 		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (133ms)
+		AnalyzeDomain (126ms)
 			TypeCache.Refresh (6ms)
 				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (120ms)
+			BuildScriptInfoCaches (114ms)
 			ResolveRequiredComponents (4ms)
-	FinalizeReload (1003ms)
+	FinalizeReload (932ms)
 		ReleaseScriptCaches (0ms)
 		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (899ms)
+		SetupLoadedEditorAssemblies (837ms)
 			LogAssemblyErrors (0ms)
 			InitializePlatformSupportModulesInManaged (15ms)
 			SetLoadedEditorAssemblies (4ms)
 			BeforeProcessingInitializeOnLoad (93ms)
-			ProcessInitializeOnLoadAttributes (682ms)
-			ProcessInitializeOnLoadMethodAttributes (104ms)
+			ProcessInitializeOnLoadAttributes (625ms)
+			ProcessInitializeOnLoadMethodAttributes (100ms)
 			AfterProcessingInitializeOnLoad (1ms)
 			EditorAssembliesLoaded (0ms)
 		ExecutionOrderSort2 (0ms)
 		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.67 ms, found 2 plugins.
+Refreshing native plugins compatible for Editor in 1.27 ms, found 2 plugins.
 Preloading 0 native plugins for Editor in 0.00 ms.
 Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (3.2 MB). Loaded Objects now: 5750.
-Memory consumption went from 131.0 MB to 127.8 MB.
-Total: 20.989000 ms (FindLiveObjects: 0.234958 ms CreateObjectMapping: 0.142125 ms MarkObjects: 19.480917 ms  DeleteObjects: 1.130583 ms)
+Unloading 5124 unused Assets / (4.4 MB). Loaded Objects now: 5736.
+Memory consumption went from 126.7 MB to 122.3 MB.
+Total: 21.309625 ms (FindLiveObjects: 0.233833 ms CreateObjectMapping: 0.132875 ms MarkObjects: 19.414125 ms  DeleteObjects: 1.528000 ms)
 
 Prepare: number of updated asset objects reloaded= 0
 ========================================================================
 Received Import Request.
-  Time since last request: 420.289287 seconds.
-  path: Assets/ScriptableObjects/Maps/BetaMaps
-  artifactKey: Guid(de451976461264ed3bb75e9ade30e009) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/BetaMaps using Guid(de451976461264ed3bb75e9ade30e009) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '36b8e74ef517e3bbd0ea80ac79ce77ed') in 0.000920625 seconds
-Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 0
-
-========================================================================
-Received Import Request.
-  Time since last request: 87.567257 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_TutorialMap013.asset
-  artifactKey: Guid(eb454a991d4b446f896134a672e8d179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_TutorialMap013.asset using Guid(eb454a991d4b446f896134a672e8d179) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '258c2a2b8851ba9b3fc62700bfedd10c') in 0.015068458 seconds
+  Time since last request: 1906.921952 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map032.asset
+  artifactKey: Guid(6f5b4399944a24ce084cbcc288f83a4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map032.asset using Guid(6f5b4399944a24ce084cbcc288f83a4b) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '1426c840defe3dd4c62b642bc545765c') in 0.021752291 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 4.917325 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map020.asset
-  artifactKey: Guid(fee7f225f968a4741a377607533d0fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map020.asset using Guid(fee7f225f968a4741a377607533d0fc8) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '946bb16749aaa34907034eaa504af6fa') in 0.004857958 seconds
+  Time since last request: 0.000048 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map035.asset
+  artifactKey: Guid(dc3b2f119081d48c3a52219009d0ba8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map035.asset using Guid(dc3b2f119081d48c3a52219009d0ba8c) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: 'ccef5a92fbd4e7ddf0ea14fc07e50d82') in 0.000854 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 0.000077 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map022.asset
-  artifactKey: Guid(36aff148cf4d94bac94f1582aeaa4421) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map022.asset using Guid(36aff148cf4d94bac94f1582aeaa4421) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '5c71dc070dd2c0c9c76c54104932061c') in 0.000855166 seconds
+  Time since last request: 0.000088 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map036.asset
+  artifactKey: Guid(67b63d3e5318b42b6b6ee496665c5ac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map036.asset using Guid(67b63d3e5318b42b6b6ee496665c5ac5) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '45ba070c67035fec28dc1f38356d18d4') in 0.000680791 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 16.924630 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map0023.asset
-  artifactKey: Guid(eb454a991d4b446f896134a672e8d179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map0023.asset using Guid(eb454a991d4b446f896134a672e8d179) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '4ede08fa3d54e42d9af313a44743c633') in 0.001191 seconds
+  Time since last request: 0.000031 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map038.asset
+  artifactKey: Guid(260297ae863af460d804e7407e027b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map038.asset using Guid(260297ae863af460d804e7407e027b02) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '60c8f6cb94fcd68ccea258196eb23fb8') in 0.000913583 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
 ========================================================================
 Received Import Request.
-  Time since last request: 49.668626 seconds.
-  path: Assets/ScriptableObjects/Maps/GameMaps/_Map023.asset
-  artifactKey: Guid(eb454a991d4b446f896134a672e8d179) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
-Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map023.asset using Guid(eb454a991d4b446f896134a672e8d179) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '706738f31807e1f54e31a16fa1beec9a') in 0.000905 seconds
+  Time since last request: 0.000094 seconds.
+  path: Assets/ScriptableObjects/Maps/GameMaps/_Map034.asset
+  artifactKey: Guid(000f6ec15b5624af2856b0f5c3c10bfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/ScriptableObjects/Maps/GameMaps/_Map034.asset using Guid(000f6ec15b5624af2856b0f5c3c10bfb) Importer(815301076,1909f56bfc062723c751e8b465ee728b) (PreviewImporter) -> (artifact id: '3cde34bc198b0d08a94477f9f128c465') in 0.000681458 seconds
 Number of updated asset objects reloaded before import = 0Number of asset objects unloaded after import = 1
 
-========================================================================
-Received Prepare
-Begin MonoManager ReloadAssembly
-Thread 0x31e653000 may have been prematurely finalized
-Symbol file LoadedFromMemory is not a mono symbol file
-- Loaded All Assemblies, in  0.523 seconds
-Refreshing native plugins compatible for Editor in 1.21 ms, found 2 plugins.
-Native extension for iOS target not found
-Native extension for Android target not found
-Native extension for WindowsStandalone target not found
-Native extension for OSXStandalone target not found
-Native extension for WebGL target not found
-Refreshing native plugins compatible for Editor in 1.37 ms, found 2 plugins.
-Mono: successfully reloaded assembly
-- Finished resetting the current domain, in  1.021 seconds
-Domain Reload Profiling: 1546ms
-	BeginReloadAssembly (134ms)
-		ExecutionOrderSort (0ms)
-		DisableScriptedObjects (4ms)
-		BackupInstance (0ms)
-		ReleaseScriptingObjects (0ms)
-		CreateAndSetChildDomain (69ms)
-	RebuildCommonClasses (29ms)
-	RebuildNativeTypeToScriptingClass (10ms)
-	initialDomainReloadingComplete (18ms)
-	LoadAllAssembliesAndSetupDomain (334ms)
-		LoadAssemblies (231ms)
-		RebuildTransferFunctionScriptingTraits (0ms)
-		AnalyzeDomain (135ms)
-			TypeCache.Refresh (6ms)
-				TypeCache.ScanAssembly (0ms)
-			BuildScriptInfoCaches (123ms)
-			ResolveRequiredComponents (4ms)
-	FinalizeReload (1021ms)
-		ReleaseScriptCaches (0ms)
-		RebuildScriptCaches (0ms)
-		SetupLoadedEditorAssemblies (922ms)
-			LogAssemblyErrors (0ms)
-			InitializePlatformSupportModulesInManaged (15ms)
-			SetLoadedEditorAssemblies (4ms)
-			BeforeProcessingInitializeOnLoad (97ms)
-			ProcessInitializeOnLoadAttributes (702ms)
-			ProcessInitializeOnLoadMethodAttributes (103ms)
-			AfterProcessingInitializeOnLoad (1ms)
-			EditorAssembliesLoaded (0ms)
-		ExecutionOrderSort2 (0ms)
-		AwakeInstancesAfterBackupRestoration (3ms)
-Refreshing native plugins compatible for Editor in 1.30 ms, found 2 plugins.
-Preloading 0 native plugins for Editor in 0.00 ms.
-Unloading 28 Unused Serialized files (Serialized files now loaded: 0)
-Unloading 5124 unused Assets / (4.0 MB). Loaded Objects now: 5755.
-Memory consumption went from 130.9 MB to 126.9 MB.
-Total: 21.631125 ms (FindLiveObjects: 0.245541 ms CreateObjectMapping: 0.168084 ms MarkObjects: 19.932916 ms  DeleteObjects: 1.283750 ms)
-
-Prepare: number of updated asset objects reloaded= 3

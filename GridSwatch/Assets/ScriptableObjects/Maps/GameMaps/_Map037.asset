@@ -23,17 +23,14 @@ MonoBehaviour:
     SerializationNodes: []
   finished: 1
   mapName: Map 38
-  MapGoal: 
+  MapGoal: done
   BoardType: 0
   BoardSize: {x: 3, y: 7}
   PlayerStartPos: {x: 2, y: 6}
   ImpassableMapCoords:
   - {x: 0, y: 6}
   - {x: 0, y: 2}
-  - {x: 1, y: 2}
   - {x: 0, y: 2}
-  - {x: 1, y: 3}
-  - {x: 1, y: 4}
   - {x: 2, y: 0}
   tileData:
   - coord: {x: 0, y: 0}
@@ -99,9 +96,9 @@ MonoBehaviour:
       currentLevel: 0
       colorMode: 0
     isPumpTile: 0
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 1
+    isPivotTile: 1
+    PivotDirection: 4
+    isWrapTile: 0
     WrapDirection: 3
     isInvertTile: 0
     isFillTile: 0
@@ -115,7 +112,7 @@ MonoBehaviour:
   hasCustomAnimationPosition: 0
   startAnimationPosition: {x: 0, y: 0}
   colorGoals:
-  - colorMode: 2
+  - colorMode: 6
     amount: 5
-  - colorMode: 1
-    amount: 3
+  - colorMode: 7
+    amount: 5

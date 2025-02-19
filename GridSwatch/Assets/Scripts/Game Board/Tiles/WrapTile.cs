@@ -89,8 +89,12 @@ namespace GameData
 
         public override void PlayEntryAnimation(AnimationParams animationParams)
         {
-            wrapArrow.DOColor(tileInk.color, animationParams.duration).SetEase(animationParams.easingFunction);
-            sr.DOColor(tileInk.color, animationParams.duration)
+            Color tileColor = tileInk.color;
+            if (IsPump())
+                tileColor = Color.white;
+            
+            wrapArrow.DOColor(tileColor, animationParams.duration).SetEase(animationParams.easingFunction);
+            sr.DOColor(tileColor, animationParams.duration)
                 .SetEase(animationParams.easingFunction)
                 .OnStart(()=>
                 {
@@ -102,7 +106,7 @@ namespace GameData
                     {
                         SetColor(tileInk, isInit: true);
                     }
-                }).OnUpdate(() => { wrapArrow.color = sr.color;});            
+                }).OnUpdate(() => { wrapArrow.color = tileColor;});            
         }
 
         public override void SetColor(Ink ink, bool isInit = false)
