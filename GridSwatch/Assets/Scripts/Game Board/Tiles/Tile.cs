@@ -129,15 +129,19 @@ namespace GameData
 
         public bool IsPump() { return null != GetComponent<PumpTile>(); }
 
-        public virtual void SetColor(Ink ink, bool isInit = false)
+        public virtual void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
             if (isInit)
                 tileInk = ink;
 
+            duration = duration == -1 ? fadeDuration : duration;
+
+            sr.DOPause();
+
             if (!canTraverse)
             {
                 CurrentColorMode = ColorMode.BLACK;
-                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
+                sr.DOColor(tileInk.color, duration).SetEase(Ease.OutExpo);
                 return;
             }
 
@@ -150,8 +154,7 @@ namespace GameData
                     Services.Board.CurrentFillAmount[(int)oldTileInk.colorMode]--;
                 }
 
-                sr.color = tileInk.color;
-                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
+                sr.DOColor(tileInk.color, duration).SetEase(Ease.OutExpo);
                 
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
@@ -168,7 +171,7 @@ namespace GameData
                 }
                 tileInk = ink;
 
-                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
+                sr.DOColor(tileInk.color, duration).SetEase(Ease.OutExpo);
                
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
@@ -178,7 +181,7 @@ namespace GameData
             }
             else
             {
-                sr.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
+                sr.DOColor(tileInk.color, duration).SetEase(Ease.OutExpo);
                 if (tileInk.colorMode != CurrentColorMode && !(this is PumpTile))
                     Services.Board.CurrentFillAmount[(int)tileInk.colorMode]++;
 

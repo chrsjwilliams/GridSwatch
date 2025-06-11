@@ -64,17 +64,19 @@ namespace GameData
             }
         }
         
-        public override void SetColor(Ink ink, bool isInit = false)
+        public override void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
+            duration = duration == -1 ? fadeDuration : duration;
+            
             if (ink.colorMode != ColorMode.NONE && !_negationGate)
             {
-                gateIcon.DOColor(Color.white, fadeDuration)
+                gateIcon.DOColor(Color.white, duration)
                     .SetEase(Ease.OutExpo)
-                    .OnComplete(() => { base.SetColor(ink, isInit); });
+                    .OnComplete(() => { base.SetColor(ink, isInit, duration); });
             }
             else
             {
-                base.SetColor(ink, isInit);
+                base.SetColor(ink, isInit, duration);
             }
         }
         

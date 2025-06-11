@@ -48,7 +48,7 @@ namespace GameData
             pumpIndicator.DOColor(tileInk.color, animationParams.duration).SetEase(animationParams.easingFunction);
         }
 
-        public override void SetColor(Ink ink, bool isInit = false)
+        public override void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
         }
 

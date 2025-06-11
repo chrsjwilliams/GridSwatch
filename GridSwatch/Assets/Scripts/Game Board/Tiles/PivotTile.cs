@@ -90,11 +90,14 @@ namespace GameData
             _pivotSprite.DOColor(iconColor, animationParams.duration).SetEase(animationParams.easingFunction);
         }
 
-        public override void SetColor(Ink ink, bool isInit = false)
+        public override void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
+            duration = duration == -1 ? fadeDuration : duration;
+
+            
             if (IsPump()) return;
             
-            base.SetColor(ink, isInit);
+            base.SetColor(ink, isInit, duration);
             _pivotSprite.color = CurrentColorMode == ColorMode.NONE ? Color.black : Color.white;
         }
 

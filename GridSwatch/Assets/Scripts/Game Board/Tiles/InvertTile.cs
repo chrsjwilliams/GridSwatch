@@ -62,12 +62,14 @@ namespace GameData
         }
 
 
-        public override void SetColor(Ink ink, bool isInit = false)
+        public override void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
+            duration = duration == -1 ? fadeDuration : duration;
+            
             if (ink.colorMode == ColorMode.NONE) return;
             Color iconColor = ink.colorMode == ColorMode.NONE ? Color.black : Color.white;
 
-            invertIcon.DOColor(iconColor, fadeDuration)
+            invertIcon.DOColor(iconColor, duration)
                 .SetEase(Ease.OutExpo)
                 .OnComplete(() =>
                 {

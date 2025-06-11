@@ -150,9 +150,12 @@ namespace GameData
             }
         }
 
-        public override void SetColor(Ink ink, bool isInit = false)
+        public override void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
-            base.SetColor(ink, isInit);
+            duration = duration == -1 ? fadeDuration : duration;
+
+            
+            base.SetColor(ink, isInit, duration);
             Color iconColor = fillColor == ColorMode.NONE ? Color.black : Services.ColorManager.GetColor(fillColor);
             if(ink.colorMode != ColorMode.NONE && fillColor != ColorMode.NONE)
             {
@@ -160,7 +163,7 @@ namespace GameData
             }
             for (int i = 0; i < fillIcons.Count; i++)
             {
-                fillIcons[i].DOColor(iconColor, fadeDuration)
+                fillIcons[i].DOColor(iconColor, duration)
                .SetEase(Ease.OutExpo);
             }
         }
@@ -203,9 +206,13 @@ namespace GameData
 
             ColorMode effectFill = fillColor == ColorMode.NONE ? entity.CurrentColorMode : fillColor;
             Ink newInk = new Ink(effectFill);
-            foreach (Tile tile in tilesToFill)
+
+            for (int i = 0; i < tilesToFill.Count; i++)
             {
-                tile.SetColor(newInk);
+                float tileDistance = Vector3.Distance(tilesToFill[i].transform.position, transform.position);
+                float newDuration = Mathf.Pow(tileDistance, 4)* 0.01f;
+                Mathf.Clamp(newDuration, 0.66f, 1.5f);
+                tilesToFill[i].SetColor(newInk, false, newDuration);
             }
         }
 

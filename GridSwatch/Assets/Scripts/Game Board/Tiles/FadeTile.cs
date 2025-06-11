@@ -49,6 +49,7 @@ namespace GameData
             Services.EventManager.Register<SwipeEvent>(OnSwipe);
             ShowTile(false);
             PlayEntryAnimation(animationParams);
+            fadeDuration = 0.25f;
         }
 
         public void PlayEntryAnimation(AnimationParams animationParams)
@@ -99,8 +100,11 @@ namespace GameData
                    (direction == Direction.NONE && e.gesture.CurrentDirection != Direction.NONE);
         }
 
-        public override void SetColor(Ink ink, bool isInit = false)
+        public override void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
+            
+            duration = duration == -1 ? fadeDuration : duration;
+
             if (isInit)
             {
                 base.SetColor(ink, isInit);
@@ -109,7 +113,7 @@ namespace GameData
             {
                 Services.EventManager.Unregister<SwipeEvent>(OnSwipe);
                 _diffused = true;
-                FadeCounter.DOFade(0, 0.25f)
+                FadeCounter.DOFade(0, duration)
                     .SetEase(Ease.OutExpo)
                     .OnComplete(() =>
                     {

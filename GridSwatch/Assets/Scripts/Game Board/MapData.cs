@@ -7,6 +7,8 @@ namespace GameData
     [CreateAssetMenu(fileName = "MapData", menuName = "ScriptableObjects/MapData", order = 1)]
     public class MapData : SerializedScriptableObject
     {
+        public static int MAX_MAP_SIZE = 13;
+        
         public bool finished;
         public string mapName;
         [TextArea] public string MapGoal;

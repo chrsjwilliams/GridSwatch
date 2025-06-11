@@ -109,12 +109,14 @@ namespace GameData
                 }).OnUpdate(() => { wrapArrow.color = tileColor;});            
         }
 
-        public override void SetColor(Ink ink, bool isInit = false)
+        public override void SetColor(Ink ink, bool isInit = false, float duration = -1)
         {
+            duration = duration == -1 ? fadeDuration : duration;
+
             if (IsPump()) return;
 
             base.SetColor(ink, isInit);
-            wrapArrow.DOColor(tileInk.color, fadeDuration).SetEase(Ease.OutExpo);
+            wrapArrow.DOColor(tileInk.color, duration).SetEase(Ease.OutExpo);
         }
 
         IEnumerator Wrap(Entity entity)
