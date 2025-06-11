@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
-  m_Name: _Map063
+  m_Name: z_Map070
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -22,78 +22,18 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   finished: 1
-  mapName: Map 64
+  mapName: Map 71
   MapGoal: 
   BoardType: 0
   BoardSize: {x: 5, y: 7}
-  PlayerStartPos: {x: 4, y: 5}
+  PlayerStartPos: {x: 3, y: 1}
   ImpassableMapCoords:
-  - {x: 0, y: 2}
-  - {x: 1, y: 2}
-  - {x: 0, y: 3}
-  - {x: 1, y: 3}
-  - {x: 2, y: 3}
-  - {x: 0, y: 4}
-  - {x: 3, y: 6}
+  - {x: 3, y: 0}
+  - {x: 4, y: 3}
+  - {x: 2, y: 4}
+  - {x: 3, y: 4}
   tileData:
-  - coord: {x: 1, y: 0}
-    hasCustomInk: 1
-    ink:
-      currentLevel: 1
-      colorMode: 3
-    isPumpTile: 1
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
-    isInvertTile: 0
-    isFillTile: 0
-    fillType: 0
-    fillColor: 0
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 0
-    gateColor: 0
-    isNotGate: 0
-  - coord: {x: 3, y: 1}
-    hasCustomInk: 1
-    ink:
-      currentLevel: 1
-      colorMode: 1
-    isPumpTile: 1
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
-    isInvertTile: 0
-    isFillTile: 0
-    fillType: 0
-    fillColor: 0
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 0
-    gateColor: 0
-    isNotGate: 0
-  - coord: {x: 4, y: 2}
-    hasCustomInk: 1
-    ink:
-      currentLevel: 1
-      colorMode: 3
-    isPumpTile: 1
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
-    isInvertTile: 0
-    isFillTile: 0
-    fillType: 0
-    fillColor: 0
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 0
-    gateColor: 0
-    isNotGate: 0
-  - coord: {x: 1, y: 5}
+  - coord: {x: 1, y: 1}
     hasCustomInk: 1
     ink:
       currentLevel: 1
@@ -112,7 +52,64 @@ MonoBehaviour:
     isGateTile: 0
     gateColor: 0
     isNotGate: 0
-  - coord: {x: 4, y: 3}
+  - coord: {x: 0, y: 2}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 1
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 4, y: 5}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 3
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 0, y: 4}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 1
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 0, y: 6}
     hasCustomInk: 0
     ink:
       currentLevel: 0
@@ -129,9 +126,9 @@ MonoBehaviour:
     isFadeTile: 0
     fadeCount: 0
     isGateTile: 1
-    gateColor: 2
+    gateColor: 3
     isNotGate: 1
-  - coord: {x: 2, y: 4}
+  - coord: {x: 3, y: 6}
     hasCustomInk: 0
     ink:
       currentLevel: 0
@@ -142,37 +139,20 @@ MonoBehaviour:
     isWrapTile: 0
     WrapDirection: 0
     isInvertTile: 0
-    isFillTile: 1
-    fillType: 7
-    fillColor: 7
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 0
-    gateColor: 0
-    isNotGate: 0
-  - coord: {x: 0, y: 0}
-    hasCustomInk: 0
-    ink:
-      currentLevel: 0
-      colorMode: 0
-    isPumpTile: 0
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 1
-    WrapDirection: 3
-    isInvertTile: 0
     isFillTile: 0
     fillType: 0
     fillColor: 0
     isFadeTile: 0
     fadeCount: 0
-    isGateTile: 0
-    gateColor: 0
+    isGateTile: 1
+    gateColor: 3
     isNotGate: 0
   hasCustomAnimationPosition: 0
   startAnimationPosition: {x: 0, y: 0}
   colorGoals:
+  - colorMode: 3
+    amount: 8
   - colorMode: 2
-    amount: 4
-  - colorMode: 5
-    amount: 6
+    amount: 5
+  - colorMode: 6
+    amount: 5

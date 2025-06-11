@@ -18,6 +18,7 @@ public class MapButton : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI _mapName;
     [SerializeField] private Image _mapIcon;
+    [SerializeField] private Image _buttonOutline;
     [SerializeField] private Sprite _locked;
     [SerializeField] private Sprite _completed;
 
@@ -37,18 +38,20 @@ public class MapButton : MonoBehaviour
         {
             _mapIcon.sprite = _locked;
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0.5f);
+            _buttonOutline.color = Color.white;
             _mapIcon.raycastTarget = true;
         }
         else if (Status == MapStatus.NOT_COMPLETED)
         {
             _mapIcon.color = new Color(0.5f, 0.5f, 0.5f, 0f);
+            _buttonOutline.color = Color.white;
             _mapIcon.raycastTarget = false;
 
         }
         else
         {
-            _mapIcon.sprite = _completed;
-            _mapIcon.color = Services.ColorManager.GetColor(ColorMode.GREEN);
+            _mapIcon.color = Color.clear;
+            _buttonOutline.color = Services.ColorManager.GetColor(ColorMode.GREEN);
             _mapIcon.raycastTarget = false;
         }
     }
