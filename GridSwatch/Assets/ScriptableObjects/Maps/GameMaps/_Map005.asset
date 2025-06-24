@@ -22,26 +22,22 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   finished: 1
-  mapName: Map 6
+  mapName: Map 5
   MapGoal: done
   BoardType: 0
   BoardSize: {x: 5, y: 5}
-  PlayerStartPos: {x: 2, y: 2}
+  PlayerStartPos: {x: 4, y: 4}
   ImpassableMapCoords:
-  - {x: 0, y: 4}
-  - {x: 1, y: 4}
-  - {x: 1, y: 1}
+  - {x: 2, y: 4}
+  - {x: 2, y: 3}
   - {x: 1, y: 2}
-  - {x: 2, y: 1}
   - {x: 3, y: 1}
-  - {x: 3, y: 2}
-  - {x: 4, y: 2}
   tileData:
   - coord: {x: 4, y: 0}
     hasCustomInk: 1
     ink:
       currentLevel: 1
-      colorMode: 5
+      colorMode: 6
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
@@ -56,11 +52,30 @@ MonoBehaviour:
     isGateTile: 0
     gateColor: 0
     isNotGate: 0
-  - coord: {x: 4, y: 4}
+  - coord: {x: 2, y: 2}
     hasCustomInk: 1
     ink:
       currentLevel: 1
-      colorMode: 5
+      colorMode: 6
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 1, y: 3}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 6
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
@@ -78,5 +93,5 @@ MonoBehaviour:
   hasCustomAnimationPosition: 0
   startAnimationPosition: {x: 0, y: 0}
   colorGoals:
-  - colorMode: 5
+  - colorMode: 6
     amount: 15

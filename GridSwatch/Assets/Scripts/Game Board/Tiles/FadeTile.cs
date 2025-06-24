@@ -41,6 +41,9 @@ namespace GameData
             canTraverse = true;
             sr = tile.Sprite;
             tileInk = ink;
+            _fadeCounterCanvas = tile.FadeCounterCanvas;
+            _fadeCounterCanvas.worldCamera = Camera.main;
+            _fadeCounterCanvas.sortingLayerName = "Terrain";
             _fadeCounter = tile.FadeCounter;
             _fadeCount = fadeCount;
             _fadeCounter.text = _fadeCount + "";

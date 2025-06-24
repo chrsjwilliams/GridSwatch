@@ -22,21 +22,19 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   finished: 1
-  mapName: Map 2
+  mapName: Map 1
   MapGoal: done
   BoardType: 0
-  BoardSize: {x: 3, y: 5}
+  BoardSize: {x: 3, y: 3}
   PlayerStartPos: {x: 0, y: 0}
   ImpassableMapCoords:
-  - {x: 2, y: 0}
-  - {x: 0, y: 2}
-  - {x: 2, y: 4}
+  - {x: 2, y: 2}
   tileData:
-  - coord: {x: 1, y: 2}
+  - coord: {x: 2, y: 1}
     hasCustomInk: 1
     ink:
       currentLevel: 1
-      colorMode: 1
+      colorMode: 2
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
@@ -54,5 +52,5 @@ MonoBehaviour:
   hasCustomAnimationPosition: 0
   startAnimationPosition: {x: 0, y: 0}
   colorGoals:
-  - colorMode: 1
-    amount: 6
+  - colorMode: 2
+    amount: 5

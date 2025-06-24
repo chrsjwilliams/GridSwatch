@@ -53,6 +53,8 @@ namespace GameData
         public SpriteRenderer AdjacentIcon { get { return adjacentIcon; } }
         [SerializeField] protected TextMeshProUGUI _fadeCounter;
         public TextMeshProUGUI FadeCounter { get { return _fadeCounter; } }
+        [SerializeField] protected Canvas _fadeCounterCanvas;
+        public Canvas FadeCounterCanvas => _fadeCounterCanvas;
         [SerializeField] protected SpriteRenderer gateIcon;
         public SpriteRenderer GateIcon { get { return gateIcon; } }
         public Sprite[] GateIcons;
