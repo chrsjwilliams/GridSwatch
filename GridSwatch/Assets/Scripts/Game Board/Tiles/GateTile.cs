@@ -22,9 +22,19 @@ namespace GameData
             _negationGate = notGate;
             tileInk = ink;
             gateIcon = tile.GateIcon;
-            gateIcon.sprite = notGate ? tile.GateIcons[(int)Comparison.NOT_EQUAL] : tile.GateIcons[(int)Comparison.EQUAL];
-            
-            gateIcon.DOColor(Services.ColorManager.GetColor(gateColor), 0.25f).SetEase(Ease.InExpo);
+
+            if (gateColor == ColorMode.NONE)
+            {
+                gateIcon.sprite = notGate ? tile.NotEmptyGateSprite : tile.EmptyGateSprite;
+                gateIcon.DOColor(Color.black, 0.25f).SetEase(Ease.InExpo);
+            }
+            else
+            {
+                gateIcon.sprite =
+                    notGate ? tile.GateIcons[(int)Comparison.NOT_EQUAL] : tile.GateIcons[(int)Comparison.EQUAL];
+
+                gateIcon.DOColor(Services.ColorManager.GetColor(gateColor), 0.25f).SetEase(Ease.InExpo);
+            }
 
             PlayEntryAnimation(animationParams);
         }
@@ -57,7 +67,7 @@ namespace GameData
                     }
                 });
 
-            if (!_negationGate)
+            if (!_negationGate && _gateColor != ColorMode.NONE)
             {
                 Color iconColor = CurrentColorMode == ColorMode.NONE ? Services.ColorManager.GetColor(_gateColor) : Color.white;
                 gateIcon.DOColor(iconColor, animationParams.duration).SetEase(animationParams.easingFunction);

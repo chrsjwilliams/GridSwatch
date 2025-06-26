@@ -56,6 +56,10 @@ namespace GameData
         [SerializeField] protected Canvas _fadeCounterCanvas;
         public Canvas FadeCounterCanvas => _fadeCounterCanvas;
         [SerializeField] protected SpriteRenderer gateIcon;
+        [SerializeField] protected Sprite notEmptygateSprite;
+        public Sprite NotEmptyGateSprite => notEmptygateSprite;
+        [SerializeField] protected Sprite emptyGateSprite;
+        public Sprite EmptyGateSprite => emptyGateSprite;
         public SpriteRenderer GateIcon { get { return gateIcon; } }
         public Sprite[] GateIcons;
         #endregion
