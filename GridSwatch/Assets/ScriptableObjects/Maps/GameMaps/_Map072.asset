@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7f456cc05b1004edd84dfc70089fa354, type: 3}
-  m_Name: _Map070
+  m_Name: _Map072
   m_EditorClassIdentifier: 
   serializationData:
     SerializedFormat: 2
@@ -22,17 +22,69 @@ MonoBehaviour:
     PrefabModifications: []
     SerializationNodes: []
   finished: 1
-  mapName: Map 70
+  mapName: Map 72
   MapGoal: 
   BoardType: 0
-  BoardSize: {x: 5, y: 7}
-  PlayerStartPos: {x: 2, y: 3}
+  BoardSize: {x: 7, y: 11}
+  PlayerStartPos: {x: 0, y: 1}
   ImpassableMapCoords:
-  - {x: 1, y: 3}
-  - {x: 1, y: 4}
-  - {x: 2, y: 6}
+  - {x: 0, y: 0}
+  - {x: 1, y: 0}
+  - {x: 2, y: 0}
+  - {x: 2, y: 1}
+  - {x: 4, y: 1}
+  - {x: 2, y: 3}
+  - {x: 3, y: 3}
+  - {x: 6, y: 4}
+  - {x: 0, y: 5}
+  - {x: 2, y: 7}
+  - {x: 3, y: 7}
+  - {x: 4, y: 7}
+  - {x: 3, y: 9}
+  - {x: 3, y: 10}
+  - {x: 4, y: 9}
+  - {x: 4, y: 10}
+  - {x: 2, y: 4}
   tileData:
-  - coord: {x: 0, y: 0}
+  - coord: {x: 3, y: 0}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 1
+    PivotDirection: 4
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 0, y: 1}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 1
+    WrapDirection: 1
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 6, y: 1}
     hasCustomInk: 1
     ink:
       currentLevel: 1
@@ -51,12 +103,31 @@ MonoBehaviour:
     isGateTile: 0
     gateColor: 0
     isNotGate: 0
-  - coord: {x: 0, y: 3}
+  - coord: {x: 0, y: 4}
     hasCustomInk: 0
     ink:
       currentLevel: 0
       colorMode: 0
     isPumpTile: 0
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 1
+    WrapDirection: 1
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 4, y: 4}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 2
+    isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
     isWrapTile: 0
@@ -67,10 +138,48 @@ MonoBehaviour:
     fillColor: 0
     isFadeTile: 0
     fadeCount: 0
-    isGateTile: 1
+    isGateTile: 0
     gateColor: 0
     isNotGate: 0
-  - coord: {x: 1, y: 5}
+  - coord: {x: 1, y: 6}
+    hasCustomInk: 1
+    ink:
+      currentLevel: 1
+      colorMode: 2
+    isPumpTile: 1
+    isPivotTile: 0
+    PivotDirection: 0
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 5, y: 6}
+    hasCustomInk: 0
+    ink:
+      currentLevel: 0
+      colorMode: 0
+    isPumpTile: 0
+    isPivotTile: 1
+    PivotDirection: 3
+    isWrapTile: 0
+    WrapDirection: 0
+    isInvertTile: 0
+    isFillTile: 0
+    fillType: 0
+    fillColor: 0
+    isFadeTile: 0
+    fadeCount: 0
+    isGateTile: 0
+    gateColor: 0
+    isNotGate: 0
+  - coord: {x: 0, y: 9}
     hasCustomInk: 1
     ink:
       currentLevel: 1
@@ -89,7 +198,7 @@ MonoBehaviour:
     isGateTile: 0
     gateColor: 0
     isNotGate: 0
-  - coord: {x: 2, y: 1}
+  - coord: {x: 6, y: 9}
     hasCustomInk: 1
     ink:
       currentLevel: 1
@@ -108,83 +217,7 @@ MonoBehaviour:
     isGateTile: 0
     gateColor: 0
     isNotGate: 0
-  - coord: {x: 2, y: 4}
-    hasCustomInk: 0
-    ink:
-      currentLevel: 0
-      colorMode: 0
-    isPumpTile: 0
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
-    isInvertTile: 0
-    isFillTile: 0
-    fillType: 0
-    fillColor: 0
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 1
-    gateColor: 0
-    isNotGate: 1
-  - coord: {x: 3, y: 3}
-    hasCustomInk: 0
-    ink:
-      currentLevel: 0
-      colorMode: 0
-    isPumpTile: 0
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
-    isInvertTile: 0
-    isFillTile: 0
-    fillType: 0
-    fillColor: 0
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 1
-    gateColor: 0
-    isNotGate: 0
-  - coord: {x: 3, y: 5}
-    hasCustomInk: 0
-    ink:
-      currentLevel: 0
-      colorMode: 0
-    isPumpTile: 0
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
-    isInvertTile: 0
-    isFillTile: 0
-    fillType: 0
-    fillColor: 0
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 1
-    gateColor: 0
-    isNotGate: 1
-  - coord: {x: 4, y: 0}
-    hasCustomInk: 0
-    ink:
-      currentLevel: 0
-      colorMode: 0
-    isPumpTile: 0
-    isPivotTile: 0
-    PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
-    isInvertTile: 0
-    isFillTile: 0
-    fillType: 0
-    fillColor: 0
-    isFadeTile: 0
-    fadeCount: 0
-    isGateTile: 1
-    gateColor: 0
-    isNotGate: 0
-  - coord: {x: 4, y: 2}
+  - coord: {x: 2, y: 10}
     hasCustomInk: 1
     ink:
       currentLevel: 1
@@ -192,8 +225,8 @@ MonoBehaviour:
     isPumpTile: 1
     isPivotTile: 0
     PivotDirection: 0
-    isWrapTile: 0
-    WrapDirection: 0
+    isWrapTile: 1
+    WrapDirection: 4
     isInvertTile: 0
     isFillTile: 0
     fillType: 0
@@ -206,7 +239,11 @@ MonoBehaviour:
   hasCustomAnimationPosition: 0
   startAnimationPosition: {x: 0, y: 0}
   colorGoals:
+  - colorMode: 2
+    amount: 9
+  - colorMode: 7
+    amount: 5
   - colorMode: 3
-    amount: 15
+    amount: 7
   - colorMode: 5
     amount: 2
