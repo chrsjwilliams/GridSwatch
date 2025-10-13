@@ -432,7 +432,6 @@ public class ModalControl : MonoBehaviour
             // android back button action list. On OK modals, the back button
             // executes the Accept function. On Confirmation and Ad modals, the
             // Back button executes the decline function
-            PushAndroidBackButtonAction(request);
             BlockInteractionEvent.Raise();
 
         }
@@ -504,7 +503,6 @@ public class ModalControl : MonoBehaviour
         if (requestQueue.Count == 0)
         {
             // Pops android back button action
-            PopAndroidBackButtonAction(currentRequest);
             if (currentRequest.modalType != ModalType.Notification && currentRequest.modalType != ModalType.Banner)
             {
                 AllowInteractionEvent.Raise();
@@ -602,31 +600,5 @@ public class ModalControl : MonoBehaviour
         Canvas.ForceUpdateCanvases();
         standardModalButtonLayoutGroup.enabled = false;
         standardModalButtonLayoutGroup.enabled = true;
-    }
-
-    void PushAndroidBackButtonAction(ModalRequest request)
-    {
-        if (request.modalType == ModalType.Confirmation ||
-            request.modalType == ModalType.Ad)
-        {
-            AndroidBackButtonHandler.Instance.PushAction(Decline);
-        }
-        else if (request.modalType == ModalType.Ok)
-        {
-            AndroidBackButtonHandler.Instance.PushAction(Accept);
-        }
-    }
-
-    void PopAndroidBackButtonAction(ModalRequest request)
-    {
-        if (request.modalType == ModalType.Confirmation ||
-            request.modalType == ModalType.Ad)
-        {
-            AndroidBackButtonHandler.Instance.PopAction(Decline);
-        }
-        else if (request.modalType == ModalType.Ok)
-        {
-            AndroidBackButtonHandler.Instance.PopAction(Accept);
-        }
     }
 }

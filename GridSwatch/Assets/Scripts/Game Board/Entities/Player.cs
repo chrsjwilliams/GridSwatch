@@ -164,7 +164,7 @@ public class Player : Entity
             isMoving = true;
             playerPoints[playerPoints.Count - 1] = transform.localPosition;
         }
-        else if(!CanTraverse(candidateCoord) && isMoving)
+        else if (!CanTraverse(candidateCoord) && isMoving)
         {
             float xArriveMod = direction == Direction.LEFT ? 15f : 15f;
             float yArriveMod = direction == Direction.DOWN ? 15f : 15f;
@@ -200,11 +200,12 @@ public class Player : Entity
 
                     break;
                 case Direction.DOWN:
-                    
+
                     if (yPos > Services.Board.Map[candidateCoord.x, candidateCoord.y + 1].transform.localPosition.y)
                     {
                         yPos = Services.Board.Map[candidateCoord.x, candidateCoord.y + 1].transform.localPosition.y;
                     }
+
                     break;
                 default:
                     deltaPos = MapCoord.ZERO;
@@ -220,9 +221,8 @@ public class Player : Entity
             {
                 Ink.color = GetColor();
             }
-            transform.DOLocalMove(newPosition, 0.07f).SetEase(Ease.InCirc).OnComplete(() =>
-            {
-            });
+
+            transform.DOLocalMove(newPosition, 0.07f).SetEase(Ease.InCirc).OnComplete(() => { });
         }
     }
 

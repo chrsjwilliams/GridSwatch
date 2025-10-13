@@ -31,6 +31,10 @@ namespace GameScreen
         // ~TODO: Find a way to move this call out of an update function
         public void UpdateText(int count, int goal)
         {
+
+            Color textColor = IsGoalMet() ? finishedColor : defaultColor;
+            iconText.color = textColor;
+            
             _count = count;
             _goal = goal;
             iconText.text = Count + " / " + Goal;
@@ -38,8 +42,7 @@ namespace GameScreen
 
         public bool IsGoalMet()
         {
-            Color textColor = Count >= Goal ? finishedColor : defaultColor;
-            iconText.color = textColor;
+            
             return Count >= Goal;
         }
     }
