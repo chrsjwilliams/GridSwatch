@@ -4,6 +4,7 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using GameData;
 using TMPro;
+using Unity.Services.Analytics;
 
 namespace GameScreen
 {
@@ -68,6 +69,28 @@ namespace GameScreen
             uiSet = true;
         }
 
+        public void OnNextLevelButtonPressed()
+        {
+
+            int nextMapIndex = Services.MapManager.Maps.IndexOf(map) + 1;
+            if (nextMapIndex >= Services.MapManager.Maps.Count)
+                return;
+            
+            MapData nextMap = Services.MapManager.Maps[nextMapIndex];
+            
+            TransitionData tData = new TransitionData();
+            tData.SelecetdMap = nextMap;
+            CustomEvent mapStartedEvent = new CustomEvent("Map_Selected")
+            {
+                { "map_name", tData.SelecetdMap.mapName },
+            };
+
+            AnalyticsService.Instance.RecordEvent(mapStartedEvent);
+
+            Services.Scenes.Swap<GameSceneScript>(tData);
+
+        }
+
         private void OnDestroy()
         {
   
@@ -88,9 +111,15 @@ namespace GameScreen
                     return false;
             }
 
-            gameOverBanner.ShowBanner();
+            gameOverBanner.ShowBanner(HasNextMap());
 
             return true;
+        }
+
+        public bool HasNextMap()
+        {
+            int nextMapIndex = Services.MapManager.Maps.IndexOf(map) + 1;
+            return nextMapIndex < Services.MapManager.Maps.Count;
         }
 
         void Update()

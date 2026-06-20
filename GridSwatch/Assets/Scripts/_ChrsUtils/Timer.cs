@@ -22,7 +22,6 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour 
 {
     public bool tenSecondsLeft;
-    [SerializeField]
     public float duration { get; private set; }                                 //  Current Time
     private bool stopTimer;
 	public Text currentTime { get; private set; }                               //  UI reference to current timer
