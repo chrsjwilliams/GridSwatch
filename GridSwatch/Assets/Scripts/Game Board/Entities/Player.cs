@@ -170,9 +170,9 @@ public class Player : Entity
             float yArriveMod = direction == Direction.DOWN ? 15f : 15f;
 
 
-            float xPos = Mathf.Lerp(transform.localPosition.x, (int)transform.localPosition.x,
+            float xPos = Mathf.Lerp(transform.localPosition.x, Mathf.RoundToInt(transform.localPosition.x),
                 Time.deltaTime * arriveSpeed * xArriveMod);
-            float yPos = Mathf.Lerp(transform.localPosition.y, (int)transform.localPosition.y,
+            float yPos = Mathf.Lerp(transform.localPosition.y, Mathf.RoundToInt(transform.localPosition.y),
                 Time.deltaTime * arriveSpeed * yArriveMod);
             // check direction and stop 1 before that candidate coord
 
@@ -212,9 +212,8 @@ public class Player : Entity
                     Debug.LogError("ERROR : Invalid Direction");
                     break;
             }
-
-            Vector3 newPosition = new Vector3(xPos, yPos, transform.localPosition.z);
             coord = new MapCoord(xPos, yPos);
+            Vector3 newPosition = new Vector3(coord.x, coord.y, transform.localPosition.z);
 
             isMoving = false;
             if (CurrentColorMode != ColorMode.NONE)
@@ -222,7 +221,8 @@ public class Player : Entity
                 Ink.color = GetColor();
             }
 
-            transform.DOLocalMove(newPosition, 0.07f).SetEase(Ease.InCirc).OnComplete(() => { });
+            transform.DOLocalMove(newPosition, 0.15f).OnComplete(() => { });
+            direction = Direction.NONE;
         }
     }
 

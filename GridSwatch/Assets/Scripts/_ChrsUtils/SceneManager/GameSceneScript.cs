@@ -10,6 +10,8 @@ namespace GameScreen
 
         public static bool hasWon { get; private set; }
 
+        private bool showTutorial = true;
+
         public const int LEFT_CLICK = 0;
         public const int RIGHT_CLICK = 1;
 
@@ -19,6 +21,7 @@ namespace GameScreen
 
         public Player player;
 
+        [SerializeField] private CanvasGroup tutorialCanvasGroup;
         [SerializeField] MonoTweener swipeTextPulse;
 
         TaskManager _tm = new TaskManager();
@@ -54,12 +57,23 @@ namespace GameScreen
 
         private void OnSwipe(SwipeEvent e)
         {
+            if (Services.Scenes.CurrentScene != this)
+                return;
+            
             swipeTextPulse.Kill();
+            showTutorial = false;
+            tutorialCanvasGroup.alpha = 0;
         }
 
         internal override void OnEnter(TransitionData data)
         {
             if (data == null || data.SelecetdMap == null) return;
+            if (showTutorial)
+            {
+                tutorialCanvasGroup.alpha = 1;
+
+                swipeTextPulse?.Play();
+            }
             if (data.SelecetdMap == MapData)
             {
                 player.receiveInput = true;
@@ -70,8 +84,9 @@ namespace GameScreen
                 Destroy(player.gameObject);
                 board.ResetMap();
             }
+
             
-            swipeTextPulse?.Play();
+
             finished = false;
             MapData = data.SelecetdMap;
             Services.GameScene = this;

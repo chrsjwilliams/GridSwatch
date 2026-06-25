@@ -27,7 +27,7 @@ public class CameraController : MonoBehaviour
         // y maps from 1 to 7 in a range from 3 to 15
         // size maps from 5 to 12 in a range from 3 to 15
         float x = Remap(width, 3, 15, 1, 7);
-        float y = Remap(height, 3, 15, 1, 7);
+        float y = Remap(height, 3, 15, 1, 8.5f);
         int tempSize = width > height ? width : height;
         float offset = tempSize;
         if(width != height)
