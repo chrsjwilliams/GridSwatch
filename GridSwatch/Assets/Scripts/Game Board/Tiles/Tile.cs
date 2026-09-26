@@ -260,6 +260,11 @@ namespace GameData
             Player player = collision.GetComponent<Player>();
             if (player == null) return;
 
+            transform.DOScale(Vector3.one * 0.45f, 0.2f).OnComplete(() =>
+            {
+                transform.DOScale(Vector3.one * 0.4f, 0.1f).SetEase(Ease.OutCirc);
+            });
+            
             TriggerEnterEffect(player);
         }
 

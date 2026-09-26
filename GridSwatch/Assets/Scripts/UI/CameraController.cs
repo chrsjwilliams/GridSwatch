@@ -33,10 +33,10 @@ public class CameraController : MonoBehaviour
         if(width != height)
             offset = width > height ? height : width;
 
-        float size = Remap(tempSize, 3, 15, 5, 13);
+        float size = Remap(tempSize, 3, 15, 4, 11);
 
         transform.position = new Vector3(x, y, -10);
-        _camera.orthographicSize = Mathf.Ceil(size + 1);
+        _camera.orthographicSize = Mathf.Ceil(size+ 1);
     }
 
     // Update is called once per frame
