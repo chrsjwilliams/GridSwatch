@@ -30,6 +30,9 @@ namespace GameScreen
 
 
         [SerializeField] private Transform _brushStrokeHolder;
+
+        private int swipeCount;
+        
         public Transform BrushStrokeHolder
         {
             get { return _brushStrokeHolder; }
@@ -63,6 +66,7 @@ namespace GameScreen
             swipeTextPulse.Kill();
             showTutorial = false;
             tutorialCanvasGroup.alpha = 0;
+            swipeCount++;
         }
 
         internal override void OnEnter(TransitionData data)
@@ -85,8 +89,9 @@ namespace GameScreen
                 board.ResetMap();
             }
 
-            
 
+
+            swipeCount = 0;
             finished = false;
             MapData = data.SelecetdMap;
             Services.GameScene = this;
@@ -175,9 +180,10 @@ namespace GameScreen
             {
                 finished = true;
                 MapData.finished = true;
+                PlayerData.Instance.WritePlayerData(MapData.mapName, MapData.finished,swipeCount);
+                
                 PlayerPrefs.SetInt(MapData.name, Convert.ToInt32(finished));
                 PlayerPrefs.Save();
-                Debug.Log("SAVE PLAYER PREFS " + MapData.name);
             }
         }
     }

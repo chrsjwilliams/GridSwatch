@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 
 /*--------------------------------------------------------------------------------------*/
@@ -172,6 +173,31 @@ public class SwipeEvent : GameEvent
     {
         gesture = g;
     }
+}
+
+public class SaveDataEvent : GameEvent
+{
+    public readonly PlayerData SavedData;
+
+    public SaveDataEvent(PlayerData data)
+    {
+        SavedData = data;
+    }
+}
+
+public class LoadDataEvent : GameEvent
+{
+    public readonly PlayerData LoadedData;
+
+    public LoadDataEvent(PlayerData data)
+    {
+        LoadedData = data;
+    }
+}
+
+public class CreateSaveDataEvent : GameEvent
+{
+    public CreateSaveDataEvent() {}
 }
 
 public class Reset : GameEvent { }

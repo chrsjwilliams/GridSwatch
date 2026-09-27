@@ -65,6 +65,7 @@ using UnityEngine.Analytics;
 /*                                                                                                                      */
 /************************************************************************************************************************/
 #endregion
+[DefaultExecutionOrder(-10000)]
 public class Main : MonoBehaviour
 {
     [SerializeField] private bool DEBUG_MODE;
