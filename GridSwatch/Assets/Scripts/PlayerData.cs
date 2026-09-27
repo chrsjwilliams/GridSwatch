@@ -93,7 +93,7 @@ public class PlayerData
     }
     
 
-    private LevelData GetData(string levelName)
+    public LevelData GetData(string levelName)
     {
         foreach (var levelData in Instance.SavedLevelData)
         {

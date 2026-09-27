@@ -33,7 +33,11 @@ namespace GameScreen
             mapText.text = mapData.mapName;
             bool finished = Convert.ToBoolean(PlayerPrefs.GetInt(mapData.name));
 
-            solvedText.text = finished ? "SOLVED" : "";
+            PlayerData.LevelData data = PlayerData.Instance.GetData(mapData.mapName);
+
+            string bestSwipeCount = data == null ? "" : "\nBEST: " + data.minSwipes + " SWIPES";
+            
+            solvedText.text = finished ? "SOLVED" + bestSwipeCount : "";
             List<ColorGoal_UI> uiToDeleteList = new List<ColorGoal_UI>();
 
             foreach (var uiIcon in colorGoalParent.GetComponentsInChildren<ColorGoal_UI>())
