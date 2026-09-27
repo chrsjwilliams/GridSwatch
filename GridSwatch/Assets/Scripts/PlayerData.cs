@@ -19,32 +19,27 @@ public class PlayerData
         }
     }
 
-    
+
     public List<LevelData> SavedLevelData;
 
-    private PlayerData()
+    public PlayerData()
     {
-        SavedLevelData = new List<LevelData>();
+        
+    }
+
+    public void RegiserEvents()
+    {
         Services.EventManager.Register<CreateSaveDataEvent>(OnCreateSavedData);
         Services.EventManager.Register<LoadDataEvent>(OnLoadData);
     }
 
-     ~PlayerData()
-    {
-        Services.EventManager.Unregister<LoadDataEvent>(OnLoadData);
-
-    }
-
     private void OnCreateSavedData(CreateSaveDataEvent e)
     {
-        SavedLevelData = new List<LevelData>();
+        Instance.SavedLevelData = new List<LevelData>();
     }
 
     public void WritePlayerData(string levelName, bool completed, int swipes)
     {
-        if(SavedLevelData == null)
-            SavedLevelData = new List<LevelData>();
-
         if (!completed)
             return;
         
@@ -55,7 +50,7 @@ public class PlayerData
 
         bool SaveNew = true;
         bool overwrite = false;
-        foreach (var levelData in SavedLevelData)
+        foreach (var levelData in Instance.SavedLevelData)
         {
             if (levelData._levelname == levelName)
             {
@@ -70,7 +65,9 @@ public class PlayerData
 
         if (SaveNew)
         {
-            SavedLevelData.Add(data);
+            Instance.SavedLevelData.Add(data);
+            Services.EventManager.Fire(new SaveDataEvent(this));
+            return;
         }
         
         if (overwrite)
@@ -78,11 +75,11 @@ public class PlayerData
             LevelData oldData = GetData(levelName);
             if (oldData != null)
             {
-                int index = SavedLevelData.IndexOf(oldData);
-                SavedLevelData[index] = data;
+                int index = Instance.SavedLevelData.IndexOf(oldData);
+                Instance.SavedLevelData[index] = data;
             }
+            Services.EventManager.Fire(new SaveDataEvent(this));
         }
-        Services.EventManager.Fire(new SaveDataEvent(this));
     }
 
 
@@ -92,13 +89,13 @@ public class PlayerData
         {
            data.Print();
         }
-        SavedLevelData = e.LoadedData.SavedLevelData;
+        Instance.SavedLevelData = e.LoadedData.SavedLevelData;
     }
     
 
     private LevelData GetData(string levelName)
     {
-        foreach (var levelData in SavedLevelData)
+        foreach (var levelData in Instance.SavedLevelData)
         {
             if (levelData._levelname == levelName)
                 return levelData;

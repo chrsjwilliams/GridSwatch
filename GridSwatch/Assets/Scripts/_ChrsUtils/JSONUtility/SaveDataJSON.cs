@@ -10,7 +10,8 @@ public class SaveDataJSON : MonoBehaviour
 
     private string m_SaveFilePath;
     public static SaveDataJSON Instance { get; private set; }
-    
+
+    private PlayerData _playerData;
     private void Awake()
     {
         m_SaveFilePath = Application.dataPath + Path.AltDirectorySeparatorChar + "SaveData.json";
@@ -26,8 +27,10 @@ public class SaveDataJSON : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        
+
         Services.EventManager.Register<SaveDataEvent>(SaveData);
+        _playerData = new PlayerData();
+        _playerData.RegiserEvents();
         LoadData();
     }
     
